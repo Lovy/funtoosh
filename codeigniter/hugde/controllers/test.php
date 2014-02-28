@@ -1,0 +1,24 @@
+<?php
+
+class test extends CI_Controller{
+	
+	function index(){
+	
+		$this->load->helper('utility');
+		$this->load->library('session');
+		$data = $this->session->all_userdata();
+		var_dump($data);
+		//date in mm/dd/yyyy format; or it can be in other formats as well
+		$birthDate = date('m/d/Y',strtotime("17-2-1983"));
+		//echo $birthDate;
+  //$birthDate = "2/17/1983";
+  //explode the date to get month, day and year
+  $birthDate = explode("/", $birthDate);
+  //get age from date or birthdate
+  $age = (date("md", date("U", mktime(0, 0, 0, $birthDate[0], $birthDate[1], $birthDate[2]))) > date("md")
+    ? ((date("Y") - $birthDate[2]) - 1) : (date("Y") - $birthDate[2]));
+  echo "Age is:" . $age;
+	}
+}
+
+?>
