@@ -48,9 +48,9 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'root';
-$db['default']['password'] = '';
+$db['default']['hostname'] = 'aa15b1k1ar7s9s0.coj3k2s36zeq.us-west-2.rds.amazonaws.com';
+$db['default']['username'] = 'ebroot';
+$db['default']['password'] = 'hugdeindia';
 $db['default']['database'] = 'hugde';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
