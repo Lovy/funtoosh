@@ -1141,8 +1141,8 @@ $this->s3 =  S3Client::factory(array(
 
                     file_put_contents(
                         $file_path,
-                        fopen($uploaded_file, 'r',0,$context),
-                        FILE_APPEND
+                        fopen($uploaded_file, 'r',0),
+                        FILE_APPEND,$context
                     );
                     //move_uploaded_file($uploaded_file, $file_path);
                 }
