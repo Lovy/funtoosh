@@ -490,7 +490,7 @@ class S3Client extends AbstractClient
      * @see Aws\S3\Model\MultipartUpload\UploadBuilder for more options and customization
      * @return \Guzzle\Service\Resource\Model Returns the modeled result of the performed operation
      */
-    public function upload($bucket, $key, $body, $acl = 'private', array $options = array())
+    public function upload($bucket, $key, $body, $acl = 'public', array $options = array())
     {
         $body = EntityBody::factory($body);
         $options = Collection::fromConfig(array_change_key_case($options), array(
