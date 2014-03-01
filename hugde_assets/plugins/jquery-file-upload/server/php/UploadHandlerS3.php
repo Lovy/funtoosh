@@ -769,7 +769,14 @@ $this->s3 =  S3Client::factory(array(
                 return $write_func($src_img, $new_file_path, $image_quality);
             }
             if ($file_path !== $new_file_path) {
-                return copy($file_path, $new_file_path);
+            	$context = stream_context_create(array(
+    's3' => array(
+    "access_key_id" => "AKIAI5YSRH55J3SSQY7A",
+          "secret_access_key" => "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",
+        'ACL' => 'public-read'
+    )
+));	
+                return copy($file_path, $new_file_path,$context);
             }
             return true;
         }
