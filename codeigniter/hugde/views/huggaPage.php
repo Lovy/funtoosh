@@ -63,7 +63,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
       <!-- BEGIN TOP NAVIGATION BAR -->
       <div class="header-inner">
          <!-- BEGIN LOGO -->  
-         <a class="navbar-brand" href="index.html">
+         <a class="navbar-brand" href="http://hugde-env-symvyatdmf.elasticbeanstalk.com/home">
          <img src="<?php echo assets_url(); ?>img/logo.png" alt="logo" class="img-responsive" />
          </a>
          <!-- END LOGO -->
