@@ -1136,7 +1136,7 @@ $this->s3 =  S3Client::factory(array(
 
 
                 else {
-                    move_uploaded_file($uploaded_file, $file_path);
+                    //move_uploaded_file($uploaded_file, $file_path);
                 }
 
             } else {
