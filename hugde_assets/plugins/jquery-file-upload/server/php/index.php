@@ -26,7 +26,7 @@ require('UploadHandlerS3.php');
 class CustomUploadHandler extends UploadHandlerS3 {
 
     protected function initialize() {
-        $this->db = new mysql(
+        $this->db = new mysqli(
             $this->options['db_host'],
             $this->options['db_user'],
             $this->options['db_pass'],
