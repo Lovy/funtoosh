@@ -54,7 +54,7 @@ class UploadHandlerS3
 $this->s3 =  S3Client::factory(array(
     'key'    => 'AKIAI5YSRH55J3SSQY7A',
     'secret' => '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',
-));
+))->registerStreamWrapper();
         //$this->s3 = Aws::factory($config)->get('s3')->registerStreamWrapper(); 
         //Initialize the s3 client and "registerStreamWrapper()" allows using PHP's native file methods such as file_put_contents()
         //http://docs.aws.amazon.com/aws-sdk-php/guide/latest/service-s3.html#amazon-s3-stream-wrapper
