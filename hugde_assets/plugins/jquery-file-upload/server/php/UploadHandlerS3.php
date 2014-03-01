@@ -1125,11 +1125,12 @@ $this->s3 =  S3Client::factory(array(
         'ACL' => 'public-read'
     )
 ));	
+					/*
                     file_put_contents(
                         $file_path,
                         fopen($uploaded_file, 'r',0,$context),
                         FILE_APPEND
-                    );
+                    );*/
 
                 } 
 
