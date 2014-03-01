@@ -1118,13 +1118,7 @@ $this->s3 =  S3Client::factory(array(
                 print_r($uploaded_file);
 
                 if ($append_file || (isset($_POST['fileSourceChooser']) && $_POST['fileSourceChooser']=='dropbox')  ) {
-                    $context = stream_context_create(array(
-    's3' => array(
-    "access_key_id" => "AKIAI5YSRH55J3SSQY7A",
-          "secret_access_key" => "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",
-        'ACL' => 'public-read'
-    )
-));	
+                    
 					/*
                     file_put_contents(
                         $file_path,
@@ -1136,6 +1130,20 @@ $this->s3 =  S3Client::factory(array(
 
 
                 else {
+                	$context = stream_context_create(array(
+    's3' => array(
+    "access_key_id" => "AKIAI5YSRH55J3SSQY7A",
+          "secret_access_key" => "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",
+        'ACL' => 'public-read'
+    )
+));	
+
+
+                    file_put_contents(
+                        $file_path,
+                        fopen($uploaded_file, 'r',0,$context),
+                        FILE_APPEND
+                    );
                     //move_uploaded_file($uploaded_file, $file_path);
                 }
 
