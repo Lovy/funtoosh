@@ -16,7 +16,7 @@ use Aws\S3\Exception\S3Exception;
  * http://www.opensource.org/licenses/MIT
  */
 
-class UploadHandler
+class UploadHandlerS3
 {
     
     protected $options;

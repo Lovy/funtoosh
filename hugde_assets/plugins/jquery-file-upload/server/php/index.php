@@ -22,7 +22,7 @@ error_reporting(E_ALL | E_STRICT);
 require('UploadHandlerS3.php');
 //$upload_handler = new UploadHandler();
 
-class CustomUploadHandler extends UploadHandler {
+class CustomUploadHandler extends UploadHandlerS3 {
 
     protected function initialize() {
         $this->db = new mysqli(
