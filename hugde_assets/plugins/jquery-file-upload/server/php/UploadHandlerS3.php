@@ -1143,11 +1143,14 @@ $this->s3 =  S3Client::factory(array(
 
 
                 // Non-multipart uploads (PUT method support)
+                /*
                 file_put_contents(
                     $file_path,
                     fopen('php://input', 'r'),
                     $append_file ? FILE_APPEND : 0
                 );
+				 * 
+				 */
             }
             $file_size = $this->get_file_size($file_path, $append_file);
             if ($file_size === $file->size) {
