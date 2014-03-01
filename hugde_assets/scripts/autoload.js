@@ -3,7 +3,7 @@ $(document).ready(function(){
 	var totalHuggas;
 	var loading = false;
 	$.ajax({
-		url:"http://localhost/home/totalhuggas",
+		url:"http://hugde-env-symvyatdmf.elasticbeanstalk.com/home/totalhuggas",
 		async:false,
 		dataType:"json",
 		success:function(data){
@@ -27,7 +27,7 @@ $(document).ready(function(){
                 //$('.animation_image').show(); //show loading image
                 
                 //load data from the server using a HTTP POST request
-                $.post('http://localhost/home/autoload',{'HPP': huggasPerPage,'PN':pagesLoaded+1}, function(data){
+                $.post('http://hugde-env-symvyatdmf.elasticbeanstalk.com/home/autoload',{'HPP': huggasPerPage,'PN':pagesLoaded+1}, function(data){
                                     
                     $(".article-block").append(data); //append received data into the element
 
