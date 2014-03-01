@@ -883,7 +883,7 @@ HTML;
    <script src="<?php echo assets_url(); ?>plugins/jquery.blockui.min.js" type="text/javascript"></script>  
    <script src="<?php echo assets_url(); ?>plugins/jquery.cookie.min.js" type="text/javascript"></script>
    <script src="<?php echo assets_url(); ?>plugins/uniform/jquery.uniform.min.js" type="text/javascript" ></script>
-   <script src="<?php echo assets_url(); ?>plugins/jquery-validation/dist/jquery.validate.min.js" type="text/javascript"></script>
+   <script src="<?php echo assets_url(); ?>scripts/jquery.validate.min.js" type="text/javascript"></script>
    <script src="<?php echo assets_url(); ?>plugins/backstretch/jquery.backstretch.min.js" type="text/javascript"></script>
    <script src="<?php echo assets_url(); ?>plugins/bootstrap-maxlength/bootstrap-maxlength.min.js" type="text/javascript" ></script>
 
