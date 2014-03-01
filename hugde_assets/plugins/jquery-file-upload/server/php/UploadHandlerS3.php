@@ -48,12 +48,12 @@ class UploadHandler
 
 
         
-        $this->s3 = Aws::factory('/directory/to/AWS/keys/config.php')->get('s3')->registerStreamWrapper(); 
+        $this->s3 = Aws::factory(array('AKIAI5YSRH55J3SSQY7A','1EvmIEOPuIjsdCrqHtEyuX7tXbhibgqDFSNYssJD'))->get('s3')->registerStreamWrapper(); 
         //Initialize the s3 client and "registerStreamWrapper()" allows using PHP's native file methods such as file_put_contents()
         //http://docs.aws.amazon.com/aws-sdk-php/guide/latest/service-s3.html#amazon-s3-stream-wrapper
 
-        $this->prefix='somefolder/subfolder/'; //note there is no "folders" in S3 though you can prefix files with a string that resembles a file system.
-        $this->bucket="your-bucket";
+        $this->prefix='hugde_images/'; //note there is no "folders" in S3 though you can prefix files with a string that resembles a file system.
+        $this->bucket="elasticbeanstalk-us-west-2-940183865857";
 
         //compatible with PHP frameworks such as Codeigniter by calling:
         // $CI = & get_instance(); //get Codeigniter instance

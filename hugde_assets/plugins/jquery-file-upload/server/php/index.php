@@ -19,7 +19,7 @@ $options = array(
 );
 
 error_reporting(E_ALL | E_STRICT);
-require('UploadHandler.php');
+require('UploadHandlerS3.php');
 //$upload_handler = new UploadHandler();
 
 class CustomUploadHandler extends UploadHandler {
@@ -50,6 +50,7 @@ class CustomUploadHandler extends UploadHandler {
 		
         if (empty($file->error)) {
         	//var_dump($file);
+        	/*
             $sql = 'INSERT INTO '.$this->options['db_table'].' (originalImageUrl,thumbnailImageUrl,mediumUrl,size,type,name)'.' VALUES (?,?,?,?, ?,?)';
             $query = $this->db->prepare($sql);
             $query->bind_param(
@@ -76,6 +77,8 @@ class CustomUploadHandler extends UploadHandler {
             );
             $query->execute();
             $file->id = $this->db->insert_id;
+			 * */
+			 
         }
         return $file;
     }
