@@ -59,7 +59,7 @@ $this->s3 =  S3Client::factory(array(
         //Initialize the s3 client and "registerStreamWrapper()" allows using PHP's native file methods such as file_put_contents()
         //http://docs.aws.amazon.com/aws-sdk-php/guide/latest/service-s3.html#amazon-s3-stream-wrapper
 
-        $this->prefix='hugde_images/'; //note there is no "folders" in S3 though you can prefix files with a string that resembles a file system.
+        $this->prefix=''; //note there is no "folders" in S3 though you can prefix files with a string that resembles a file system.
         $this->bucket="elasticbeanstalk-us-west-2-940183865857";
 
         //compatible with PHP frameworks such as Codeigniter by calling:
