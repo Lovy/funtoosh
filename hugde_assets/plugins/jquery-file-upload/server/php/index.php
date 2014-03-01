@@ -11,9 +11,9 @@
  */
 $options = array(
     'delete_type' => 'POST',
-    'db_host' => 'localhost',
-    'db_user' => 'root',
-    'db_pass' => '',
+    'db_host' => 'aa15b1k1ar7s9s0.coj3k2s36zeq.us-west-2.rds.amazonaws.com',
+    'db_user' => 'ebroot',
+    'db_pass' => 'hugdeindia',
     'db_name' => 'hugde',
     'db_table' => 'images'
 );
@@ -26,7 +26,7 @@ require('UploadHandlerS3.php');
 class CustomUploadHandler extends UploadHandlerS3 {
 
     protected function initialize() {
-        $this->db = new mysqli(
+        $this->db = new mysql(
             $this->options['db_host'],
             $this->options['db_user'],
             $this->options['db_pass'],
@@ -51,7 +51,7 @@ class CustomUploadHandler extends UploadHandlerS3 {
 		
         if (empty($file->error)) {
         	//var_dump($file);
-        	/*
+        	
             $sql = 'INSERT INTO '.$this->options['db_table'].' (originalImageUrl,thumbnailImageUrl,mediumUrl,size,type,name)'.' VALUES (?,?,?,?, ?,?)';
             $query = $this->db->prepare($sql);
             $query->bind_param(
@@ -78,7 +78,7 @@ class CustomUploadHandler extends UploadHandlerS3 {
             );
             $query->execute();
             $file->id = $this->db->insert_id;
-			 * */
+			 
 			 
         }
         return $file;
