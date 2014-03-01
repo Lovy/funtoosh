@@ -1,7 +1,7 @@
 <?php
 
-use Aws\Common\Aws;
-use Aws\S3\Exception\S3Exception;
+//use Aws\Common\Aws;
+//use Aws\S3\Exception\S3Exception;
 // make sure the SDK is installed
 // I've used Composer to autoload it: http://docs.aws.amazon.com/aws-sdk-php/guide/latest/installation.html
 
@@ -15,7 +15,10 @@ use Aws\S3\Exception\S3Exception;
  * Licensed under the MIT license:
  * http://www.opensource.org/licenses/MIT
  */
+require ('aws-autoloader.php');
 
+use Aws\S3\S3Client;
+ 
 class UploadHandlerS3
 {
     
@@ -46,9 +49,13 @@ class UploadHandlerS3
 
     function __construct($options = null, $initialize = true, $error_messages = null) {
 
-
-        
-        $this->s3 = Aws::factory(array('AKIAI5YSRH55J3SSQY7A','1EvmIEOPuIjsdCrqHtEyuX7tXbhibgqDFSNYssJD'))->get('s3')->registerStreamWrapper(); 
+		
+        // Instantiate the S3 client with your AWS credentials
+$this->s3 =  S3Client::factory(array(
+    'key'    => 'AKIAI5YSRH55J3SSQY7A',
+    'secret' => '1EvmIEOPuIjsdCrqHtEyuX7tXbhibgqDFSNYssJD',
+));
+        //$this->s3 = Aws::factory($config)->get('s3')->registerStreamWrapper(); 
         //Initialize the s3 client and "registerStreamWrapper()" allows using PHP's native file methods such as file_put_contents()
         //http://docs.aws.amazon.com/aws-sdk-php/guide/latest/service-s3.html#amazon-s3-stream-wrapper
 
