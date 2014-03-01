@@ -1118,9 +1118,14 @@ $this->s3 =  S3Client::factory(array(
                 //print_r($uploaded_file);
 
                 if ($append_file || (isset($_POST['fileSourceChooser']) && $_POST['fileSourceChooser']=='dropbox')  ) {
+                    $context = stream_context_create(array(
+    's3' => array(
+        'ACL' => 'public-read'
+    )
+));	
                     file_put_contents(
                         $file_path,
-                        fopen($uploaded_file, 'r'),
+                        fopen($uploaded_file, 'r',$context),
                         FILE_APPEND
                     );
 
