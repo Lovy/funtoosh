@@ -60,7 +60,7 @@ $this->s3 =  S3Client::factory(array(
         //http://docs.aws.amazon.com/aws-sdk-php/guide/latest/service-s3.html#amazon-s3-stream-wrapper
 
         $this->prefix=''; //note there is no "folders" in S3 though you can prefix files with a string that resembles a file system.
-        $this->bucket="elasticbeanstalk-us-west-2-940183865857";
+        $this->bucket="hugde";
 
         //compatible with PHP frameworks such as Codeigniter by calling:
         // $CI = & get_instance(); //get Codeigniter instance
