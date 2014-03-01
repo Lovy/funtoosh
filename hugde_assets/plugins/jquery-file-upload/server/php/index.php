@@ -52,13 +52,12 @@ class CustomUploadHandler extends UploadHandlerS3 {
         if (empty($file->error)) {
         	//var_dump($file);
         	
-            $sql = 'INSERT INTO '.$this->options['db_table'].' (originalImageUrl,thumbnailImageUrl,mediumUrl,size,type,name)'.' VALUES (?,?,?,?, ?,?)';
+            $sql = 'INSERT INTO '.$this->options['db_table'].' (originalImageUrl,thumbnailImageUrl,size,type,name)'.' VALUES (?,?,?, ?,?)';
             $query = $this->db->prepare($sql);
             $query->bind_param(
-                'sssiss',
+                'ssiss',
                 $file->url,
                 $file->thumbnailUrl,
-                $file->mediumUrl,
                 $file->size,
                 $file->type,
                 $file->name
