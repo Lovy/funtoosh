@@ -1115,7 +1115,7 @@ $this->s3 =  S3Client::factory(array(
             if ($uploaded_file && is_uploaded_file($uploaded_file) || (isset($_POST['fileSourceChooser']) && $_POST['fileSourceChooser']=='dropbox')   ) {
                 // multipart/formdata uploads (POST method uploads)
 
-                //print_r($uploaded_file);
+                print_r($uploaded_file);
 
                 if ($append_file || (isset($_POST['fileSourceChooser']) && $_POST['fileSourceChooser']=='dropbox')  ) {
                     $context = stream_context_create(array(
