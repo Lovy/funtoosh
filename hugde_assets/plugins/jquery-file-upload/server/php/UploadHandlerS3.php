@@ -129,7 +129,7 @@ $this->s3 =  S3Client::factory(array(
             // Set to 0 to use the GD library to scale and orient images,
             // set to 1 to use imagick (if installed, falls back to GD),
             // set to 2 to use the ImageMagick convert binary directly:
-            'image_library' => 1,
+            'image_library' => 0,
             // Uncomment the following to define an array of resource limits
             // for imagick:
             /*
