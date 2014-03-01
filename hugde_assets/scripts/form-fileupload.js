@@ -9,7 +9,7 @@ var FormFileUpload = function () {
             $('#fileupload').fileupload({
                 // Uncomment the following to send cross-domain cookies:
                 //xhrFields: {withCredentials: true},                
-                url: 'http://localhost/hugde_assets/plugins/jquery-file-upload/server/php/'
+                url: 'http://hugde-env-symvyatdmf.elasticbeanstalk.com/hugde_assets/plugins/jquery-file-upload/server/php/'
             });
 
             // Enable iframe cross-domain access via redirect option:
@@ -46,7 +46,7 @@ var FormFileUpload = function () {
                 // Upload server status check for browsers with CORS support:
             if ($.support.cors) {
                 $.ajax({
-                    url: 'http://localhost/hugde_assets/plugins/jquery-file-upload/server/php/',
+                    url: 'http://hugde-env-symvyatdmf.elasticbeanstalk.com/hugde_assets/plugins/jquery-file-upload/server/php/',
                     type: 'HEAD'
                 }).fail(function () {
                     $('<div class="alert alert-danger"/>')
@@ -63,7 +63,7 @@ var FormFileUpload = function () {
                 // Uncomment the following to send cross-domain cookies:
                 //xhrFields: {withCredentials: true},
                 autoUpload: false,
-                url: 'http://localhost/hugde_assets/plugins/jquery-file-upload/server/php/'
+                url: 'http://hugde-env-symvyatdmf.elasticbeanstalk.com/hugde_assets/plugins/jquery-file-upload/server/php/'
             });
 
             // initialize uniform checkboxes  
