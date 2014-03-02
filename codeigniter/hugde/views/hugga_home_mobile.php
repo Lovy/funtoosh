@@ -58,7 +58,7 @@
       <div class="header-inner">
          <!-- BEGIN LOGO -->  
          <a class="navbar-brand" href="http://hugde-env-symvyatdmf.elasticbeanstalk.com/home">
-         <img src="<?php echo assets_url(); ?>img/logo.png" alt="logo" class="img-responsive" />
+         <img src="<?php echo assets_url(); ?>img/hugdew.jpg" alt="logo" class="img-responsive" style="margin-top: -13px;height: 41px;" />
          </a>
          <!-- END LOGO -->
          <!-- BEGIN RESPONSIVE MENU TOGGLER --> 
