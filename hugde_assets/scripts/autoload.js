@@ -31,7 +31,8 @@ $(document).ready(function(){
                                     
                     $(".article-block").append(data); //append received data into the element
 					try{
-				        FB.XFBML.parse(); 
+				        FB.XFBML.parse();
+				        twttr.widgets.load(); 
 				    }catch(ex){}
                     //hide loading image
                     $('.animation_image').hide(); //hide loading image once data is received
