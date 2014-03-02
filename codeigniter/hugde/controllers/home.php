@@ -185,9 +185,9 @@ class home extends CI_Controller{
 		// seed with microseconds
 		$this->load->model('modelhome');
 		$totalHuggas = $this->modelhome->totalHuggas();
-		var_dump($totalHuggas);
-		/*
-		$totalHuggas =intval($totalHuggas['count']);
+		//var_dump($totalHuggas);
+		
+		$totalHuggas =intval($totalHuggas[0]['count']);
 		srand($this->make_seed());
 		$nextId = rand(1,$totalHuggas);
 		if($huggaId!=$nextId){
@@ -200,8 +200,7 @@ class home extends CI_Controller{
 				redirect($url);
 			}
 		}
-		 * 
-		 */		
+	
 	}
 	
 	function make_seed()
