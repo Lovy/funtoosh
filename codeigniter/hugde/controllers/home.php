@@ -180,22 +180,30 @@ class home extends CI_Controller{
 		}
 	}
 	
-	function next(){
+	function next($huggaId){
+		
+		// seed with microseconds
 		$this->load->model('modelhome');
 		$totalHuggas = $this->modelhome->totalHuggas();
 		$totalHuggas =intval($totalHuggas['count']);
+		srand($this->make_seed());
 		$nextId = rand(1,$totalHuggas);
-		if($this->modelhome->huggaExist($nextId)){
+		if($huggaId!=$nextId){
+			if($this->modelhome->huggaExist($nextId)){
 			$url = base_url().'hugga/'.$nextId;
 			redirect($url);
-		}
-		else{
-			$url = base_url().'home/next';
-			redirect($url);
-		}
-		//echo $nextId;
-		//echo $totalHuggas;
-		
+			}
+			else{
+				$url = base_url().'home/next';
+				redirect($url);
+			}
+		}		
+	}
+	
+	function make_seed()
+	{
+	  list($usec, $sec) = explode(' ', microtime());
+	  return (float) $sec + ((float) $usec * 100000);
 	}
 	
 }
