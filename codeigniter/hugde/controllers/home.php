@@ -194,7 +194,7 @@ class home extends CI_Controller{
 			redirect($url);
 			}
 			else{
-				$url = base_url().'home/next';
+				$url = base_url().'home/next/'.$nextId;
 				redirect($url);
 			}
 		}		
