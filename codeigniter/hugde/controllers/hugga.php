@@ -61,7 +61,8 @@ class hugga extends CI_Controller{
 		$totalHuggas = $this->modelhome->totalHuggas();
 		$totalHuggas =$totalHuggas[0].count;
 		$nextId = rand(1,$totalHuggas);
-		$this->index($nextId);
+		$url = base_url().'home/hugga/'.$nextId;
+		redirect($url);
 	}
 }
 
