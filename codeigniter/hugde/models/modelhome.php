@@ -6,6 +6,16 @@ class modelhome extends CI_Model{
 		parent::__construct();
 	}
 	
+	function huggaExist($huggaId){
+		$sql="select huggaId from hugga where huggaId=?";
+		$query = $this->db->query($sql,array($huggaId));
+		if($query->num_rows()>0){
+			return 1;
+		}else{
+			return 0;
+		}
+		
+	}
 	function loadData($huggaId=NULL,$userId=NULL,$myhugga=NULL,$huggasPerPage=NULL,$pageNo=NULL){
 		if($huggaId==NULL && $myhugga=='HIDE'){ //show all huggas
 			$sql1 = "select * from hugga order by timestamp desc LIMIT ?,?";
