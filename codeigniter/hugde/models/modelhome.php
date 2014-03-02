@@ -141,9 +141,10 @@ class modelhome extends CI_Model{
 					$flush['flushed']=$flushResponse;
 					$row['lick']=$lick;
 					$row['flush']=$flush;
-					$hugga[]=$row;
 					 * 
 					 */
+					$hugga[]=$row;
+				
 				}
 				return $hugga;
 		}
