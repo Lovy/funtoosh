@@ -118,7 +118,7 @@ class modelhome extends CI_Model{
 		$query = $this->db->query($sql);
 		if($query->num_rows()>0){
 			//create an array to store huggas
-				$hugga = array();
+				$sidebar = array();
 				//Loop through each row returned from the query
 				foreach ($query->result_array() as $row) {
     				//Retrieve images for each space
@@ -130,6 +130,11 @@ class modelhome extends CI_Model{
 					}
 					$row['images']=$images;
 					
+					$sql2 = "select * from hugga where huggaId=?";
+					$query3 =$this->db->query($sql2,array($row['huggaId']));
+					$hugga = array();
+					$hugga[]= $query->result_array();
+					$row['sidebar']=$hugga;
 					//check lick flush status for this hugga
 					/*
 					$lick = array();
@@ -143,10 +148,10 @@ class modelhome extends CI_Model{
 					$row['flush']=$flush;
 					 * 
 					 */
-					$hugga[]=$row;
+					$sidebar[]=$row;
 				
 				}
-				return $hugga;
+				return $sidebar;
 		}
 	}
 
