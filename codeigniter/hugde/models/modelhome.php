@@ -132,9 +132,9 @@ class modelhome extends CI_Model{
 					
 					$sql3 = "select * from hugga where huggaId=?";
 					$query3 =$this->db->query($sql3,array($row['huggaId']));
-					$hugga = array();
-					$hugga[]= $query3->result_array();
-					$row['sidebar']=$hugga;
+					//$hugga = array();
+					//$hugga[]= $query3->result_array();
+					$row['sidebar']=$query3->result_array();
 					//check lick flush status for this hugga
 					/*
 					$lick = array();
