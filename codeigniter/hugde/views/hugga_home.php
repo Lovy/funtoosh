@@ -221,7 +221,7 @@ HTML;
                   
                   
                   <!--end col-md-9-->
-                  <!--
+                  
                   <div class="col-md-3 blog-sidebar" style="background-color: #ffd703">
                   	<?php
 					foreach($sidebar as $item){
@@ -244,7 +244,7 @@ HTML;
 	                  }
 					?> 
                   </div>
-                  -->
+                  
                   <!--end col-md-3-->
                </div>
             </div>
