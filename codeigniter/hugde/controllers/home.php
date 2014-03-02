@@ -37,6 +37,7 @@ class home extends CI_Controller{
 			$response['huggas'] = $this->modelhome->loadData(NULL,NULL,'HIDE',5,1);
 			$response['sidebar'] = $this->modelhome->loadSideBar();
 			$response['data']=array("userId"=>"0");
+			echo json_encode($response);
 			//var_dump($response);
 			
 			//Detect mobile and load no-sidebar version
@@ -45,7 +46,7 @@ class home extends CI_Controller{
 				$this->load->view('hugga_home_mobile',$response);
 			}
 			else{
-				$this->load->view('hugga_home',$response);
+				//$this->load->view('hugga_home',$response);
 			}
 			
 		}
