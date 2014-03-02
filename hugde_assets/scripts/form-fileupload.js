@@ -36,7 +36,7 @@ var FormFileUpload = function () {
                 imageMaxWidth: 493,
                 imageMinWidth: 702,
                 singleFileUploads: false,
-                maxNumberOfFiles: 1,
+                //maxNumberOfFiles: 1,
                 limitMultiFileUploads:1,
                 acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i
             }).on('fileuploadsubmit', function (e, data) {
