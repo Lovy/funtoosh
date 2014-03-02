@@ -30,7 +30,9 @@ $(document).ready(function(){
                 $.post('http://hugde-env-symvyatdmf.elasticbeanstalk.com/home/autoload',{'HPP': huggasPerPage,'PN':pagesLoaded+1}, function(data){
                                     
                     $(".article-block").append(data); //append received data into the element
-
+					try{
+				        FB.XFBML.parse(); 
+				    }catch(ex){}
                     //hide loading image
                     $('.animation_image').hide(); //hide loading image once data is received
                     
