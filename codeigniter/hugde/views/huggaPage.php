@@ -180,7 +180,7 @@ HTML;
                   			-->	
                   			<a href="javascript:void(0);" onclick="lick(<?php echo $data['userId']; ?>,<?php echo $item['huggaId']; ?>,this);" class="btn <?php if($item['lick']['licked']==1){echo 'green';}else{echo 'default';} ?> lick" id="licked">Lick <i class="icon-chevron-up"></i> <span class="badge badge-danger"><?php echo $item['licks']; ?></span></a>                			
                   			<a href="javascript:void(0);" onclick="flush(<?php echo $data['userId']; ?>,<?php echo $item['huggaId']; ?>,this);" class="btn <?php if($item['flush']['flushed']==1){echo 'red';}else{echo 'default';} ?> flush" id="flushed">Flush <i class="icon-chevron-down"></i> <span class="badge badge-success"><?php echo $item['flushes']; ?></span></a>                           
-                  			<a href="<?php echo base_url().'hugga/next'; ?>" class="btn blue pull-right" >Next <i class=" icon-chevron-right"></i></a>
+                  			<a href="<?php echo base_url().'home/next'; ?>" class="btn blue pull-right" >Next <i class=" icon-chevron-right"></i></a>
                   		
                   			</div>		
                   		</div>	
