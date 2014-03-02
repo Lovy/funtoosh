@@ -164,6 +164,7 @@ class home extends CI_Controller{
 			$this->load->model('modelhome');
 			//loadData($huggaId=NULL,$userId=NULL,$myhugga=NULL,$huggasPerPage=NULL,$pageNo=NULL)
 			$response['huggas'] = $this->modelhome->loadData(NULL,$data['userId'],'SHOW',100,1);
+			$response['sidebar'] = $this->modelhome->loadSideBar();
 			$response['data']=$data;
 			//Detect mobile and load no-sidebar version
 			$mobile = $this->mobile_detect->isMobile();
