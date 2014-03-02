@@ -113,6 +113,42 @@ class modelhome extends CI_Model{
 		}			
 	}
 
+	function loadSideBar(){
+		$sql = "select * from sidebar";
+		$query = $this->db->query($sql);
+		if($query->num_rows()>0){
+			//create an array to store huggas
+				$hugga = array();
+				//Loop through each row returned from the query
+				foreach ($query->result_array() as $row) {
+    				//Retrieve images for each space
+    				$sql ="select * from images where imageId IN (select imageId from hugga where huggaId=?)";
+    				$query2 =$this->db->query($sql,array($row['huggaId']));
+					$images= array();
+					foreach ($query2->result_array() as $row2) {
+						$images[]=$row2;
+					}
+					$row['images']=$images;
+					
+					//check lick flush status for this hugga
+					/*
+					$lick = array();
+					$flush = array();
+					$this->load->model('modellickflush');
+					$lickResponse = $this->modellickflush->getLickStatus($row['huggaId'],$userId);
+					$flushResponse = $this->modellickflush->getFlushStatus($row['huggaId'],$userId);
+					$lick['licked']=$lickResponse;
+					$flush['flushed']=$flushResponse;
+					$row['lick']=$lick;
+					$row['flush']=$flush;
+					$hugga[]=$row;
+					 * 
+					 */
+				}
+				return $hugga;
+		}
+	}
+
 	function totalHuggas(){
 		$sql = "select count(huggaId) as count from hugga";
 		$query = $this->db->query($sql);
