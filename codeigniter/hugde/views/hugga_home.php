@@ -209,6 +209,13 @@ HTML;
                   <!--end col-md-9-->
                   
                   <div class="col-md-3 blog-sidebar" style="background-color: #ffd703">
+                  	<div class="row">
+                  		<ul class="list-group">
+                       
+                        <li class="list-group-item bg-purple">Featured</li>
+                       
+                     </ul>
+                  	</div>
                   	<?php
 					foreach($sidebar as $item){
 					?>
