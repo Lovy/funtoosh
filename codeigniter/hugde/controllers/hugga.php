@@ -56,16 +56,7 @@ class hugga extends CI_Controller{
 		}
 	}
 
-	function next(){
-		$this->load->model('modelhome');
-		$totalHuggas = $this->modelhome->totalHuggas();
-		$totalHuggas =intval($totalHuggas['count']);
-		$nextId = rand(1,$totalHuggas);
-		echo $nextId;
-		echo $totalHuggas;
-		//$url = base_url().'hugga/'.$nextId;
-		//redirect($url);
-	}
+	
 }
 
 ?>
