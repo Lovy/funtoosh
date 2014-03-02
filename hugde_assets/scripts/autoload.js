@@ -15,10 +15,19 @@ $(document).ready(function(){
 	//console.log(totalHuggas);
 	var totalPages = Math.round(parseInt(totalHuggas)/parseInt(huggasPerPage));
 	//console.log(totalPages);
+	
+	function getDocHeight() {
+    var D = document;
+    return Math.max(
+        Math.max(D.body.scrollHeight, D.documentElement.scrollHeight),
+        Math.max(D.body.offsetHeight, D.documentElement.offsetHeight),
+        Math.max(D.body.clientHeight, D.documentElement.clientHeight)
+    );
+	}
 	  
     $(window).scroll(function() { //detect page scroll
         
-        if($(window).scrollTop() + $(window).height() >= $(document).height())  //user scrolled to bottom of the page?
+        if($(window).scrollTop() + $(window).height() >= getDocHeight())  //user scrolled to bottom of the page?
         {
             
             if(pagesLoaded < totalPages && loading==false) //there's more data to load
