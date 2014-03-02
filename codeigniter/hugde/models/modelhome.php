@@ -114,7 +114,7 @@ class modelhome extends CI_Model{
 	}
 
 	function loadSideBar(){
-		$sql = "select * from sidebar";
+		$sql = "select huggaId from sidebar";
 		$query = $this->db->query($sql);
 		if($query->num_rows()>0){
 			//create an array to store huggas
@@ -122,18 +122,18 @@ class modelhome extends CI_Model{
 				//Loop through each row returned from the query
 				foreach ($query->result_array() as $row) {
     				//Retrieve images for each space
-    				$sql ="select * from images where imageId IN (select imageId from hugga where huggaId=?)";
-    				$query2 =$this->db->query($sql,array($row['huggaId']));
+    				$sql2 ="select * from images where imageId IN (select imageId from hugga where huggaId=?)";
+    				$query2 =$this->db->query($sql2,array($row['huggaId']));
 					$images= array();
 					foreach ($query2->result_array() as $row2) {
 						$images[]=$row2;
 					}
 					$row['images']=$images;
 					
-					$sql2 = "select * from hugga where huggaId=?";
-					$query3 =$this->db->query($sql2,array($row['huggaId']));
+					$sql3 = "select * from hugga where huggaId=?";
+					$query3 =$this->db->query($sql3,array($row['huggaId']));
 					$hugga = array();
-					$hugga[]= $query->result_array();
+					$hugga[]= $query3->result_array();
 					$row['sidebar']=$hugga;
 					//check lick flush status for this hugga
 					/*
