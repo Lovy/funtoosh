@@ -23,6 +23,7 @@ class hugga extends CI_Controller{
 			$this->load->model('modelhome');
 			//loadData($huggaId=NULL,$userId=NULL,$myhugga=NULL,$huggasPerPage=NULL,$pageNo=NULL)
 			$response['huggas'] = $this->modelhome->loadData($huggaId,$data['userId'],NULL,5,1);   //(huggasPerPage,pageNo)
+			$response['sidebar'] = $this->modelhome->loadSideBar();
 			$response['data']=$data;
 			//echo json_encode($response);
 			
@@ -39,6 +40,8 @@ class hugga extends CI_Controller{
 		else{
 			$this->load->model('modelhome');
 			$response['huggas'] = $this->modelhome->loadData($huggaId,NULL,NULL,5,1);
+			$response['sidebar'] = $this->modelhome->loadSideBar();
+			$response['data']=array("userId"=>"0");
 			//var_dump($response);
 			
 			//Detect mobile and load no-sidebar version
@@ -51,6 +54,13 @@ class hugga extends CI_Controller{
 			}
 			
 		}
+	}
+
+	function next(){
+		$this->load->model('modelhome');
+		$totalHuggas = $this->modelhome->totalHuggas();
+		$nextId = rand(1,$totalHuggas);
+		$this->index($nextId);
 	}
 }
 

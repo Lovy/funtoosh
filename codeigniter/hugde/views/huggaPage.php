@@ -180,7 +180,7 @@ HTML;
                   			-->	
                   			<a href="javascript:void(0);" onclick="lick(<?php echo $data['userId']; ?>,<?php echo $item['huggaId']; ?>,this);" class="btn <?php if($item['lick']['licked']==1){echo 'green';}else{echo 'default';} ?> lick" id="licked">Lick <i class="icon-chevron-up"></i> <span class="badge badge-danger"><?php echo $item['licks']; ?></span></a>                			
                   			<a href="javascript:void(0);" onclick="flush(<?php echo $data['userId']; ?>,<?php echo $item['huggaId']; ?>,this);" class="btn <?php if($item['flush']['flushed']==1){echo 'red';}else{echo 'default';} ?> flush" id="flushed">Flush <i class="icon-chevron-down"></i> <span class="badge badge-success"><?php echo $item['flushes']; ?></span></a>                           
-                  			<a href="#" class="btn blue pull-right" >Next <i class=" icon-chevron-right"></i></a>
+                  			<a href="<?php echo base_url().'hugga/next'; ?>" class="btn blue pull-right" >Next <i class=" icon-chevron-right"></i></a>
                   		
                   			</div>		
                   		</div>	
@@ -230,92 +230,28 @@ HTML;
                   
                   <!--end col-md-9-->
                   <div class="col-md-3 blog-sidebar" style="background-color: #ffd703">
-                  	<div class="row">
-                  		
+                  	<?php
+					foreach($sidebar as $item){
+					?>
+                  	<div class="row">     		
                         <div class="col-md-12 blog-img blog-tag-data">
-                        	<a href="#"><h4><b>22 hilarious pictures of wet cats</b></h4></a>
-                           <img src="<?php echo assets_url();?>img/gallery/image3.jpg" alt="" class="img-responsive" >
+                        	<a href="<?php echo base_url().'hugga/'.$item['huggaId']; ?>"><h4><b><?php echo $item['sidebar'][0]['title']; ?></b></h4></a>
+                           <img src="<?php echo $item['images'][0]['originalImageUrl']; ?>" alt="" class="img-responsive" >
                            <ul class="list-inline">
-                              <li><i class="icon-chevron-up"></i> <a href="#">2013</a></li>
-                              <li><i class="icon-chevron-down"></i> <a href="#">213</a></li>
-                              <li><i class="icon-comments"></i> <a href="#">38 Comments</a></li>
+                              <li><i class="icon-chevron-up"></i> <a href="<?php echo base_url().'hugga/'.$item['huggaId']; ?>"><?php echo $item['sidebar'][0]['licks']; ?></a></li>
+                              <li><i class="icon-chevron-down"></i> <a href="<?php echo base_url().'hugga/'.$item['huggaId']; ?>"><?php echo $item['sidebar'][0]['flushes']; ?></a></li>
+                              <li><i class="icon-comments"></i> <a href="<?php echo base_url().'hugga/'.$item['huggaId']; ?>">38 Comments</a></li>
                            </ul>
                            
                         </div>
                         
                      </div>
                      <div class="space20"></div>
-                     <div class="row">
-                        <div class="col-md-12 blog-img blog-tag-data">
-                        	<h4><b>All Is Not As It Seems With The Paint Covered Faces Below</b></h4>
-                           <img src="<?php echo assets_url();?>img/gallery/image3.jpg" alt="" class="img-responsive">
-                           <ul class="list-inline">
-                              <li><i class="icon-chevron-up"></i> <a href="#">2013</a></li>
-                              <li><i class="icon-chevron-down"></i> <a href="#">213</a></li>
-                              <li><i class="icon-comments"></i> <a href="#">38 Comments</a></li>
-                           </ul>
-                          
-                        </div>
-                        
-                     </div>
-                     <div class="space20"></div>
-                     <div class="row">
-                        <div class="col-md-12 blog-img blog-tag-data">
-                        	<h4><b>All Is Not As It Seems With The Paint Covered Faces Below</b></h4>
-                           <img src="<?php echo assets_url();?>img/gallery/image3.jpg" alt="" class="img-responsive">
-                           <ul class="list-inline">
-                              <li><i class="icon-chevron-up"></i> <a href="#">2013</a></li>
-                              <li><i class="icon-chevron-down"></i> <a href="#">213</a></li>
-                              <li><i class="icon-comments"></i> <a href="#">38 Comments</a></li>
-                           </ul>
-                           
-                        </div>
-                        
-                     </div>
-                     <div class="space20"></div>
-                     <div class="row">
-                        <div class="col-md-12 blog-img blog-tag-data">
-                        	<h4><b>All Is Not As It Seems With The Paint Covered Faces Below</b></h4>
-                           <img src="<?php echo assets_url();?>img/gallery/image3.jpg" alt="" class="img-responsive">
-                           <ul class="list-inline">
-                              <li><i class="icon-calendar"></i> <a href="#">April 16, 2013</a></li>
-                              <li><i class="icon-comments"></i> <a href="#">38 Comments</a></li>
-                           </ul>
-                           
-                        </div>
-                        
-                     </div>
-                     <div class="space20"></div>
-                     <div class="row">
-                        <div class="col-md-12 blog-img blog-tag-data">
-                        	<h4><b>All Is Not As It Seems With The Paint Covered Faces Below</b></h4>
-                           <img src="<?php echo assets_url();?>img/gallery/image3.jpg" alt="" class="img-responsive">
-                           <ul class="list-inline">
-                              <li><i class="icon-calendar"></i> <a href="#">April 16, 2013</a></li>
-                              <li><i class="icon-comments"></i> <a href="#">38 Comments</a></li>
-                           </ul>
-                           
-                        </div>
-                        
-                     </div>
-                     <div class="space20"></div>
-                     <div class="row">
-                        <div class="col-md-12 blog-img blog-tag-data">
-                        	<h4><b>All Is Not As It Seems With The Paint Covered Faces Below</b></h4>
-                           <img src="<?php echo assets_url();?>img/gallery/image3.jpg" alt="" class="img-responsive">
-                           <ul class="list-inline">
-                              <li><i class="icon-calendar"></i> <a href="#">April 16, 2013</a></li>
-                              <li><i class="icon-comments"></i> <a href="#">38 Comments</a></li>
-                           </ul>
-                           
-                        </div>
-                        
-                     </div>
-                     <div class="space20"></div>
+                      <?php
+	                  }
+					?> 
+					
                      
-                     
-                     
-                    
                   </div>
                   <!--end col-md-3-->
                </div>

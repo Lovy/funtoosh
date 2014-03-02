@@ -225,92 +225,27 @@ HTML;
                   
                   <!--end col-md-9-->
                   <div class="col-md-3 blog-sidebar" style="background-color: #ffd703">
-                  	<div class="row">
-                  		
+                  	<?php
+					foreach($sidebar as $item){
+					?>
+                  	<div class="row">     		
                         <div class="col-md-12 blog-img blog-tag-data">
-                        	<a href="#"><h4><b>22 hilarious pictures of wet cats</b></h4></a>
-                           <img src="<?php echo assets_url();?>img/gallery/image3.jpg" alt="" class="img-responsive" >
+                        	<a href="<?php echo base_url().'hugga/'.$item['huggaId']; ?>"><h4><b><?php echo $item['sidebar'][0]['title']; ?></b></h4></a>
+                           <img src="<?php echo $item['images'][0]['originalImageUrl']; ?>" alt="" class="img-responsive" >
                            <ul class="list-inline">
-                              <li><i class="icon-chevron-up"></i> <a href="#">2013</a></li>
-                              <li><i class="icon-chevron-down"></i> <a href="#">213</a></li>
-                              <li><i class="icon-comments"></i> <a href="#">38 Comments</a></li>
+                              <li><i class="icon-chevron-up"></i> <a href="<?php echo base_url().'hugga/'.$item['huggaId']; ?>"><?php echo $item['sidebar'][0]['licks']; ?></a></li>
+                              <li><i class="icon-chevron-down"></i> <a href="<?php echo base_url().'hugga/'.$item['huggaId']; ?>"><?php echo $item['sidebar'][0]['flushes']; ?></a></li>
+                              <li><i class="icon-comments"></i> <a href="<?php echo base_url().'hugga/'.$item['huggaId']; ?>">38 Comments</a></li>
                            </ul>
                            
                         </div>
                         
                      </div>
                      <div class="space20"></div>
-                     <div class="row">
-                        <div class="col-md-12 blog-img blog-tag-data">
-                        	<h4><b>All Is Not As It Seems With The Paint Covered Faces Below</b></h4>
-                           <img src="<?php echo assets_url();?>img/gallery/image3.jpg" alt="" class="img-responsive">
-                           <ul class="list-inline">
-                              <li><i class="icon-chevron-up"></i> <a href="#">2013</a></li>
-                              <li><i class="icon-chevron-down"></i> <a href="#">213</a></li>
-                              <li><i class="icon-comments"></i> <a href="#">38 Comments</a></li>
-                           </ul>
-                          
-                        </div>
-                        
-                     </div>
-                     <div class="space20"></div>
-                     <div class="row">
-                        <div class="col-md-12 blog-img blog-tag-data">
-                        	<h4><b>All Is Not As It Seems With The Paint Covered Faces Below</b></h4>
-                           <img src="<?php echo assets_url();?>img/gallery/image3.jpg" alt="" class="img-responsive">
-                           <ul class="list-inline">
-                              <li><i class="icon-chevron-up"></i> <a href="#">2013</a></li>
-                              <li><i class="icon-chevron-down"></i> <a href="#">213</a></li>
-                              <li><i class="icon-comments"></i> <a href="#">38 Comments</a></li>
-                           </ul>
-                           
-                        </div>
-                        
-                     </div>
-                     <div class="space20"></div>
-                     <div class="row">
-                        <div class="col-md-12 blog-img blog-tag-data">
-                        	<h4><b>All Is Not As It Seems With The Paint Covered Faces Below</b></h4>
-                           <img src="<?php echo assets_url();?>img/gallery/image3.jpg" alt="" class="img-responsive">
-                           <ul class="list-inline">
-                              <li><i class="icon-calendar"></i> <a href="#">April 16, 2013</a></li>
-                              <li><i class="icon-comments"></i> <a href="#">38 Comments</a></li>
-                           </ul>
-                           
-                        </div>
-                        
-                     </div>
-                     <div class="space20"></div>
-                     <div class="row">
-                        <div class="col-md-12 blog-img blog-tag-data">
-                        	<h4><b>All Is Not As It Seems With The Paint Covered Faces Below</b></h4>
-                           <img src="<?php echo assets_url();?>img/gallery/image3.jpg" alt="" class="img-responsive">
-                           <ul class="list-inline">
-                              <li><i class="icon-calendar"></i> <a href="#">April 16, 2013</a></li>
-                              <li><i class="icon-comments"></i> <a href="#">38 Comments</a></li>
-                           </ul>
-                           
-                        </div>
-                        
-                     </div>
-                     <div class="space20"></div>
-                     <div class="row">
-                        <div class="col-md-12 blog-img blog-tag-data">
-                        	<h4><b>All Is Not As It Seems With The Paint Covered Faces Below</b></h4>
-                           <img src="<?php echo assets_url();?>img/gallery/image3.jpg" alt="" class="img-responsive">
-                           <ul class="list-inline">
-                              <li><i class="icon-calendar"></i> <a href="#">April 16, 2013</a></li>
-                              <li><i class="icon-comments"></i> <a href="#">38 Comments</a></li>
-                           </ul>
-                           
-                        </div>
-                        
-                     </div>
-                     <div class="space20"></div>
+                      <?php
+	                  }
+					?> 
                      
-                     
-                     
-                    
                   </div>
                   <!--end col-md-3-->
                </div>
@@ -778,7 +713,7 @@ HTML;
    <!-- BEGIN FOOTER -->
    <div class="footer">
       <div class="footer-inner">
-         2013 &copy; Hugde India.
+         2014 &copy; Hugde India.
       </div>
       <div class="footer-tools">
          <span class="go-top">

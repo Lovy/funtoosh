@@ -711,7 +711,7 @@ HTML;
    <!-- BEGIN FOOTER -->
    <div class="footer">
       <div class="footer-inner">
-         2013 &copy; Hugde India.
+         2014 &copy; Hugde India.
       </div>
       <div class="footer-tools">
          <span class="go-top">
