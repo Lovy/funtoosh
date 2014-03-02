@@ -12,7 +12,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 <!-- BEGIN HEAD -->
 <head>
    <meta charset="utf-8" />
-   <title>Metronic | Pages - Blog Post</title>
+   <title>Hugde | Making shit awesome</title>
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
    <meta content="" name="description" />
@@ -182,7 +182,7 @@ HTML;
                   			-->	
                   			<a href="javascript:void(0);" onclick="lick(<?php echo $data['userId']; ?>,<?php echo $item['huggaId']; ?>,this);" class="btn <?php if($item['lick']['licked']==1){echo 'green';}else{echo 'default';} ?> lick" id="licked">Lick <i class="icon-chevron-up"></i> <span class="badge badge-danger"><?php echo $item['licks']; ?></span></a>                			
                   			<a href="javascript:void(0);" onclick="flush(<?php echo $data['userId']; ?>,<?php echo $item['huggaId']; ?>,this);" class="btn <?php if($item['flush']['flushed']==1){echo 'red';}else{echo 'default';} ?> flush" id="flushed">Flush <i class="icon-chevron-down"></i> <span class="badge badge-success"><?php echo $item['flushes']; ?></span></a>                           
-                  			<a href="<?php echo base_url().'delete/'.$item['huggaId']; ?>" class="btn default pull-right" >Delete <i class=" icon-trash"></i></a>
+                  			<a href="<?php echo base_url().'home/delete/'.$item['huggaId']; ?>" class="btn default pull-right" >Delete <i class=" icon-trash"></i></a>
                   		
                   			</div>		
                   		</div>	
@@ -778,7 +778,7 @@ HTML;
    <!-- BEGIN FOOTER -->
    <div class="footer">
       <div class="footer-inner">
-         2013 &copy; Metronic by keenthemes.
+         2013 &copy; Hugde India.
       </div>
       <div class="footer-tools">
          <span class="go-top">

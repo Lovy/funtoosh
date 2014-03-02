@@ -12,7 +12,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 <!-- BEGIN HEAD -->
 <head>
    <meta charset="utf-8" />
-   <title>Metronic | Pages - Blog Post</title>
+   <title>Hugde | Making shit awesome</title>
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
    <meta content="" name="description" />
@@ -783,7 +783,7 @@ HTML;
    <!-- BEGIN FOOTER -->
    <div class="footer">
       <div class="footer-inner">
-         2013 &copy; Metronic by keenthemes.
+         2014 &copy; Hugde India.
       </div>
       <div class="footer-tools">
          <span class="go-top">
