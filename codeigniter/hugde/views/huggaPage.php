@@ -13,6 +13,14 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 <head>
    <meta charset="utf-8" />
    <title>Hugde | Making shit awesome</title>
+   <?php
+   foreach($huggas as $item){
+   ?>
+   <meta property="og:title" content="<?php if($item['title']!=''){echo $item['title'];}else{ echo 'Hugde: Making shit awesome';}; ?>" /> 
+   <meta property="og:image" content="<?php echo $item['images'][0]['originalImageUrl']; ?>" />
+   <?php
+   }
+   ?> 
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
    <meta content="" name="description" />
@@ -196,9 +204,7 @@ HTML;
                            
                            	</div>
                            	<div class="col-md-4">
-                           		<meta property="og:title" content="<?php if($item['title']!=''){echo $item['title'];}else{ echo 'Hugde: Making shit awesome';}; ?>" /> 
-								<meta property="og:image" content="<?php echo $item['images'][0]['originalImageUrl']; ?>" /> 
-
+                           		
                            	  	<div class="fb-like" data-href="<?php echo base_url().'hugga/'.$item['huggaId']; ?>" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true" style="width: 150px !important"></div>
                            		
                           	</div>
