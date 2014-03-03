@@ -239,12 +239,19 @@ HTML;
                   
                   <!--end col-md-9-->
                   <div class="col-md-3 blog-sidebar" style="background-color: #ffd703">
+                  	<div class="row">
+                  		<ul class="list-group">
+                       
+                        <li class="list-group-item bg-purple" style="font-size: 22px">Featured</li>
+                       
+                     </ul>
+                  	</div>
                   	<?php
 					foreach($sidebar as $item){
 					?>
                   	<div class="row">     		
                         <div class="col-md-12 blog-img blog-tag-data">
-                        	<a href="<?php echo base_url().'hugga/'.$item['huggaId']; ?>"><h4><b><?php echo $item['sidebar'][0]['title']; ?></b></h4></a>
+                        	<a href="<?php echo base_url().'hugga/'.$item['huggaId']; ?>"><h4><?php echo $item['sidebar'][0]['title']; ?></h4></a>
                            <img src="<?php echo $item['images'][0]['originalImageUrl']; ?>" alt="" class="img-responsive" >
                            <ul class="list-inline">
                               <li><i class="icon-chevron-up"></i> <a href="<?php echo base_url().'hugga/'.$item['huggaId']; ?>"><?php echo $item['sidebar'][0]['licks']; ?></a></li>
