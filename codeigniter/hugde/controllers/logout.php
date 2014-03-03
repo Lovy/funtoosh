@@ -9,7 +9,7 @@ class logout extends CI_Controller{
 	
 	function index(){
 		$this->session->sess_destroy();
-		$url = 'http://hugde-env-symvyatdmf.elasticbeanstalk.com/home';
+		$url = base_url().'/home';
         redirect($url);
 	}
 }
