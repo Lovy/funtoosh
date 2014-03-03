@@ -3,7 +3,7 @@ $(document).ready(function(){
 	var totalHuggas;
 	var loading = false;
 	$.ajax({
-		url:"http://hugde-env-symvyatdmf.elasticbeanstalk.com/home/totalhuggas",
+		url:"http://hugde.com/home/totalhuggas",
 		async:false,
 		dataType:"json",
 		success:function(data){
@@ -29,14 +29,14 @@ $(document).ready(function(){
         
         if($(window).scrollTop() + $(window).height() >= getDocHeight())  //user scrolled to bottom of the page?
         {
-            
+            console.log("Autoscroll called");
             if(pagesLoaded < totalPages && loading==false) //there's more data to load
             {
                 loading = true; //prevent further ajax loading
                 //$('.animation_image').show(); //show loading image
                 
                 //load data from the server using a HTTP POST request
-                $.post('http://hugde-env-symvyatdmf.elasticbeanstalk.com/home/autoload',{'HPP': huggasPerPage,'PN':pagesLoaded+1}, function(data){
+                $.post('http://hugde.com/home/autoload',{'HPP': huggasPerPage,'PN':pagesLoaded+1}, function(data){
                                     
                     $(".article-block").append(data); //append received data into the element
 					try{
