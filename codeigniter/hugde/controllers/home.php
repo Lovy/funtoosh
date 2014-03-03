@@ -126,7 +126,7 @@ class home extends CI_Controller{
                            
                            	</div>
                            	<div class="col-md-4">
-                           	  	<div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true" style="width: 150px !important"></div>
+                           	  	<div class="fb-like" data-href="'.base_url().'hugga/'.$item['huggaId'].'" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true" style="width: 150px !important"></div>
                            		
                           	</div>
                           	
