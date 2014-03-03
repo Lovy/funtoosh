@@ -106,7 +106,7 @@
 	function checklogin(){
 		
 		$.ajax({
-	    	url: "http://hugde-env-symvyatdmf.elasticbeanstalk.com/login/checklogin",
+	    	url: "http://hugde.com/login/checklogin",
 	    	async: false,
 	    	dataType: 'json',
 	    	success: function(response) {
@@ -118,7 +118,7 @@
 	function checkLickStatus(userId,huggaId){
 		//query db
 		$.ajax({
-	    	url: "http://hugde-env-symvyatdmf.elasticbeanstalk.com/lickflush/checkLickStatus/"+huggaId+'/'+userId,
+	    	url: "http://hugde.com/lickflush/checkLickStatus/"+huggaId+'/'+userId,
 	    	async: false,
 	    	dataType: 'json',
 	    	success: function(response) {
@@ -130,7 +130,7 @@
 	function checkFlushStatus(userId,huggaId){
 		//query db
 		$.ajax({
-	    	url: "http://hugde-env-symvyatdmf.elasticbeanstalk.com/lickflush/checkFlushStatus/"+huggaId+'/'+userId,
+	    	url: "http://hugde.com/lickflush/checkFlushStatus/"+huggaId+'/'+userId,
 	    	async: false,
 	    	dataType: 'json',
 	    	success: function(response) {
@@ -142,7 +142,7 @@
 	function updateLickCount(updatedLickCnt,huggaId){
 		//query db
 		$.ajax({
-	    	url: "http://hugde-env-symvyatdmf.elasticbeanstalk.com/lickflush/updateLickCount/"+huggaId+'/'+updatedLickCnt,
+	    	url: "http://hugde.com/lickflush/updateLickCount/"+huggaId+'/'+updatedLickCnt,
 	    	async: true,
 	    	dataType: 'json',
 	    	success: function(response) {
@@ -154,7 +154,7 @@
 	function updateFlushCount(updatedFlushCnt,huggaId){
 		//query db
 		$.ajax({
-	    	url: "http://hugde-env-symvyatdmf.elasticbeanstalk.com/lickflush/updateFlushCount/"+huggaId+'/'+updatedFlushCnt,
+	    	url: "http://hugde.com/lickflush/updateFlushCount/"+huggaId+'/'+updatedFlushCnt,
 	    	async: true,
 	    	dataType: 'json',
 	    	success: function(response) {
@@ -166,7 +166,7 @@
 	function deleteLick(huggaId,userId){
 		//query db
 		$.ajax({
-	    	url: "http://hugde-env-symvyatdmf.elasticbeanstalk.com/lickflush/deleteLick/"+huggaId+'/'+userId,
+	    	url: "http://hugde.com/lickflush/deleteLick/"+huggaId+'/'+userId,
 	    	async: true,
 	    	dataType: 'json',
 	    	success: function(response) {
@@ -178,7 +178,7 @@
 	function deleteFlush(huggaId,userId){
 		//query db
 		$.ajax({
-	    	url: "http://hugde-env-symvyatdmf.elasticbeanstalk.com/lickflush/deleteFlush/"+huggaId+'/'+userId,
+	    	url: "http://hugde.com/lickflush/deleteFlush/"+huggaId+'/'+userId,
 	    	async: true,
 	    	dataType: 'json',
 	    	success: function(response) {
@@ -190,7 +190,7 @@
 	function insertLick(huggaId,userId){
 		//query db
 		$.ajax({
-	    	url: "http://hugde-env-symvyatdmf.elasticbeanstalk.com/lickflush/insertLick/"+huggaId+'/'+userId,
+	    	url: "http://hugde.com/lickflush/insertLick/"+huggaId+'/'+userId,
 	    	async: true,
 	    	dataType: 'json',
 	    	success: function(response) {
@@ -202,7 +202,7 @@
 	function insertFlush(huggaId,userId){
 		//query db
 		$.ajax({
-	    	url: "http://hugde-env-symvyatdmf.elasticbeanstalk.com/lickflush/insertFlush/"+huggaId+'/'+userId,
+	    	url: "http://hugde.com/lickflush/insertFlush/"+huggaId+'/'+userId,
 	    	async: true,
 	    	dataType: 'json',
 	    	success: function(response) {

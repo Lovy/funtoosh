@@ -57,7 +57,7 @@
       <!-- BEGIN TOP NAVIGATION BAR -->
       <div class="header-inner">
          <!-- BEGIN LOGO -->  
-         <a class="navbar-brand" href="http://hugde-env-symvyatdmf.elasticbeanstalk.com/home">
+         <a class="navbar-brand" href="http://hugde.com/home">
          <img src="<?php echo assets_url(); ?>img/hugdew.jpg" alt="logo" class="img-responsive" style="margin-top: -13px;height: 41px;" />
          </a>
          <!-- END LOGO -->
@@ -106,10 +106,10 @@ HTML;
                <i class="icon-angle-down"></i>
                </a>
                <ul class="dropdown-menu">
-                  <li><a href="http://hugde-env-symvyatdmf.elasticbeanstalk.com/home/myhugge"><i class="icon-user"></i> My Hugge</a>
+                  <li><a href="http://hugde.com/home/myhugge"><i class="icon-user"></i> My Hugge</a>
                   </li>
                   
-                  <li><a href="http://hugde-env-symvyatdmf.elasticbeanstalk.com/logout"><i class="icon-key"></i> Log Out</a>
+                  <li><a href="http://hugde.com/logout"><i class="icon-key"></i> Log Out</a>
                   </li>
                </ul>
             </li>                	
@@ -669,7 +669,7 @@ HTML;
                 	</div>
                     <div class="modal-footer">
                     	<button type="button" class="btn default" data-dismiss="modal">Close</button>
-                        <button type="button" onclick="window.location.href='http://hugde-env-symvyatdmf.elasticbeanstalk.com/home/myhugge'" class="btn blue">Save changes</button>
+                        <button type="button" onclick="window.location.href='http://hugde.com/home/myhugge'" class="btn blue">Save changes</button>
                     </div>
              </div>
                            <!-- /.modal-content -->
