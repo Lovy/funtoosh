@@ -18,7 +18,8 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
    <meta content="" name="description" />
    <meta content="" name="author" />
    <meta name="MobileOptimized" content="320">
-   <!-- BEGIN GLOBAL MANDATORY STYLES -->          
+   <!-- BEGIN GLOBAL MANDATORY STYLES --> 
+   <meta name="google-site-verification" content="szn8OsBvT2GfoDR2Cq692tO4x8JbQFJEKd2GUMfQci0" />         
    <link href="<?php echo assets_url(); ?>plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
    <link href="<?php echo assets_url(); ?>plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
    <link href="<?php echo assets_url(); ?>plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css"/>
