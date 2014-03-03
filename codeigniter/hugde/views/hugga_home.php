@@ -93,7 +93,7 @@ HTML;
             </li>
                         		<li class="dropdown user">
                <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-               <img alt="" src="http://localhost/hugde_assets/img/poopicon.jpg"/>
+               <img alt="" src="http://localhost/hugde_assets/img/poopicon.jpg" style="width:29px"/>
                <span class="username">{$data['name']}</span>
                <i class="icon-angle-down"></i>
                </a>
