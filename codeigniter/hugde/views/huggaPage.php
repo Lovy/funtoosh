@@ -107,7 +107,7 @@ HTML;
             </li>
                         		<li class="dropdown user">
                <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-               <img alt="" src="http://hugde.com/img/poopicon.jpg" style="width:29px"/>
+               <img alt="" src="http://hugde.com/hugde_assets/img/poopicon.jpg" style="width:29px"/>
                <span class="username">{$data['name']}</span>
                <i class="icon-angle-down"></i>
                </a>
@@ -196,6 +196,9 @@ HTML;
                            
                            	</div>
                            	<div class="col-md-4">
+                           		<meta property="og:title" content="<?php if($item['title']!=''){echo $item['title'];}else{ echo 'Hugde: Making shit awesome';}; ?>" /> 
+								<meta property="og:image" content="<?php echo $item['images'][0]['originalImageUrl']; ?>" /> 
+
                            	  	<div class="fb-like" data-href="<?php echo base_url().'hugga/'.$item['huggaId']; ?>" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true" style="width: 150px !important"></div>
                            		
                           	</div>
