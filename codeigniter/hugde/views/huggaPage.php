@@ -107,7 +107,7 @@ HTML;
             </li>
                         		<li class="dropdown user">
                <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-               <img alt="" src="http://localhost/hugde_assets/img/avatar1_small.jpg"/>
+               <img alt="" src="http://localhost/hugde_assets/img/poopicon.jpg"/>
                <span class="username">{$data['name']}</span>
                <i class="icon-angle-down"></i>
                </a>
@@ -219,7 +219,7 @@ HTML;
 						.fb_iframe_widget span,
 						.fb_iframe_widget iframe[style]  {width: 100% !important;}
                      </style>
-                     <div class="fb-comments" data-href="http://example.com/comments" data-numposts="20" data-colorscheme="light"></div>
+                     <div class="fb-comments" data-href="<?php echo base_url().'hugga/'.$item['huggaId']; ?> " data-numposts="20" data-colorscheme="light"></div>
                      
                     <?php
                     }
