@@ -57,7 +57,7 @@ var Login = function () {
 						$.ajax({
 						
 						//url to send the data to
-						url: "http://hugde-env-symvyatdmf.elasticbeanstalk.com/login/login_user",
+						url: "http://hugde.com/login/login_user",
 						data: {'temp':temp},
 						type: 'post',
 						dataType: 'json',
@@ -75,7 +75,7 @@ var Login = function () {
 								$("#loginError").css('display','block');
 							}
 							else{
-								window.location.replace("http://hugde-env-symvyatdmf.elasticbeanstalk.com/home");
+								window.location.replace("http://hugde.com/home");
 							}
 							//console.log(a);
 						}
@@ -92,7 +92,7 @@ var Login = function () {
 						$.ajax({
 						
 						//url to send the data to
-						url: "http://hugde-env-symvyatdmf.elasticbeanstalk.com/login/login_user",
+						url: "http://hugde.com/login/login_user",
 						data: {'temp':temp},
 						type: 'post',
 						dataType: 'json',
@@ -110,7 +110,7 @@ var Login = function () {
 								$("#loginError").css('display','block');
 							}
 							else{
-								window.location.replace("http://hugde-env-symvyatdmf.elasticbeanstalk.com/home");
+								window.location.replace("http://hugde.com/home");
 							}
 							//console.log(a);
 						}
