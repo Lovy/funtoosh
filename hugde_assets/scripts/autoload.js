@@ -11,7 +11,7 @@ $(document).ready(function(){
 		}
 		
 	});
-	var huggasPerPage = 5;
+	var huggasPerPage = 1;
 	//console.log(totalHuggas);
 	var totalPages = Math.round(parseInt(totalHuggas)/parseInt(huggasPerPage));
 	//console.log(totalPages);
