@@ -59,24 +59,24 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 			<div class="hor-menu hidden-sm hidden-xs" style="margin-left: -4px">
 				<ul class="nav navbar-nav" style="padding: 9px">
 					<li class="active">
-						<a href="index.html">
+						<a href="#">
 						Home
 						</a>
 					</li>
 					<li>
-						<a href="">Trending</a>
+						<a href="#">Trending</a>
 					</li>
 					<li>
-						<a href="">Desi</a>
+						<a href="#">Desi</a>
 					</li>
 					<li>
-						<a href="">Firangi</a>
+						<a href="#">Firangi</a>
 					</li>
 					<li>
-						<a href="">Seasonal</a>
+						<a href="#">Seasonal</a>
 					</li>
 					<li>
-						<a href="">Labs</a>
+						<a href="#">Labs</a>
 					</li>
 					<!--<li>
 						<span class="hor-menu-search-form-toggler">&nbsp;</span>
@@ -100,7 +100,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 			</a>  
          <!-- END RESPONSIVE MENU TOGGLER -->
          <!-- BEGIN TOP NAVIGATION MENU -->
-         <ul class="nav navbar-nav pull-right">
+         <ul class="nav navbar-nav pull-right" style="margin-top: 5px">
             <!-- BEGIN NOTIFICATION DROPDOWN -->
             
             <!-- END NOTIFICATION DROPDOWN -->
@@ -110,14 +110,14 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
             <?php
                         	if(empty($data['IsLoggedIn'])){
                         		echo <<<HTML
-                        		<li class="dropdown">
+                        		<li class="dropdown" style="background-color:#0B41A0">
             	<a data-toggle="modal" href="#basic" >Upload <i class="icon-upload"></i></a>
             </li>
-                        		 <li class="dropdown">
-            	<a data-toggle="modal" href="#basic" >Login <i class="icon-upload"></i></a>
+                        		 <li class="dropdown" style="background-color:#0B41A0">
+            	<a data-toggle="modal" href="#basic" >Login <i class="icon-user"></i></a>
             </li>
-            <li class="dropdown">
-            	<a data-toggle="modal" href="#basic2" >SignUp <i class="icon-upload"></i></a>
+            <li class="dropdown" style="background-color:#0B41A0">
+            	<a data-toggle="modal" href="#basic2" >SignUp <i class="icon-signin"></i></a>
             </li>	
 HTML;
 							}
@@ -129,7 +129,7 @@ HTML;
             <?php
                         	if(!empty($data['IsLoggedIn'])){
                         		echo <<<HTML
-                        		<li class="dropdown">
+                        		<li class="dropdown" style="background-color:#0B41A0">
             	<a data-toggle="modal" href="#full" >Upload <i class="icon-upload"></i></a>
             </li>
                         		<li class="dropdown user">
@@ -165,24 +165,24 @@ HTML;
 		<div class="page-sidebar navbar-collapse collapse">
 			<ul class="page-sidebar-menu visible-sm visible-xs">
 				<li class="active">
-					<a href="index.html">
+					<a href="#">
 					Home
 					</a>
 				</li>
 				<li>
-						<a href="">Trending</a>
+						<a href="#">Trending</a>
 					</li>
 					<li>
-						<a href="">Desi</a>
+						<a href="#">Desi</a>
 					</li>
 					<li>
-						<a href="">Firangi</a>
+						<a href="#">Firangi</a>
 					</li>
 					<li>
-						<a href="">Seasonal</a>
+						<a href="#">Seasonal</a>
 					</li>
 					<li>
-						<a href="">Labs</a>
+						<a href="#">Labs</a>
 					</li>
 				
 			</ul>
