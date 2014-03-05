@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	var pagesLoaded = 1; //1st page already loaded during intitialization
+	var pagesLoaded = 2; //1st page already loaded during intitialization
 	var totalHuggas;
 	var loading = false;
 	$.ajax({
