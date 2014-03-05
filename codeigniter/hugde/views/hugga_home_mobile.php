@@ -53,14 +53,53 @@
    
    
    <!-- BEGIN HEADER -->   
-   <div class="header navbar navbar-inverse navbar-fixed-top">
+   <div class="header navbar navbar-inverse navbar-fixed-top" style="min-height: 60px">
       <!-- BEGIN TOP NAVIGATION BAR -->
       <div class="header-inner">
          <!-- BEGIN LOGO -->  
-         <a class="navbar-brand" href="http://hugde.com/home">
-         <img src="<?php echo assets_url(); ?>img/hugdew.jpg" alt="logo" class="img-responsive" style="margin-top: -13px;height: 41px;" />
+         <a class="navbar-brand" href="index.html">
+         <img src="<?php echo assets_url(); ?>img/hugdew.jpg" alt="logo" class="img-responsive" style="margin-top: -13px;height: 59px;margin-left: 10px" />
          </a>
-         <!-- END LOGO -->
+         <!-- END LOGO-->
+         <!-- BEGIN HORIZANTAL MENU -->
+         <div class="hor-menu hidden-sm hidden-xs" style="margin-left: -4px">
+				<ul class="nav navbar-nav" style="padding: 9px">
+					<li class="active">
+						<a href="index.html">
+						Home
+						</a>
+					</li>
+					<li>
+						<a href="">Trending</a>
+					</li>
+					<li>
+						<a href="">Desi</a>
+					</li>
+					<li>
+						<a href="">Firangi</a>
+					</li>
+					<li>
+						<a href="">Seasonal</a>
+					</li>
+					<li>
+						<a href="">Labs</a>
+					</li>
+					<!--<li>
+						<span class="hor-menu-search-form-toggler">&nbsp;</span>
+						<div class="search-form">
+							<form class="form-search">
+								<div class="input-group">
+									<input type="text" placeholder="Search..." class="form-control">
+									<div class="input-group-btn">
+										<button type="button" class="btn"></button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</li>-->
+				</ul>
+			</div>
+			<!-- END HORIZANTAL MENU -->
          <!-- BEGIN RESPONSIVE MENU TOGGLER --> 
          <a href="javascript:;" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
          <img src="<?php echo assets_url(); ?>img/menu-toggler.png" alt="" />
@@ -128,7 +167,33 @@ HTML;
    <div class="clearfix"></div>
    <!-- BEGIN CONTAINER -->   
    <div class="page-container">
-     
+       <!-- BEGIN EMPTY PAGE SIDEBAR -->
+		<div class="page-sidebar navbar-collapse collapse">
+			<ul class="page-sidebar-menu visible-sm visible-xs">
+				<li class="active">
+					<a href="index.html">
+					Home
+					</a>
+				</li>
+				<li>
+						<a href="">Trending</a>
+					</li>
+					<li>
+						<a href="">Desi</a>
+					</li>
+					<li>
+						<a href="">Firangi</a>
+					</li>
+					<li>
+						<a href="">Seasonal</a>
+					</li>
+					<li>
+						<a href="">Labs</a>
+					</li>
+				
+			</ul>
+		</div>
+		<!-- END EMPTY PAGE SIDEBAR -->   
      
       <!-- BEGIN PAGE -->
       <div class="page-content">
