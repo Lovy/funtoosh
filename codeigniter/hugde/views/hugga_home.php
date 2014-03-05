@@ -60,110 +60,25 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 				<ul class="nav navbar-nav" style="padding: 9px">
 					<li class="active">
 						<a href="index.html">
-						Dashboard
+						Home
 						</a>
 					</li>
 					<li>
-						<a data-toggle="dropdown" class="dropdown-toggle" href="javascript:;">
-						<span class="selected"></span>
-						Layouts
-						<i class="icon-angle-down"></i>     
-						</a>
-						<ul class="dropdown-menu">
-							<li >
-								<a href="layout_language_bar.html">
-								<span class="badge badge-roundless badge-important">new</span>Language Switch Bar</a>
-							</li>
-							<li >
-								<a href="layout_horizontal_sidebar_menu.html">
-								Horizontal & Sidebar Menu                     </a>
-							</li>
-							<li >
-								<a href="layout_horizontal_menu1.html">
-								Horizontal Menu 1                    </a>
-							</li>
-							<li class="active">
-								<a href="layout_horizontal_menu2.html">
-								Horizontal Menu 2                    </a>
-							</li>
-							<li>
-			                	<a href="layout_disabled_menu.html">
-			                	Disabled Menu Links</a>
-			            	</li>
-							<li>
-								<a href="layout_promo.html">
-								Promo Page                    </a>
-							</li>
-							<li >
-								<a href="layout_email.html">
-								Email Templates                     </a>
-							</li>
-							<li >
-								<a href="layout_ajax.html">
-								Content Loading via Ajax</a>
-							</li>
-							<li >
-								<a href="layout_sidebar_closed.html">
-								Sidebar Closed Page                    </a>
-							</li>
-							<li >
-								<a href="layout_sidebar_fixed.html">
-								Sidebar Fixed Page                    </a>
-							</li>
-							<li >
-								<a href="layout_blank_page.html">
-								Blank Page                    </a>
-							</li>
-							<li >
-								<a href="layout_boxed_page.html">Boxed Page</a>
-							</li>
-							<li >
-								<a href="layout_boxed_not_responsive.html">
-								Non-Responsive Boxed Layout                     </a>
-							</li>
-							<li class="dropdown-submenu">
-								<a tabindex="-1" href="javascript:;">
-								More options
-								</a>
-								<ul class="dropdown-menu">
-									<li><a tabindex="-1" href="#">Second level link</a></li>
-									<li class="dropdown-submenu">
-										<a tabindex="-1" href="javascript:;">More options<span class="arrow"></span></a>
-										<ul class="dropdown-menu">
-											<li><a tabindex="-1" href="index.html">Third level link</a></li>
-											<li><a tabindex="-1" href="index.html">Third level link</a></li>
-											<li><a tabindex="-1" href="index.html">Third level link</a></li>
-											<li><a tabindex="-1" href="index.html">Third level link</a></li>
-											<li><a tabindex="-1" href="index.html">Third level link</a></li>
-										</ul>
-									</li>
-									<li><a tabindex="-1" href="index.html">Second level link</a></li>
-									<li><a tabindex="-1" href="index.html">Second level link</a></li>
-									<li><a tabindex="-1" href="index.html">Second level link</a></li>
-								</ul>
-							</li>
-						</ul>
-						<b class="caret-out"></b>                        
+						<a href="">Trending</a>
 					</li>
 					<li>
-						<a href="">Tables</a>
+						<a href="">Desi</a>
 					</li>
 					<li>
-						<a data-toggle="dropdown" class="dropdown-toggle" href="">Extra
-						<i class="icon-angle-down"></i>
-						</a>
-						<ul class="dropdown-menu">
-							<li><a href="index.html">About Us</a></li>
-							<li><a href="index.html">Services</a></li>
-							<li><a href="index.html">Pricing</a></li>
-							<li><a href="index.html">FAQs</a></li>
-							<li><a href="index.html">Gallery</a></li>
-							<li><a href="index.html">Registration</a></li>
-							<li><a href="index.html">2 Columns (Left)</a></li>
-							<li><a href="index.html">2 Columns (Right)</a></li>
-						</ul>
+						<a href="">Firangi</a>
 					</li>
 					<li>
+						<a href="">Seasonal</a>
+					</li>
+					<li>
+						<a href="">Labs</a>
+					</li>
+					<!--<li>
 						<span class="hor-menu-search-form-toggler">&nbsp;</span>
 						<div class="search-form">
 							<form class="form-search">
@@ -175,7 +90,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 								</div>
 							</form>
 						</div>
-					</li>
+					</li>-->
 				</ul>
 			</div>
 			<!-- END HORIZANTAL MENU -->
@@ -246,7 +161,33 @@ HTML;
    <div class="clearfix"></div>
    <!-- BEGIN CONTAINER -->   
    <div class="page-container">
-     
+	<!-- BEGIN EMPTY PAGE SIDEBAR -->
+		<div class="page-sidebar navbar-collapse collapse">
+			<ul class="page-sidebar-menu visible-sm visible-xs">
+				<li class="active">
+					<a href="index.html">
+					Home
+					</a>
+				</li>
+				<li>
+						<a href="">Trending</a>
+					</li>
+					<li>
+						<a href="">Desi</a>
+					</li>
+					<li>
+						<a href="">Firangi</a>
+					</li>
+					<li>
+						<a href="">Seasonal</a>
+					</li>
+					<li>
+						<a href="">Labs</a>
+					</li>
+				
+			</ul>
+		</div>
+		<!-- END EMPTY PAGE SIDEBAR -->     
      
       <!-- BEGIN PAGE -->
       <div class="page-content">
