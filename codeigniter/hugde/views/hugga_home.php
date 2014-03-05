@@ -41,23 +41,148 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
-<body class="page-header-fixed">
-	
-	   
-   
+<body class="page-header-fixed"> 
    <!-- BEGIN HEADER -->   
-   <div class="header navbar navbar-inverse navbar-fixed-top">
+   <div class="header navbar navbar-inverse navbar-fixed-top" style="min-height: 60px">
       <!-- BEGIN TOP NAVIGATION BAR -->
       <div class="header-inner">
          <!-- BEGIN LOGO -->  
          <a class="navbar-brand" href="http://hugde.com/home">
-         <img src="<?php echo assets_url(); ?>img/hugdew.jpg" alt="logo" class="img-responsive" style="margin-top: -13px;height: 41px;" />
+         <img src="<?php echo assets_url(); ?>img/hugdew.jpg" alt="logo" class="img-responsive" style="margin-top: -13px;height: 59px;;margin-left: 10px" />
          </a>
          <!-- END LOGO -->
          <!-- BEGIN RESPONSIVE MENU TOGGLER --> 
          <a href="javascript:;" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
          <img src="<?php echo assets_url(); ?>img/menu-toggler.png" alt="" />
-         </a> 
+         </a>
+         <!-- BEGIN HORIZANTAL MENU -->
+			<div class="hor-menu hidden-sm hidden-xs" style="margin-left: -4px">
+				<ul class="nav navbar-nav" style="padding: 9px">
+					<li class="active">
+						<a href="index.html">
+						Dashboard
+						</a>
+					</li>
+					<li>
+						<a data-toggle="dropdown" class="dropdown-toggle" href="javascript:;">
+						<span class="selected"></span>
+						Layouts
+						<i class="icon-angle-down"></i>     
+						</a>
+						<ul class="dropdown-menu">
+							<li >
+								<a href="layout_language_bar.html">
+								<span class="badge badge-roundless badge-important">new</span>Language Switch Bar</a>
+							</li>
+							<li >
+								<a href="layout_horizontal_sidebar_menu.html">
+								Horizontal & Sidebar Menu                     </a>
+							</li>
+							<li >
+								<a href="layout_horizontal_menu1.html">
+								Horizontal Menu 1                    </a>
+							</li>
+							<li class="active">
+								<a href="layout_horizontal_menu2.html">
+								Horizontal Menu 2                    </a>
+							</li>
+							<li>
+			                	<a href="layout_disabled_menu.html">
+			                	Disabled Menu Links</a>
+			            	</li>
+							<li>
+								<a href="layout_promo.html">
+								Promo Page                    </a>
+							</li>
+							<li >
+								<a href="layout_email.html">
+								Email Templates                     </a>
+							</li>
+							<li >
+								<a href="layout_ajax.html">
+								Content Loading via Ajax</a>
+							</li>
+							<li >
+								<a href="layout_sidebar_closed.html">
+								Sidebar Closed Page                    </a>
+							</li>
+							<li >
+								<a href="layout_sidebar_fixed.html">
+								Sidebar Fixed Page                    </a>
+							</li>
+							<li >
+								<a href="layout_blank_page.html">
+								Blank Page                    </a>
+							</li>
+							<li >
+								<a href="layout_boxed_page.html">Boxed Page</a>
+							</li>
+							<li >
+								<a href="layout_boxed_not_responsive.html">
+								Non-Responsive Boxed Layout                     </a>
+							</li>
+							<li class="dropdown-submenu">
+								<a tabindex="-1" href="javascript:;">
+								More options
+								</a>
+								<ul class="dropdown-menu">
+									<li><a tabindex="-1" href="#">Second level link</a></li>
+									<li class="dropdown-submenu">
+										<a tabindex="-1" href="javascript:;">More options<span class="arrow"></span></a>
+										<ul class="dropdown-menu">
+											<li><a tabindex="-1" href="index.html">Third level link</a></li>
+											<li><a tabindex="-1" href="index.html">Third level link</a></li>
+											<li><a tabindex="-1" href="index.html">Third level link</a></li>
+											<li><a tabindex="-1" href="index.html">Third level link</a></li>
+											<li><a tabindex="-1" href="index.html">Third level link</a></li>
+										</ul>
+									</li>
+									<li><a tabindex="-1" href="index.html">Second level link</a></li>
+									<li><a tabindex="-1" href="index.html">Second level link</a></li>
+									<li><a tabindex="-1" href="index.html">Second level link</a></li>
+								</ul>
+							</li>
+						</ul>
+						<b class="caret-out"></b>                        
+					</li>
+					<li>
+						<a href="">Tables</a>
+					</li>
+					<li>
+						<a data-toggle="dropdown" class="dropdown-toggle" href="">Extra
+						<i class="icon-angle-down"></i>
+						</a>
+						<ul class="dropdown-menu">
+							<li><a href="index.html">About Us</a></li>
+							<li><a href="index.html">Services</a></li>
+							<li><a href="index.html">Pricing</a></li>
+							<li><a href="index.html">FAQs</a></li>
+							<li><a href="index.html">Gallery</a></li>
+							<li><a href="index.html">Registration</a></li>
+							<li><a href="index.html">2 Columns (Left)</a></li>
+							<li><a href="index.html">2 Columns (Right)</a></li>
+						</ul>
+					</li>
+					<li>
+						<span class="hor-menu-search-form-toggler">&nbsp;</span>
+						<div class="search-form">
+							<form class="form-search">
+								<div class="input-group">
+									<input type="text" placeholder="Search..." class="form-control">
+									<div class="input-group-btn">
+										<button type="button" class="btn"></button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<!-- END HORIZANTAL MENU -->
+			<!-- BEGIN RESPONSIVE MENU TOGGLER -->
+			<a href="javascript:;" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+			<img src="assets/img/menu-toggler.png" alt="" />
+			</a>  
          <!-- END RESPONSIVE MENU TOGGLER -->
          <!-- BEGIN TOP NAVIGATION MENU -->
          <ul class="nav navbar-nav pull-right">
