@@ -232,8 +232,8 @@ HTML;
                   			lick(userId,HuggaId)
                   			-->	
                   			
-                  			<a href="javascript:void(0);" onclick="lick(<?php echo $data['userId']; ?>,<?php echo $item['huggaId']; ?>,this);" class="btn <?php if($item['lick']['licked']==1){echo 'green';}else{echo 'default';} ?> lick" id="licked">Lick <i class="icon-chevron-up"></i> <span class="badge badge-danger"><?php echo $item['licks']; ?></span></a>                			
-                  			<a href="javascript:void(0);" onclick="flush(<?php echo $data['userId']; ?>,<?php echo $item['huggaId']; ?>,this);" class="btn <?php if($item['flush']['flushed']==1){echo 'red';}else{echo 'default';} ?> flush" id="flushed">Flush <i class="icon-chevron-down"></i> <span class="badge badge-success"><?php echo $item['flushes']; ?></span></a>                           
+                  			<a href="javascript:void(0);" onclick="lick(<?php echo $data['userId']; ?>,<?php echo $item['huggaId']; ?>,this);" <?php if($item['flush']['flushed']==1) {echo 'style="opacity: 0.3"';} ?> class="btn <?php if($item['lick']['licked']==1){echo 'green';}else{echo 'default';} ?> lick" id="licked">Lick <i class="icon-chevron-up"></i> <span class="badge badge-danger"><?php echo $item['licks']; ?></span></a>                			
+                  			<a href="javascript:void(0);" onclick="flush(<?php echo $data['userId']; ?>,<?php echo $item['huggaId']; ?>,this);" <?php if($item['lick']['licked']==1) {echo 'style="opacity: 0.3"';} ?> class="btn <?php if($item['flush']['flushed']==1){echo 'red';}else{echo 'default';} ?> flush" id="flushed">Flush <i class="icon-chevron-down"></i> <span class="badge badge-success"><?php echo $item['flushes']; ?></span></a>                           
                   			
                   			</div>		
                   		</div>	
