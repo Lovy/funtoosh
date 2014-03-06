@@ -29,7 +29,7 @@ $(document).ready(function(){
         
         if($(window).scrollTop() + $(window).height() >= (0.75*getDocHeight()))  //user scrolled to bottom of the page?
         {
-            console.log("Autoscroll called");
+            
             if(pagesLoaded < totalPages && loading==false) //there's more data to load
             {
                 loading = true; //prevent further ajax loading
@@ -45,7 +45,7 @@ $(document).ready(function(){
 				    }catch(ex){}
                     //hide loading image
                     $('.animation_image').hide(); //hide loading image once data is received
-                    
+                    console.log("Autoscroll called"+pagesLoaded);
                     pagesLoaded++; //loaded group increment
                     loading = false; 
                 

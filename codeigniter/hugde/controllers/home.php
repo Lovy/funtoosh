@@ -103,8 +103,8 @@ class home extends CI_Controller{
 			{$z='red';}
 			else{$z='default';}
 			
-			if($item['flush']['flushed']==1) {echo $a='style="opacity: 0.3"';}else{$a='';}
-			if($item['lick']['licked']==1) {echo $b='style="opacity: 0.3"';}else{$b='';}	
+			if($item['flush']['flushed']==1) {$a='style="opacity: 0.3"';}else{$a='';}
+			if($item['lick']['licked']==1) {$b='style="opacity: 0.3"';}else{$b='';}	
 		$x.='	
 		<div class="row">
                   		<div class="col-md-12">
