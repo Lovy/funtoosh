@@ -28,7 +28,7 @@
 				$(param).find('.badge-danger').text(updatedLickCnt);
 				$(param).removeClass('green');
 				$(param).addClass('default');
-				
+				$(param).next().css('opacity',1);
 				//get flush count
 				flushcntInt = parseInt($(param).next().find('.badge-success').text());
 				//calculate home index
@@ -54,7 +54,7 @@
 					$(param).find('.badge-danger').text(updatedLickCnt);
 					$(param).removeClass('default');
 					$(param).addClass('green');
-					
+					$(param).next().css('opacity',0.3);
 					//get flush count
 					flushcntInt = parseInt($(param).next().find('.badge-success').text());
 					//calculate home index
@@ -90,6 +90,7 @@
 				$(param).find('.badge-success').text(updatedFlushCnt);
 				$(param).removeClass('red');
 				$(param).addClass('default');
+				$(param).prev().css('opacity',1);
 				//get lick count
 				lickcntInt = parseInt($(param).next().find('.badge-danger').text());
 				//calculate home index
@@ -112,6 +113,8 @@
 					$(param).find('.badge-success').text(updatedFlushCnt);
 					$(param).removeClass('default');
 					$(param).addClass('red');
+					$(param).prev().css('opacity',0.3);
+				
 					//get lick count
 					lickcntInt = parseInt($(param).next().find('.badge-danger').text());
 					//calculate home index
