@@ -101,7 +101,7 @@
 			}
 			else{
 				//if(lickStatus == 1){
-				if($(param).previous().hasClass('green')){
+				if($(param).prev().hasClass('green')){
 					//Do nothing
 				}
 				else{
