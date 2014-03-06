@@ -60,7 +60,7 @@ class home extends CI_Controller{
 			//var_dump($data);
 			$this->load->model('modelhome');
 			$this->modelhome->deleteHugga($huggaId);   //(huggasPerPage,pageNo)
-			$url = 'http://hugde-env-symvyatdmf.elasticbeanstalk.com/home/myhugge';
+			$url = 'http://hugde.com/home/myhugge';
 			redirect ($url);
 		}
 	}
