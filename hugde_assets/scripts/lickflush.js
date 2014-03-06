@@ -10,8 +10,8 @@
 	
 	function lick(userId,huggaId,param){
 		
-		checkLickStatus(userId,huggaId);
-		checkFlushStatus(userId,huggaId);
+		//checkLickStatus(userId,huggaId);
+		//checkFlushStatus(userId,huggaId);
 		
 		if(loginStatus==false){
 			$('#basic').modal('show');  //show login dialog box in case on logged out
@@ -19,7 +19,8 @@
 		
 		else{	//check if it is licked
 			//lickStatus = $(this).attr('id'); //licked or notlicked
-			if(lickStatus == 1){
+			//if(lickStatus == 1){
+			if($(param).hasClass('green')){
 				//decrement the lick count
 				lickcnt = $(param).find('.badge-danger').text();
 				lickcntInt = parseInt(lickcnt);
@@ -34,7 +35,8 @@
 				deleteLick(huggaId,userId)
 			}
 			else{
-				if(flushStatus == 1){
+				//if(flushStatus == 1){
+				if($(param).hasClass('red'))
 					//Do nothing
 				}
 				else{
@@ -59,8 +61,8 @@
 	
 	function flush(userId,huggaId,param){
 		
-		checkLickStatus(userId,huggaId);
-		checkFlushStatus(userId,huggaId);
+		//checkLickStatus(userId,huggaId);
+		//checkFlushStatus(userId,huggaId);
 		
 		if(loginStatus==false){
 			$('#basic').modal('show');  //show login dialog box in case on logged out
@@ -68,7 +70,8 @@
 		
 		else{	//check if it is licked
 			//lickStatus = $(this).attr('id'); //licked or notlicked
-			if(flushStatus == 1){
+			//if(flushStatus == 1){
+			if($(param).hasClass('red'))
 				//decrement the lick count
 				flushcnt = $(param).find('.badge-success').text();
 				flushcntInt = parseInt(flushcnt);
@@ -82,7 +85,8 @@
 				deleteFlush(huggaId,userId)
 			}
 			else{
-				if(lickStatus == 1){
+				//if(lickStatus == 1){
+				if($(param).hasClass('green'))
 					//Do nothing
 				}
 				else{

@@ -28,8 +28,8 @@ class modelhome extends CI_Model{
 				//Loop through each row returned from the query
     			foreach ($query->result_array() as $row) {
     				//Retrieve images for each space
-    				$sql ="select * from images where imageId IN (select imageId from hugga where huggaId=?)";
-    				$query2 =$this->db->query($sql,array($row['huggaId']));
+    				$sql ="select * from images where imageId =?)";
+    				$query2 =$this->db->query($sql,array($row['imageId']));
 					$images= array();
 					foreach ($query2->result_array() as $row2) {
 						$images[]=$row2;
