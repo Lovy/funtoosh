@@ -92,7 +92,8 @@ class modellickflush extends CI_Model{
 		
 		///////////////////////////////HOME INDEX CALCULATION///////////////////////////
 		$homeIndex = floatval($v/$timeFactor);
-		return $homeIndex;
+		$array = array("lasttime"=>$lastTime,"curtime"=>$currentTime,"elaptime"=>$elapsedTime,"tf"=>$timeFactor,"v"=>$v);
+		return $array;
 	}
 }
 
