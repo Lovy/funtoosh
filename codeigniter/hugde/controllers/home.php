@@ -17,7 +17,7 @@ class home extends CI_Controller{
 			$data = $this->session->all_userdata();
 			//var_dump($data);
 			$this->load->model('modelhome');
-			$response['huggas'] = $this->modelhome->loadData(NULL,$data['userId'],'HIDE',3,1);   //(huggasPerPage,pageNo)
+			$response['huggas'] = $this->modelhome->loadData(NULL,$data['userId'],'HIDE',4,1);   //(huggasPerPage,pageNo)
 			$response['sidebar'] = $this->modelhome->loadSideBar();
 			$response['data']=$data;
 			//echo json_encode($response);
@@ -34,7 +34,7 @@ class home extends CI_Controller{
 		}
 		else{
 			$this->load->model('modelhome');
-			$response['huggas'] = $this->modelhome->loadData(NULL,NULL,'HIDE',5,1);
+			$response['huggas'] = $this->modelhome->loadData(NULL,NULL,'HIDE',4,1);
 			$response['sidebar'] = $this->modelhome->loadSideBar();
 			$response['data']=array("userId"=>"0");
 			//echo json_encode($response);
@@ -102,7 +102,9 @@ class home extends CI_Controller{
 			if($item['flush']['flushed']==1)
 			{$z='red';}
 			else{$z='default';}
-				
+			
+			if($item['flush']['flushed']==1) {echo $a='style="opacity: 0.3"';}else{$a='';}
+			if($item['lick']['licked']==1) {echo $b='style="opacity: 0.3"';}else{$b='';}	
 		$x.='	
 		<div class="row">
                   		<div class="col-md-12">
@@ -110,8 +112,8 @@ class home extends CI_Controller{
                   			<!------------In case already licked by the user then the id - licked else unlicked. Similar for flush --------
                   			lick(userId,HuggaId)
                   			-->	
-                  			<a href="javascript:void(0);" onclick="lick('.$item["userId"].','.$item["huggaId"].',this);" class="btn '.$y.' lick" id="licked">Lick <i class="icon-chevron-up"></i> <span class="badge badge-danger">'.$item['licks'].'</span></a>                			
-                  			<a href="javascript:void(0);" onclick="flush('.$item['userId'].','.$item['huggaId'].',this);" class="btn '.$z.' flush" id="flushed">Flush <i class="icon-chevron-down"></i> <span class="badge badge-success">'.$item['flushes'].'</span></a>                           
+                  			<a href="javascript:void(0);" onclick="lick('.$item["userId"].','.$item["huggaId"].',this);" '.$a.'  class="btn '.$y.' lick" id="licked">Lick <i class="icon-chevron-up"></i> <span class="badge badge-danger">'.$item['licks'].'</span></a>                			
+                  			<a href="javascript:void(0);" onclick="flush('.$item['userId'].','.$item['huggaId'].',this);" '.$b.' class="btn '.$z.' flush" id="flushed">Flush <i class="icon-chevron-down"></i> <span class="badge badge-success">'.$item['flushes'].'</span></a>                           
                   			</div>		
                   		</div>	
                   	</div>
