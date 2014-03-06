@@ -1,5 +1,5 @@
 <?php
-
+date_default_timezone_set('Asia/Kolkata');
 class modellickflush extends CI_Model{
 	
 	function __construct(){
@@ -72,7 +72,7 @@ class modellickflush extends CI_Model{
 		//get current time
 		$currentTime = time();
 		//time elapsed in days
-		$elapsedTime = ($currentTime-$lastTime)/(1000*60*60*24);
+		$elapsedTime = ($currentTime-$lastTime)/(60*60*24);
 		//TimeFactor
 		$timeFactor;
 		if ($elapsedTime<=5) {
