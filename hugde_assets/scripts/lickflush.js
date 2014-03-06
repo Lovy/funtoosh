@@ -90,6 +90,10 @@
 				$(param).find('.badge-success').text(updatedFlushCnt);
 				$(param).removeClass('red');
 				$(param).addClass('default');
+				//get lick count
+				lickcntInt = parseInt($(param).next().find('.badge-danger').text());
+				//calculate home index
+				updateHomeIndex(huggaId,lickcntInt,flushcntInt);
 				//update new flush count to the server
 				updateFlushCount(updatedFlushCnt,huggaId);
 				//delete flush entry from the db
@@ -108,6 +112,10 @@
 					$(param).find('.badge-success').text(updatedFlushCnt);
 					$(param).removeClass('default');
 					$(param).addClass('red');
+					//get lick count
+					lickcntInt = parseInt($(param).next().find('.badge-danger').text());
+					//calculate home index
+					updateHomeIndex(huggaId,lickcntInt,flushcntInt);
 					//update new flush count to the server
 					updateFlushCount(updatedFlushCnt,huggaId);
 					

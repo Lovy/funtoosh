@@ -92,6 +92,10 @@ class modellickflush extends CI_Model{
 		
 		///////////////////////////////HOME INDEX CALCULATION///////////////////////////
 		$homeIndex = floatval($v/$timeFactor);
+		
+		///////////////////////////UPDATE HOME INDEX/////////////////////////////////////
+		$sql="update hugga set homeIndex=? where huggaId=?";
+		$this->db->query($sql,array($homeIndex,$huggaId));
 		$array = array("lasttime"=>$lastTime,"curtime"=>$currentTime,"elaptime"=>$elapsedTime,"tf"=>$timeFactor,"v"=>$v);
 		return $array;
 	}
