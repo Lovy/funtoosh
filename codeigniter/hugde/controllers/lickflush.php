@@ -118,7 +118,7 @@ class lickflush extends CI_Controller{
 	
 	function updateHomeIndex($huggaId,$licks,$flushes){
 		$this->load->model('modellickflush');
-		return $this->modellickflush->calHomeIndex($huggaId,$licks,$flushes);
+		echo $this->modellickflush->calHomeIndex($huggaId,$licks,$flushes);
 	}
 }
 
