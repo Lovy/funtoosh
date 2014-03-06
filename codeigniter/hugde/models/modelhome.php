@@ -19,7 +19,7 @@ class modelhome extends CI_Model{
 	}
 	function loadData($huggaId=NULL,$userId=NULL,$myhugga=NULL,$huggasPerPage=NULL,$pageNo=NULL){
 		if($huggaId==NULL && $myhugga=='HIDE'){ //show all huggas
-			$sql1 = "select * from hugga order by timestamp desc LIMIT ?,?";
+			$sql1 = "select * from hugga order by homeIndex desc LIMIT ?,?";
 			$huggasPerPage = intval($huggasPerPage);
 			$query = $this->db->query($sql1,array(($huggasPerPage*($pageNo-1)),($huggasPerPage)));
 			//$this->db->order_by('timestamp','desc');
