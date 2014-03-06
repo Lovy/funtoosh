@@ -4,6 +4,7 @@ class modelhome extends CI_Model{
 	
 	function __construct(){
 		parent::__construct();
+		$this->db->query("SET time_zone='+5:30'");
 	}
 	
 	function huggaExist($huggaId){

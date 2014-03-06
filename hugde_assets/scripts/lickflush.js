@@ -54,6 +54,12 @@
 					$(param).find('.badge-danger').text(updatedLickCnt);
 					$(param).removeClass('default');
 					$(param).addClass('green');
+					
+					//get flush count
+					flushcntInt = parseInt($(param).next().find('.badge-success').text());
+					//calculate home index
+					updateHomeIndex(huggaId,lickcntInt,flushcntInt);
+						
 					//update to the new lick count to server
 					updateLickCount(updatedLickCnt,huggaId);
 					
