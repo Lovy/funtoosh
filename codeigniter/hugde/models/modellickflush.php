@@ -65,7 +65,7 @@ class modellickflush extends CI_Model{
 		$query = $this->db->query($sql,array($huggaId));
 		$row = $query->result_array();
 		//last update time
-		$lastTime = $row['timestamp'];
+		$lastTime = $row[0]['timestamp'];
 		
 		//////////////////////////////////TIME CALCULATION//////////////////////////////////
 		//get current time
