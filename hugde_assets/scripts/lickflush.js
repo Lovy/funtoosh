@@ -10,8 +10,8 @@
 	
 	function lick(userId,huggaId,param){
 		
-		//checkLickStatus(userId,huggaId);
-		//checkFlushStatus(userId,huggaId);
+		//checkLickStatus(param);
+		//checkFlushStatus(param);
 		
 		if(loginStatus==false){
 			$('#basic').modal('show');  //show login dialog box in case on logged out
@@ -41,7 +41,7 @@
 			}
 			else{
 				//if(flushStatus == 1){
-				if($(param).hasClass('red')){
+				if($(param).next().hasClass('red')){
 					//Do nothing
 				}
 				else{
@@ -101,7 +101,7 @@
 			}
 			else{
 				//if(lickStatus == 1){
-				if($(param).hasClass('green')){
+				if($(param).previous().hasClass('green')){
 					//Do nothing
 				}
 				else{
@@ -137,7 +137,7 @@
 	    	}
    		});		
 	}
-	
+	/*
 	function checkLickStatus(userId,huggaId){
 		//query db
 		$.ajax({
@@ -160,6 +160,22 @@
 	    		flushStatus = response.response;
 	    	}
    		});	
+	}
+	*/
+	function checkLickStatus(param){
+		if($(param).hasClass('green')){
+			lickStatus=1;
+		}else{
+			lickStatus=0;
+		}
+	}
+	
+	function checkFlushStatus(param){
+		if($(param).hasClass('red')){
+			flushStatus=1;
+		}else{
+			flushStatus=0;
+		}
 	}
 	
 	function updateLickCount(updatedLickCnt,huggaId){
