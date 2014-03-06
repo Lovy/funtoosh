@@ -57,6 +57,42 @@ class modellickflush extends CI_Model{
 		$sql = "insert into userflush (huggaId,userId) values ('$huggaId','$userId')";
 		$this->db->query($sql);
 	}
+	
+	function calHomeIndex($huggaId=NULL,$licks=0,$flushes=0){
+		
+		//////////////////////////////////QUERIES	////////////////////////////////////////
+		$sql = "select timestamp from hugga where huggaId=?";
+		$query = $this->db->query($sql,array($huggaId));
+		$row = $query->result_array();
+		//last update time
+		$lastTime = $row['timestamp'];
+		
+		//////////////////////////////////TIME CALCULATION//////////////////////////////////
+		//get current time
+		$currentTime = time();
+		//time elapsed in days
+		$elapsedTime = ($currentTime-$lastTime)/(1000*60*60*24);
+		//TimeFactor
+		$timeFactor;
+		if ($elapsedTime<=5) {
+			$timeFactor=1;
+		}
+		elseif ($elapsedTime>5 and $elapsedTime<=8) {
+			$timeFactor=2;
+		}
+		elseif ($elapsedTime>8) {
+			$timeFactor=3;
+		}
+		
+		///////////////////////////////V CALCULATION/////////////////////////////////////
+		//get tweets and likes
+		$tweets;$likes;
+		$v= $licks-$flushes;
+		
+		///////////////////////////////HOME INDEX CALCULATION///////////////////////////
+		$homeIndex = floatval($v/$timeFactor);
+		return $homeIndex;
+	}
 }
 
 ?>

@@ -28,6 +28,11 @@
 				$(param).find('.badge-danger').text(updatedLickCnt);
 				$(param).removeClass('green');
 				$(param).addClass('default');
+				
+				//get flush count
+				flushcntInt = parseInt($(param).next().find('.badge-success').text());
+				//calculate home index
+				updateHomeIndex(huggaId,lickcntInt,flushcntInt);
 				//update to the new lick count to server
 				updateLickCount(updatedLickCnt,huggaId);
 				
@@ -163,6 +168,18 @@
 	    	dataType: 'json',
 	    	success: function(response) {
 	    		
+	    	}
+   		});	
+	}
+	
+	function updateHomeIndex(huggaId,licks,flushes){
+		//query db
+		$.ajax({
+	    	url: "http://hugde.com/lickflush/updateHomeIndex/"+huggaId+'/'+licks+'/'+flushes,
+	    	async: true,
+	    	dataType: 'json',
+	    	success: function(response) {
+	    		console.log(response);
 	    	}
    		});	
 	}

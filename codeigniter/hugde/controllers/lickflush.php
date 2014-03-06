@@ -115,6 +115,11 @@ class lickflush extends CI_Controller{
 			echo 'UserId mismatch';
 		}
 	}
+	
+	function updateHomeIndex($huggaId,$licks,$flushes){
+		$this->load->model('modellickflush');
+		return $this->modellickflush->calHomeIndex($huggaId,$licks,$flushes);
+	}
 }
 
 ?>
