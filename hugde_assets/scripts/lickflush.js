@@ -36,7 +36,7 @@
 			}
 			else{
 				//if(flushStatus == 1){
-				if($(param).hasClass('red'))
+				if($(param).hasClass('red')){
 					//Do nothing
 				}
 				else{
@@ -71,7 +71,7 @@
 		else{	//check if it is licked
 			//lickStatus = $(this).attr('id'); //licked or notlicked
 			//if(flushStatus == 1){
-			if($(param).hasClass('red'))
+			if($(param).hasClass('red')){
 				//decrement the lick count
 				flushcnt = $(param).find('.badge-success').text();
 				flushcntInt = parseInt(flushcnt);
@@ -86,7 +86,7 @@
 			}
 			else{
 				//if(lickStatus == 1){
-				if($(param).hasClass('green'))
+				if($(param).hasClass('green')){
 					//Do nothing
 				}
 				else{
