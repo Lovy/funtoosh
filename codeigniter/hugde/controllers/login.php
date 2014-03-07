@@ -69,10 +69,10 @@ class login extends CI_Controller{
 
 	public function checklogin(){
 		if($this->session->userdata('IsLoggedIn')){
-			$array= array("loginStatus"=>TRUE);
+			$array= array("loginStatus"=>'1');
 		}
 		else {
-			$array= array("loginStatus"=>FALSE);
+			$array= array("loginStatus"=>'0');
 		}
 		
 		echo json_encode($array);

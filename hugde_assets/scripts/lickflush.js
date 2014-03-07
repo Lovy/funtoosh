@@ -13,7 +13,7 @@
 		//checkLickStatus(param);
 		//checkFlushStatus(param);
 		
-		if(loginStatus==false){
+		if(loginStatus=='0'){
 			$('#basic').modal('show');  //show login dialog box in case on logged out
 		}
 		
@@ -75,7 +75,7 @@
 		//checkLickStatus(userId,huggaId);
 		//checkFlushStatus(userId,huggaId);
 		
-		if(loginStatus==false){
+		if(loginStatus=='0'){
 			$('#basic').modal('show');  //show login dialog box in case on logged out
 		}
 		
