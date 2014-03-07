@@ -201,7 +201,7 @@ class modelhome extends CI_Model{
 		// Send the request & save response to $resp
 		//$resp = curl_exec($curl);
 		if(!curl_exec($curl)){
-		    die('Error: "' . curl_error($curl) . '" - Code: ' . curl_errno($curl));
+		    //die('Error: "' . curl_error($curl) . '" - Code: ' . curl_errno($curl));
 		}
 		//echo json_encode($resp);
 		// Close request to clear up some resources
