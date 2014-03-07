@@ -704,16 +704,16 @@ HTML;
                         <span class="help-block">Limit: 180 characters</span>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-3 control-label">Choose category</label>
-                        <div class="col-md-9">
-                            <select name="category" class="form-control">
-                                <option>Desi</option>
-                                <option>Firangi</option>
-                                <option>Seasonal</option>
-                            	<option>Labs</option>
-                        	</select>
-                    	</div>
+                              <label>Choose category</label>
+                              <select name="category" class="form-control input-medium">
+                                 <option>Desi</option>
+                                 <option>Firangi</option>
+                                 <option>Seasonal</option>
+                                 <option>Labs</option>
+                                
+                              </select>
                     </div>
+                    
                		<br>
                		<!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
                   	<div class="row fileupload-buttonbar">
