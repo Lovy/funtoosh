@@ -40,6 +40,7 @@ class CustomUploadHandler extends UploadHandlerS3 {
         $file->title = @$_REQUEST['title'];
 		$file->userId= @$_REQUEST['userId'];
 		$file->username= @$_REQUEST['username'];
+		$file->category= @$_REQUEST['category'];
         //$file->description = @$_REQUEST['description'][$index];
     }
 
@@ -66,14 +67,15 @@ class CustomUploadHandler extends UploadHandlerS3 {
             $file->id = $this->db->insert_id;
 			
 			// Insert into hugga table
-			$sql = 'INSERT INTO hugga (userId,imageId,title,postedBy)'.' VALUES (?, ?,?,?)';
+			$sql = 'INSERT INTO hugga (userId,imageId,title,postedBy,category)'.' VALUES (?, ?,?,?,?)';
             $query = $this->db->prepare($sql);
             $query->bind_param(
-                'iiss',
+                'iisss',
                 $file->userId,
                 $file->id,
                 $file->title,
-                $file->username
+                $file->username,
+                $file->category
             );
             $query->execute();
             $file->id = $this->db->insert_id;
