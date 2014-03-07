@@ -184,8 +184,27 @@ class modelhome extends CI_Model{
 	}
 
 	function deleteHugga($huggaId){
-		$sql='delete from hugga where huggaId=?';
+		//get image file name from db
+		$sql="select name from images where imageId IN (select imageId from hugga where huggaId=?)";
 		$query = $this->db->query($sql,array($huggaId));
+		$row = $query->result_array();
+		$name = $row[0]['name'];
+		//curl
+		// Get cURL resource
+		$curl = curl_init();
+		// Set some options - we are passing in a useragent too here
+		curl_setopt_array($curl, array(
+		    CURLOPT_RETURNTRANSFER => 0,
+		    CURLOPT_URL => 'http://hugde-env-symvyatdmf.elasticbeanstalk.com/hugde_assets/plugins/jquery-file-upload/server/php/?file='.$name.'&_method=DELETE',
+		    CURLOPT_USERAGENT => 'Hugde delete cURL Request'
+		));
+		// Send the request & save response to $resp
+		$resp = curl_exec($curl);
+		// Close request to clear up some resources
+		curl_close($curl);
+		
+		$sql2='delete from hugga where huggaId=?';
+		$query2 = $this->db->query($sql2,array($huggaId));
 		
 	}
 }
