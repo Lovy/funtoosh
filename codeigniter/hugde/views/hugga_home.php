@@ -110,13 +110,13 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
             <?php
                         	if(empty($data['IsLoggedIn'])){
                         		echo <<<HTML
-                        		<li class="dropdown" style="background-color:#0B41A0">
+                        		<li class="dropdown" >
             	<a data-toggle="modal" href="#basic" >Upload <i class="icon-upload"></i></a>
             </li>
-                        		 <li class="dropdown" style="background-color:#0B41A0">
+                        		 <li class="dropdown" >
             	<a data-toggle="modal" href="#basic" >Login <i class="icon-user"></i></a>
             </li>
-            <li class="dropdown" style="background-color:#0B41A0">
+            <li class="dropdown">
             	<a data-toggle="modal" href="#basic2" >SignUp <i class="icon-signin"></i></a>
             </li>	
 HTML;
@@ -129,7 +129,7 @@ HTML;
             <?php
                         	if(!empty($data['IsLoggedIn'])){
                         		echo <<<HTML
-                        		<li class="dropdown" style="background-color:#0B41A0">
+                        		<li class="dropdown" >
             	<a data-toggle="modal" href="#full" >Upload <i class="icon-upload"></i></a>
             </li>
                         		<li class="dropdown user">
