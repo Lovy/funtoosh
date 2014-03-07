@@ -199,8 +199,11 @@ class modelhome extends CI_Model{
 		    CURLOPT_USERAGENT => 'Hugde delete cURL Request'
 		));
 		// Send the request & save response to $resp
-		$resp = curl_exec($curl);
-		echo json_encode($resp);
+		//$resp = curl_exec($curl);
+		if(!curl_exec($curl)){
+		    die('Error: "' . curl_error($curl) . '" - Code: ' . curl_errno($curl));
+		}
+		//echo json_encode($resp);
 		// Close request to clear up some resources
 		curl_close($curl);
 		
