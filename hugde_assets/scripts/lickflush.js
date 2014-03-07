@@ -265,7 +265,7 @@
    		});	
 	}
 	
-	function delete(huggaId){
+	function test(huggaId){
 		//query db
 		$.ajax({
 	    	url: "http://hugde.com/home/delete/"+huggaId,
