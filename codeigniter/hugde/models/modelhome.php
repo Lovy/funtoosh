@@ -195,7 +195,7 @@ class modelhome extends CI_Model{
 		// Set some options - we are passing in a useragent too here
 		curl_setopt_array($curl, array(
 		    CURLOPT_RETURNTRANSFER => 1,
-		    CURLOPT_URL => 'http://hugde-env-symvyatdmf.elasticbeanstalk.com/hugde_assets/plugins/jquery-file-upload/server/php/?file='.$name.'&_method=DELETE',
+		    CURLOPT_URL => 'http://hugde-env-symvyatdmf.elasticbeanstalk.com/hugde_assets/plugins/jquery-file-upload/server/php/?file='.urlencode($name).'&_method=DELETE',
 		    CURLOPT_USERAGENT => 'Hugde delete cURL Request'
 		));
 		// Send the request & save response to $resp

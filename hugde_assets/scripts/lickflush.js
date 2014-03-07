@@ -265,15 +265,5 @@
    		});	
 	}
 	
-	function test(huggaId){
-		//query db
-		$.ajax({
-	    	url: "http://hugde.com/home/delete/"+huggaId,
-	    	async: true,
-	    	dataType: 'json',
-	    	success: function(response) {
-	    		
-	    	}
-   		});	
-	}
+	
 //});
