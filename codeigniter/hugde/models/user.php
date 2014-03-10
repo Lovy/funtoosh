@@ -62,7 +62,7 @@ class user extends CI_Model{
 				$this->db->where('email',$data['email']);
 				$this->db->update('users',$array);
 				
-				$data = array("email"=>$data['email'],"facebookId"=>$data['id'],"userId"=>$result['userId'],"name"=>$data['name'],"facebookProfilePhotoUrl"=>$data['ProfilePicUrl'],"IsLoggedIn"=>TRUE);
+				$data = array("email"=>$data['email'],"facebookId"=>$data['id'],"userId"=>$result[0]['userId'],"name"=>$data['name'],"facebookProfilePhotoUrl"=>$data['ProfilePicUrl'],"IsLoggedIn"=>TRUE);
 				return $data;
 			}
 			else{

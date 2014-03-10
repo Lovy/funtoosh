@@ -109,7 +109,8 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
             
             <?php
                         	if(empty($data['IsLoggedIn'])){
-                        		echo <<<HTML
+            ?>
+                        		
                         		<li class="dropdown" >
             	<a data-toggle="modal" href="#basic" >Upload <i class="icon-upload"></i></a>
             </li>
@@ -119,23 +120,33 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
             <li class="dropdown">
             	<a data-toggle="modal" href="#basic2" >SignUp <i class="icon-signin"></i></a>
             </li>	
-HTML;
-							}
-							
-               ?>
+			<?php
+			}				
+            ?>
             
             
             <!-- BEGIN USER LOGIN DROPDOWN -->
             <?php
-                        	if(!empty($data['IsLoggedIn'])){
-                        		echo <<<HTML
+               	if(!empty($data['IsLoggedIn'])){
+            ?>
                         		<li class="dropdown" >
             	<a data-toggle="modal" href="#full" >Upload <i class="icon-upload"></i></a>
             </li>
                         		<li class="dropdown user">
                <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-               <img alt="" src="http://hugde.com/hugde_assets/img/poopicon.jpg" style="width:29px"/>
-               <span class="username">{$data['name']}</span>
+               <?php
+               		if(!empty($data['facebookProfilePhotoUrl'])){
+               ?>	
+               <img alt="" src="<?php echo $data['facebookProfilePhotoUrl']; ?>" style="width:29px"/>
+               <?php
+					}
+					else{
+				?>
+				<img alt="" src="http://hugde.com/hugde_assets/img/poopicon.jpg" style="width:29px"/>
+				<?php
+					}
+				?>
+               <span class="username"><?php echo $data['name']; ?></span>
                <i class="icon-angle-down"></i>
                </a>
                <ul class="dropdown-menu">
@@ -146,10 +157,9 @@ HTML;
                   </li>
                </ul>
             </li>                	
-HTML;
-							}
-							
-               ?>
+			<?php
+				}			
+            ?>
             
             <!-- END USER LOGIN DROPDOWN -->
          </ul>
