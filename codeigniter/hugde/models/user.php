@@ -34,13 +34,13 @@ class user extends CI_Model{
 		}
 	}
 	
-	function validatefbuser($FbId=NULL){
+	function validatefbuser($FbId=NULL,$AccessToken=NULL){
 		$this->db->select('*');
 		$query = $this->db->get_where("users",array("facebookId"=>$FbId));
 		//Check if any results are returned
 		if($query->num_rows() >0){
 			$row = $query->row_array();
-			$data = array("email"=>$row['email'],"facebookId"=>$FbId,"userId"=>$row['userId'],"name"=>$row['name'],"FbProfilePhotoUrl"=>$row['facebookProfilePhotoUrl'],"IsLoggedIn"=>TRUE);
+			$data = array("email"=>$row['email'],"AccessToken"=>$AccessToken,"facebookId"=>$FbId,"userId"=>$row['userId'],"name"=>$row['name'],"FbProfilePhotoUrl"=>$row['facebookProfilePhotoUrl'],"IsLoggedIn"=>TRUE);
 			return $data;
 		}
 		else{
@@ -62,14 +62,14 @@ class user extends CI_Model{
 				$this->db->where('email',$data['email']);
 				$this->db->update('users',$array);
 				
-				$data = array("email"=>$data['email'],"facebookId"=>$data['id'],"userId"=>$result[0]['userId'],"name"=>$data['name'],"facebookProfilePhotoUrl"=>$data['ProfilePicUrl'],"IsLoggedIn"=>TRUE);
+				$data = array("email"=>$data['email'],"facebookId"=>$data['id'],"AccessToken"=>$AccessToken,"userId"=>$result[0]['userId'],"name"=>$data['name'],"facebookProfilePhotoUrl"=>$data['ProfilePicUrl'],"IsLoggedIn"=>TRUE);
 				return $data;
 			}
 			else{
 				$array = array("email"=>$data['email'],"facebookId"=>$data['id'],"name"=>$data['name'],"facebookProfilePhotoUrl"=>$data['ProfilePicUrl']);
 				$this->db->insert('user',$array);
 				$id = $this->db->insert_id();
-				$data = array("email"=>$data['email'],"facebookId"=>$data['id'],"userId"=>$id,"name"=>$data['name'],"facebookProfilePhotoUrl"=>$data['ProfilePicUrl'],"IsLoggedIn"=>TRUE);
+				$data = array("email"=>$data['email'],"facebookId"=>$data['id'],"AccessToken"=>$AccessToken,"userId"=>$id,"name"=>$data['name'],"facebookProfilePhotoUrl"=>$data['ProfilePicUrl'],"IsLoggedIn"=>TRUE);
 				return $data;
 			}
 			

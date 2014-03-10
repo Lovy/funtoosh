@@ -46,9 +46,9 @@ class home extends CI_Controller{
 			$response['huggas'] = $this->modelhome->loadData(NULL,NULL,'HIDE',4,1);
 			$response['sidebar'] = $this->modelhome->loadSideBar();
 			if($FbUserId!=0){
-				
+				$AccessToken = $this->facebook->getAccessToken();
 				$this->load->model('user');
-				$UserFbDataInDb = $this->user->validatefbuser($FbUserId);
+				$UserFbDataInDb = $this->user->validatefbuser($FbUserId,$AccessToken);
 				if(!empty($UserFbDataInDb)){
 					//Put the data in the session
 					$this->session->set_userdata($UserFbDataInDb);
@@ -75,6 +75,8 @@ class home extends CI_Controller{
 					
 					//Add profile photo in the user's data
 					$UserFbData['ProfilePicUrl']=$ProfilePhoto;
+					
+					$UserFbData['AccessToken'] = $this->facebook->getAccessToken();
 					 //Create this fb user's data in the database
 					$result = $this->user->createfbuser($UserFbData);
 					if(!empty($result)){
