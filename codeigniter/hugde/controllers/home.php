@@ -99,6 +99,7 @@ class home extends CI_Controller{
 			else{
 				//echo "Inside else2";				
 				$data['url'] = $this->facebook->getLoginUrl(array('scope'=>'email,user_photos'));
+				$data['userId']=0;
 				$response['data']=$data;
 				//$this->load->view('hugga_home',$data);
 			}
