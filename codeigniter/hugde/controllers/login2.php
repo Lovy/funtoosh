@@ -76,7 +76,8 @@ class login2 extends CI_Controller{
 					}
 				}
 			}
-			else{				
+			else{
+				echo "Inside else2";				
 				//$data['url'] = $this->facebook->getLoginUrl(array('scope'=>'email,user_photos'));
 				//$this->load->view('hugga_home',$data);
 			}
