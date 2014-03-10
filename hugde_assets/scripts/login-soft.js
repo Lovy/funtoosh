@@ -57,7 +57,7 @@ var Login = function () {
 						$.ajax({
 						
 						//url to send the data to
-						url: "http://hugde.com/login/login_user",
+						url: "http://hugde.com/login2/login_user",
 						data: {'temp':temp},
 						type: 'post',
 						dataType: 'json',
@@ -92,7 +92,7 @@ var Login = function () {
 						$.ajax({
 						
 						//url to send the data to
-						url: "http://hugde.com/login/login_user",
+						url: "http://hugde.com/login2/login_user",
 						data: {'temp':temp},
 						type: 'post',
 						dataType: 'json',
