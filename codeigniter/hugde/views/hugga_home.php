@@ -348,7 +348,7 @@ HTML;
 								       </div>
 								       <hr>
 								       <div class="form-group" style="text-align: center">
-								       		<a href="<?php echo $url; ?>"><img src="<?php echo assets_url().'img/active_404.png'; ?>" /></a>
+								       		<a href="<?php echo $data['url']; ?>"><img src="<?php echo assets_url().'img/active_404.png'; ?>" /></a>
 								       		<!--<div class="fb-login-button" data-max-rows="1" data-size="large" data-show-faces="true" data-auto-logout-link="true"></div>-->
 								       </div>
 								       <div id="loginError" style="display: none" class="alert alert-danger">
