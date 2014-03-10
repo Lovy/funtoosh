@@ -135,9 +135,9 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                         		<li class="dropdown user">
                <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                <?php
-               		if(!empty($data['facebookProfilePhotoUrl'])){
+               		if(!empty($data['FbProfilePhotoUrl'])){
                ?>	
-               <img alt="" src="<?php echo $data['facebookProfilePhotoUrl']; ?>" style="width:29px"/>
+               <img alt="" src="<?php echo $data['FbProfilePhotoUrl']; ?>" style="width:29px"/>
                <?php
 					}
 					else{
