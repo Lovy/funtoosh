@@ -40,7 +40,7 @@ class user extends CI_Model{
 		//Check if any results are returned
 		if($query->num_rows() >0){
 			$row = $query->row_array();
-			$data = array("email"=>$row['Email'],"facebookId"=>$FbId,"userId"=>$row['UserId'],"name"=>$row['Name'],"FbProfilePhotoUrl"=>$row['facebookProfilePhotoUrl'],"IsLoggedIn"=>TRUE);
+			$data = array("email"=>$row['email'],"facebookId"=>$FbId,"userId"=>$row['UserId'],"name"=>$row['name'],"FbProfilePhotoUrl"=>$row['facebookProfilePhotoUrl'],"IsLoggedIn"=>TRUE);
 			return $data;
 		}
 		else{
