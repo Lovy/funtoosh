@@ -25,6 +25,7 @@ class login2 extends CI_Controller{
 		else{
 			// Get user's facebook user id
         	$FbUserId = $this->facebook->getUser();
+			echo $FbUserId;
 			if($FbUserId!=0){
 				
 				$this->load->model('user');
