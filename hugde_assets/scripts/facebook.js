@@ -1,4 +1,4 @@
-<script>
+
   window.fbAsyncInit = function() {
   FB.init({
     appId      : '226343797569469',
@@ -66,4 +66,3 @@
         console.log('Logged out');
     });
   }
-</script>
