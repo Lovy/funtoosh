@@ -72,18 +72,7 @@ class modellickflush extends CI_Model{
 		//get current time
 		$currentTime = time();
 		//time elapsed in days
-		$elapsedTime = ($currentTime-$lastTime)/(60*60*24);
-		//TimeFactor
-		$timeFactor;
-		if ($elapsedTime<=5) {
-			$timeFactor=1;
-		}
-		elseif ($elapsedTime>5 and $elapsedTime<=8) {
-			$timeFactor=2;
-		}
-		elseif ($elapsedTime>8) {
-			$timeFactor=3;
-		}
+		$elapsedTime = ($currentTime-$lastTime);
 		
 		///////////////////////////////V CALCULATION/////////////////////////////////////
 		//get tweets and likes
@@ -91,12 +80,12 @@ class modellickflush extends CI_Model{
 		$v= $licks-$flushes;
 		
 		///////////////////////////////HOME INDEX CALCULATION///////////////////////////
-		$homeIndex = floatval($v/$timeFactor);
+		$homeIndex = floatval($v*pow($elapsedTime,0.25));
 		
 		///////////////////////////UPDATE HOME INDEX/////////////////////////////////////
 		$sql="update hugga set homeIndex=? where huggaId=?";
 		$this->db->query($sql,array($homeIndex,$huggaId));
-		$array = array("lasttime"=>$lastTime,"curtime"=>$currentTime,"elaptime"=>$elapsedTime,"tf"=>$timeFactor,"v"=>$v);
+		$array = array("lasttime"=>$lastTime,"curtime"=>$currentTime,"elaptime"=>$elapsedTime,"hi"=>$homeIndex,"v"=>$v);
 		return $array;
 	}
 }
