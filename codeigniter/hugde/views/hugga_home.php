@@ -156,7 +156,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                   <li><a href="http://hugde.com/home/myhugge"><i class="icon-user"></i> My Hugge</a>
                   </li>
                   
-                  <li><a href="http://hugde.com/logout"><i class="icon-key"></i> Log Out</a>
+                  <li><a href="http://hugde.com/logout" onclick="javascript:logout();"><i class="icon-key"></i> Log Out</a>
                   </li>
                </ul>
             </li>                	

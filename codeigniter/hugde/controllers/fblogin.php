@@ -17,31 +17,20 @@ class fblogin extends CI_Controller {
 		$this->load->model('user');
 		$UserFbDataInDb = $this->user->validatefbuser($FbUserId);
 		if(!empty($UserFbDataInDb)){
-					//Put the data in the session
-					$this->session->set_userdata($UserFbDataInDb);
-					$url = base_url().'home';
-			        redirect($url);					
-				}
-				else{
-					// Get user's data from fb
-            		//$UserFbData = $this->facebook->api('/me');
-            		
-            		//Get user's profile pic
-            		//$ProfilePhotoData = $this->facebook->api('/me/?fields=picture');
-					//$ProfilePhoto = $UserFbData['picture']['data']['url'];
-					
-					//Add profile photo in the user's data
-					//$UserFbData['ProfilePicUrl']=$ProfilePhoto;
-					
-					//$UserFbData['AccessToken'] = $this->facebook->getAccessToken();
-					 //Create this fb user's data in the database
-					$result = $this->user->createfbuser($UserFbData);
-					if(!empty($result)){
-						$this->session->set_userdata($result);
-						$url = base_url().'home';
-			        	redirect($url);						
-					}
-				}
+			//Put the data in the session
+			$this->session->set_userdata($UserFbDataInDb);
+			$url = base_url().'home';
+			redirect($url);					
+		}
+		else{
+			//Create this fb user's data in the database
+			$result = $this->user->createfbuser($UserFbData);
+			if(!empty($result)){
+				$this->session->set_userdata($result);
+				$url = base_url().'home';
+				redirect($url);						
+			}
+		}
 	}
 } 
 ?>
