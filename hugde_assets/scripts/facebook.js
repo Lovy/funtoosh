@@ -38,6 +38,7 @@
 		    if (response.authResponse=='connected') {
 		        // The person logged into your app
 		        getData();
+		        console.log("redirect");
 		        window.location.href("http://hugde.com/home");
 		    } else {
 		        // The person cancelled the login dialog
@@ -61,9 +62,11 @@
 							$("#spinner").css('display','block');
 						},
 						complete:function(){
-							
+							console.log("complete");
+							return 1;
 						},
 						success:function(data){
+							console.log("success");
 							return 1;
 						}
 				});
