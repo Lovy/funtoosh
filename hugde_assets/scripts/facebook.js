@@ -11,6 +11,7 @@
   // for any authentication related change, such as login, logout or session refresh. This means that
   // whenever someone who was previously logged out tries to log in again, the correct case below 
   // will be handled. 
+  /*
   FB.Event.subscribe('auth.authResponseChange', function(response) {
   	//console.log(response);
     // Here we specify what we do with the response anytime this event occurs. 
@@ -20,7 +21,7 @@
       // have logged in to the app.
       getData();
     } 
-  });
+  });*/
   };
 
   // Load the SDK asynchronously
