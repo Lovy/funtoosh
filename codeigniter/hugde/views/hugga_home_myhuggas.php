@@ -39,22 +39,13 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 
    <!-- END THEME STYLES -->
    <link rel="shortcut icon" href="favicon.ico" />
+    <!------------Facebook JS--------------->
+    <script src="<?php echo assets_url(); ?>scripts/facebook.js" type="text/javascript"></script>  
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
 <body class="page-header-fixed">
 	
-	<!------------------------------------------------------------------------------------Facebook plugin------------------------------------------------------------------------------->
-	<div id="fb-root"></div>
-	<script>(function(d, s, id) {
-	  var js, fjs = d.getElementsByTagName(s)[0];
-	  if (d.getElementById(id)) return;
-	  js = d.createElement(s); js.id = id;
-	  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=502392956524278";
-	  fjs.parentNode.insertBefore(js, fjs);
-	}(document, 'script', 'facebook-jssdk'));</script>
- <!------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
- 
  <!--------------------------------------------------------------------------------------Twitter--------------------------------------------------------------------------------------------->
  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
  <!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
@@ -117,7 +108,7 @@ HTML;
                   <li><a href="http://hugde.com/home/myhugge"><i class="icon-user"></i> My Hugge</a>
                   </li>
                   
-                  <li><a href="http://hugde.com/logout"><i class="icon-key"></i> Log Out</a>
+                  <li><a href="http://hugde.com/logout" onclick="javascript:logout();"><i class="icon-key"></i> Log Out</a>
                   </li>
                </ul>
             </li>                	
@@ -293,6 +284,11 @@ HTML;
 								         	<button type="button" class="btn default" data-dismiss="modal">Close</button>
 								            <button id="loginBtn" type="button" class="btn blue">Submit</button>
 								            <img id="spinner" style="display: none" src="<?php echo assets_url().'img/input-spinner.gif'; ?>" />
+								       </div>
+								       <div class="form-group" style="text-align: center">
+								       		<!--<a href="<?php echo $data['url']; ?>"><img src="<?php echo assets_url().'img/active_404.png'; ?>" /></a>-->
+								       		<fb:login-button scope="email,user_photos" show-faces="true" width="200" max-rows="1"></fb:login-button>
+								       		<!--<div class="fb-login-button" data-max-rows="1" data-size="large" data-show-faces="true" data-auto-logout-link="true"></div>-->
 								       </div>
 								       <div id="loginError" style="display: none" class="alert alert-danger">
                         					<strong>Error!</strong> Incorrect credentials
