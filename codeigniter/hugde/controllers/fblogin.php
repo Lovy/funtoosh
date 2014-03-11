@@ -29,6 +29,8 @@ class fblogin extends CI_Controller {
 									
 			}
 		}
+		
+		echo json_encode(array("NULL"));
 	}
 } 
 ?>
