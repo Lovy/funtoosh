@@ -54,6 +54,7 @@
 						
 						//url to send the data to
 						url: "http://hugde.com/fblogin/facebook",
+						async:false,
 						data: {'response':response},
 						type: 'post',
 						dataType: 'json',
@@ -71,9 +72,7 @@
 						}
 				});
      //console.log(response);
-    });
-    
-    
+    });   
   }
    
   function logout(){
