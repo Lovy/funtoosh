@@ -7,6 +7,13 @@ class home extends CI_Controller{
 		$this->load->helper('utility');
 		$this->load->library('session');
 		$this->load->library('Mobile_Detect');
+		
+		//Facebook related
+		parse_str( $_SERVER['QUERY_STRING'], $_REQUEST );
+        $CI = & get_instance();
+		$CI->config->load("facebook",TRUE);
+		$config = $CI->config->item('facebook');
+		$this->load->library('Facebook', $config);
 	}
 	
 	function index(){
@@ -33,10 +40,72 @@ class home extends CI_Controller{
 			
 		}
 		else{
+			// Get user's facebook user id
+        	$FbUserId = $this->facebook->getUser();
 			$this->load->model('modelhome');
 			$response['huggas'] = $this->modelhome->loadData(NULL,NULL,'HIDE',4,1);
 			$response['sidebar'] = $this->modelhome->loadSideBar();
-			$response['data']=array("userId"=>"0");
+			if($FbUserId!=0){
+				$AccessToken = $this->facebook->getAccessToken();
+				$this->load->model('user');
+				$UserFbDataInDb = $this->user->validatefbuser($FbUserId,$AccessToken);
+				if(!empty($UserFbDataInDb)){
+					//Put the data in the session
+					$this->session->set_userdata($UserFbDataInDb);
+					//Get last visited URL of the user
+					//$LastURL = $this->session->userdata('LastURL');
+						
+					//IF set send him there
+					//if(!empty($LastURL)){
+						//redirect($LastURL);
+					//}
+					//Else send him to sweet home
+					//else{
+						$url = base_url().'home';
+			        	redirect($url);	
+					//}
+				}
+				else{
+					// Get user's data from fb
+            		$UserFbData = $this->facebook->api('/me');
+            		
+            		//Get user's profile pic
+            		$ProfilePhotoData = $this->facebook->api('/me/?fields=picture');
+					$ProfilePhoto = $ProfilePhotoData['picture']['data']['url'];
+					
+					//Add profile photo in the user's data
+					$UserFbData['ProfilePicUrl']=$ProfilePhoto;
+					
+					$UserFbData['AccessToken'] = $this->facebook->getAccessToken();
+					 //Create this fb user's data in the database
+					$result = $this->user->createfbuser($UserFbData);
+					if(!empty($result)){
+						$this->session->set_userdata($result);
+						
+						//Get last visited URL of the user
+						//$LastURL = $this->session->userdata('LastURL');
+						
+						//IF set send him there
+						//if(!empty($LastURL)){
+							//redirect($LastURL);
+						//}
+						//Else send him to sweet home
+						//else{
+							$url = base_url().'home';
+			        		redirect($url);	
+						//}
+						
+					}
+				}
+			}
+			else{
+				//echo "Inside else2";				
+				$data['url'] = $this->facebook->getLoginUrl(array('scope'=>'email,user_photos'));
+				$data['userId']=0;
+				$response['data']=$data;
+				//$this->load->view('hugga_home',$data);
+			}
+			//$response['data']=array("userId"=>"0");
 			//echo json_encode($response);
 			//var_dump($response);
 			
@@ -50,6 +119,7 @@ class home extends CI_Controller{
 			}
 			
 		}
+		
 	}
 
 	function delete($huggaId){

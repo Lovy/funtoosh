@@ -38,10 +38,13 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
    <link href="<?php echo assets_url(); ?>css/pages/login-soft.css" rel="stylesheet" type="text/css"/>
    <!-- END THEME STYLES -->
    <link rel="shortcut icon" href="favicon.ico" />
+   <!------------Facebook JS--------------->
+    <script src="<?php echo assets_url(); ?>scripts/facebook.js" type="text/javascript"></script>  
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
-<body class="page-header-fixed"> 
+<body class="page-header-fixed">
+	<div id="fb-root"></div> 
    <!-- BEGIN HEADER -->   
    <div class="header navbar navbar-inverse navbar-fixed-top" style="min-height: 60px">
       <!-- BEGIN TOP NAVIGATION BAR -->
@@ -358,8 +361,8 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 								       </div>
 								       <hr>
 								       <div class="form-group" style="text-align: center">
-								       		<a href="<?php echo $data['url']; ?>"><img src="<?php echo assets_url().'img/active_404.png'; ?>" /></a>
-								       		<!--<div class="fb-login-button" data-max-rows="1" data-size="large" data-show-faces="true" data-auto-logout-link="true"></div>-->
+								       		<!--<a href="<?php echo $data['url']; ?>"><img src="<?php echo assets_url().'img/active_404.png'; ?>" /></a>-->
+								       		<div class="fb-login-button" data-max-rows="1" data-size="large" data-show-faces="true" data-auto-logout-link="true"></div>
 								       </div>
 								       <div id="loginError" style="display: none" class="alert alert-danger">
                         					<strong>Error!</strong> Incorrect credentials
@@ -959,17 +962,6 @@ HTML;
          });
       });
    </script>
-   <!------------------------------------------------------------------------------------Facebook plugin------------------------------------------------------------------------------->
-	<div id="fb-root"></div>
-	<script>(function(d, s, id) {
-	  var js, fjs = d.getElementsByTagName(s)[0];
-	  if (d.getElementById(id)) return;
-	  js = d.createElement(s); js.id = id;
-	  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=502392956524278";
-	  fjs.parentNode.insertBefore(js, fjs);
-	}(document, 'script', 'facebook-jssdk'));</script>
- <!------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
- 
  <!--------------------------------------------------------------------------------------Twitter--------------------------------------------------------------------------------------------->
  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
  <!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
