@@ -18,7 +18,8 @@
       // The response object is returned with a status field that lets the app know the current
       // login status of the person. In this case, we're handling the situation where they 
       // have logged in to the app.
-      testAPI();
+      getData();
+      
     } else if (response.status === 'not_authorized') {
     	//console.log(response.status);
       // In this case, the person is logged into Facebook, but not into the app, so we call
@@ -52,11 +53,28 @@
 
   // Here we run a very simple test of the Graph API after login is successful. 
   // This testAPI() function is only called in those cases. 
-  function testAPI() {
-   // console.log('Welcome!  Fetching your information.... ');
+  function getData() {
     FB.api('/me', function(response) {
-      //console.log('Good to see you, ' + response.name + '.');
-     console.log(response);
+    	//send data through ajax
+    	$.ajax({
+						
+						//url to send the data to
+						url: "http://hugde.com/fblogin/facebook",
+						data: {'response':response},
+						type: 'post',
+						dataType: 'json',
+						beforeSend:function(){
+						//Show Autosaving div
+							$("#spinner").css('display','block');
+						},
+						complete:function(){
+							
+						},
+						success:function(data){
+					
+						}
+						});
+     //console.log(response);
     });
   }
    
