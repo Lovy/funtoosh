@@ -7,6 +7,20 @@
     xfbml      : true  // parse XFBML
   });
 
+  // Here we subscribe to the auth.authResponseChange JavaScript event. This event is fired
+  // for any authentication related change, such as login, logout or session refresh. This means that
+  // whenever someone who was previously logged out tries to log in again, the correct case below 
+  // will be handled. 
+  FB.Event.subscribe('auth.authResponseChange', function(response) {
+  	//console.log(response);
+    // Here we specify what we do with the response anytime this event occurs. 
+    if (response.status === 'connected') {
+      // The response object is returned with a status field that lets the app know the current
+      // login status of the person. In this case, we're handling the situation where they 
+      // have logged in to the app.
+      getData();
+    } 
+  });
   };
 
   // Load the SDK asynchronously
@@ -24,6 +38,8 @@
 		    if (response.authResponse) {
 		        // The person logged into your app
 		        getData();
+		        console.log("redirect");
+		        window.location.replace("http://hugde.com/home");
 		    } else {
 		        // The person cancelled the login dialog
 		    }
@@ -47,7 +63,7 @@
 							$("#spinner").css('display','block');
 						},
 						complete:function(){
-							window.location.href("http://hugde.com/home");
+							console.log("complete");
 						},
 						success:function(data){
 							console.log("success");
