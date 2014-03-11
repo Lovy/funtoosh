@@ -40,7 +40,7 @@
 		        // The person logged into your app
 		        getData();
 		        console.log("redirect");
-		        window.location.replace("http://hugde.com/home");
+		        
 		    } else {
 		        // The person cancelled the login dialog
 		    }
@@ -65,6 +65,7 @@
 						},
 						complete:function(){
 							console.log("complete");
+							window.location.replace("http://hugde.com/home");
 						},
 						success:function(data){
 							console.log("success");
