@@ -4,7 +4,7 @@
     appId      : '226343797569469',
     status     : true, // check login status
     cookie     : true, // enable cookies to allow the server to access the session
-    xfbml      : false  // parse XFBML
+    xfbml      : true  // parse XFBML
   });
 
   // Here we subscribe to the auth.authResponseChange JavaScript event. This event is fired
