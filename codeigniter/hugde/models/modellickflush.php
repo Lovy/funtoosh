@@ -80,7 +80,7 @@ class modellickflush extends CI_Model{
 		$v= $licks-$flushes;
 		
 		///////////////////////////////HOME INDEX CALCULATION///////////////////////////
-		$homeIndex = floatval($v*pow($lastTime,0.25));
+		$homeIndex = floatval($v*pow($lastTime,0.2));
 		
 		///////////////////////////UPDATE HOME INDEX/////////////////////////////////////
 		$sql="update hugga set homeIndex=? where huggaId=?";

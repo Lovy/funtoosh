@@ -323,7 +323,7 @@ var Login = function () {
             //handleForgetPassword();
             handleRegister();        
 	        handleDatePickers();
-	        
+	        /*
 	       	$.backstretch([
 		        "assets/img/bg/1.jpg",
 		        "assets/img/bg/2.jpg",
@@ -333,6 +333,7 @@ var Login = function () {
 		          fade: 1000,
 		          duration: 8000
 		    });
+		    */
         }
 
     };

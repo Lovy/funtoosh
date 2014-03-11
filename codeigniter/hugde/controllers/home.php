@@ -111,8 +111,8 @@ class home extends CI_Controller{
                   			<!------------In case already licked by the user then the id - licked else unlicked. Similar for flush --------
                   			lick(userId,HuggaId)
                   			-->	
-                  			<a href="javascript:void(0);" onclick="lick('.$item["userId"].','.$item["huggaId"].',this);" '.$a.'  class="btn '.$y.' lick" id="licked">Lick <i class="icon-chevron-up"></i> <span class="badge badge-danger">'.$item['licks'].'</span></a>                			
-                  			<a href="javascript:void(0);" onclick="flush('.$item['userId'].','.$item['huggaId'].',this);" '.$b.' class="btn '.$z.' flush" id="flushed">Flush <i class="icon-chevron-down"></i> <span class="badge badge-success">'.$item['flushes'].'</span></a>                           
+                  			<a href="javascript:void(0);" onclick="lick('.$data["userId"].','.$item["huggaId"].',this);" '.$a.'  class="btn '.$y.' lick" id="licked">Lick <i class="icon-chevron-up"></i> <span class="badge badge-danger">'.$item['licks'].'</span></a>                			
+                  			<a href="javascript:void(0);" onclick="flush('.$data['userId'].','.$item['huggaId'].',this);" '.$b.' class="btn '.$z.' flush" id="flushed">Flush <i class="icon-chevron-down"></i> <span class="badge badge-success">'.$item['flushes'].'</span></a>                           
                   			</div>		
                   		</div>	
                   	</div>
