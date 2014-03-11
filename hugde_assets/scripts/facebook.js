@@ -21,7 +21,7 @@
 
 	function fblogin(){
 		FB.login(function(response) {
-		    if (response.authResponse=='connected') {
+		    if (response.authResponse) {
 		        // The person logged into your app
 		        getData();
 		    } else {
