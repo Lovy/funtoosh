@@ -71,7 +71,7 @@
 							
 						},
 						success:function(data){
-							window.location.replace("http://hugde.com/home");
+							//window.location.replace("http://hugde.com/home");
 						}
 				});
      //console.log(response);

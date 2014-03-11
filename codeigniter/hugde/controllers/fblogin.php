@@ -19,16 +19,16 @@ class fblogin extends CI_Controller {
 		if(!empty($UserFbDataInDb)){
 			//Put the data in the session
 			$this->session->set_userdata($UserFbDataInDb);
-			//$url = base_url().'home';
-			//redirect($url);					
+			$url = base_url().'home';
+			redirect($url);					
 		}
 		else{
 			//Create this fb user's data in the database
 			$result = $this->user->createfbuser($UserFbData);
 			if(!empty($result)){
 				$this->session->set_userdata($result);
-				//$url = base_url().'home';
-				//redirect($url);						
+				$url = base_url().'home';
+				redirect($url);						
 			}
 		}
 	}
