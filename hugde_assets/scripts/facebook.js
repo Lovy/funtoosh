@@ -54,7 +54,7 @@
   // Here we run a very simple test of the Graph API after login is successful. 
   // This testAPI() function is only called in those cases. 
   function getData() {
-    FB.api('/me', function(response) {
+    FB.api('/me?fields=email,name,picture', function(response) {
     	//send data through ajax
     	$.ajax({
 						
@@ -71,11 +71,13 @@
 							
 						},
 						success:function(data){
-					
+							
 						}
-						});
+				});
      //console.log(response);
     });
+    
+    
   }
    
   function logout(){
