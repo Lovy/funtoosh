@@ -74,7 +74,7 @@ class home extends CI_Controller{
 			$this->load->model('modelhome');
 			$response['huggas'] = $this->modelhome->loadData(NULL,$data['userId'],'HIDE',$huggasPerPage,$pageNo);   //(huggasPerPage,pageNo)
 			$response['data']=$data;
-			var_dump($response);
+			var_dump($response['data']);
 			//return HTML code
 			//echo json_encode($response);
 			//echo $this->jsonToHtml($response);
