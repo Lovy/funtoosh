@@ -33,6 +33,7 @@
 				flushcntInt = parseInt($(param).next().find('.badge-success').text());
 				//calculate home index
 				updateHomeIndex(huggaId,updatedLickCnt,flushcntInt);
+				updateTrendingIndex(huggaId);
 				//update to the new lick count to server
 				updateLickCount(updatedLickCnt,huggaId);
 				
@@ -59,7 +60,7 @@
 					flushcntInt = parseInt($(param).next().find('.badge-success').text());
 					//calculate home index
 					updateHomeIndex(huggaId,updatedLickCnt,flushcntInt);
-						
+					updateTrendingIndex(huggaId);	
 					//update to the new lick count to server
 					updateLickCount(updatedLickCnt,huggaId);
 					
@@ -95,6 +96,7 @@
 				lickcntInt = parseInt($(param).next().find('.badge-danger').text());
 				//calculate home index
 				updateHomeIndex(huggaId,lickcntInt,updatedFlushCnt);
+				updateTrendingIndex(huggaId);
 				//update new flush count to the server
 				updateFlushCount(updatedFlushCnt,huggaId);
 				//delete flush entry from the db
@@ -119,6 +121,7 @@
 					lickcntInt = parseInt($(param).next().find('.badge-danger').text());
 					//calculate home index
 					updateHomeIndex(huggaId,lickcntInt,updatedFlushCnt);
+					updateTrendingIndex(huggaId);
 					//update new flush count to the server
 					updateFlushCount(updatedFlushCnt,huggaId);
 					
@@ -209,6 +212,18 @@
 		//query db
 		$.ajax({
 	    	url: "http://hugde.com/lickflush/updateHomeIndex/"+huggaId+'/'+licks+'/'+flushes,
+	    	async: true,
+	    	dataType: 'json',
+	    	success: function(response) {
+	    		console.log(response);
+	    	}
+   		});	
+	}
+	
+	function updateTrendingIndex(huggaId){
+		//query db
+		$.ajax({
+	    	url: "http://hugde.com/lickflush/updateTrendingIndex/"+huggaId,
 	    	async: true,
 	    	dataType: 'json',
 	    	success: function(response) {

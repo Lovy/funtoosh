@@ -927,16 +927,20 @@ HTML;
    <!-- The Canvas to Blob plugin is included for image resizing functionality -->
    <script src="<?php echo assets_url(); ?>plugins/jquery-file-upload/js/vendor/canvas-to-blob.min.js"></script>
    <!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
+   <!--
    <script src="<?php echo assets_url(); ?>plugins/jquery-file-upload/js/jquery.iframe-transport.js"></script>
    <!-- The basic File Upload plugin -->
    <script src="<?php echo assets_url(); ?>plugins/jquery-file-upload/js/jquery.fileupload.js"></script>
    <!-- The File Upload processing plugin -->
    <script src="<?php echo assets_url(); ?>plugins/jquery-file-upload/js/jquery.fileupload-process.js"></script>
    <!-- The File Upload image preview & resize plugin -->
+   
    <script src="<?php echo assets_url(); ?>plugins/jquery-file-upload/js/jquery.fileupload-image.js"></script>
    <!-- The File Upload audio preview plugin -->
+   <!--
    <script src="<?php echo assets_url(); ?>plugins/jquery-file-upload/js/jquery.fileupload-audio.js"></script>
    <!-- The File Upload video preview plugin -->
+   <!--
    <script src="<?php echo assets_url(); ?>plugins/jquery-file-upload/js/jquery.fileupload-video.js"></script>
    <!-- The File Upload validation plugin -->
    <script src="<?php echo assets_url(); ?>plugins/jquery-file-upload/js/jquery.fileupload-validate.js"></script>

@@ -88,6 +88,72 @@ class modellickflush extends CI_Model{
 		$array = array("lasttime"=>$lastTime,"curtime"=>$currentTime,"elaptime"=>$elapsedTime,"hi"=>$homeIndex,"v"=>$v);
 		return $array;
 	}
+	
+	function calTrendingIndex($huggaId=NULL,$timeInterval=NULL){
+		/*
+		 * calculate last lick timestamp tlick
+			calculate last flush timestamp tflush
+			find the recent timestamp tcurrent=max(tlick,tflush)
+			n=0;
+			while(n<12)
+				substract tcurrent by 1(in seconds) and store in tprevious
+				calculate count(licks) where timestamp between tcurrent and tprevious
+				calculate count(flushes) where timestamp between tcurrent and tprevious
+				vn=licks-flushes
+				n++
+				tcurrent=tprevious
+			
+			for each v
+				index+=vn/n
+		 */
+		 $sql1="select timestamp from userlick where huggaid=? order by timestamp asc";
+		 $query1=$this->db->query($sql1,array($huggaId));
+		 $rowFirst1 = $query1->first_row('array');
+		 $rowLast1 = $query1->last_row('array');
+		 
+		 $lastLickTimestamp=$rowLast1['timestamp'];
+		 $firstLickTimestamp=$rowFirst1['timestamp'];
+		 
+		 $sql2="select timestamp from userflush where huggaid=? order by timestamp asc";
+		 $query2=$this->db->query($sql2,array($huggaId));
+		 $rowFirst2 = $query2->first_row('array');
+		 $rowLast2 = $query2->last_row('array');
+		 
+		 $lastFlushTimestamp=$rowLast2['timestamp'];
+		 $firstFlushTimestamp=$rowFirst2['timestamp'];
+		 
+		 $timeCurrent=$lastLickTimestamp>$lastFlushTimestamp ? $lastLickTimestamp : $lastFlushTimestamp;
+		 $iterationCount = ($timeCurrent-($firstLickTimestamp<$firstFlushTimestamp ? $firstLickTimestamp : $firstFlushTimestamp))/($timeInterval*60*60);
+		 $timeIntervalSec=$timeInterval*60*60;
+		 
+		 $v = array();
+		 while($iterationCount>0){
+		 	$timePrevious = $timeCurrent-$timeIntervalSec;
+		 	$timePreviousDate = date('y-m-d H:m:s',$timePrevious);
+			$timeCurrentDate = date('y-m-d H:m:s',$timeCurrent);
+		 	$sql3="select count(licks) as l from userlick where timestamp between ? and ?";
+			$query3=$this->db->query($sql3,array($timePreviousDate,$timeCurrentDate));
+			$result3 = $query3->first_row('array');
+			$licks = $result3['l'];
+			
+			$sql4="select count(flushes) as f from userflush where timestamp between ? and ?";
+			$query4=$this->db->query($sql4,array($timePreviousDate,$timeCurrentDate));
+			$result4 = $query4->first_row('array');
+			$flushes = $result4['f'];
+			
+			$v[]=$licks-$flushes;
+			$iterationCount-1;
+		 }
+		 
+		 $trendingIndex=0;
+		 $i=1;
+		 foreach ($v as $value){
+		 	$trendingIndex+=$value/$i;
+			 $i++;
+		 }
+		 
+		 echo json_encode(array($trendingIndex));
+	}
 }
 
 ?>
