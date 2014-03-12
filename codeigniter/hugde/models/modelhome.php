@@ -17,8 +17,9 @@ class modelhome extends CI_Model{
 		}
 		
 	}
-	function loadData($huggaId,$userId=NULL,$myhugga=NULL,$huggasPerPage=NULL,$pageNo=NULL){
+	function loadData($huggaId,$userId,$myhugga,$huggasPerPage,$pageNo){
 		if($huggaId=='0' && $myhugga=='HIDE'){ //show all huggas
+			echo 'inside first if';
 			$sql1 = "select * from hugga order by homeIndex desc LIMIT ?,?";
 			$huggasPerPage = intval($huggasPerPage);
 			$query = $this->db->query($sql1,array(($huggasPerPage*($pageNo-1)),($huggasPerPage)));
@@ -53,6 +54,7 @@ class modelhome extends CI_Model{
 			}
 		}
 		if($huggaId=='0' && $myhugga=='SHOW'){
+			echo 'inside second if';
 			$sql1 = "select * from hugga where userId =? order by timestamp desc LIMIT ?,?";
 			$huggasPerPage = intval($huggasPerPage);
 			$query = $this->db->query($sql1,array($userId,($huggasPerPage*($pageNo-1)),($huggasPerPage)));
@@ -88,7 +90,7 @@ class modelhome extends CI_Model{
 		}
 
 		if($huggaId!='0' && $myhugga=='HIDE'){
-			
+			echo 'inside third fi';
 			$sql1 = "select * from hugga where huggaId =?";
 			$huggasPerPage = intval($huggasPerPage);
 			$query = $this->db->query($sql1,array($huggaId));
