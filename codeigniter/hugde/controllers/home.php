@@ -82,6 +82,7 @@ class home extends CI_Controller{
 		}
 		else{
 			$this->load->model('modelhome');
+			$response['data']=array("userId"=>"0");
 			$response['huggas'] = $this->modelhome->loadData(NULL,NULL,'HIDE',$huggasPerPage,$pageNo);
 			
 			//return HTML code
