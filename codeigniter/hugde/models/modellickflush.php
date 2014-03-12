@@ -106,6 +106,7 @@ class modellickflush extends CI_Model{
 			for each v
 				index+=vn/n
 		 */
+		 echo $huggaId;
 		 $sql1="select timestamp from userlick where huggaid=? order by timestamp asc";
 		 $query1=$this->db->query($sql1,array($huggaId));
 		 $rowFirst1 = $query1->first_row()->timestamp;
