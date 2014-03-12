@@ -38,15 +38,14 @@ $(document).ready(function(){
                 //load data from the server using a HTTP POST request
                 $.post('http://hugde.com/home/autoload',{'HPP': huggasPerPage,'PN':pagesLoaded+1}, function(data){
                                     
-                    $(".article-block").append(data,function(){
-                    	console.log("Autoscroll called"+pagesLoaded);
-                    	pagesLoaded++; //loaded group increment
-                    	loading = false; 
-                    }); //append received data into the element
+                    $(".article-block").append(data); //append received data into the element
 					try{
 				        FB.XFBML.parse();
 				        twttr.widgets.load(); 
 				    }catch(ex){}
+				    console.log("Autoscroll called"+pagesLoaded);
+                    pagesLoaded++; //loaded group increment
+                    loading = false; 
                     //hide loading image
                     //$('.animation_image').hide(); //hide loading image once data is received
                     
