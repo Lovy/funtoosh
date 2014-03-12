@@ -17,8 +17,8 @@ class modelhome extends CI_Model{
 		}
 		
 	}
-	function loadData($huggaId=NULL,$userId=NULL,$myhugga=NULL,$huggasPerPage=NULL,$pageNo=NULL){
-		if($huggaId==NULL && $myhugga=='HIDE'){ //show all huggas
+	function loadData($huggaId,$userId=NULL,$myhugga=NULL,$huggasPerPage=NULL,$pageNo=NULL){
+		if($huggaId=='0' && $myhugga=='HIDE'){ //show all huggas
 			$sql1 = "select * from hugga order by homeIndex desc LIMIT ?,?";
 			$huggasPerPage = intval($huggasPerPage);
 			$query = $this->db->query($sql1,array(($huggasPerPage*($pageNo-1)),($huggasPerPage)));
@@ -52,7 +52,7 @@ class modelhome extends CI_Model{
 				return $hugga;
 			}
 		}
-		if(!$huggaId && $myhugga=='SHOW'){
+		if($huggaId=='0' && $myhugga=='SHOW'){
 			$sql1 = "select * from hugga where userId =? order by timestamp desc LIMIT ?,?";
 			$huggasPerPage = intval($huggasPerPage);
 			$query = $this->db->query($sql1,array($userId,($huggasPerPage*($pageNo-1)),($huggasPerPage)));
@@ -87,11 +87,11 @@ class modelhome extends CI_Model{
 			}
 		}
 
-		if($huggaId!=NULL && $myhugga!=TRUE){
+		if($huggaId!='0' && $myhugga=='HIDE'){
 			
-			$sql1 = "select * from hugga where huggaId =? order by timestamp desc LIMIT ?,?";
+			$sql1 = "select * from hugga where huggaId =?";
 			$huggasPerPage = intval($huggasPerPage);
-			$query = $this->db->query($sql1,array($huggaId,($huggasPerPage*($pageNo-1)),($huggasPerPage)));
+			$query = $this->db->query($sql1,array($huggaId));
 			//$this->db->order_by('timestamp','desc');
 			if($query->num_rows()>0){
 				//create an array to store huggas

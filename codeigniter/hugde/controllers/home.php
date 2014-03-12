@@ -17,7 +17,7 @@ class home extends CI_Controller{
 			$data = $this->session->all_userdata();
 			//var_dump($data);
 			$this->load->model('modelhome');
-			$response['huggas'] = $this->modelhome->loadData(NULL,$data['userId'],'HIDE',4,1);   //(huggasPerPage,pageNo)
+			$response['huggas'] = $this->modelhome->loadData('0',$data['userId'],'HIDE',4,1);   //(huggasPerPage,pageNo)
 			$response['sidebar'] = $this->modelhome->loadSideBar();
 			$response['data']=$data;
 			//echo json_encode($response);
@@ -34,7 +34,7 @@ class home extends CI_Controller{
 		}
 		else{
 			$this->load->model('modelhome');
-			$response['huggas'] = $this->modelhome->loadData(NULL,NULL,'HIDE',4,1);
+			$response['huggas'] = $this->modelhome->loadData('0',NULL,'HIDE',4,1);
 			$response['sidebar'] = $this->modelhome->loadSideBar();
 			$response['data']=array("userId"=>"0");
 			//echo json_encode($response);
@@ -72,18 +72,18 @@ class home extends CI_Controller{
 			$data = $this->session->all_userdata();
 			//var_dump($data);
 			$this->load->model('modelhome');
-			$response['huggas'] = $this->modelhome->loadData(NULL,$data['userId'],'HIDE',$huggasPerPage,$pageNo);   //(huggasPerPage,pageNo)
+			$response['huggas'] = $this->modelhome->loadData('0',$data['userId'],'HIDE',$huggasPerPage,$pageNo);   //(huggasPerPage,pageNo)
 			$response['data']=$data;
-			var_dump($response['data']);
+			//var_dump($response['data']);
 			//return HTML code
 			//echo json_encode($response);
-			//echo $this->jsonToHtml($response);
+			echo $this->jsonToHtml($response);
 			
 		}
 		else{
 			$this->load->model('modelhome');
 			$response['data']=array("userId"=>"0");
-			$response['huggas'] = $this->modelhome->loadData(NULL,NULL,'HIDE',$huggasPerPage,$pageNo);
+			$response['huggas'] = $this->modelhome->loadData('0',NULL,'HIDE',$huggasPerPage,$pageNo);
 			
 			//return HTML code
 			echo $this->jsonToHtml($response);
@@ -165,7 +165,7 @@ class home extends CI_Controller{
 			$data = $this->session->all_userdata();
 			$this->load->model('modelhome');
 			//loadData($huggaId=NULL,$userId=NULL,$myhugga=NULL,$huggasPerPage=NULL,$pageNo=NULL)
-			$response['huggas'] = $this->modelhome->loadData(NULL,$data['userId'],'SHOW',100,1);
+			$response['huggas'] = $this->modelhome->loadData('0',$data['userId'],'SHOW',100,1);
 			$response['sidebar'] = $this->modelhome->loadSideBar();
 			$response['data']=$data;
 			//Detect mobile and load no-sidebar version
