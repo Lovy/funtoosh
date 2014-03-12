@@ -111,16 +111,16 @@ class modellickflush extends CI_Model{
 		 $rowFirst1 = $query1->first_row('array');
 		 $rowLast1 = $query1->last_row('array');
 		 
-		 $lastLickTimestamp=$rowLast1['timestamp'];
-		 $firstLickTimestamp=$rowFirst1['timestamp'];
+		 $lastLickTimestamp=$rowLast1[0]['timestamp'];
+		 $firstLickTimestamp=$rowFirst1[0]['timestamp'];
 		 
 		 $sql2="select timestamp from userflush where huggaid=? order by timestamp asc";
 		 $query2=$this->db->query($sql2,array($huggaId));
 		 $rowFirst2 = $query2->first_row('array');
 		 $rowLast2 = $query2->last_row('array');
 		 
-		 $lastFlushTimestamp=$rowLast2['timestamp'];
-		 $firstFlushTimestamp=$rowFirst2['timestamp'];
+		 $lastFlushTimestamp=$rowLast2[0]['timestamp'];
+		 $firstFlushTimestamp=$rowFirst2[0]['timestamp'];
 		 
 		 $timeCurrent=$lastLickTimestamp>$lastFlushTimestamp ? $lastLickTimestamp : $lastFlushTimestamp;
 		 $iterationCount = ($timeCurrent-($firstLickTimestamp<$firstFlushTimestamp ? $firstLickTimestamp : $firstFlushTimestamp))/($timeInterval*60*60);
@@ -131,13 +131,13 @@ class modellickflush extends CI_Model{
 		 	$timePrevious = $timeCurrent-$timeIntervalSec;
 		 	$timePreviousDate = date('y-m-d H:m:s',$timePrevious);
 			$timeCurrentDate = date('y-m-d H:m:s',$timeCurrent);
-		 	$sql3="select count(licks) as l from userlick where timestamp between ? and ?";
-			$query3=$this->db->query($sql3,array($timePreviousDate,$timeCurrentDate));
+		 	$sql3="select count(id) as l from userlick where timestamp between ? and ? and huggaId=?";
+			$query3=$this->db->query($sql3,array($timePreviousDate,$timeCurrentDate,$huggaId));
 			$result3 = $query3->first_row('array');
 			$licks = $result3['l'];
 			
-			$sql4="select count(flushes) as f from userflush where timestamp between ? and ?";
-			$query4=$this->db->query($sql4,array($timePreviousDate,$timeCurrentDate));
+			$sql4="select count(id) as f from userflush where timestamp between ? and ? and huggaId=?";
+			$query4=$this->db->query($sql4,array($timePreviousDate,$timeCurrentDate,$huggaId));
 			$result4 = $query4->first_row('array');
 			$flushes = $result4['f'];
 			
