@@ -114,7 +114,7 @@ class modellickflush extends CI_Model{
 		 	$lastLickTimestamp = $query1->last_row()->timestamp; 
 		 }else{
 		 	$sql5="select timestamp from hugga where huggaId=?";
-			$query5= $this->db->query($sql,array($huggaId));
+			$query5= $this->db->query($sql5,array($huggaId));
 			$firstLickTimestamp=$query5->first_row()->timestamp;
 			$lastLickTimestamp=$firstLickTimestamp;
 		 }
