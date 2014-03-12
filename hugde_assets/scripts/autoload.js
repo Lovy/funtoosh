@@ -38,21 +38,23 @@ $(document).ready(function(){
                 //load data from the server using a HTTP POST request
                 $.post('http://hugde.com/home/autoload',{'HPP': huggasPerPage,'PN':pagesLoaded+1}, function(data){
                                     
-                    $(".article-block").append(data); //append received data into the element
+                    $(".article-block").append(data,function(){
+                    	console.log("Autoscroll called"+pagesLoaded);
+                    	pagesLoaded++; //loaded group increment
+                    	loading = false; 
+                    }); //append received data into the element
 					try{
 				        FB.XFBML.parse();
 				        twttr.widgets.load(); 
 				    }catch(ex){}
                     //hide loading image
-                    $('.animation_image').hide(); //hide loading image once data is received
-                    console.log("Autoscroll called"+pagesLoaded);
-                    pagesLoaded++; //loaded group increment
-                    loading = false; 
+                    //$('.animation_image').hide(); //hide loading image once data is received
+                    
                 
                 }).fail(function(xhr, ajaxOptions, thrownError) { //any errors?
                     
-                    alert(thrownError); //alert with HTTP error
-                    $('.animation_image').hide(); //hide loading image
+                    //alert(thrownError); //alert with HTTP error
+                    //$('.animation_image').hide(); //hide loading image
                     loading = false;
                 
                 });
