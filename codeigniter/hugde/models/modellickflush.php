@@ -111,6 +111,7 @@ class modellickflush extends CI_Model{
 		 $rowFirst1 = $query1->first_row('array');
 		 $rowLast1 = $query1->last_row('array');
 		 
+		 var_dump($rowFirst1);
 		 $lastLickTimestamp=$rowLast1[0]['timestamp'];
 		 $firstLickTimestamp=$rowFirst1[0]['timestamp'];
 		 
