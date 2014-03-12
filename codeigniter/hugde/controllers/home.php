@@ -76,8 +76,8 @@ class home extends CI_Controller{
 			$response['data']=$data;
 			
 			//return HTML code
-			//echo json_encode($response);
-			echo $this->jsonToHtml($response);
+			echo json_encode($response);
+			//echo $this->jsonToHtml($response);
 			
 		}
 		else{
