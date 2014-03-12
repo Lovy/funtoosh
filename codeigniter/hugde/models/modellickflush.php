@@ -89,7 +89,7 @@ class modellickflush extends CI_Model{
 		return $array;
 	}
 	
-	function calTrendingIndex($huggaId=NULL,$timeInterval=NULL){
+	function calTrendingIndex($huggaId,$timeInterval){
 		/*
 		 * calculate last lick timestamp tlick
 			calculate last flush timestamp tflush
@@ -165,7 +165,7 @@ class modellickflush extends CI_Model{
 			 $i++;
 		 }
 		 
-		 echo json_encode(array($trendingIndex,$v));
+		 echo json_encode(array($trendingIndex,$v,$iterationCount));
 	}
 }
 
