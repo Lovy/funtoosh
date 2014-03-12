@@ -70,13 +70,13 @@ class home extends CI_Controller{
 		$LoginFlag = $this->session->userdata('IsLoggedIn');
 		if(!empty($LoginFlag)){
 			$data = $this->session->all_userdata();
-			//var_dump($data);
-			$this->load->model('modelhome');
-			$response['huggas'] = $this->modelhome->loadData(NULL,$data['userId'],'HIDE',$huggasPerPage,$pageNo);   //(huggasPerPage,pageNo)
-			$response['data']=$data;
+			var_dump($data);
+			//$this->load->model('modelhome');
+			//$response['huggas'] = $this->modelhome->loadData(NULL,$data['userId'],'HIDE',$huggasPerPage,$pageNo);   //(huggasPerPage,pageNo)
+			//$response['data']=$data;
 			
 			//return HTML code
-			echo json_encode($response);
+			//echo json_encode($response);
 			//echo $this->jsonToHtml($response);
 			
 		}
