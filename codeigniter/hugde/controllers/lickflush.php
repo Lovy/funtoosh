@@ -121,7 +121,7 @@ class lickflush extends CI_Controller{
 		echo json_encode($this->modellickflush->calHomeIndex($huggaId,$licks,$flushes));
 	}
 
-	function updateTredingIndex($huggaId){
+	function updateTrendingIndex($huggaId){
 		$this->load->model('modellickflush');
 		echo json_encode($this->modellickflush->calTrendingIndex($huggaId,12));
 	}
