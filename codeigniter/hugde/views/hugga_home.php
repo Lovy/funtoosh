@@ -62,7 +62,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 			<div class="hor-menu hidden-sm hidden-xs" style="margin-left: -4px">
 				<ul class="nav navbar-nav" style="padding: 9px">
 					<li class="active">
-						<a href="#">
+						<a href="<?php echo base_url(),'home'; ?>">
 						Home
 						</a>
 					</li>
@@ -99,7 +99,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 			<!-- END HORIZANTAL MENU -->
 			<!-- BEGIN RESPONSIVE MENU TOGGLER -->
 			<a href="javascript:;" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-			<img src="assets/img/menu-toggler.png" alt="" />
+			<img src="<?php echo assets_url().'/img/menu-toggler.png'; ?>" alt="" />
 			</a>  
          <!-- END RESPONSIVE MENU TOGGLER -->
          <!-- BEGIN TOP NAVIGATION MENU -->
@@ -178,7 +178,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 		<div class="page-sidebar navbar-collapse collapse">
 			<ul class="page-sidebar-menu visible-sm visible-xs">
 				<li class="active">
-					<a href="#">
+					<a href="<?php echo base_url(),'home'; ?>">
 					Home
 					</a>
 				</li>

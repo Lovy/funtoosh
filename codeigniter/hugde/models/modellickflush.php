@@ -109,20 +109,27 @@ class modellickflush extends CI_Model{
 		 echo $huggaId;
 		 $sql1="select timestamp from userlick where huggaid=? order by timestamp asc";
 		 $query1=$this->db->query($sql1,array($huggaId));
-		 $rowFirst1 = $query1->first_row()->timestamp;
-		 $rowLast1 = $query1->last_row('array');
+		 if($query1->num_rows()>0){
+		 	$firstLickTimestamp = $query1->first_row()->timestamp;
+		 	$lastLickTimestamp = $query1->last_row()->timestamp; 
+		 }else{
+		 	exit;
+		 }
 		 
-		 var_dump($rowFirst1);
-		 $lastLickTimestamp=$rowLast1[0]['timestamp'];
-		 $firstLickTimestamp=$rowFirst1[0]['timestamp'];
+		 //$lastLickTimestamp=$rowLast1[0]['timestamp'];
+		 //$firstLickTimestamp=$rowFirst1[0]['timestamp'];
 		 
 		 $sql2="select timestamp from userflush where huggaid=? order by timestamp asc";
 		 $query2=$this->db->query($sql2,array($huggaId));
-		 $rowFirst2 = $query2->first_row('array');
-		 $rowLast2 = $query2->last_row('array');
-		 
-		 $lastFlushTimestamp=$rowLast2[0]['timestamp'];
-		 $firstFlushTimestamp=$rowFirst2[0]['timestamp'];
+		 if($query1->num_rows()>0){
+		 	$firstFlushTimestamp = $query2->first_row()->timestamp;
+		 	$lastFlushTimestamp = $query2->last_row()->timestamp;
+		 }else{
+		 	exit;
+		 }
+		  
+		 //$lastFlushTimestamp=$rowLast2[0]['timestamp'];
+		 //$firstFlushTimestamp=$rowFirst2[0]['timestamp'];
 		 
 		 $timeCurrent=$lastLickTimestamp>$lastFlushTimestamp ? $lastLickTimestamp : $lastFlushTimestamp;
 		 $iterationCount = ($timeCurrent-($firstLickTimestamp<$firstFlushTimestamp ? $firstLickTimestamp : $firstFlushTimestamp))/($timeInterval*60*60);

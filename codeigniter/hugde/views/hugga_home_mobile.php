@@ -37,6 +37,7 @@
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
 <body class="page-header-fixed">
+	<div id="fb-root"></div> 
  <!--------------------------------------------------------------------------------------Twitter--------------------------------------------------------------------------------------------->
  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
  <!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
@@ -55,7 +56,7 @@
          <div class="hor-menu hidden-sm hidden-xs" style="margin-left: -4px">
 				<ul class="nav navbar-nav" style="padding: 9px">
 					<li class="active">
-						<a href="index.html">
+						<a href="<?php echo base_url(),'home'; ?>">
 						Home
 						</a>
 					</li>
@@ -97,41 +98,52 @@
          <!-- END RESPONSIVE MENU TOGGLER -->
          <!-- BEGIN TOP NAVIGATION MENU -->
          <ul class="nav navbar-nav pull-right">
-            <!-- BEGIN NOTIFICATION DROPDOWN -->
+           <!-- BEGIN NOTIFICATION DROPDOWN -->
             
             <!-- END NOTIFICATION DROPDOWN -->
             <!-- BEGIN INBOX DROPDOWN -->
              
-           
+            
             <?php
                         	if(empty($data['IsLoggedIn'])){
-                        		echo <<<HTML
-                        		<li class="dropdown">
+            ?>
+                        		
+                        		<li class="dropdown" >
             	<a data-toggle="modal" href="#basic" >Upload <i class="icon-upload"></i></a>
             </li>
-                        		 <li class="dropdown">
-            	<a data-toggle="modal" href="#basic" >Login <i class="icon-upload"></i></a>
+                        		 <li class="dropdown" >
+            	<a data-toggle="modal" href="#basic" >Login <i class="icon-user"></i></a>
             </li>
             <li class="dropdown">
-            	<a data-toggle="modal" href="#basic2" >SignUp <i class="icon-upload"></i></a>
+            	<a data-toggle="modal" href="#basic2" >SignUp <i class="icon-signin"></i></a>
             </li>	
-HTML;
-							}
-							
-               ?>
+			<?php
+			}				
+            ?>
             
             
             <!-- BEGIN USER LOGIN DROPDOWN -->
             <?php
-                        	if(!empty($data['IsLoggedIn'])){
-                        		echo <<<HTML
-                        		<li class="dropdown">
+               	if(!empty($data['IsLoggedIn'])){
+            ?>
+                        		<li class="dropdown" >
             	<a data-toggle="modal" href="#full" >Upload <i class="icon-upload"></i></a>
             </li>
                         		<li class="dropdown user">
                <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-               <img alt="" src="http://hugde.com/hugde_assets/img/poopicon.jpg" style="width:29px"/>
-               <span class="username">{$data['name']}</span>
+               <?php
+               		if(!empty($data['FbProfilePhotoUrl'])){
+               ?>	
+               <img alt="" src="<?php echo $data['FbProfilePhotoUrl']; ?>" style="width:29px"/>
+               <?php
+					}
+					else{
+				?>
+				<img alt="" src="http://hugde.com/hugde_assets/img/poopicon.jpg" style="width:29px"/>
+				<?php
+					}
+				?>
+               <span class="username"><?php echo $data['name']; ?></span>
                <i class="icon-angle-down"></i>
                </a>
                <ul class="dropdown-menu">
@@ -142,10 +154,9 @@ HTML;
                   </li>
                </ul>
             </li>                	
-HTML;
-							}
-							
-               ?>
+			<?php
+				}			
+            ?>
             
             <!-- END USER LOGIN DROPDOWN -->
          </ul>
@@ -161,7 +172,7 @@ HTML;
 		<div class="page-sidebar navbar-collapse collapse">
 			<ul class="page-sidebar-menu visible-sm visible-xs">
 				<li class="active">
-					<a href="index.html">
+					<a href="<?php echo base_url(),'home'; ?>">
 					Home
 					</a>
 				</li>
