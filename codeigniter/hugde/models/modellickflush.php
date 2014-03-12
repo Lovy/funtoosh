@@ -113,7 +113,10 @@ class modellickflush extends CI_Model{
 		 	$firstLickTimestamp = $query1->first_row()->timestamp;
 		 	$lastLickTimestamp = $query1->last_row()->timestamp; 
 		 }else{
-		 	exit;
+		 	$sql5="select timestamp from hugga where huggaId=?";
+			$query5= $this->db->query($sql,array($huggaId));
+			$firstLickTimestamp=$query5->first_row()->timestamp;
+			$lastLickTimestamp=$firstLickTimestamp;
 		 }
 		 
 		 //$lastLickTimestamp=$rowLast1[0]['timestamp'];
@@ -125,7 +128,8 @@ class modellickflush extends CI_Model{
 		 	$firstFlushTimestamp = $query2->first_row()->timestamp;
 		 	$lastFlushTimestamp = $query2->last_row()->timestamp;
 		 }else{
-		 	exit;
+		 	//exit;
+		 	$lastFlushTimestamp=$firstFlushTimestamp=$lastLickTimestamp;
 		 }
 		  
 		 //$lastFlushTimestamp=$rowLast2[0]['timestamp'];
