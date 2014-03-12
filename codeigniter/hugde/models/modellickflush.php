@@ -140,6 +140,7 @@ class modellickflush extends CI_Model{
 		 $timeIntervalSec=$timeInterval*60*60;
 		 
 		 $v = array();
+		 /*
 		 while($iterationCount>0){
 		 	$timePrevious = $timeCurrent-$timeIntervalSec;
 		 	$timePreviousDate = date('y-m-d H:m:s',$timePrevious);
@@ -157,6 +158,8 @@ class modellickflush extends CI_Model{
 			$v[]=$licks-$flushes;
 			$iterationCount-1;
 		 }
+		  * 
+		  */
 		 
 		 $trendingIndex=0;
 		 $i=1;
