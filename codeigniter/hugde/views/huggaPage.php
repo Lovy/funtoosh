@@ -748,6 +748,14 @@ HTML;
                                 
                               </select>
                     </div>
+                    <div class="form-group">
+                             
+                              <div class="checkbox-list">
+                                 <label>
+                                 <div class="checker"><span class=""><input type="checkbox" name="anon"></span></div> Post as Anonymous
+                                 </label>
+                              </div>
+                    </div>
                		<!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
                   	<div class="row fileupload-buttonbar">
                     	<div class="col-lg-7">

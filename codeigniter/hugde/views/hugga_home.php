@@ -272,9 +272,9 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                           	<div class="col-md-3" style="font-size: 18px">
                           		Views <?php echo $item['views']; ?>
                           	</div>
-                          	<div class="col-md-2">
+                          	<!--<div class="col-md-2">
                           		 <a href="#" class="btn btn-xs red" >Flag <i class=" icon-flag"></i></a>
-                          	</div>
+                          	</div>-->
                         </div>
                      </div>
                      <!--end news-tag-data-->
@@ -732,7 +732,14 @@ HTML;
                                 
                               </select>
                     </div>
-                    
+                    <div class="form-group">
+                             
+                              <div class="checkbox-list">
+                                 <label>
+                                 <div class="checker"><span class=""><input type="checkbox" name="anon"></span></div> Post as Anonymous
+                                 </label>
+                              </div>
+                    </div>
                		<br>
                		<!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
                   	<div class="row fileupload-buttonbar">
