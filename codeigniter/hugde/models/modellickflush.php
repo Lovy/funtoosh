@@ -106,7 +106,7 @@ class modellickflush extends CI_Model{
 			for each v
 				index+=vn/n
 		 */
-		 echo $huggaId;
+		 //echo $huggaId;
 		 $sql1="select timestamp from userlick where huggaid=? order by timestamp asc";
 		 $query1=$this->db->query($sql1,array($huggaId));
 		 if($query1->num_rows()>0){
@@ -165,7 +165,7 @@ class modellickflush extends CI_Model{
 			 $i++;
 		 }
 		 
-		 echo json_encode(array($trendingIndex));
+		 echo json_encode(array($trendingIndex,$v));
 	}
 }
 
