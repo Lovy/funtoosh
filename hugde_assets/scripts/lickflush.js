@@ -32,8 +32,8 @@
 				//get flush count
 				flushcntInt = parseInt($(param).next().find('.badge-success').text());
 				//calculate home index
-				updateHomeIndex(huggaId,updatedLickCnt,flushcntInt);
-				updateTrendingIndex(huggaId);
+				//updateHomeIndex(huggaId,updatedLickCnt,flushcntInt);
+				//updateTrendingIndex(huggaId);
 				//update to the new lick count to server
 				updateLickCount(updatedLickCnt,huggaId);
 				
@@ -60,7 +60,7 @@
 					flushcntInt = parseInt($(param).next().find('.badge-success').text());
 					//calculate home index
 					updateHomeIndex(huggaId,updatedLickCnt,flushcntInt);
-					updateTrendingIndex(huggaId);	
+					//updateTrendingIndex(huggaId);	
 					//update to the new lick count to server
 					updateLickCount(updatedLickCnt,huggaId);
 					
@@ -95,8 +95,8 @@
 				//get lick count
 				lickcntInt = parseInt($(param).next().find('.badge-danger').text());
 				//calculate home index
-				updateHomeIndex(huggaId,lickcntInt,updatedFlushCnt);
-				updateTrendingIndex(huggaId);
+				//updateHomeIndex(huggaId,lickcntInt,updatedFlushCnt);
+				//updateTrendingIndex(huggaId);
 				//update new flush count to the server
 				updateFlushCount(updatedFlushCnt,huggaId);
 				//delete flush entry from the db
@@ -120,8 +120,8 @@
 					//get lick count
 					lickcntInt = parseInt($(param).next().find('.badge-danger').text());
 					//calculate home index
-					updateHomeIndex(huggaId,lickcntInt,updatedFlushCnt);
-					updateTrendingIndex(huggaId);
+					//updateHomeIndex(huggaId,lickcntInt,updatedFlushCnt);
+					//updateTrendingIndex(huggaId);
 					//update new flush count to the server
 					updateFlushCount(updatedFlushCnt,huggaId);
 					

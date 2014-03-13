@@ -62,12 +62,12 @@ class modellickflush extends CI_Model{
 	function calHomeIndex($huggaId=NULL,$licks=0,$flushes=0){
 		
 		//////////////////////////////////QUERIES	////////////////////////////////////////
-		$sql = "select timestamp from hugga where huggaId=?";
+		$sql = "select timestamp,uploadTimeStamp from hugga where huggaId=?";
 		$query = $this->db->query($sql,array($huggaId));
 		$row = $query->result_array();
 		//last update time
 		$lastTime = strtotime($row[0]['timestamp']);
-		
+		$uploadTimeStamp = strtotime($row[0]['uploadTimeStamp']);
 		//////////////////////////////////TIME CALCULATION//////////////////////////////////
 		//get current time
 		$currentTime = time();
@@ -80,7 +80,7 @@ class modellickflush extends CI_Model{
 		$v= $licks-$flushes;
 		
 		///////////////////////////////HOME INDEX CALCULATION///////////////////////////
-		$homeIndex = floatval($v*pow($lastTime,0.2));
+		$homeIndex = floatval($v*$uploadTimeStamp*($currentTime/$uploadTimeStamp));
 		
 		///////////////////////////UPDATE HOME INDEX/////////////////////////////////////
 		$sql="update hugga set homeIndex=? where huggaId=?";
