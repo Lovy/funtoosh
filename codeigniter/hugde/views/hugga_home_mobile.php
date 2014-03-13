@@ -60,9 +60,10 @@
 						Home
 						</a>
 					</li>
+					<!--
 					<li>
-						<a href="">Trending</a>
-					</li>
+						<a href="#">Trending</a>
+					</li>-->
 					<li>
 						<a href="">Desi</a>
 					</li>
@@ -176,9 +177,10 @@
 					Home
 					</a>
 				</li>
-				<li>
-						<a href="">Trending</a>
-					</li>
+				<!--
+					<li>
+						<a href="#">Trending</a>
+					</li>-->
 					<li>
 						<a href="">Desi</a>
 					</li>

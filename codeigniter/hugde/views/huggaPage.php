@@ -81,9 +81,10 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 						Home
 						</a>
 					</li>
+					<!--
 					<li>
 						<a href="#">Trending</a>
-					</li>
+					</li>-->
 					<li>
 						<a href="#">Desi</a>
 					</li>
@@ -192,9 +193,10 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 					Home
 					</a>
 				</li>
-				<li>
+				<!--
+					<li>
 						<a href="#">Trending</a>
-					</li>
+					</li>-->
 					<li>
 						<a href="#">Desi</a>
 					</li>
