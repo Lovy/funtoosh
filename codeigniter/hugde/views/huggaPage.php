@@ -47,7 +47,8 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
    <link rel="shortcut icon" href="favicon.ico" />
    <!------------Facebook JS--------------->
    <script src="<?php echo assets_url(); ?>scripts/facebook.js" type="text/javascript"></script>
-   <script src="<?php echo assets_url(); ?>scripts/mustache.js" type="text/javascript"></script>  
+   <script src="<?php echo assets_url(); ?>scripts/mustache.js" type="text/javascript"></script>
+   <script src="<?php echo assets_url(); ?>scripts/next.js" type="text/javascript"></script>    
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->

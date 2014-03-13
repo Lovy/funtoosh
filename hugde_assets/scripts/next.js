@@ -1,4 +1,4 @@
-$(document).ready(function(){
+
 	function onclicknext(huggaId){
 		$.ajax({
 	    	url: "http://hugde.com/home/next/"+huggaId,
@@ -53,4 +53,4 @@ $(document).ready(function(){
                 }
             });
         }
-});
+
