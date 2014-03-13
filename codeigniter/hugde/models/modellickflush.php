@@ -85,7 +85,7 @@ class modellickflush extends CI_Model{
 		///////////////////////////UPDATE HOME INDEX/////////////////////////////////////
 		$sql="update hugga set homeIndex=? where huggaId=?";
 		$this->db->query($sql,array($homeIndex,$huggaId));
-		$array = array("lasttime"=>$lastTime,"curtime"=>$currentTime,"elaptime"=>$elapsedTime,"hi"=>$homeIndex,"v"=>$v);
+		$array = array("ploadTimeStam"=>$uploadTimeStamp,"curtime"=>$currentTime,"hi"=>$homeIndex,"v"=>$v);
 		return $array;
 	}
 	
