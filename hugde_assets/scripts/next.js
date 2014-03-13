@@ -15,8 +15,14 @@
 	    	success: function(response) {
 	    		//console.log(response);
 	    		var view = {
-		          huggaId : "33",
-		          licks : "1"
+		          huggaId : response.huggaId,
+		          userId: response.userId,
+		          title: response.title,
+		          flushes: response.flushes,
+		          postedBy: response.postedBy,
+		          views: response.views,
+		          originalImageUrl: response.images.originalImageUrl,
+		          licks : response.licks
 		        };
 	    		var template = $('#personTpl').html();
     			var html = Mustache.render(template, view);
