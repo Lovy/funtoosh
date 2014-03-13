@@ -13,10 +13,10 @@
 				unblockUI(el);			
 			},
 	    	success: function(response) {
-	    		console.log(response);
-	    		//var template = $('#personTpl').html();
-    			//var html = Mustache.to_html(template, data);
-    			//$('#huggaContent').html(html);
+	    		//console.log(response);
+	    		var template = $('#personTpl').html();
+    			var html = Mustache.to_html(template, response);
+    			$('#huggaContent').html(html);
 	    		//loginStatus = response.loginStatus;
 	    	}
    		});	
@@ -29,7 +29,7 @@
                 centerY = true;
             }
             el.block({
-                message: '<img src="./assets/img/ajax-loading.gif" align="">',
+                message: '<img src="http://hugde.com/hugde_assets/img/ajax-loading.gif" align="">',
                 centerY: centerY != undefined ? centerY : true,
                 css: {
                     top: '10%',

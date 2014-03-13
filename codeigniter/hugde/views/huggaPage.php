@@ -319,9 +319,9 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                   			</div>		
                   		</div>	
                   	</div>
-                  	 <a href="{{huggaUrl}}"><h3><b>{{title}}</b></h3></a>
+                  	 <a href="http://hugde.com/hugga/{{huggaId}}"><h3><b>{{title}}</b></h3></a>
                      <div class="blog-tag-data">
-                     	<a href="{{huggaUrl}}"><img src="{{imageUrl}}" class="img-responsive" alt="" style="width:100%"></a>
+                     	<a href="http://hugde.com/hugga/{{huggaId}}"><img src="{{images.originalImageUrl}}" class="img-responsive" alt="" style="width:100%"></a>
                         <div class="row">
                            <div class="col-md-2">
                            	
@@ -331,7 +331,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                            	</div>
                            	<div class="col-md-4">
                            		
-                           	  	<div class="fb-like" data-href="{{huggaUrl}}" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true" style="width: 150px !important"></div>
+                           	  	<div class="fb-like" data-href="http://hugde.com/hugga/{{huggaId}}" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true" style="width: 150px !important"></div>
                            		
                           	</div>
                           	
@@ -354,7 +354,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 						.fb_iframe_widget span,
 						.fb_iframe_widget iframe[style]  {width: 100% !important;}
                      </style>
-                     <div class="fb-comments" data-href="{{huggaUrl}}" data-numposts="20" data-colorscheme="light"></div>
+                     <div class="fb-comments" data-href="http://hugde.com/hugga/{{huggaId}}" data-numposts="20" data-colorscheme="light"></div>
                     </script>
                   
                   <!--------------------------------END OF TEMPLATE---------------------------------->
