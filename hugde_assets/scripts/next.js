@@ -15,7 +15,7 @@
 	    	success: function(response) {
 	    		console.log(response.huggaId);
 	    		console.log(response['huggaId']);
-	    		console.log(responsep[0]['huggaId']);
+	    		console.log(response[0]['huggaId']);
 	    		console.log(response[0]);
 	    		var view = {
 		          huggaId : response.huggaId,
