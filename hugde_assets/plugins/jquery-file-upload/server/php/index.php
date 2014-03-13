@@ -89,7 +89,7 @@ class CustomUploadHandler extends UploadHandlerS3 {
 			$sql2="insert into userlick (userId,huggaId) values (?,?)";
 			$query2=$this->db->prepare($sql2);
 			$query2->bind_param('ii',$file->userId,$file->id);
-			 
+			$query2->execute(); 
         }
         return $file;
     }
