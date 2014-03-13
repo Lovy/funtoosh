@@ -13,6 +13,18 @@
 				unblockUI(el);			
 			},
 	    	success: function(response) {
+	    		if(response[0]['lick'][0]['licked']==1){
+	    			licktype="green";
+	    		}
+	    		else{
+	    			licktype="default";
+	    		}
+	    		if(response[0]['flush'][0]['flushed']==1){
+	    			flushtype="red";
+	    		}
+	    		else{
+	    			flushtype="default";
+	    		}
 	    		var view = {
 		          huggaId : response[0]['huggaId'],
 		          userId: response[0]['userId'],
@@ -21,12 +33,18 @@
 		          postedBy: response[0]['postedBy'],
 		          views: response[0]['views'],
 		          originalImageUrl: response[0]['images'][0]['originalImageUrl'],
-		          licks : response[0]['licks']
+		          licks : response[0]['licks'],
+		          licktype:licktype,
+		          flushtype:flushtype
 		        };
 	    		var template = $('#personTpl').html();
     			var html = Mustache.render(template, view);
     			console.log(html);
     			$('#huggaContent').html(html);
+    			try{
+				        FB.XFBML.parse();
+				        twttr.widgets.load(); 
+				    }catch(ex){}
 	    		//loginStatus = response.loginStatus;
 	    	}
    		});	

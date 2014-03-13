@@ -312,9 +312,9 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                   			<!------------In case already licked by the user then the id - licked else unlicked. Similar for flush --------
                   			lick(userId,HuggaId)
                   			-->	
-                  			<a href="javascript:void(0);" onclick="lick({{userId}},{{huggaId}},this);" class="btn {{type}} lick" id="licked">Lick <i class="icon-chevron-up"></i> <span class="badge badge-danger">{{licks}}</span></a>                			
-                  			<a href="javascript:void(0);" onclick="flush({{userId}},{{huggaId}},this);" class="btn {{type}} flush" id="flushed">Flush <i class="icon-chevron-down"></i> <span class="badge badge-success">{{flushes}}</span></a>                           
-                  			<a href="javascript:void(0)" onclick="javascript:onclicknext({{huggaId}});" class="btn blue pull-right" >Next <i class=" icon-chevron-right"></i></a>
+                  			<a href="javascript:void(0);" onclick="lick({{userId}},{{huggaId}},this);" class="btn {{licktype}} lick" id="licked">Lick <i class="icon-chevron-up"></i> <span class="badge badge-danger">{{licks}}</span></a>                			
+                  			<a href="javascript:void(0);" onclick="flush({{userId}},{{huggaId}},this);" class="btn {{flushtype}} flush" id="flushed">Flush <i class="icon-chevron-down"></i> <span class="badge badge-success">{{flushes}}</span></a>                           
+                  			<a href="javascript:void(0)" onclick="javascript:onclicknext({{huggaId}}.{{userId}});" class="btn blue pull-right" >Next <i class=" icon-chevron-right"></i></a>
                   		    
                   			</div>		
                   		</div>	
