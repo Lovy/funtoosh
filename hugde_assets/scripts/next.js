@@ -39,7 +39,7 @@
 		        };
 	    		var template = $('#personTpl').html();
     			var html = Mustache.render(template, view);
-    			console.log(html);
+    			//console.log(html);
     			$('#huggaContent').html(html);
     			try{
 				        FB.XFBML.parse();

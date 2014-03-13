@@ -219,8 +219,8 @@ class modelhome extends CI_Model{
 		$query = $this->db->query($sql,array($huggaId));
 		$homeIndex = $query->first_row()->homeIndex;
 		
-		$sql2='select * from hugga where homeIndex<=? LIMIT 0,1';
-		$query2=$this->db->query($sql2,array($homeIndex));
+		$sql2='select * from hugga where homeIndex<=? and huggaId!=? LIMIT 0,1';
+		$query2=$this->db->query($sql2,array($homeIndex,$huggaId));
 		
 		$hugga = array();
 				//Loop through each row returned from the query
