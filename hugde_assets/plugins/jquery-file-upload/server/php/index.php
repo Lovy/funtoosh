@@ -68,12 +68,14 @@ class CustomUploadHandler extends UploadHandlerS3 {
             $file->id = $this->db->insert_id;
 			$currentTime = date('Y-m-d H:m:s',time());
 			$time = intval(time());
+			$licks = intval(1);
 			// Insert into hugga table
-			$sql = 'INSERT INTO hugga (userId,homeIndex,imageId,title,postedBy,anonymous,category,uploadTimeStamp)'.' VALUES (?,?,?,?,?,?,?,?)';
+			$sql = 'INSERT INTO hugga (userId,licks,homeIndex,imageId,title,postedBy,anonymous,category,uploadTimeStamp)'.' VALUES (?,?,?,?,?,?,?,?)';
             $query = $this->db->prepare($sql);
             $query->bind_param(
-                'iiisssss',
+                'iiiisssss',
                 $file->userId,
+                $licks,
                 $time,
                 $file->id,
                 $file->title,
