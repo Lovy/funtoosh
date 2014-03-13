@@ -1,7 +1,7 @@
 
-	function onclicknext(huggaId){
+	function onclicknext(huggaId,userId){
 		$.ajax({
-	    	url: "http://hugde.com/home/next/"+huggaId,
+	    	url: "http://hugde.com/home/next/"+huggaId+'/'+userId,
 	    	async: false,
 	    	dataType: 'json',
 	    	beforeSend:function(){

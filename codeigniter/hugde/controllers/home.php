@@ -183,12 +183,12 @@ class home extends CI_Controller{
 		}
 	}
 	
-	function next($huggaId){
+	function next($huggaId,$userId){
 		
 		// seed with microseconds
 		$this->load->model('modelhome');
 		
-		$result = $this->modelhome->getNextHugga($huggaId);
+		$result = $this->modelhome->getNextHugga($huggaId,$userId);
 		echo json_encode($result);
 	}
 	

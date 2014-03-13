@@ -214,7 +214,7 @@ class modelhome extends CI_Model{
 		
 	}
 	
-	function getNextHugga($huggaId){
+	function getNextHugga($huggaId,$userId){
 		$sql = "select homeIndex from hugga where huggaId =?";
 		$query = $this->db->query($sql,array($huggaId));
 		$homeIndex = $query->first_row()->homeIndex;
@@ -227,7 +227,7 @@ class modelhome extends CI_Model{
     			foreach ($query2->result_array() as $row) {
     				//Retrieve images for each space
     				$sql3 ="select * from images where imageId IN (select imageId from hugga where huggaId=?)";
-    				$query3 =$this->db->query($sql,array($row['huggaId']));
+    				$query3 =$this->db->query($sql3,array($row['huggaId']));
 					$images= array();
 					foreach ($query3->result_array() as $row2) {
 						$images[]=$row2;
