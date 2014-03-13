@@ -21,7 +21,7 @@
 		          flushes: response.flushes,
 		          postedBy: response.postedBy,
 		          views: response.views,
-		          originalImageUrl: response.images.originalImageUrl,
+		          //originalImageUrl: response.images.originalImageUrl,
 		          licks : response.licks
 		        };
 	    		var template = $('#personTpl').html();
