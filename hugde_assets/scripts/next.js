@@ -13,19 +13,15 @@
 				unblockUI(el);			
 			},
 	    	success: function(response) {
-	    		console.log(response.huggaId);
-	    		console.log(response['huggaId']);
-	    		console.log(response[0]['huggaId']);
-	    		console.log(response[0]);
 	    		var view = {
-		          huggaId : response.huggaId,
-		          userId: response.userId,
-		          title: response.title,
-		          flushes: response.flushes,
-		          postedBy: response.postedBy,
-		          views: response.views,
-		          //originalImageUrl: response.images.originalImageUrl,
-		          licks : response.licks
+		          huggaId : response[0]['huggaId'],
+		          userId: response[0]['userId'],
+		          title: response[0]['title'],
+		          flushes: response[0]['flushes'],
+		          postedBy: response[0]['postedBy'],
+		          views: response[0]['views'],
+		          originalImageUrl: response[0]['images'][0]['originalImageUrl'],
+		          licks : response[0]['licks']
 		        };
 	    		var template = $('#personTpl').html();
     			var html = Mustache.render(template, view);
