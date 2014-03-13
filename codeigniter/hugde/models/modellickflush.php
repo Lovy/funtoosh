@@ -80,8 +80,8 @@ class modellickflush extends CI_Model{
 		$v= $licks-$flushes;
 		
 		///////////////////////////////HOME INDEX CALCULATION///////////////////////////
-		$homeIndex = floatval($v*$uploadTimeStamp*($currentTime/$uploadTimeStamp));
-		
+		//$homeIndex = floatval($v*$uploadTimeStamp*($currentTime/$uploadTimeStamp));
+		$homeIndex=2;
 		///////////////////////////UPDATE HOME INDEX/////////////////////////////////////
 		$sql="update hugga set homeIndex=? where huggaId=?";
 		$this->db->query($sql,array($homeIndex,$huggaId));
