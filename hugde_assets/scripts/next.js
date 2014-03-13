@@ -13,8 +13,8 @@
 				unblockUI(el);			
 			},
 	    	success: function(response) {
-	    		//console.log(response);
-	    		var template = $('#personTpl').html();
+	    		console.log(response);
+	    		var template = $('#personTpl').innerHtml();
     			var html = Mustache.render(template, response);
     			console.log(html);
     			$('#huggaContent').html(html);
