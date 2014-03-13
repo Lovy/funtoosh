@@ -46,7 +46,8 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
    <!-- END THEME STYLES -->
    <link rel="shortcut icon" href="favicon.ico" />
    <!------------Facebook JS--------------->
-   <script src="<?php echo assets_url(); ?>scripts/facebook.js" type="text/javascript"></script>  
+   <script src="<?php echo assets_url(); ?>scripts/facebook.js" type="text/javascript"></script>
+   <script src="<?php echo assets_url(); ?>scripts/mustache.js" type="text/javascript"></script>  
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
@@ -242,7 +243,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                	<div class="col-md-2">
                		
                	</div>
-                  <div class="col-md-6 article-block">
+                  <div id="huggaContent" class="col-md-6 article-block">
                   	<?php
 					foreach($huggas as $item){
 					?>
@@ -254,8 +255,8 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                   			-->	
                   			<a href="javascript:void(0);" onclick="lick(<?php echo $data['userId']; ?>,<?php echo $item['huggaId']; ?>,this);" class="btn <?php if($item['lick']['licked']==1){echo 'green';}else{echo 'default';} ?> lick" id="licked">Lick <i class="icon-chevron-up"></i> <span class="badge badge-danger"><?php echo $item['licks']; ?></span></a>                			
                   			<a href="javascript:void(0);" onclick="flush(<?php echo $data['userId']; ?>,<?php echo $item['huggaId']; ?>,this);" class="btn <?php if($item['flush']['flushed']==1){echo 'red';}else{echo 'default';} ?> flush" id="flushed">Flush <i class="icon-chevron-down"></i> <span class="badge badge-success"><?php echo $item['flushes']; ?></span></a>                           
-                  			<!--<a href="<?php echo base_url().'home/next/'.$item['huggaId']; ?>" class="btn blue pull-right" >Next <i class=" icon-chevron-right"></i></a>
-                  		    -->
+                  			<a href="javascript:void(0)" onclick="javascript:onclicknext(<?php echo $item['huggaId']; ?>);" class="btn blue pull-right" >Next <i class=" icon-chevron-right"></i></a>
+                  		    
                   			</div>		
                   		</div>	
                   	</div>
@@ -302,6 +303,60 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                      
                   </div>
                   
+                  <!---------------------------------TEMPLATE---------------------------------------->
+                  <script id="personTpl" type="text/template">
+                  <div class="row">
+                  		<div class="col-md-12">
+                  			<div class="clearfix">                 				
+                  			<!------------In case already licked by the user then the id - licked else unlicked. Similar for flush --------
+                  			lick(userId,HuggaId)
+                  			-->	
+                  			<a href="javascript:void(0);" onclick="lick({{userId}},{{huggaId}},this);" class="btn {{type}} lick" id="licked">Lick <i class="icon-chevron-up"></i> <span class="badge badge-danger">{{licks}}</span></a>                			
+                  			<a href="javascript:void(0);" onclick="flush({{userId}},{{huggaId}},this);" class="btn {{type}} flush" id="flushed">Flush <i class="icon-chevron-down"></i> <span class="badge badge-success">{{flushes}}</span></a>                           
+                  			<a href="javascript:void(0)" onclick="javascript:onclicknext({{huggaId}});" class="btn blue pull-right" >Next <i class=" icon-chevron-right"></i></a>
+                  		    
+                  			</div>		
+                  		</div>	
+                  	</div>
+                  	 <a href="{{huggaUrl}}"><h3><b>{{title}}</b></h3></a>
+                     <div class="blog-tag-data">
+                     	<a href="{{huggaUrl}}"><img src="{{imageUrl}}" class="img-responsive" alt="" style="width:100%"></a>
+                        <div class="row">
+                           <div class="col-md-2">
+                           	
+                           		<a href="https://twitter.com/share?count=horizontal" class="twitter-share-button" data-lang="en">Tweet</a>
+                           		<!--<div class="pull-right" style="margin-top:-25px"><i class="icon-calendar"></i> <a href="#">April 16, 2013</a></div>-->
+                           
+                           	</div>
+                           	<div class="col-md-4">
+                           		
+                           	  	<div class="fb-like" data-href="{{huggaUrl}}" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true" style="width: 150px !important"></div>
+                           		
+                          	</div>
+                          	
+                          	<div class="col-md-3">
+                          		Posted by: {{postedBy}}
+                          	</div>
+                          	<div class="col-md-3" style="font-size: 18px">
+                          		Views {{views}}
+                          	</div>
+                          	<div class="col-md-2">
+                          		 <a href="#" class="btn btn-xs red" >Flag <i class=" icon-flag"></i></a>
+                          	</div>
+                        </div>
+                     </div>
+                     <!--end news-tag-data-->
+                    
+                    <hr>
+                    <style>
+                     	.fb_iframe_widget,
+						.fb_iframe_widget span,
+						.fb_iframe_widget iframe[style]  {width: 100% !important;}
+                     </style>
+                     <div class="fb-comments" data-href="{{huggaUrl}}" data-numposts="20" data-colorscheme="light"></div>
+                    </script>
+                  
+                  <!--------------------------------END OF TEMPLATE---------------------------------->
                   
                   <!--end col-md-9-->
                   <div class="col-md-3 blog-sidebar" style="background-color: #ffd703">

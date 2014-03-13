@@ -213,6 +213,41 @@ class modelhome extends CI_Model{
 		$query2 = $this->db->query($sql2,array($huggaId));
 		
 	}
+	
+	function getNextHugga($huggaId){
+		$sql = "select homeIndex from hugga where huggaId =?";
+		$query = $this->db->query($sql,array($huggaId));
+		$homeIndex = $query->first_row()->homeIndex;
+		
+		$sql2='select * from hugga where homeIndex<=? LIMIT 0,1';
+		$query2=$this->db->query($sql2,array($homeIndex));
+		
+		$hugga = array();
+				//Loop through each row returned from the query
+    			foreach ($query2->result_array() as $row) {
+    				//Retrieve images for each space
+    				$sql3 ="select * from images where imageId IN (select imageId from hugga where huggaId=?)";
+    				$query3 =$this->db->query($sql,array($row['huggaId']));
+					$images= array();
+					foreach ($query3->result_array() as $row2) {
+						$images[]=$row2;
+					}
+					$row['images']=$images;
+					
+					//check lick flush status for this hugga
+					$lick = array();
+					$flush = array();
+					$this->load->model('modellickflush');
+					$lickResponse = $this->modellickflush->getLickStatus($row['huggaId'],$userId);
+					$flushResponse = $this->modellickflush->getFlushStatus($row['huggaId'],$userId);
+					$lick['licked']=$lickResponse;
+					$flush['flushed']=$flushResponse;
+					$row['lick']=$lick;
+					$row['flush']=$flush;
+					$hugga[]=$row;
+				}
+				return $hugga;
+	}
 }
 
 ?>

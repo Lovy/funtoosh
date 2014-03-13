@@ -124,7 +124,7 @@ class modellickflush extends CI_Model{
 		 
 		 $sql2="select timestamp from userflush where huggaid=? order by timestamp asc";
 		 $query2=$this->db->query($sql2,array($huggaId));
-		 if($query1->num_rows()>0){
+		 if($query2->num_rows()>0){
 		 	$firstFlushTimestamp = $query2->first_row()->timestamp;
 		 	$lastFlushTimestamp = $query2->last_row()->timestamp;
 		 }else{

@@ -187,30 +187,11 @@ class home extends CI_Controller{
 		
 		// seed with microseconds
 		$this->load->model('modelhome');
-		$totalHuggas = $this->modelhome->totalHuggas();
-		//var_dump($totalHuggas);
 		
-		$totalHuggas =intval($totalHuggas[0]['count']);
-		srand($this->make_seed());
-		$nextId = rand(1,$totalHuggas);
-		if($huggaId!=$nextId){
-			if($this->modelhome->huggaExist($nextId)){
-			$url = base_url().'hugga/'.$nextId;
-			redirect($url);
-			}
-			else{
-				$url = base_url().'home/next/'.$nextId;
-				redirect($url);
-			}
-		}
-	
+		$result = $this->modelhome->getNextHugga($huggaId);
+		echo json_encode($result);
 	}
 	
-	function make_seed()
-	{
-	  list($usec, $sec) = explode(' ', microtime());
-	  return (float) $sec + ((float) $usec * 100000);
-	}
 	
 }
 
