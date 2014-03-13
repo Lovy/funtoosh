@@ -66,13 +66,15 @@ class CustomUploadHandler extends UploadHandlerS3 {
             );
             $query->execute();
             $file->id = $this->db->insert_id;
-			$currentTime = date('Y-m-d H:m:s',time());;
+			$currentTime = date('Y-m-d H:m:s',time());
+			$time = intval(time());
 			// Insert into hugga table
-			$sql = 'INSERT INTO hugga (userId,imageId,title,postedBy,anonymous,category,uploadTimeStamp)'.' VALUES (?, ?,?,?,?,?,?)';
+			$sql = 'INSERT INTO hugga (userId,homeIndex,imageId,title,postedBy,anonymous,category,uploadTimeStamp)'.' VALUES (?,?,?,?,?,?,?,?)';
             $query = $this->db->prepare($sql);
             $query->bind_param(
-                'iisssss',
+                'iiisssss',
                 $file->userId,
+                $time,
                 $file->id,
                 $file->title,
                 $file->username,
@@ -82,7 +84,11 @@ class CustomUploadHandler extends UploadHandlerS3 {
             );
             $query->execute();
             $file->id = $this->db->insert_id;
-			 
+			
+			//Insert into userlick table
+			$sql2="insert into userlick (userId,huggaId) values (?,?)";
+			$query2=$this->db->prepare($sql2);
+			$query2->bind_param('ii',$file->userId,$file->id);
 			 
         }
         return $file;
