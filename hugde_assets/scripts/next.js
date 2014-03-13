@@ -13,9 +13,13 @@
 				unblockUI(el);			
 			},
 	    	success: function(response) {
-	    		console.log(response);
-	    		var template = $('#personTpl').innerHtml();
-    			var html = Mustache.render(template, response);
+	    		//console.log(response);
+	    		var view = {
+		          huggaId : "33",
+		          licks : "1"
+		        };
+	    		var template = $('#personTpl').html();
+    			var html = Mustache.render(template, view);
     			console.log(html);
     			$('#huggaContent').html(html);
 	    		//loginStatus = response.loginStatus;
