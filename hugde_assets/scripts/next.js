@@ -15,7 +15,8 @@
 	    	success: function(response) {
 	    		//console.log(response);
 	    		var template = $('#personTpl').html();
-    			var html = Mustache.to_html(template, response);
+    			var html = Mustache.render(template, response);
+    			console.log(html);
     			$('#huggaContent').html(html);
 	    		//loginStatus = response.loginStatus;
 	    	}
