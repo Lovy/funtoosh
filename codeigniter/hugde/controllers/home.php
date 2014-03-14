@@ -79,7 +79,10 @@ class home extends CI_Controller{
 			//var_dump($response['data']);
 			//return HTML code
 			//echo json_encode($response);
-			echo $this->jsonToHtml($response);
+			if(!empty($response['huggas'])){
+				echo $this->jsonToHtml($response);
+			}
+			
 			
 		}
 		else{
@@ -88,7 +91,9 @@ class home extends CI_Controller{
 			$response['huggas'] = $this->modelhome->loadData('0',NULL,'HIDE',$huggasPerPage,$pageNo,$category);
 			
 			//return HTML code
-			echo $this->jsonToHtml($response);
+			if(!empty($response['huggas'])){
+				echo $this->jsonToHtml($response);
+			}
 			
 		}
 	}
