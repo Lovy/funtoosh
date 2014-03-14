@@ -267,13 +267,13 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                            	  	<div class="fb-like" data-href="<?php echo base_url().'hugga/'.$item['huggaId']; ?>" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true" style="width: 150px !important"></div>
                            		
                           	</div>
-                          	
+                          	<!--
                           	<div class="col-md-3">
                           		Posted by: <?php echo $item['postedBy']; ?>
                           	</div>
                           	<div class="col-md-3" style="font-size: 18px">
                           		Views <?php echo $item['views']; ?>
-                          	</div>
+                          	</div>-->
                           	<!--<div class="col-md-2">
                           		 <a href="#" class="btn btn-xs red" >Flag <i class=" icon-flag"></i></a>
                           	</div>-->
