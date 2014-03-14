@@ -20,9 +20,11 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
    <meta name="MobileOptimized" content="320">
    <!-- BEGIN GLOBAL MANDATORY STYLES --> 
    <meta name="google-site-verification" content="szn8OsBvT2GfoDR2Cq692tO4x8JbQFJEKd2GUMfQci0" />         
-   <!--<link href="<?php echo assets_url(); ?>plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+   <link href="<?php echo assets_url(); ?>plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
    <link href="<?php echo assets_url(); ?>plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
    <link href="<?php echo assets_url(); ?>plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+   <!-- END GLOBAL MANDATORY STYLES -->
+   <!-- BEGIN THEME STYLES --> 
    <link rel="stylesheet" type="text/css" href="<?php echo assets_url(); ?>plugins/select2/select2_metro.css" />
    <link href="<?php echo assets_url(); ?>css/style-metronic.css" rel="stylesheet" type="text/css"/>
    <link href="<?php echo assets_url(); ?>css/style.css" rel="stylesheet" type="text/css"/>
@@ -34,9 +36,6 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
    <link href="<?php echo assets_url(); ?>plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet" />
    <link href="<?php echo assets_url(); ?>plugins/jquery-file-upload/css/jquery.fileupload-ui.css" rel="stylesheet" />
    <link href="<?php echo assets_url(); ?>css/pages/login-soft.css" rel="stylesheet" type="text/css"/>
-  -->
-  <link href="<?php echo assets_url(); ?>css/combineCssMinify.css" rel="stylesheet" type="text/css"/>
-  
    <!-- END THEME STYLES -->
    <link rel="shortcut icon" href="favicon.ico" />
    <!------------Facebook JS--------------->
@@ -260,12 +259,12 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                         <div class="row">
                            <div class="col-md-2">
                            	
-                           		<!--<a href="https://twitter.com/share?count=horizontal" class="twitter-share-button" data-lang="en">Tweet</a>
+                           		<a href="https://twitter.com/share?count=horizontal" class="twitter-share-button" data-lang="en">Tweet</a>
                            		<!--<div class="pull-right" style="margin-top:-25px"><i class="icon-calendar"></i> <a href="#">April 16, 2013</a></div>-->
                            
                            	</div>
                            	<div class="col-md-4">
-                           	  	<!--<div class="fb-like" data-href="<?php echo base_url().'hugga/'.$item['huggaId']; ?>" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true" style="width: 150px !important"></div>-->
+                           	  	<div class="fb-like" data-href="<?php echo base_url().'hugga/'.$item['huggaId']; ?>" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true" style="width: 150px !important"></div>
                            		
                           	</div>
                           	<!--
@@ -908,7 +907,7 @@ HTML;
    <script src="<?php echo assets_url(); ?>plugins/respond.min.js"></script>
    <script src="<?php echo assets_url(); ?>plugins/excanvas.min.js"></script> 
    <![endif]-->   
-   <!--
+   
    <script src="<?php echo assets_url(); ?>plugins/jquery-1.10.2.min.js" type="text/javascript"></script>
    <script src="<?php echo assets_url(); ?>plugins/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
    <script src="<?php echo assets_url(); ?>plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
@@ -919,10 +918,53 @@ HTML;
    <script src="<?php echo assets_url(); ?>plugins/uniform/jquery.uniform.min.js" type="text/javascript" ></script>
    <script src="<?php echo assets_url(); ?>scripts/jquery.validate.min.js" type="text/javascript"></script>
    <script src="<?php echo assets_url(); ?>plugins/backstretch/jquery.backstretch.min.js" type="text/javascript"></script>
-   -->
-   <script src="<?php echo assets_url(); ?>scripts/combineMinify.js" type="text/javascript"></script>      
    
-      
+   <!--<script type="text/javascript" src="<?php echo assets_url(); ?>plugins/select2/select2.min.js"></script>-->
+   <script type="text/javascript" src="<?php echo assets_url(); ?>plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+   
+   <!-- END CORE PLUGINS -->
+    <!-- BEGIN PAGE LEVEL PLUGINS -->
+   <script src="<?php echo assets_url(); ?>plugins/fancybox/source/jquery.fancybox.pack.js"></script>
+   <!-- END PAGE LEVEL PLUGINS-->
+   <!-- BEGIN:File Upload Plugin JS files-->
+   <!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
+   <script src="<?php echo assets_url(); ?>plugins/jquery-file-upload/js/vendor/jquery.ui.widget.js"></script>
+   <!-- The Templates plugin is included to render the upload/download listings-->
+   <script src="<?php echo assets_url(); ?>plugins/jquery-file-upload/js/vendor/tmpl.min.js"></script>
+   <!-- The Load Image plugin is included for the preview images and image resizing functionality -->
+   <script src="<?php echo assets_url(); ?>plugins/jquery-file-upload/js/vendor/load-image.min.js"></script>
+   <!-- The Canvas to Blob plugin is included for image resizing functionality -->
+   <script src="<?php echo assets_url(); ?>plugins/jquery-file-upload/js/vendor/canvas-to-blob.min.js"></script>
+   <!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
+   <!--
+   <script src="<?php echo assets_url(); ?>plugins/jquery-file-upload/js/jquery.iframe-transport.js"></script>
+   <!-- The basic File Upload plugin -->
+   <script src="<?php echo assets_url(); ?>plugins/jquery-file-upload/js/jquery.fileupload.js"></script>
+   <!-- The File Upload processing plugin -->
+   <script src="<?php echo assets_url(); ?>plugins/jquery-file-upload/js/jquery.fileupload-process.js"></script>
+   <!-- The File Upload image preview & resize plugin -->
+   
+   <script src="<?php echo assets_url(); ?>plugins/jquery-file-upload/js/jquery.fileupload-image.js"></script>
+   <!-- The File Upload audio preview plugin -->
+   <!--
+   <script src="<?php echo assets_url(); ?>plugins/jquery-file-upload/js/jquery.fileupload-audio.js"></script>
+   <!-- The File Upload video preview plugin -->
+   <!--
+   <script src="<?php echo assets_url(); ?>plugins/jquery-file-upload/js/jquery.fileupload-video.js"></script>
+   <!-- The File Upload validation plugin -->
+   <script src="<?php echo assets_url(); ?>plugins/jquery-file-upload/js/jquery.fileupload-validate.js"></script>
+   <!-- The File Upload user interface plugin -->
+   <script src="<?php echo assets_url(); ?>plugins/jquery-file-upload/js/jquery.fileupload-ui.js"></script>
+   <!-- The main application script -->
+   <!-- The XDomainRequest Transport is included for cross-domain file deletion for IE 8 and IE 9 -->
+   <!--[if (gte IE 8)&(lt IE 10)]>
+   <script src="assets/plugins/jquery-file-upload/js/cors/jquery.xdr-transport.js"></script>
+   <![endif]-->
+   <script src="<?php echo assets_url(); ?>scripts/app.js"></script>
+   <script src="<?php echo assets_url(); ?>scripts/form-fileupload.js"></script>
+   <script src="<?php echo assets_url(); ?>scripts/login-soft.js" type="text/javascript"></script> 
+   <script src="<?php echo assets_url(); ?>scripts/lickflush.js" type="text/javascript"></script>   
+   <script src="<?php echo assets_url(); ?>scripts/autoload.js" type="text/javascript"></script>      
    <script>
       jQuery(document).ready(function() {    
          App.init();

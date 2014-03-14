@@ -170,15 +170,13 @@ class home extends CI_Controller{
                            		
                           	</div>
                           	
-                          	<div class="col-md-3">
+                          	<!--<div class="col-md-3">
                           		Posted by: '. $item['postedBy'].'
                           	</div>
                           	<div class="col-md-3" style="font-size: 18px">
                           		Views '.$item['views'].'
-                          	</div>
-                          	<div class="col-md-2">
-                          		 <a href="#" class="btn btn-xs red" >Flag <i class=" icon-flag"></i></a>
-                          	</div>
+                          	</div>-->
+                          	
                         </div>
                      </div>
                      <!--end news-tag-data-->
