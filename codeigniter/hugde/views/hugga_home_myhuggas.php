@@ -296,7 +296,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                   
                   
                   <!--end col-md-9-->
-                  <div class="col-md-3 blog-sidebar" style="background-color: #ffd703">
+                  <!--<div class="col-md-3 blog-sidebar" style="background-color: #ffd703">
                   	<div class="row">
                   		<ul class="list-group">
                        
@@ -325,7 +325,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 	                  }
 					?> 
                      
-                  </div>
+                  </div>-->
                   <!--end col-md-3-->
                </div>
             </div>

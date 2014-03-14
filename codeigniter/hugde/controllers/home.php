@@ -213,7 +213,8 @@ class home extends CI_Controller{
 			}
 			else{
 				//var_dump($response);
-				$this->load->view('hugga_home_myhuggas',$response);
+				//$this->load->view('hugga_home_myhuggas',$response);
+				$this->load->view('myHuggas');
 			}
 		}
 		else{

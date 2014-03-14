@@ -1,5 +1,11 @@
 <!DOCTYPE html>
-
+<!-- 
+Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.0
+Version: 1.5.2
+Author: KeenThemes
+Website: http://www.keenthemes.com/
+Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
+-->
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
 <!--[if !IE]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
@@ -29,10 +35,13 @@
    <link href="<?php echo assets_url(); ?>plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet" />
    <link href="<?php echo assets_url(); ?>plugins/jquery-file-upload/css/jquery.fileupload-ui.css" rel="stylesheet" />
    <link href="<?php echo assets_url(); ?>css/pages/login-soft.css" rel="stylesheet" type="text/css"/>
+   <link rel="stylesheet" type="text/css" href="<?php echo assets_url(); ?>plugins/bootstrap-markdown/css/bootstrap-markdown.min.css">
+	<link href="<?php echo assets_url(); ?>plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet" type="text/css"/>
+   
    <!-- END THEME STYLES -->
    <link rel="shortcut icon" href="favicon.ico" />
-   <!------------Facebook JS--------------->
-   <script src="<?php echo assets_url(); ?>scripts/facebook.js" type="text/javascript"></script>  
+    <!------------Facebook JS--------------->
+    <script src="<?php echo assets_url(); ?>scripts/facebook.js" type="text/javascript"></script>  
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
@@ -48,15 +57,19 @@
       <!-- BEGIN TOP NAVIGATION BAR -->
       <div class="header-inner">
          <!-- BEGIN LOGO -->  
-         <a class="navbar-brand" href="<?php echo base_url().'home'; ?>">
-         <img src="<?php echo assets_url(); ?>img/hugdew.jpg" alt="logo" class="img-responsive" style="margin-top: -13px;height: 59px;margin-left: 10px" />
+         <a class="navbar-brand" href="http://hugde.com/home">
+         <img src="<?php echo assets_url(); ?>img/hugdew.jpg" alt="logo" class="img-responsive" style="margin-top: -13px;height: 41px;" />
          </a>
-         <!-- END LOGO-->
+         <!-- END LOGO -->
+         <!-- BEGIN RESPONSIVE MENU TOGGLER --> 
+         <a href="javascript:;" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+         <img src="<?php echo assets_url(); ?>img/menu-toggler.png" alt="" />
+         </a> 
          <!-- BEGIN HORIZANTAL MENU -->
-         <div class="hor-menu hidden-sm hidden-xs" style="margin-left: -4px">
+			<div class="hor-menu hidden-sm hidden-xs" style="margin-left: -4px">
 				<ul class="nav navbar-nav" style="padding: 9px">
 					<li class="active">
-						<a href="<?php echo base_url().'home'; ?>">
+						<a href="<?php echo base_url(),'home'; ?>">
 						Home
 						</a>
 					</li>
@@ -65,16 +78,16 @@
 						<a href="#">Trending</a>
 					</li>-->
 					<li>
-						<a href="<?php echo base_url().'desi'; ?>">Desi</a>
+						<a href="<?php echo base_url(),'desi'; ?>">Desi</a>
 					</li>
 					<li>
-						<a href="<?php echo base_url().'firangi'; ?>">Firangi</a>
+						<a href="<?php echo base_url(),'firangi'; ?>">Firangi</a>
 					</li>
 					<li>
-						<a href="<?php echo base_url().'seasonal'; ?>">Seasonal</a>
+						<a href="<?php echo base_url(),'seasonal'; ?>">Seasonal</a>
 					</li>
 					<li>
-						<a href="<?php echo base_url().'labs'; ?>">Labs</a>
+						<a href="<?php echo base_url(),'labs'; ?>">Labs</a>
 					</li>
 					<!--<li>
 						<span class="hor-menu-search-form-toggler">&nbsp;</span>
@@ -92,14 +105,14 @@
 				</ul>
 			</div>
 			<!-- END HORIZANTAL MENU -->
-         <!-- BEGIN RESPONSIVE MENU TOGGLER --> 
-         <a href="javascript:;" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-         <img src="<?php echo assets_url(); ?>img/menu-toggler.png" alt="" />
-         </a> 
+			<!-- BEGIN RESPONSIVE MENU TOGGLER -->
+			<a href="javascript:;" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+			<img src="<?php echo assets_url().'/img/menu-toggler.png'; ?>" alt="" />
+			</a>  
          <!-- END RESPONSIVE MENU TOGGLER -->
          <!-- BEGIN TOP NAVIGATION MENU -->
-         <ul class="nav navbar-nav pull-right">
-           <!-- BEGIN NOTIFICATION DROPDOWN -->
+         <ul class="nav navbar-nav pull-right" style="margin-top: 5px">
+            <!-- BEGIN NOTIFICATION DROPDOWN -->
             
             <!-- END NOTIFICATION DROPDOWN -->
             <!-- BEGIN INBOX DROPDOWN -->
@@ -140,7 +153,7 @@
 					}
 					else{
 				?>
-				<img alt="" src="http://hugde.com/hugde_assets/img/poopicon.jpg" style="width:29px"/>
+				<img alt="" src="http://hugde.com/hugde_<?php echo assets_url(); ?>img/poopicon.jpg" style="width:29px"/>
 				<?php
 					}
 				?>
@@ -169,11 +182,11 @@
    <div class="clearfix"></div>
    <!-- BEGIN CONTAINER -->   
    <div class="page-container">
-       <!-- BEGIN EMPTY PAGE SIDEBAR -->
+     <!-- BEGIN EMPTY PAGE SIDEBAR -->
 		<div class="page-sidebar navbar-collapse collapse">
 			<ul class="page-sidebar-menu visible-sm visible-xs">
 				<li class="active">
-					<a href="<?php echo base_url().'home'; ?>">
+					<a href="<?php echo base_url(),'home'; ?>">
 					Home
 					</a>
 				</li>
@@ -182,21 +195,21 @@
 						<a href="#">Trending</a>
 					</li>-->
 					<li>
-						<a href="<?php echo base_url().'desi'; ?>">Desi</a>
+						<a href="<?php echo base_url(),'desi'; ?>">Desi</a>
 					</li>
 					<li>
-						<a href="<?php echo base_url().'firangi'; ?>">Firangi</a>
+						<a href="<?php echo base_url(),'firangi'; ?>">Firangi</a>
 					</li>
 					<li>
-						<a href="<?php echo base_url().'seasonal'; ?>">Seasonal</a>
+						<a href="<?php echo base_url(),'seasonal'; ?>">Seasonal</a>
 					</li>
 					<li>
-						<a href="<?php echo base_url().'labs'; ?>">Labs</a>
+						<a href="<?php echo base_url(),'labs'; ?>">Labs</a>
 					</li>
 				
 			</ul>
 		</div>
-		<!-- END EMPTY PAGE SIDEBAR -->   
+		<!-- END EMPTY PAGE SIDEBAR --> 
      
       <!-- BEGIN PAGE -->
       <div class="page-content">
@@ -225,68 +238,133 @@
                 
          <!-- BEGIN PAGE CONTENT-->
          <div class="row">
-            <div class="col-md-12 blog-page">  	
-               <div class="row">
-               	<div class="col-md-2">
-               		
-               	</div>
-                  <div class="col-md-5 article-block">
-                  	<?php
-					foreach($huggas as $item){
-					?>
-                  	<div class="row">
-                  		<div class="col-md-12">
-                  			<div class="clearfix">                 				
-                  			<!------------In case already licked by the user then the id - licked else unlicked. Similar for flush --------
-                  			lick(userId,HuggaId)
-                  			-->	
-                  			<a href="javascript:void(0);" onclick="lick(<?php echo $data['userId']; ?>,<?php echo $item['huggaId']; ?>,this);" class="btn <?php if($item['lick']['licked']==1){echo 'green';}else{echo 'default';} ?> lick" id="licked">Lick <i class="icon-chevron-up"></i> <span class="badge badge-danger"><?php echo $item['licks']; ?></span></a>                			
-                  			<a href="javascript:void(0);" onclick="flush(<?php echo $data['userId']; ?>,<?php echo $item['huggaId']; ?>,this);" class="btn <?php if($item['flush']['flushed']==1){echo 'red';}else{echo 'default';} ?> flush" id="flushed">Flush <i class="icon-chevron-down"></i> <span class="badge badge-success"><?php echo $item['flushes']; ?></span></a>                           
-                  			</div>		
-                  		</div>	
-                  	</div>
-                  	 <a href="<?php echo base_url().'hugga/'.$item['huggaId']; ?>"><h3><b><?php echo $item['title']; ?></b></h3></a>
-                     <div class="blog-tag-data">
-                     	<a href="<?php echo base_url().'hugga/'.$item['huggaId']; ?>"><img src="<?php echo $item['images'][0]['originalImageUrl']; ?>" class="img-responsive" alt="" style="width:100%"></a>
-                        <div class="row">
-                           <div class="col-md-2">
-                           	
-                           		<a href="https://twitter.com/share?count=horizontal" class="twitter-share-button" data-lang="en">Tweet</a>
-                           		<!--<div class="pull-right" style="margin-top:-25px"><i class="icon-calendar"></i> <a href="#">April 16, 2013</a></div>-->
-                           
-                           	</div>
-                           	<div class="col-md-4">
-                           	  	<div class="fb-like" data-href="<?php echo base_url().'hugga/'.$item['huggaId']; ?>" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true" style="width: 150px !important"></div>
-                           		
-                          	</div>
-                          	
-                          	<div class="col-md-3">
-                          		Posted by: <?php echo $item['postedBy']; ?>
-                          	</div>
-                          	<div class="col-md-3" style="font-size: 18px">
-                          		Views <?php echo $item['views']; ?>
-                          	</div>
-                          	<div class="col-md-2">
-                          		 <a href="#" class="btn btn-xs red" >Flag <i class=" icon-flag"></i></a>
-                          	</div>
+            <div class="col-md-12">
+               <div class="tabbable tabbable-custom boxless">
+                  <ul class="nav nav-tabs">
+                     <li class="active"><a href="#tab_1" data-toggle="tab">4 Columns</a></li>
+                     <li class=""><a href="#tab_2" data-toggle="tab">3 Columns</a></li>
+                     <li class=""><a href="#tab_3" data-toggle="tab">2 Columns</a></li>
+                  </ul>
+                  <div class="tab-content">
+                     <div class="tab-pane active" id="tab_1">
+                        <!-- BEGIN FILTER -->           
+                        <div class="margin-top-10">
+                           <ul class="mix-filter">
+                              <li class="filter" data-filter="all">All</li>
+                              <li class="filter" data-filter="category_1">UI Design</li>
+                              <li class="filter" data-filter="category_2">Web Development</li>
+                              <li class="filter" data-filter="category_3">Photography</li>
+                              <li class="filter" data-filter="category_3 category_1">Wordpress and Logo</li>
+                           </ul>
+                           <div class="row mix-grid">
+                              <div class="col-md-3 col-sm-4 mix category_1">
+                                 <div class="mix-inner">
+                                    <img class="img-responsive" src="<?php echo assets_url(); ?>img/works/img1.jpg" alt="">
+                                    <div class="mix-details">
+                                       <h4>Cascusamus et iusto odio</h4>
+                                       <a class="mix-link"><i class="icon-link"></i></a>
+                                       <a class="mix-preview fancybox-button" href="<?php echo assets_url(); ?>img/works/img1.jpg" title="Project Name" data-rel="fancybox-button"><i class="icon-search"></i></a>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="col-md-3 col-sm-4 mix category_2">
+                                 <div class="mix-inner">
+                                    <img class="img-responsive" src="<?php echo assets_url(); ?>img/works/img2.jpg" alt="">
+                                    <div class="mix-details">
+                                       <h4>Cascusamus et iusto accusamus</h4>
+                                       <a class="mix-link"><i class="icon-link"></i></a>
+                                       <a class="mix-preview fancybox-button" href="<?php echo assets_url(); ?>img/works/img2.jpg" title="Project Name" data-rel="fancybox-button"><i class="icon-search"></i></a>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="col-md-3 col-sm-4 mix category_3">
+                                 <div class="mix-inner">
+                                    <img class="img-responsive" src="<?php echo assets_url(); ?>img/works/img3.jpg" alt="">
+                                    <div class="mix-details">
+                                       <h4>Cascusamus et iusto accusamus</h4>
+                                       <a class="mix-link"><i class="icon-link"></i></a>
+                                       <a class="mix-preview fancybox-button" href="<?php echo assets_url(); ?>img/works/img3.jpg" title="Project Name" data-rel="fancybox-button"><i class="icon-search"></i></a>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="col-md-3 col-sm-4 mix category_1 category_2">
+                                 <div class="mix-inner">
+                                    <img class="img-responsive" src="<?php echo assets_url(); ?>img/works/img4.jpg" alt="">
+                                    <div class="mix-details">
+                                       <h4>Cascusamus et iusto accusamus</h4>
+                                       <a class="mix-link"><i class="icon-link"></i></a>
+                                       <a class="mix-preview fancybox-button" href="<?php echo assets_url(); ?>img/works/img4.jpg" title="Project Name" data-rel="fancybox-button"><i class="icon-search"></i></a>                            
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="col-md-3 col-sm-4 mix category_2 category_1">
+                                 <div class="mix-inner">
+                                    <img class="img-responsive" src="<?php echo assets_url(); ?>img/works/img5.jpg" alt="">
+                                    <div class="mix-details">
+                                       <h4>Cascusamus et iusto accusamus</h4>
+                                       <a class="mix-link"><i class="icon-link"></i></a>
+                                       <a class="mix-preview fancybox-button" href="<?php echo assets_url(); ?>img/works/img5.jpg" title="Project Name" data-rel="fancybox-button"><i class="icon-search"></i></a>                            
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="col-md-3 col-sm-4 mix category_1 category_2">
+                                 <div class="mix-inner">
+                                    <img class="img-responsive" src="<?php echo assets_url(); ?>img/works/img6.jpg" alt="">
+                                    <div class="mix-details">
+                                       <h4>Cascusamus et iusto accusamus</h4>
+                                       <a class="mix-link"><i class="icon-link"></i></a>
+                                       <a class="mix-preview fancybox-button" href="<?php echo assets_url(); ?>img/works/img6.jpg" title="Project Name" data-rel="fancybox-button"><i class="icon-search"></i></a>                            
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="col-md-3 col-sm-4 mix category_2 category_3">
+                                 <div class="mix-inner">
+                                    <img class="img-responsive" src="<?php echo assets_url(); ?>img/works/img1.jpg" alt="">
+                                    <div class="mix-details">
+                                       <h4>Cascusamus et iusto accusamus</h4>
+                                       <a class="mix-link"><i class="icon-link"></i></a>
+                                       <a class="mix-preview fancybox-button" href="<?php echo assets_url(); ?>img/works/img1.jpg" title="Project Name" data-rel="fancybox-button"><i class="icon-search"></i></a>                            
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="col-md-3 col-sm-4 mix category_1 category_2">
+                                 <div class="mix-inner">
+                                    <img class="img-responsive" src="<?php echo assets_url(); ?>img/works/img2.jpg" alt="">
+                                    <div class="mix-details">
+                                       <h4>Cascusamus et iusto accusamus</h4>
+                                       <a class="mix-link"><i class="icon-link"></i></a>
+                                       <a class="mix-preview fancybox-button" href="<?php echo assets_url(); ?>img/works/img2.jpg" title="Project Name" data-rel="fancybox-button"><i class="icon-search"></i></a>                            
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="col-md-3 col-sm-4 mix category_3">
+                                 <div class="mix-inner">
+                                    <img class="img-responsive" src="<?php echo assets_url(); ?>img/works/img4.jpg" alt="">
+                                    <div class="mix-details">
+                                       <h4>Cascusamus et iusto accusamus</h4>
+                                       <a class="mix-link"><i class="icon-link"></i></a>
+                                       <a class="mix-preview fancybox-button" href="<?php echo assets_url(); ?>img/works/img4.jpg" title="Project Name" data-rel="fancybox-button"><i class="icon-search"></i></a>                            
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="col-md-3 col-sm-4 mix category_1">
+                                 <div class="mix-inner">
+                                    <img class="img-responsive" src="<?php echo assets_url(); ?>img/works/img3.jpg" alt="">
+                                    <div class="mix-details">
+                                       <h4>Cascusamus et iusto accusamus</h4>
+                                       <a class="mix-link"><i class="icon-link"></i></a>
+                                       <a class="mix-preview fancybox-button" href="<?php echo assets_url(); ?>img/works/img3.jpg" title="Project Name" data-rel="fancybox-button"><i class="icon-search"></i></a>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
                         </div>
+                        <!-- END FILTER -->    
                      </div>
-                     <!--end news-tag-data-->
-                    
-                    <hr>
-                    <?php
-                    }
-					?> 
-                     
-                  </div>
-                  
-                  
-                  <!--end col-md-9-->
-                 
+				</div>
                </div>
-            </div>
-         </div>
-         <!-- END PAGE CONTENT-->
+			</div>
+		</div>
       </div>
       <!-- END PAGE -->    
    </div>
@@ -323,8 +401,8 @@
 								            <img id="spinner" style="display: none" src="<?php echo assets_url().'img/input-spinner.gif'; ?>" />
 								       </div>
 								       <div class="form-group" style="text-align: center">
-								       		<a href="#" onclick="javascript:fblogin();"><img src="<?php echo assets_url().'img/active_404.png'; ?>" /></a>
-								       		<!--<fb:login-button scope="email,user_photos" show-faces="true" width="200" max-rows="1"></fb:login-button>
+								       		<!--<a href="<?php echo $data['url']; ?>"><img src="<?php echo assets_url().'img/active_404.png'; ?>" /></a>-->
+								       		<fb:login-button scope="email,user_photos" show-faces="true" width="200" max-rows="1"></fb:login-button>
 								       		<!--<div class="fb-login-button" data-max-rows="1" data-size="large" data-show-faces="true" data-auto-logout-link="true"></div>-->
 								       </div>
 								       <div id="loginError" style="display: none" class="alert alert-danger">
@@ -672,7 +750,7 @@
             		<form id="fileupload" action="" method="POST" enctype="multipart/form-data">
             		<div class="form-group">
                     	<label for="exampleInputEmail1">Title</label>
-                        <input type="text" maxlength="120" class="form-control" id="maxlength_defaultconfig" placeholder="Enter title here" name="title">
+                        <input id="maxlength_defaultconfig" maxlength="120" type="text" class="form-control" placeholder="Enter title here" name="title">
                         <?php
                         	if(!empty($data['IsLoggedIn'])){
                         		echo <<<HTML
@@ -681,8 +759,7 @@
 HTML;
 							}
 							
-               ?>       
-               			<input id="pageType" type="hidden" value="<?php echo $category; ?>">                                                       
+               ?>                                    
                         <span class="help-block">Limit: 180 characters</span>
                     </div>
                		<br>
@@ -879,6 +956,8 @@ HTML;
    <script src="<?php echo assets_url(); ?>plugins/uniform/jquery.uniform.min.js" type="text/javascript" ></script>
    <script src="<?php echo assets_url(); ?>scripts/jquery.validate.min.js" type="text/javascript"></script>
    <script src="<?php echo assets_url(); ?>plugins/backstretch/jquery.backstretch.min.js" type="text/javascript"></script>
+   <script src="<?php echo assets_url(); ?>plugins/bootstrap-maxlength/bootstrap-maxlength.min.js" type="text/javascript" ></script>
+
    
    <!--<script type="text/javascript" src="<?php echo assets_url(); ?>plugins/select2/select2.min.js"></script>-->
    <script type="text/javascript" src="<?php echo assets_url(); ?>plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
@@ -915,19 +994,26 @@ HTML;
    <!-- The main application script -->
    <!-- The XDomainRequest Transport is included for cross-domain file deletion for IE 8 and IE 9 -->
    <!--[if (gte IE 8)&(lt IE 10)]>
-   <script src="assets/plugins/jquery-file-upload/js/cors/jquery.xdr-transport.js"></script>
+   <script src="<?php echo assets_url(); ?>plugins/jquery-file-upload/js/cors/jquery.xdr-transport.js"></script>
    <![endif]-->
    <script src="<?php echo assets_url(); ?>scripts/app.js"></script>
    <script src="<?php echo assets_url(); ?>scripts/form-fileupload.js"></script>
    <script src="<?php echo assets_url(); ?>scripts/login-soft.js" type="text/javascript"></script> 
    <script src="<?php echo assets_url(); ?>scripts/lickflush.js" type="text/javascript"></script>   
-   <script src="<?php echo assets_url(); ?>scripts/autoload.js" type="text/javascript"></script>      
+   <script src="<?php echo assets_url(); ?>scripts/form-components.js" type="text/javascript"></script>   
+   <script src="<?php echo assets_url(); ?>scripts/autoloadMyHugge.js" type="text/javascript"></script>   
+   <script type="text/javascript" src="<?php echo assets_url(); ?>plugins/jquery-mixitup/jquery.mixitup.min.js"></script>
+   <script type="text/javascript" src="<?php echo assets_url(); ?>plugins/fancybox/source/jquery.fancybox.pack.js"></script>  
+   <script src="<?php echo assets_url(); ?>scripts/app.js"></script>
+   <script src="<?php echo assets_url(); ?>scripts/portfolio.js"></script>      
+   
    <script>
       jQuery(document).ready(function() {    
          App.init();
+         Portfolio.init();
          FormFileUpload.init();
          Login.init();
-         
+         FormComponents.init();
          $("#uploadSubmit").click(function(){
          	FormFileUpload.submit();
          });
