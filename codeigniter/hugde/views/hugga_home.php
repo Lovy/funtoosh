@@ -234,7 +234,13 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
             <div class="col-md-12 blog-page">  	
                <div class="row">
                	<div class="col-md-2">
-               		
+               		 <div class="form-group">    
+                              <div class="checkbox-list">
+                                 <label>
+                                 <div class="checker"><span class=""><input type="checkbox" name="anon"></span></div> Post as Anonymous
+                                 </label>
+                              </div>
+                    </div>
                	</div>
                   <div class="col-md-5 article-block">
                   	<?php
@@ -735,8 +741,7 @@ HTML;
                                 
                               </select>
                     </div>
-                    <div class="form-group">
-                             
+                    <div class="form-group">    
                               <div class="checkbox-list">
                                  <label>
                                  <div class="checker"><span class=""><input type="checkbox" name="anon"></span></div> Post as Anonymous
@@ -784,7 +789,7 @@ HTML;
 	                     <tbody class="files"></tbody>
 	                  </table>
                			</form>
-               			<div class="panel panel-success">
+               			<!--<div class="panel panel-success">
 		                  <div class="panel-heading">
 		                     <h3 class="panel-title">Notes</h3>
 		                  </div>
@@ -795,7 +800,7 @@ HTML;
 		                        <li>Uploaded files will be deleted automatically after <strong>5 minutes</strong> (demo setting).</li>
 		                     </ul>
 		                  </div>
-               			</div>
+               			</div>-->
             			</div>
          			</div>
                 	</div>
