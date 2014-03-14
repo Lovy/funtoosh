@@ -13,13 +13,14 @@
 				unblockUI(el);			
 			},
 	    	success: function(response) {
-	    		if(response[0]['lick']['licked']==1){
+	    		checklogin();
+	    		if(response[0]['lick']['licked']==1 && loginStatus==1){
 	    			licktype="green";
 	    		}
 	    		else{
 	    			licktype="default";
 	    		}
-	    		if(response[0]['flush']['flushed']==1){
+	    		if(response[0]['flush']['flushed']==1 && loginStatus==1){
 	    			flushtype="red";
 	    		}
 	    		else{
