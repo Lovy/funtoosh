@@ -264,7 +264,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                                        <h5>Licks: <?php echo $item['licks']; ?> Flushes: <?php echo $item['flushes']; ?></h5>
                                        <a href="<?php echo base_url().'hugga/'.$item['huggaId']; ?>" class="mix-link"><i class="icon-link"></i></a>
                                        <a class="mix-preview fancybox-button" href="<?php echo $item['images'][0]['originalImageUrl']; ?>" title="<?php echo $item['title']; ?>" data-rel="fancybox-button"><i class="icon-search"></i></a>
-                                       <a href="<?php echo base_url().'home/delete/'.$item['huggaId']; ?>" ><i class=" icon-trash"></i></a>
+                                       <a href="<?php echo base_url().'home/delete/'.$item['huggaId']; ?>" class="mix-link"><i class=" icon-trash"></i></a>
                   			
                                     </div>
                                  </div>
