@@ -234,13 +234,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
             <div class="col-md-12 blog-page">  	
                <div class="row">
                	<div class="col-md-2">
-               		 <div class="form-group">    
-                              <div class="checkbox-list">
-                                 <label>
-                                 <div class="checker"><span class=""><input type="checkbox" name="anon"></span></div> Post as Anonymous
-                                 </label>
-                              </div>
-                    </div>
+               		
                	</div>
                   <div class="col-md-5 article-block">
                   	<?php
@@ -741,12 +735,12 @@ HTML;
                                 
                               </select>
                     </div>
-                    <div class="form-group">    
-                              <div class="checkbox-list">
-                                 <label>
-                                 <div class="checker"><span class=""><input type="checkbox" name="anon"></span></div> Post as Anonymous
-                                 </label>
-                              </div>
+                    <div class="form-group">
+                              <label>Posting As</label>
+                              <select name="anon" class="form-control input-medium">
+                                 <option>Anonymous</option>
+                                 <option>Use my name</option>
+                              </select>
                     </div>
                		<br>
                		<!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
