@@ -15,7 +15,7 @@ $(document).ready(function(){
 	//console.log(totalHuggas);
 	var totalPages = Math.round(parseInt(totalHuggas)/parseInt(huggasPerPage));
 	//console.log(totalPages);
-	
+	var category = $("#pageType").val();
 	function getDocHeight() {
     var D = document;
     return Math.max(
@@ -36,7 +36,7 @@ $(document).ready(function(){
                 //$('.animation_image').show(); //show loading image
                 
                 //load data from the server using a HTTP POST request
-                $.post('http://hugde.com/home/autoload',{'HPP': huggasPerPage,'PN':pagesLoaded+1}, function(data){
+                $.post('http://hugde.com/home/autoload/'+category,{'HPP': huggasPerPage,'PN':pagesLoaded+1}, function(data){
                                     
                     $(".article-block").append(data); //append received data into the element
 					try{

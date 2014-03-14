@@ -17,9 +17,10 @@ class home extends CI_Controller{
 			$data = $this->session->all_userdata();
 			//var_dump($data);
 			$this->load->model('modelhome');
-			$response['huggas'] = $this->modelhome->loadData('0',$data['userId'],'HIDE',4,1);   //(huggasPerPage,pageNo)
+			$response['huggas'] = $this->modelhome->loadData('0',$data['userId'],'HIDE',4,1,'ALL');   //(huggasPerPage,pageNo)
 			$response['sidebar'] = $this->modelhome->loadSideBar();
 			$response['data']=$data;
+			$response['category']='ALL';
 			//echo json_encode($response);
 			
 			//Detect mobile and load no-sidebar version
@@ -34,9 +35,10 @@ class home extends CI_Controller{
 		}
 		else{
 			$this->load->model('modelhome');
-			$response['huggas'] = $this->modelhome->loadData('0',NULL,'HIDE',4,1);
+			$response['huggas'] = $this->modelhome->loadData('0',NULL,'HIDE',4,1,'ALL');
 			$response['sidebar'] = $this->modelhome->loadSideBar();
 			$response['data']=array("userId"=>"0");
+			$response['category']='ALL';
 			//echo json_encode($response);
 			//var_dump($response);
 			
@@ -64,7 +66,7 @@ class home extends CI_Controller{
 		}
 	}
 	
-	function autoload(){
+	function autoload($category){
 		$huggasPerPage = $this->input->post('HPP');
 		$pageNo = $this->input->post('PN');
 		$LoginFlag = $this->session->userdata('IsLoggedIn');
@@ -72,7 +74,7 @@ class home extends CI_Controller{
 			$data = $this->session->all_userdata();
 			//var_dump($data);
 			$this->load->model('modelhome');
-			$response['huggas'] = $this->modelhome->loadData('0',$data['userId'],'HIDE',$huggasPerPage,$pageNo);   //(huggasPerPage,pageNo)
+			$response['huggas'] = $this->modelhome->loadData('0',$data['userId'],'HIDE',$huggasPerPage,$pageNo,$category);   //(huggasPerPage,pageNo)
 			$response['data']=$data;
 			//var_dump($response['data']);
 			//return HTML code
@@ -83,7 +85,7 @@ class home extends CI_Controller{
 		else{
 			$this->load->model('modelhome');
 			$response['data']=array("userId"=>"0");
-			$response['huggas'] = $this->modelhome->loadData('0',NULL,'HIDE',$huggasPerPage,$pageNo);
+			$response['huggas'] = $this->modelhome->loadData('0',NULL,'HIDE',$huggasPerPage,$pageNo,$category);
 			
 			//return HTML code
 			echo $this->jsonToHtml($response);

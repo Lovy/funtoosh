@@ -17,8 +17,8 @@ class modelhome extends CI_Model{
 		}
 		
 	}
-	function loadData($huggaId,$userId,$myhugga,$huggasPerPage,$pageNo){
-		if($huggaId=='0' && $myhugga=='HIDE'){ //show all huggas
+	function loadData($huggaId,$userId,$myhugga,$huggasPerPage,$pageNo,$category){
+		if($huggaId=='0' && $myhugga=='HIDE' && $category=='ALL'){ //show all huggas
 			
 			$sql1 = "select * from hugga order by homeIndex desc LIMIT ?,?";
 			$huggasPerPage = intval($huggasPerPage);
@@ -103,6 +103,42 @@ class modelhome extends CI_Model{
     				//Retrieve images for each space
     				$sql ="select * from images where imageId IN (select imageId from hugga where huggaId=?)";
     				$query2 =$this->db->query($sql,array($row['huggaId']));
+					$images= array();
+					foreach ($query2->result_array() as $row2) {
+						$images[]=$row2;
+					}
+					$row['images']=$images;
+					
+					//check lick flush status for this hugga
+					$lick = array();
+					$flush = array();
+					$this->load->model('modellickflush');
+					$lickResponse = $this->modellickflush->getLickStatus($row['huggaId'],$userId);
+					$flushResponse = $this->modellickflush->getFlushStatus($row['huggaId'],$userId);
+					$lick['licked']=$lickResponse;
+					$flush['flushed']=$flushResponse;
+					$row['lick']=$lick;
+					$row['flush']=$flush;
+					$hugga[]=$row;
+				}
+				return $hugga;
+			}
+		}
+
+		if($huggaId=='0' && $myhugga=='HIDE' && $category!='ALL'){ //show all huggas
+			
+			$sql1 = "select * from hugga where category=? order by homeIndex desc LIMIT ?,?";
+			$huggasPerPage = intval($huggasPerPage);
+			$query = $this->db->query($sql1,array($category,($huggasPerPage*($pageNo-1)),($huggasPerPage)));
+			//$this->db->order_by('timestamp','desc');
+			if($query->num_rows()>0){
+				//create an array to store huggas
+				$hugga = array();
+				//Loop through each row returned from the query
+    			foreach ($query->result_array() as $row) {
+    				//Retrieve images for each space
+    				$sql ="select * from images where imageId =?";
+    				$query2 =$this->db->query($sql,array($row['imageId']));
 					$images= array();
 					foreach ($query2->result_array() as $row2) {
 						$images[]=$row2;

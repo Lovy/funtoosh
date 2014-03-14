@@ -681,7 +681,8 @@
 HTML;
 							}
 							
-               ?>                                    
+               ?>       
+               			<input id="pageType" type="hidden" value="<?php echo $category; ?>">                                                       
                         <span class="help-block">Limit: 180 characters</span>
                     </div>
                		<br>
