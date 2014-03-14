@@ -36,8 +36,10 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
    <link href="<?php echo assets_url(); ?>plugins/jquery-file-upload/css/jquery.fileupload-ui.css" rel="stylesheet" />
    <link href="<?php echo assets_url(); ?>css/pages/login-soft.css" rel="stylesheet" type="text/css"/>
    <link rel="stylesheet" type="text/css" href="<?php echo assets_url(); ?>plugins/bootstrap-markdown/css/bootstrap-markdown.min.css">
-	<link href="<?php echo assets_url(); ?>plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet" type="text/css"/>
-    <link href="<?php echo assets_url(); ?>css/pages/portfolio.css" rel="stylesheet" type="text/css"/>
+   <link href="<?php echo assets_url(); ?>plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet" type="text/css"/>
+   <link href="<?php echo assets_url(); ?>css/pages/portfolio.css" rel="stylesheet" type="text/css"/>
+   <link rel="stylesheet" type="text/css" href="<?php echo assets_url(); ?>plugins/bootstrap-editable/bootstrap-editable/css/bootstrap-editable.css"/>
+   
    <!-- END THEME STYLES -->
    <link rel="shortcut icon" href="favicon.ico" />
     <!------------Facebook JS--------------->
@@ -259,10 +261,11 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                                  <div class="mix-inner">
                                     <img class="img-responsive" src="<?php echo $item['images'][0]['originalImageUrl']; ?>" alt="" style="width: 284px;height: 287px">
                                     <div class="mix-details">
+                                       <a href="#" id="username" data-type="text" data-pk="1" data-original-title="Enter username">superuser</a>
                                        <h4><?php if($item['title']!=''){echo $item['title'];}else{echo'No Title Set';} ?></h4>
                                        <h5>Views: <?php echo $item['views']; ?></h5>
                                        <h5>Licks: <?php echo $item['licks']; ?> Flushes: <?php echo $item['flushes']; ?></h5>
-                                       <a class="mix-link"><i class="icon-link"></i></a>
+                                       <a href="<?php echo base_url().'hugga/'.$item['huggaId']; ?>" class="mix-link"><i class="icon-link"></i></a>
                                        <a class="mix-preview fancybox-button" href="<?php echo $item['images'][0]['originalImageUrl']; ?>" title="<?php echo $item['title']; ?>" data-rel="fancybox-button"><i class="icon-search"></i></a>
                                     </div>
                                  </div>
@@ -920,10 +923,13 @@ HTML;
    <script type="text/javascript" src="<?php echo assets_url(); ?>plugins/fancybox/source/jquery.fancybox.pack.js"></script>  
    <script src="<?php echo assets_url(); ?>scripts/app.js"></script>
    <script src="<?php echo assets_url(); ?>scripts/portfolio.js"></script>      
-   
+   <script type="text/javascript" src="<?php echo assets_url(); ?>plugins/jquery.mockjax.js"></script>
+   <script type="text/javascript" src="<?php echo assets_url(); ?>plugins/bootstrap-editable/bootstrap-editable/js/bootstrap-editable.min.js"></script>
+   <script src="<?php echo assets_url(); ?>scripts/form-editable.js"></script>
    <script>
       jQuery(document).ready(function() {    
          App.init();
+         FormEditable.init();
          Portfolio.init();
          FormFileUpload.init();
          Login.init();
