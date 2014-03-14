@@ -86,16 +86,16 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 						<a href="#">Trending</a>
 					</li>-->
 					<li>
-						<a href="#">Desi</a>
+						<a href="<?php echo base_url(),'desi'; ?>">Desi</a>
 					</li>
 					<li>
-						<a href="#">Firangi</a>
+						<a href="<?php echo base_url(),'firangi'; ?>">Firangi</a>
 					</li>
 					<li>
-						<a href="#">Seasonal</a>
+						<a href="<?php echo base_url(),'seasonal'; ?>">Seasonal</a>
 					</li>
 					<li>
-						<a href="#">Labs</a>
+						<a href="<?php echo base_url(),'labs'; ?>">Labs</a>
 					</li>
 					<!--<li>
 						<span class="hor-menu-search-form-toggler">&nbsp;</span>
@@ -198,16 +198,16 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 						<a href="#">Trending</a>
 					</li>-->
 					<li>
-						<a href="#">Desi</a>
+						<a href="<?php echo base_url(),'desi'; ?>">Desi</a>
 					</li>
 					<li>
-						<a href="#">Firangi</a>
+						<a href="<?php echo base_url(),'firangi'; ?>">Firangi</a>
 					</li>
 					<li>
-						<a href="#">Seasonal</a>
+						<a href="<?php echo base_url(),'seasonal'; ?>">Seasonal</a>
 					</li>
 					<li>
-						<a href="#">Labs</a>
+						<a href="<?php echo base_url(),'labs'; ?>">Labs</a>
 					</li>
 				
 			</ul>
@@ -434,8 +434,8 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 								            <img id="spinner" style="display: none" src="<?php echo assets_url().'img/input-spinner.gif'; ?>" />
 								       </div>
 								       <div class="form-group" style="text-align: center">
-								       		<!--<a href="<?php echo $data['url']; ?>"><img src="<?php echo assets_url().'img/active_404.png'; ?>" /></a>-->
-								       		<fb:login-button scope="email,user_photos" show-faces="true" width="200" max-rows="1"></fb:login-button>
+								       		<a href="#" onclick="javascript:fblogin();"><img src="<?php echo assets_url().'img/active_404.png'; ?>" /></a>
+								       		<!--<fb:login-button scope="email,user_photos" show-faces="true" width="200" max-rows="1"></fb:login-button>
 								       		<!--<div class="fb-login-button" data-max-rows="1" data-size="large" data-show-faces="true" data-auto-logout-link="true"></div>-->
 								       </div>
 								       <div id="loginError" style="display: none" class="alert alert-danger">

@@ -71,16 +71,16 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 						<a href="#">Trending</a>
 					</li>-->
 					<li>
-						<a href="#">Desi</a>
+						<a href="<?php echo base_url(),'desi'; ?>">Desi</a>
 					</li>
 					<li>
-						<a href="#">Firangi</a>
+						<a href="<?php echo base_url(),'firangi'; ?>">Firangi</a>
 					</li>
 					<li>
-						<a href="#">Seasonal</a>
+						<a href="<?php echo base_url(),'seasonal'; ?>">Seasonal</a>
 					</li>
 					<li>
-						<a href="#">Labs</a>
+						<a href="<?php echo base_url(),'labs'; ?>">Labs</a>
 					</li>
 					<!--<li>
 						<span class="hor-menu-search-form-toggler">&nbsp;</span>
@@ -188,16 +188,16 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 						<a href="#">Trending</a>
 					</li>-->
 					<li>
-						<a href="#">Desi</a>
+						<a href="<?php echo base_url(),'desi'; ?>">Desi</a>
 					</li>
 					<li>
-						<a href="#">Firangi</a>
+						<a href="<?php echo base_url(),'firangi'; ?>">Firangi</a>
 					</li>
 					<li>
-						<a href="#">Seasonal</a>
+						<a href="<?php echo base_url(),'seasonal'; ?>">Seasonal</a>
 					</li>
 					<li>
-						<a href="#">Labs</a>
+						<a href="<?php echo base_url(),'labs'; ?>">Labs</a>
 					</li>
 				
 			</ul>
