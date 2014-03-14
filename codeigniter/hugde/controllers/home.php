@@ -203,7 +203,7 @@ class home extends CI_Controller{
 			$data = $this->session->all_userdata();
 			$this->load->model('modelhome');
 			//loadData($huggaId=NULL,$userId=NULL,$myhugga=NULL,$huggasPerPage=NULL,$pageNo=NULL)
-			$response['huggas'] = $this->modelhome->loadData('0',$data['userId'],'SHOW',4,1,'ALL');
+			$response['huggas'] = $this->modelhome->loadData('0',$data['userId'],'SHOW',100,1,'ALL');
 			$response['sidebar'] = $this->modelhome->loadSideBar();
 			$response['data']=$data;
 			//Detect mobile and load no-sidebar version

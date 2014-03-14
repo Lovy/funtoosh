@@ -48,7 +48,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 <body class="page-header-fixed">
 	<div id="fb-root"></div> 
  <!--------------------------------------------------------------------------------------Twitter--------------------------------------------------------------------------------------------->
- <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+ <!--<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
  <!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
    
    
@@ -913,7 +913,7 @@ HTML;
    <script src="<?php echo assets_url(); ?>scripts/login-soft.js" type="text/javascript"></script> 
    <script src="<?php echo assets_url(); ?>scripts/lickflush.js" type="text/javascript"></script>   
    <script src="<?php echo assets_url(); ?>scripts/form-components.js" type="text/javascript"></script>   
-   <script src="<?php echo assets_url(); ?>scripts/autoloadMyHugge.js" type="text/javascript"></script>   
+   <!--<script src="<?php echo assets_url(); ?>scripts/autoloadMyHugge.js" type="text/javascript"></script>-->   
    <script type="text/javascript" src="<?php echo assets_url(); ?>plugins/jquery-mixitup/jquery.mixitup.min.js"></script>
    <script type="text/javascript" src="<?php echo assets_url(); ?>plugins/fancybox/source/jquery.fancybox.pack.js"></script>  
    <script src="<?php echo assets_url(); ?>scripts/app.js"></script>
