@@ -260,6 +260,8 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                                     <img class="img-responsive" src="<?php echo $item['images'][0]['originalImageUrl']; ?>" alt="" style="width: 284px;height: 287px">
                                     <div class="mix-details">
                                        <h4><?php echo $item['title']; ?></h4>
+                                       <h5>Views: <?php echo $item['views']; ?></h5>
+                                       <h5>Licks: <?php echo $item['licks']; ?> Flushes: <?php echo $item['flushes']; ?></h5>
                                        <a class="mix-link"><i class="icon-link"></i></a>
                                        <a class="mix-preview fancybox-button" href="<?php echo $item['images'][0]['originalImageUrl']; ?>" title="<?php echo $item['title']; ?>" data-rel="fancybox-button"><i class="icon-search"></i></a>
                                     </div>
