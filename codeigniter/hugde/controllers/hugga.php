@@ -22,7 +22,7 @@ class hugga extends CI_Controller{
 			//var_dump($data);
 			$this->load->model('modelhome');
 			//loadData($huggaId=NULL,$userId=NULL,$myhugga=NULL,$huggasPerPage=NULL,$pageNo=NULL)
-			$response['huggas'] = $this->modelhome->loadData($huggaId,$data['userId'],'HIDE',5,1);   //(huggasPerPage,pageNo)
+			$response['huggas'] = $this->modelhome->loadData($huggaId,$data['userId'],'HIDE',5,1,'ALL');   //(huggasPerPage,pageNo)
 			$response['sidebar'] = $this->modelhome->loadSideBar();
 			$response['data']=$data;
 			//echo json_encode($response);
@@ -39,7 +39,7 @@ class hugga extends CI_Controller{
 		}
 		else{
 			$this->load->model('modelhome');
-			$response['huggas'] = $this->modelhome->loadData($huggaId,NULL,'HIDE',5,1);
+			$response['huggas'] = $this->modelhome->loadData($huggaId,NULL,'HIDE',5,1,'ALL');
 			$response['sidebar'] = $this->modelhome->loadSideBar();
 			$response['data']=array("userId"=>"0");
 			//var_dump($response);
