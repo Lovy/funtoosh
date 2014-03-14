@@ -907,7 +907,7 @@ HTML;
    <script src="<?php echo assets_url(); ?>plugins/respond.min.js"></script>
    <script src="<?php echo assets_url(); ?>plugins/excanvas.min.js"></script> 
    <![endif]-->   
-   
+   <!--
    <script src="<?php echo assets_url(); ?>plugins/jquery-1.10.2.min.js" type="text/javascript"></script>
    <script src="<?php echo assets_url(); ?>plugins/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
    <script src="<?php echo assets_url(); ?>plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
@@ -918,6 +918,8 @@ HTML;
    <script src="<?php echo assets_url(); ?>plugins/uniform/jquery.uniform.min.js" type="text/javascript" ></script>
    <script src="<?php echo assets_url(); ?>scripts/jquery.validate.min.js" type="text/javascript"></script>
    <script src="<?php echo assets_url(); ?>plugins/backstretch/jquery.backstretch.min.js" type="text/javascript"></script>
+   -->
+   <script src="<?php echo assets_url(); ?>scripts/combine.js" type="text/javascript"></script>      
    
    <!--<script type="text/javascript" src="<?php echo assets_url(); ?>plugins/select2/select2.min.js"></script>-->
    <script type="text/javascript" src="<?php echo assets_url(); ?>plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
