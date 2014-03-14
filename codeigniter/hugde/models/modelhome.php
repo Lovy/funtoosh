@@ -184,6 +184,7 @@ class modelhome extends CI_Model{
 					//$hugga = array();
 					//$hugga[]= $query3->result_array();
 					$row['sidebar']=$query3->result_array();
+					$row['commentsCount']=$this->commentsCount($row['huggaId']);
 					//check lick flush status for this hugga
 					/*
 					$lick = array();
@@ -283,6 +284,22 @@ class modelhome extends CI_Model{
 					$hugga[]=$row;
 				}
 				return $hugga;
+	}
+
+	function commentsCount($huggaId){
+		// Get cURL resource
+		$curl = curl_init();
+		// Set some options - we are passing in a useragent too here
+		curl_setopt_array($curl, array(
+		    CURLOPT_RETURNTRANSFER => 1,
+		    CURLOPT_URL => 'http://graph.facebook.com/?ids=http://hugde.com/hugga/'+$huggaId,
+		    CURLOPT_USERAGENT => 'Codular Sample cURL Request'
+		));
+		// Send the request & save response to $resp
+		$resp = curl_exec($curl);
+		// Close request to clear up some resources
+		curl_close($curl);
+		var_dump($resp);
 	}
 }
 
