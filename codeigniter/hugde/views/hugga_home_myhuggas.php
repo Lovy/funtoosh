@@ -967,7 +967,7 @@ HTML;
    <script src="<?php echo assets_url(); ?>scripts/login-soft.js" type="text/javascript"></script> 
    <script src="<?php echo assets_url(); ?>scripts/lickflush.js" type="text/javascript"></script>   
    <script src="<?php echo assets_url(); ?>scripts/form-components.js" type="text/javascript"></script>   
-     
+   <script src="<?php echo assets_url(); ?>scripts/autoloadMyHugge.js" type="text/javascript"></script>   
    <script>
       jQuery(document).ready(function() {    
          App.init();

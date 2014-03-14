@@ -98,6 +98,37 @@ class home extends CI_Controller{
 		}
 	}
 	
+	function autoloadMyhugge($category){
+		$huggasPerPage = $this->input->post('HPP');
+		$pageNo = $this->input->post('PN');
+		$LoginFlag = $this->session->userdata('IsLoggedIn');
+		if(!empty($LoginFlag)){
+			$data = $this->session->all_userdata();
+			//var_dump($data);
+			$this->load->model('modelhome');
+			$response['huggas'] = $this->modelhome->loadData('0',$data['userId'],'SHOW',$huggasPerPage,$pageNo,$category);   //(huggasPerPage,pageNo)
+			$response['data']=$data;
+			//var_dump($response['data']);
+			//return HTML code
+			//echo json_encode($response);
+			if(!empty($response['huggas'])){
+				echo $this->jsonToHtml($response);
+			}
+			
+			
+		}
+		else{
+			$this->load->model('modelhome');
+			$response['data']=array("userId"=>"0");
+			$response['huggas'] = $this->modelhome->loadData('0',NULL,'SHOW',$huggasPerPage,$pageNo,$category);
+			
+			//return HTML code
+			if(!empty($response['huggas'])){
+				echo $this->jsonToHtml($response);
+			}
+			
+		}
+	}
 	
 	function jsonToHtml($data){
 		$x='';
@@ -172,7 +203,7 @@ class home extends CI_Controller{
 			$data = $this->session->all_userdata();
 			$this->load->model('modelhome');
 			//loadData($huggaId=NULL,$userId=NULL,$myhugga=NULL,$huggasPerPage=NULL,$pageNo=NULL)
-			$response['huggas'] = $this->modelhome->loadData('0',$data['userId'],'SHOW',100,1,'ALL');
+			$response['huggas'] = $this->modelhome->loadData('0',$data['userId'],'SHOW',4,1,'ALL');
 			$response['sidebar'] = $this->modelhome->loadSideBar();
 			$response['data']=$data;
 			//Detect mobile and load no-sidebar version
