@@ -88,3 +88,6352 @@ b.bind("mouseup.slimscroll",function(a){y=!1;p();b.unbind(".slimscroll")});retur
 * http://srobbin.com/jquery-plugins/backstretch/
 * Copyright (c) 2012 Scott Robbin; Licensed MIT */
 (function(e,t,n){"use strict";e.fn.backstretch=function(r,s){return(r===n||r.length===0)&&e.error("No images were supplied for Backstretch"),e(t).scrollTop()===0&&t.scrollTo(0,0),this.each(function(){var t=e(this),n=t.data("backstretch");n&&(s=e.extend(n.options,s),n.destroy(!0)),n=new i(this,r,s),t.data("backstretch",n)})},e.backstretch=function(t,n){return e("body").backstretch(t,n).data("backstretch")},e.expr[":"].backstretch=function(t){return e(t).data("backstretch")!==n},e.fn.backstretch.defaults={centeredX:!0,centeredY:!0,duration:5e3,fade:0};var r={wrap:{left:0,top:0,overflow:"hidden",margin:0,padding:0,height:"100%",width:"100%",zIndex:-999999},img:{position:"absolute",display:"none",margin:0,padding:0,border:"none",width:"auto",height:"auto",maxWidth:"none",zIndex:-999999}},i=function(n,i,o){this.options=e.extend({},e.fn.backstretch.defaults,o||{}),this.images=e.isArray(i)?i:[i],e.each(this.images,function(){e("<img />")[0].src=this}),this.isBody=n===document.body,this.$container=e(n),this.$wrap=e('<div class="backstretch"></div>').css(r.wrap).appendTo(this.$container),this.$root=this.isBody?s?e(t):e(document):this.$container;if(!this.isBody){var u=this.$container.css("position"),a=this.$container.css("zIndex");this.$container.css({position:u==="static"?"relative":u,zIndex:a==="auto"?0:a,background:"none"}),this.$wrap.css({zIndex:-999998})}this.$wrap.css({position:this.isBody&&s?"fixed":"absolute"}),this.index=0,this.show(this.index),e(t).on("resize.backstretch",e.proxy(this.resize,this)).on("orientationchange.backstretch",e.proxy(function(){this.isBody&&t.pageYOffset===0&&(t.scrollTo(0,1),this.resize())},this))};i.prototype={resize:function(){try{var e={left:0,top:0},n=this.isBody?this.$root.width():this.$root.innerWidth(),r=n,i=this.isBody?t.innerHeight?t.innerHeight:this.$root.height():this.$root.innerHeight(),s=r/this.$img.data("ratio"),o;s>=i?(o=(s-i)/2,this.options.centeredY&&(e.top="-"+o+"px")):(s=i,r=s*this.$img.data("ratio"),o=(r-n)/2,this.options.centeredX&&(e.left="-"+o+"px")),this.$wrap.css({width:n,height:i}).find("img:not(.deleteable)").css({width:r,height:s}).css(e)}catch(u){}return this},show:function(t){if(Math.abs(t)>this.images.length-1)return;this.index=t;var n=this,i=n.$wrap.find("img").addClass("deleteable"),s=e.Event("backstretch.show",{relatedTarget:n.$container[0]});return clearInterval(n.interval),n.$img=e("<img />").css(r.img).bind("load",function(t){var r=this.width||e(t.target).width(),o=this.height||e(t.target).height();e(this).data("ratio",r/o),e(this).fadeIn(n.options.speed||n.options.fade,function(){i.remove(),n.paused||n.cycle(),n.$container.trigger(s,n)}),n.resize()}).appendTo(n.$wrap),n.$img.attr("src",n.images[t]),n},next:function(){return this.show(this.index<this.images.length-1?this.index+1:0)},prev:function(){return this.show(this.index===0?this.images.length-1:this.index-1)},pause:function(){return this.paused=!0,this},resume:function(){return this.paused=!1,this.next(),this},cycle:function(){return this.images.length>1&&(clearInterval(this.interval),this.interval=setInterval(e.proxy(function(){this.paused||this.next()},this),this.options.duration)),this},destroy:function(n){e(t).off("resize.backstretch orientationchange.backstretch"),clearInterval(this.interval),n||this.$wrap.remove(),this.$container.removeData("backstretch")}};var s=function(){var e=navigator.userAgent,n=navigator.platform,r=e.match(/AppleWebKit\/([0-9]+)/),i=!!r&&r[1],s=e.match(/Fennec\/([0-9]+)/),o=!!s&&s[1],u=e.match(/Opera Mobi\/([0-9]+)/),a=!!u&&u[1],f=e.match(/MSIE ([0-9]+)/),l=!!f&&f[1];return!((n.indexOf("iPhone")>-1||n.indexOf("iPad")>-1||n.indexOf("iPod")>-1)&&i&&i<534||t.operamini&&{}.toString.call(t.operamini)==="[object OperaMini]"||u&&a<7458||e.indexOf("Android")>-1&&i&&i<533||o&&o<6||"palmGetResource"in t&&i&&i<534||e.indexOf("MeeGo")>-1&&e.indexOf("NokiaBrowser/8.5.0")>-1||l&&l<=6)}()})(jQuery,window);
+
+/* =========================================================
+ * bootstrap-datepicker.js
+ * http://www.eyecon.ro/bootstrap-datepicker
+ * =========================================================
+ * Copyright 2012 Stefan Petre
+ * Improvements by Andrew Rowls
+ * Improvements By Keenthemes for Boostrap 3.0 support
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * ========================================================= */
+
+(function( $ ) {
+
+	var $window = $(window);
+
+	function UTCDate(){
+		return new Date(Date.UTC.apply(Date, arguments));
+	}
+	function UTCToday(){
+		var today = new Date();
+		return UTCDate(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate());
+	}
+
+
+	// Picker object
+
+	var Datepicker = function(element, options) {
+		var that = this;
+
+		this._process_options(options);
+
+		this.element = $(element);
+		this.isInline = false;
+		this.isInput = this.element.is('input');
+		this.component = this.element.is('.date') ? this.element.find('.input-group-btn, .btn') : false;
+		this.hasInput = this.component && this.element.find('input').length;
+		if(this.component && this.component.length === 0)
+			this.component = false;
+
+		this.picker = $(DPGlobal.template);
+		this._buildEvents();
+		this._attachEvents();
+
+		if(this.isInline) {
+			this.picker.addClass('datepicker-inline').appendTo(this.element);
+		} else {
+			this.picker.addClass('datepicker-dropdown dropdown-menu');
+		}
+
+		if (this.o.rtl){
+			this.picker.addClass('datepicker-rtl');
+			this.picker.find('.prev i, .next i')
+						.toggleClass('icon-angle-left icon-angle-right');
+		}
+
+
+		this.viewMode = this.o.startView;
+
+		if (this.o.calendarWeeks)
+			this.picker.find('tfoot th.today')
+						.attr('colspan', function(i, val){
+							return parseInt(val) + 1;
+						});
+
+		this._allow_update = false;
+
+		this.setStartDate(this._o.startDate);
+		this.setEndDate(this._o.endDate);
+		this.setDaysOfWeekDisabled(this.o.daysOfWeekDisabled);
+
+		this.fillDow();
+		this.fillMonths();
+
+		this._allow_update = true;
+
+		this.update();
+		this.showMode();
+
+		if(this.isInline) {
+			this.show();
+		}
+	};
+
+	Datepicker.prototype = {
+		constructor: Datepicker,
+
+		_process_options: function(opts){
+			// Store raw options for reference
+			this._o = $.extend({}, this._o, opts);
+			// Processed options
+			var o = this.o = $.extend({}, this._o);
+
+			// Check if "de-DE" style date is available, if not language should
+			// fallback to 2 letter code eg "de"
+			var lang = o.language;
+			if (!dates[lang]) {
+				lang = lang.split('-')[0];
+				if (!dates[lang])
+					lang = defaults.language;
+			}
+			o.language = lang;
+
+			switch(o.startView){
+				case 2:
+				case 'decade':
+					o.startView = 2;
+					break;
+				case 1:
+				case 'year':
+					o.startView = 1;
+					break;
+				default:
+					o.startView = 0;
+			}
+
+			switch (o.minViewMode) {
+				case 1:
+				case 'months':
+					o.minViewMode = 1;
+					break;
+				case 2:
+				case 'years':
+					o.minViewMode = 2;
+					break;
+				default:
+					o.minViewMode = 0;
+			}
+
+			o.startView = Math.max(o.startView, o.minViewMode);
+
+			o.weekStart %= 7;
+			o.weekEnd = ((o.weekStart + 6) % 7);
+
+			var format = DPGlobal.parseFormat(o.format);
+			if (o.startDate !== -Infinity) {
+				if (!!o.startDate) {
+					if (o.startDate instanceof Date)
+						o.startDate = this._local_to_utc(this._zero_time(o.startDate));
+					else
+						o.startDate = DPGlobal.parseDate(o.startDate, format, o.language);
+				} else {
+					o.startDate = -Infinity;
+				}
+			}
+			if (o.endDate !== Infinity) {
+				if (!!o.endDate) {
+					if (o.endDate instanceof Date)
+						o.endDate = this._local_to_utc(this._zero_time(o.endDate));
+					else
+						o.endDate = DPGlobal.parseDate(o.endDate, format, o.language);
+				} else {
+					o.endDate = Infinity;
+				}
+			}
+
+			o.daysOfWeekDisabled = o.daysOfWeekDisabled||[];
+			if (!$.isArray(o.daysOfWeekDisabled))
+				o.daysOfWeekDisabled = o.daysOfWeekDisabled.split(/[,\s]*/);
+			o.daysOfWeekDisabled = $.map(o.daysOfWeekDisabled, function (d) {
+				return parseInt(d, 10);
+			});
+
+			var plc = String(o.orientation).toLowerCase().split(/\s+/g),
+				_plc = o.orientation.toLowerCase();
+			plc = $.grep(plc, function(word){
+				return (/^auto|left|right|top|bottom$/).test(word);
+			});
+			o.orientation = {x: 'auto', y: 'auto'};
+			if (!_plc || _plc === 'auto')
+				; // no action
+			else if (plc.length === 1){
+				switch(plc[0]){
+					case 'top':
+					case 'bottom':
+						o.orientation.y = plc[0];
+						break;
+					case 'left':
+					case 'right':
+						o.orientation.x = plc[0];
+						break;
+				}
+			}
+			else {
+				_plc = $.grep(plc, function(word){
+					return (/^left|right$/).test(word);
+				});
+				o.orientation.x = _plc[0] || 'auto';
+
+				_plc = $.grep(plc, function(word){
+					return (/^top|bottom$/).test(word);
+				});
+				o.orientation.y = _plc[0] || 'auto';
+			}
+		},
+		_events: [],
+		_secondaryEvents: [],
+		_applyEvents: function(evs){
+			for (var i=0, el, ev; i<evs.length; i++){
+				el = evs[i][0];
+				ev = evs[i][1];
+				el.on(ev);
+			}
+		},
+		_unapplyEvents: function(evs){
+			for (var i=0, el, ev; i<evs.length; i++){
+				el = evs[i][0];
+				ev = evs[i][1];
+				el.off(ev);
+			}
+		},
+		_buildEvents: function(){
+			if (this.isInput) { // single input
+				this._events = [
+					[this.element, {
+						focus: $.proxy(this.show, this),
+						keyup: $.proxy(this.update, this),
+						keydown: $.proxy(this.keydown, this)
+					}]
+				];
+			}
+			else if (this.component && this.hasInput){ // component: input + button
+				this._events = [
+					// For components that are not readonly, allow keyboard nav
+					[this.element.find('input'), {
+						focus: $.proxy(this.show, this),
+						keyup: $.proxy(this.update, this),
+						keydown: $.proxy(this.keydown, this)
+					}],
+					[this.component, {
+						click: $.proxy(this.show, this)
+					}]
+				];
+			}
+			else if (this.element.is('div')) {  // inline datepicker
+				this.isInline = true;
+			}
+			else {
+				this._events = [
+					[this.element, {
+						click: $.proxy(this.show, this)
+					}]
+				];
+			}
+
+			this._secondaryEvents = [
+				[this.picker, {
+					click: $.proxy(this.click, this)
+				}],
+				[$(window), {
+					resize: $.proxy(this.place, this)
+				}],
+				[$(document), {
+					mousedown: $.proxy(function (e) {
+						// Clicked outside the datepicker, hide it
+						if (!(
+							this.element.is(e.target) ||
+							this.element.find(e.target).length ||
+							this.picker.is(e.target) ||
+							this.picker.find(e.target).length
+						)) {
+							this.hide();
+						}
+					}, this)
+				}]
+			];
+		},
+		_attachEvents: function(){
+			this._detachEvents();
+			this._applyEvents(this._events);
+		},
+		_detachEvents: function(){
+			this._unapplyEvents(this._events);
+		},
+		_attachSecondaryEvents: function(){
+			this._detachSecondaryEvents();
+			this._applyEvents(this._secondaryEvents);
+		},
+		_detachSecondaryEvents: function(){
+			this._unapplyEvents(this._secondaryEvents);
+		},
+		_trigger: function(event, altdate){
+			var date = altdate || this.date,
+				local_date = this._utc_to_local(date);
+
+			this.element.trigger({
+				type: event,
+				date: local_date,
+				format: $.proxy(function(altformat){
+					var format = altformat || this.o.format;
+					return DPGlobal.formatDate(date, format, this.o.language);
+				}, this)
+			});
+		},
+
+		show: function(e) {
+			if (!this.isInline)
+				this.picker.appendTo('body');
+			this.picker.show();
+			this.height = this.component ? this.component.outerHeight() : this.element.outerHeight();
+			this.place();
+			this._attachSecondaryEvents();
+			if (e) {
+				e.preventDefault();
+			}
+			this._trigger('show');
+		},
+
+		hide: function(e){
+			if(this.isInline) return;
+			if (!this.picker.is(':visible')) return;
+			this.picker.hide().detach();
+			this._detachSecondaryEvents();
+			this.viewMode = this.o.startView;
+			this.showMode();
+
+			if (
+				this.o.forceParse &&
+				(
+					this.isInput && this.element.val() ||
+					this.hasInput && this.element.find('input').val()
+				)
+			)
+				this.setValue();
+			this._trigger('hide');
+		},
+
+		remove: function() {
+			this.hide();
+			this._detachEvents();
+			this._detachSecondaryEvents();
+			this.picker.remove();
+			delete this.element.data().datepicker;
+			if (!this.isInput) {
+				delete this.element.data().date;
+			}
+		},
+
+		_utc_to_local: function(utc){
+			return new Date(utc.getTime() + (utc.getTimezoneOffset()*60000));
+		},
+		_local_to_utc: function(local){
+			return new Date(local.getTime() - (local.getTimezoneOffset()*60000));
+		},
+		_zero_time: function(local){
+			return new Date(local.getFullYear(), local.getMonth(), local.getDate());
+		},
+		_zero_utc_time: function(utc){
+			return new Date(Date.UTC(utc.getUTCFullYear(), utc.getUTCMonth(), utc.getUTCDate()));
+		},
+
+		getDate: function() {
+			return this._utc_to_local(this.getUTCDate());
+		},
+
+		getUTCDate: function() {
+			return this.date;
+		},
+
+		setDate: function(d) {
+			this.setUTCDate(this._local_to_utc(d));
+		},
+
+		setUTCDate: function(d) {
+			this.date = d;
+			this.setValue();
+		},
+
+		setValue: function() {
+			var formatted = this.getFormattedDate();
+			if (!this.isInput) {
+				if (this.component){
+					this.element.find('input').val(formatted).change();
+				}
+			} else {
+				this.element.val(formatted).change();
+			}
+		},
+
+		getFormattedDate: function(format) {
+			if (format === undefined)
+				format = this.o.format;
+			return DPGlobal.formatDate(this.date, format, this.o.language);
+		},
+
+		setStartDate: function(startDate){
+			this._process_options({startDate: startDate});
+			this.update();
+			this.updateNavArrows();
+		},
+
+		setEndDate: function(endDate){
+			this._process_options({endDate: endDate});
+			this.update();
+			this.updateNavArrows();
+		},
+
+		setDaysOfWeekDisabled: function(daysOfWeekDisabled){
+			this._process_options({daysOfWeekDisabled: daysOfWeekDisabled});
+			this.update();
+			this.updateNavArrows();
+		},
+
+		place: function(){
+						if(this.isInline) return;
+			var calendarWidth = this.picker.outerWidth(),
+				calendarHeight = this.picker.outerHeight(),
+				visualPadding = 10,
+				windowWidth = $window.width(),
+				windowHeight = $window.height(),
+				scrollTop = $window.scrollTop();
+
+			var zIndex = parseInt(this.element.parents().filter(function() {
+							return $(this).css('z-index') != 'auto';
+						}).first().css('z-index'))+10;
+			var offset = this.component ? this.component.parent().offset() : this.element.offset();
+			var height = this.component ? this.component.outerHeight(true) : this.element.outerHeight(false);
+			var width = this.component ? this.component.outerWidth(true) : this.element.outerWidth(false);
+			var left = offset.left,
+				top = offset.top;
+
+			this.picker.removeClass(
+				'datepicker-orient-top datepicker-orient-bottom '+
+				'datepicker-orient-right datepicker-orient-left'
+			);
+
+			if (this.o.orientation.x !== 'auto') {
+				this.picker.addClass('datepicker-orient-' + this.o.orientation.x);
+				if (this.o.orientation.x === 'right')
+					left -= calendarWidth - width;
+			}
+			// auto x orientation is best-placement: if it crosses a window
+			// edge, fudge it sideways
+			else {
+				// Default to left
+				this.picker.addClass('datepicker-orient-left');
+				if (offset.left < 0)
+					left -= offset.left - visualPadding;
+				else if (offset.left + calendarWidth > windowWidth)
+					left = windowWidth - calendarWidth - visualPadding;
+			}
+
+			// auto y orientation is best-situation: top or bottom, no fudging,
+			// decision based on which shows more of the calendar
+			var yorient = this.o.orientation.y,
+				top_overflow, bottom_overflow;
+			if (yorient === 'auto') {
+				top_overflow = -scrollTop + offset.top - calendarHeight;
+				bottom_overflow = scrollTop + windowHeight - (offset.top + height + calendarHeight);
+				if (Math.max(top_overflow, bottom_overflow) === bottom_overflow)
+					yorient = 'top';
+				else
+					yorient = 'bottom';
+			}
+			this.picker.addClass('datepicker-orient-' + yorient);
+			if (yorient === 'top')
+				top += height;
+			else
+				top -= calendarHeight + parseInt(this.picker.css('padding-top'));
+
+			this.picker.css({
+				top: top,
+				left: left,
+				zIndex: zIndex
+			});
+		},
+
+		_allow_update: true,
+		update: function(){
+			if (!this._allow_update) return;
+
+			var oldDate = new Date(this.date),
+				date, fromArgs = false;
+			if(arguments && arguments.length && (typeof arguments[0] === 'string' || arguments[0] instanceof Date)) {
+				date = arguments[0];
+				if (date instanceof Date)
+					date = this._local_to_utc(date);
+				fromArgs = true;
+			} else {
+				date = this.isInput ? this.element.val() : this.element.data('date') || this.element.find('input').val();
+				delete this.element.data().date;
+			}
+
+			this.date = DPGlobal.parseDate(date, this.o.format, this.o.language);
+
+			if (fromArgs) {
+				// setting date by clicking
+				this.setValue();
+			} else if (date) {
+				// setting date by typing
+				if (oldDate.getTime() !== this.date.getTime())
+					this._trigger('changeDate');
+			} else {
+				// clearing date
+				this._trigger('clearDate');
+			}
+
+			if (this.date < this.o.startDate) {
+				this.viewDate = new Date(this.o.startDate);
+				this.date = new Date(this.o.startDate);
+			} else if (this.date > this.o.endDate) {
+				this.viewDate = new Date(this.o.endDate);
+				this.date = new Date(this.o.endDate);
+			} else {
+				this.viewDate = new Date(this.date);
+				this.date = new Date(this.date);
+			}
+			this.fill();
+		},
+
+		fillDow: function(){
+			var dowCnt = this.o.weekStart,
+			html = '<tr>';
+			if(this.o.calendarWeeks){
+				var cell = '<th class="cw">&nbsp;</th>';
+				html += cell;
+				this.picker.find('.datepicker-days thead tr:first-child').prepend(cell);
+			}
+			while (dowCnt < this.o.weekStart + 7) {
+				html += '<th class="dow">'+dates[this.o.language].daysMin[(dowCnt++)%7]+'</th>';
+			}
+			html += '</tr>';
+			this.picker.find('.datepicker-days thead').append(html);
+		},
+
+		fillMonths: function(){
+			var html = '',
+			i = 0;
+			while (i < 12) {
+				html += '<span class="month">'+dates[this.o.language].monthsShort[i++]+'</span>';
+			}
+			this.picker.find('.datepicker-months td').html(html);
+		},
+
+		setRange: function(range){
+			if (!range || !range.length)
+				delete this.range;
+			else
+				this.range = $.map(range, function(d){ return d.valueOf(); });
+			this.fill();
+		},
+
+		getClassNames: function(date){
+			var cls = [],
+				year = this.viewDate.getUTCFullYear(),
+				month = this.viewDate.getUTCMonth(),
+				currentDate = this.date.valueOf(),
+				today = new Date();
+			if (date.getUTCFullYear() < year || (date.getUTCFullYear() == year && date.getUTCMonth() < month)) {
+				cls.push('old');
+			} else if (date.getUTCFullYear() > year || (date.getUTCFullYear() == year && date.getUTCMonth() > month)) {
+				cls.push('new');
+			}
+			// Compare internal UTC date with local today, not UTC today
+			if (this.o.todayHighlight &&
+				date.getUTCFullYear() == today.getFullYear() &&
+				date.getUTCMonth() == today.getMonth() &&
+				date.getUTCDate() == today.getDate()) {
+				cls.push('today');
+			}
+			if (currentDate && date.valueOf() == currentDate) {
+				cls.push('active');
+			}
+			if (date.valueOf() < this.o.startDate || date.valueOf() > this.o.endDate ||
+				$.inArray(date.getUTCDay(), this.o.daysOfWeekDisabled) !== -1) {
+				cls.push('disabled');
+			}
+			if (this.range){
+				if (date > this.range[0] && date < this.range[this.range.length-1]){
+					cls.push('range');
+				}
+				if ($.inArray(date.valueOf(), this.range) != -1){
+					cls.push('selected');
+				}
+			}
+			return cls;
+		},
+
+		fill: function() {
+			var d = new Date(this.viewDate),
+				year = d.getUTCFullYear(),
+				month = d.getUTCMonth(),
+				startYear = this.o.startDate !== -Infinity ? this.o.startDate.getUTCFullYear() : -Infinity,
+				startMonth = this.o.startDate !== -Infinity ? this.o.startDate.getUTCMonth() : -Infinity,
+				endYear = this.o.endDate !== Infinity ? this.o.endDate.getUTCFullYear() : Infinity,
+				endMonth = this.o.endDate !== Infinity ? this.o.endDate.getUTCMonth() : Infinity,
+				currentDate = this.date && this.date.valueOf(),
+				tooltip;
+			this.picker.find('.datepicker-days thead th.datepicker-switch')
+						.text(dates[this.o.language].months[month]+' '+year);
+			this.picker.find('tfoot th.today')
+						.text(dates[this.o.language].today)
+						.toggle(this.o.todayBtn !== false);
+			this.picker.find('tfoot th.clear')
+						.text(dates[this.o.language].clear)
+						.toggle(this.o.clearBtn !== false);
+			this.updateNavArrows();
+			this.fillMonths();
+			var prevMonth = UTCDate(year, month-1, 28,0,0,0,0),
+				day = DPGlobal.getDaysInMonth(prevMonth.getUTCFullYear(), prevMonth.getUTCMonth());
+			prevMonth.setUTCDate(day);
+			prevMonth.setUTCDate(day - (prevMonth.getUTCDay() - this.o.weekStart + 7)%7);
+			var nextMonth = new Date(prevMonth);
+			nextMonth.setUTCDate(nextMonth.getUTCDate() + 42);
+			nextMonth = nextMonth.valueOf();
+			var html = [];
+			var clsName;
+			while(prevMonth.valueOf() < nextMonth) {
+				if (prevMonth.getUTCDay() == this.o.weekStart) {
+					html.push('<tr>');
+					if(this.o.calendarWeeks){
+						// ISO 8601: First week contains first thursday.
+						// ISO also states week starts on Monday, but we can be more abstract here.
+						var
+							// Start of current week: based on weekstart/current date
+							ws = new Date(+prevMonth + (this.o.weekStart - prevMonth.getUTCDay() - 7) % 7 * 864e5),
+							// Thursday of this week
+							th = new Date(+ws + (7 + 4 - ws.getUTCDay()) % 7 * 864e5),
+							// First Thursday of year, year from thursday
+							yth = new Date(+(yth = UTCDate(th.getUTCFullYear(), 0, 1)) + (7 + 4 - yth.getUTCDay())%7*864e5),
+							// Calendar week: ms between thursdays, div ms per day, div 7 days
+							calWeek =  (th - yth) / 864e5 / 7 + 1;
+						html.push('<td class="cw">'+ calWeek +'</td>');
+
+					}
+				}
+				clsName = this.getClassNames(prevMonth);
+				clsName.push('day');
+
+				if (this.o.beforeShowDay !== $.noop){
+					var before = this.o.beforeShowDay(this._utc_to_local(prevMonth));
+					if (before === undefined)
+						before = {};
+					else if (typeof(before) === 'boolean')
+						before = {enabled: before};
+					else if (typeof(before) === 'string')
+						before = {classes: before};
+					if (before.enabled === false)
+						clsName.push('disabled');
+					if (before.classes)
+						clsName = clsName.concat(before.classes.split(/\s+/));
+					if (before.tooltip)
+						tooltip = before.tooltip;
+				}
+
+				clsName = $.unique(clsName);
+				html.push('<td class="'+clsName.join(' ')+'"' + (tooltip ? ' title="'+tooltip+'"' : '') + '>'+prevMonth.getUTCDate() + '</td>');
+				if (prevMonth.getUTCDay() == this.o.weekEnd) {
+					html.push('</tr>');
+				}
+				prevMonth.setUTCDate(prevMonth.getUTCDate()+1);
+			}
+			this.picker.find('.datepicker-days tbody').empty().append(html.join(''));
+			var currentYear = this.date && this.date.getUTCFullYear();
+
+			var months = this.picker.find('.datepicker-months')
+						.find('th:eq(1)')
+							.text(year)
+							.end()
+						.find('span').removeClass('active');
+			if (currentYear && currentYear == year) {
+				months.eq(this.date.getUTCMonth()).addClass('active');
+			}
+			if (year < startYear || year > endYear) {
+				months.addClass('disabled');
+			}
+			if (year == startYear) {
+				months.slice(0, startMonth).addClass('disabled');
+			}
+			if (year == endYear) {
+				months.slice(endMonth+1).addClass('disabled');
+			}
+
+			html = '';
+			year = parseInt(year/10, 10) * 10;
+			var yearCont = this.picker.find('.datepicker-years')
+								.find('th:eq(1)')
+									.text(year + '-' + (year + 9))
+									.end()
+								.find('td');
+			year -= 1;
+			for (var i = -1; i < 11; i++) {
+				html += '<span class="year'+(i == -1 ? ' old' : i == 10 ? ' new' : '')+(currentYear == year ? ' active' : '')+(year < startYear || year > endYear ? ' disabled' : '')+'">'+year+'</span>';
+				year += 1;
+			}
+			yearCont.html(html);
+		},
+
+		updateNavArrows: function() {
+			if (!this._allow_update) return;
+
+			var d = new Date(this.viewDate),
+				year = d.getUTCFullYear(),
+				month = d.getUTCMonth();
+			switch (this.viewMode) {
+				case 0:
+					if (this.o.startDate !== -Infinity && year <= this.o.startDate.getUTCFullYear() && month <= this.o.startDate.getUTCMonth()) {
+						this.picker.find('.prev').css({visibility: 'hidden'});
+					} else {
+						this.picker.find('.prev').css({visibility: 'visible'});
+					}
+					if (this.o.endDate !== Infinity && year >= this.o.endDate.getUTCFullYear() && month >= this.o.endDate.getUTCMonth()) {
+						this.picker.find('.next').css({visibility: 'hidden'});
+					} else {
+						this.picker.find('.next').css({visibility: 'visible'});
+					}
+					break;
+				case 1:
+				case 2:
+					if (this.o.startDate !== -Infinity && year <= this.o.startDate.getUTCFullYear()) {
+						this.picker.find('.prev').css({visibility: 'hidden'});
+					} else {
+						this.picker.find('.prev').css({visibility: 'visible'});
+					}
+					if (this.o.endDate !== Infinity && year >= this.o.endDate.getUTCFullYear()) {
+						this.picker.find('.next').css({visibility: 'hidden'});
+					} else {
+						this.picker.find('.next').css({visibility: 'visible'});
+					}
+					break;
+			}
+		},
+
+		click: function(e) {
+			e.preventDefault();
+			var target = $(e.target).closest('span, td, th');
+			if (target.length == 1) {
+				switch(target[0].nodeName.toLowerCase()) {
+					case 'th':
+						switch(target[0].className) {
+							case 'datepicker-switch':
+								this.showMode(1);
+								break;
+							case 'prev':
+							case 'next':
+								var dir = DPGlobal.modes[this.viewMode].navStep * (target[0].className == 'prev' ? -1 : 1);
+								switch(this.viewMode){
+									case 0:
+										this.viewDate = this.moveMonth(this.viewDate, dir);
+										this._trigger('changeMonth', this.viewDate);
+										break;
+									case 1:
+									case 2:
+										this.viewDate = this.moveYear(this.viewDate, dir);
+										if (this.viewMode === 1)
+											this._trigger('changeYear', this.viewDate);
+										break;
+								}
+								this.fill();
+								break;
+							case 'today':
+								var date = new Date();
+								date = UTCDate(date.getFullYear(), date.getMonth(), date.getDate(), 0, 0, 0);
+
+								this.showMode(-2);
+								var which = this.o.todayBtn == 'linked' ? null : 'view';
+								this._setDate(date, which);
+								break;
+							case 'clear':
+								var element;
+								if (this.isInput)
+									element = this.element;
+								else if (this.component)
+									element = this.element.find('input');
+								if (element)
+									element.val("").change();
+								this._trigger('changeDate');
+								this.update();
+								if (this.o.autoclose)
+									this.hide();
+								break;
+						}
+						break;
+					case 'span':
+						if (!target.is('.disabled')) {
+							this.viewDate.setUTCDate(1);
+							if (target.is('.month')) {
+								var day = 1;
+								var month = target.parent().find('span').index(target);
+								var year = this.viewDate.getUTCFullYear();
+								this.viewDate.setUTCMonth(month);
+								this._trigger('changeMonth', this.viewDate);
+								if (this.o.minViewMode === 1) {
+									this._setDate(UTCDate(year, month, day,0,0,0,0));
+								}
+							} else {
+								var year = parseInt(target.text(), 10)||0;
+								var day = 1;
+								var month = 0;
+								this.viewDate.setUTCFullYear(year);
+								this._trigger('changeYear', this.viewDate);
+								if (this.o.minViewMode === 2) {
+									this._setDate(UTCDate(year, month, day,0,0,0,0));
+								}
+							}
+							this.showMode(-1);
+							this.fill();
+						}
+						break;
+					case 'td':
+						if (target.is('.day') && !target.is('.disabled')){
+							var day = parseInt(target.text(), 10)||1;
+							var year = this.viewDate.getUTCFullYear(),
+								month = this.viewDate.getUTCMonth();
+							if (target.is('.old')) {
+								if (month === 0) {
+									month = 11;
+									year -= 1;
+								} else {
+									month -= 1;
+								}
+							} else if (target.is('.new')) {
+								if (month == 11) {
+									month = 0;
+									year += 1;
+								} else {
+									month += 1;
+								}
+							}
+							this._setDate(UTCDate(year, month, day,0,0,0,0));
+						}
+						break;
+				}
+			}
+		},
+
+		_setDate: function(date, which){
+			if (!which || which == 'date')
+				this.date = new Date(date);
+			if (!which || which  == 'view')
+				this.viewDate = new Date(date);
+			this.fill();
+			this.setValue();
+			this._trigger('changeDate');
+			var element;
+			if (this.isInput) {
+				element = this.element;
+			} else if (this.component){
+				element = this.element.find('input');
+			}
+			if (element) {
+				element.change();
+			}
+			if (this.o.autoclose && (!which || which == 'date')) {
+				this.hide();
+			}
+		},
+
+		moveMonth: function(date, dir){
+			if (!dir) return date;
+			var new_date = new Date(date.valueOf()),
+				day = new_date.getUTCDate(),
+				month = new_date.getUTCMonth(),
+				mag = Math.abs(dir),
+				new_month, test;
+			dir = dir > 0 ? 1 : -1;
+			if (mag == 1){
+				test = dir == -1
+					// If going back one month, make sure month is not current month
+					// (eg, Mar 31 -> Feb 31 == Feb 28, not Mar 02)
+					? function(){ return new_date.getUTCMonth() == month; }
+					// If going forward one month, make sure month is as expected
+					// (eg, Jan 31 -> Feb 31 == Feb 28, not Mar 02)
+					: function(){ return new_date.getUTCMonth() != new_month; };
+				new_month = month + dir;
+				new_date.setUTCMonth(new_month);
+				// Dec -> Jan (12) or Jan -> Dec (-1) -- limit expected date to 0-11
+				if (new_month < 0 || new_month > 11)
+					new_month = (new_month + 12) % 12;
+			} else {
+				// For magnitudes >1, move one month at a time...
+				for (var i=0; i<mag; i++)
+					// ...which might decrease the day (eg, Jan 31 to Feb 28, etc)...
+					new_date = this.moveMonth(new_date, dir);
+				// ...then reset the day, keeping it in the new month
+				new_month = new_date.getUTCMonth();
+				new_date.setUTCDate(day);
+				test = function(){ return new_month != new_date.getUTCMonth(); };
+			}
+			// Common date-resetting loop -- if date is beyond end of month, make it
+			// end of month
+			while (test()){
+				new_date.setUTCDate(--day);
+				new_date.setUTCMonth(new_month);
+			}
+			return new_date;
+		},
+
+		moveYear: function(date, dir){
+			return this.moveMonth(date, dir*12);
+		},
+
+		dateWithinRange: function(date){
+			return date >= this.o.startDate && date <= this.o.endDate;
+		},
+
+		keydown: function(e){
+			if (this.picker.is(':not(:visible)')){
+				if (e.keyCode == 27) // allow escape to hide and re-show picker
+					this.show();
+				return;
+			}
+			var dateChanged = false,
+				dir, day, month,
+				newDate, newViewDate;
+			switch(e.keyCode){
+				case 27: // escape
+					this.hide();
+					e.preventDefault();
+					break;
+				case 37: // left
+				case 39: // right
+					if (!this.o.keyboardNavigation) break;
+					dir = e.keyCode == 37 ? -1 : 1;
+					if (e.ctrlKey){
+						newDate = this.moveYear(this.date, dir);
+						newViewDate = this.moveYear(this.viewDate, dir);
+						this._trigger('changeYear', this.viewDate);
+					} else if (e.shiftKey){
+						newDate = this.moveMonth(this.date, dir);
+						newViewDate = this.moveMonth(this.viewDate, dir);
+						this._trigger('changeMonth', this.viewDate);
+					} else {
+						newDate = new Date(this.date);
+						newDate.setUTCDate(this.date.getUTCDate() + dir);
+						newViewDate = new Date(this.viewDate);
+						newViewDate.setUTCDate(this.viewDate.getUTCDate() + dir);
+					}
+					if (this.dateWithinRange(newDate)){
+						this.date = newDate;
+						this.viewDate = newViewDate;
+						this.setValue();
+						this.update();
+						e.preventDefault();
+						dateChanged = true;
+					}
+					break;
+				case 38: // up
+				case 40: // down
+					if (!this.o.keyboardNavigation) break;
+					dir = e.keyCode == 38 ? -1 : 1;
+					if (e.ctrlKey){
+						newDate = this.moveYear(this.date, dir);
+						newViewDate = this.moveYear(this.viewDate, dir);
+						this._trigger('changeYear', this.viewDate);
+					} else if (e.shiftKey){
+						newDate = this.moveMonth(this.date, dir);
+						newViewDate = this.moveMonth(this.viewDate, dir);
+						this._trigger('changeMonth', this.viewDate);
+					} else {
+						newDate = new Date(this.date);
+						newDate.setUTCDate(this.date.getUTCDate() + dir * 7);
+						newViewDate = new Date(this.viewDate);
+						newViewDate.setUTCDate(this.viewDate.getUTCDate() + dir * 7);
+					}
+					if (this.dateWithinRange(newDate)){
+						this.date = newDate;
+						this.viewDate = newViewDate;
+						this.setValue();
+						this.update();
+						e.preventDefault();
+						dateChanged = true;
+					}
+					break;
+				case 13: // enter
+					this.hide();
+					e.preventDefault();
+					break;
+				case 9: // tab
+					this.hide();
+					break;
+			}
+			if (dateChanged){
+				this._trigger('changeDate');
+				var element;
+				if (this.isInput) {
+					element = this.element;
+				} else if (this.component){
+					element = this.element.find('input');
+				}
+				if (element) {
+					element.change();
+				}
+			}
+		},
+
+		showMode: function(dir) {
+			if (dir) {
+				this.viewMode = Math.max(this.o.minViewMode, Math.min(2, this.viewMode + dir));
+			}
+			/*
+				vitalets: fixing bug of very special conditions:
+				jquery 1.7.1 + webkit + show inline datepicker in bootstrap popover.
+				Method show() does not set display css correctly and datepicker is not shown.
+				Changed to .css('display', 'block') solve the problem.
+				See https://github.com/vitalets/x-editable/issues/37
+
+				In jquery 1.7.2+ everything works fine.
+			*/
+			//this.picker.find('>div').hide().filter('.datepicker-'+DPGlobal.modes[this.viewMode].clsName).show();
+			this.picker.find('>div').hide().filter('.datepicker-'+DPGlobal.modes[this.viewMode].clsName).css('display', 'block');
+			this.updateNavArrows();
+		}
+	};
+
+	var DateRangePicker = function(element, options){
+		this.element = $(element);
+		this.inputs = $.map(options.inputs, function(i){ return i.jquery ? i[0] : i; });
+		delete options.inputs;
+
+		$(this.inputs)
+			.datepicker(options)
+			.bind('changeDate', $.proxy(this.dateUpdated, this));
+
+		this.pickers = $.map(this.inputs, function(i){ return $(i).data('datepicker'); });
+		this.updateDates();
+	};
+	DateRangePicker.prototype = {
+		updateDates: function(){
+			this.dates = $.map(this.pickers, function(i){ return i.date; });
+			this.updateRanges();
+		},
+		updateRanges: function(){
+			var range = $.map(this.dates, function(d){ return d.valueOf(); });
+			$.each(this.pickers, function(i, p){
+				p.setRange(range);
+			});
+		},
+		dateUpdated: function(e){
+			var dp = $(e.target).data('datepicker'),
+				new_date = dp.getUTCDate(),
+				i = $.inArray(e.target, this.inputs),
+				l = this.inputs.length;
+			if (i == -1) return;
+
+			if (new_date < this.dates[i]){
+				// Date being moved earlier/left
+				while (i>=0 && new_date < this.dates[i]){
+					this.pickers[i--].setUTCDate(new_date);
+				}
+			}
+			else if (new_date > this.dates[i]){
+				// Date being moved later/right
+				while (i<l && new_date > this.dates[i]){
+					this.pickers[i++].setUTCDate(new_date);
+				}
+			}
+			this.updateDates();
+		},
+		remove: function(){
+			$.map(this.pickers, function(p){ p.remove(); });
+			delete this.element.data().datepicker;
+		}
+	};
+
+	function opts_from_el(el, prefix){
+		// Derive options from element data-attrs
+		var data = $(el).data(),
+			out = {}, inkey,
+			replace = new RegExp('^' + prefix.toLowerCase() + '([A-Z])'),
+			prefix = new RegExp('^' + prefix.toLowerCase());
+		for (var key in data)
+			if (prefix.test(key)){
+				inkey = key.replace(replace, function(_,a){ return a.toLowerCase(); });
+				out[inkey] = data[key];
+			}
+		return out;
+	}
+
+	function opts_from_locale(lang){
+		// Derive options from locale plugins
+		var out = {};
+		// Check if "de-DE" style date is available, if not language should
+		// fallback to 2 letter code eg "de"
+		if (!dates[lang]) {
+			lang = lang.split('-')[0]
+			if (!dates[lang])
+				return;
+		}
+		var d = dates[lang];
+		$.each(locale_opts, function(i,k){
+			if (k in d)
+				out[k] = d[k];
+		});
+		return out;
+	}
+
+	var old = $.fn.datepicker;
+	$.fn.datepicker = function ( option ) {
+		var args = Array.apply(null, arguments);
+		args.shift();
+		var internal_return,
+			this_return;
+		this.each(function () {
+			var $this = $(this),
+				data = $this.data('datepicker'),
+				options = typeof option == 'object' && option;
+			if (!data) {
+				var elopts = opts_from_el(this, 'date'),
+					// Preliminary otions
+					xopts = $.extend({}, defaults, elopts, options),
+					locopts = opts_from_locale(xopts.language),
+					// Options priority: js args, data-attrs, locales, defaults
+					opts = $.extend({}, defaults, locopts, elopts, options);
+				if ($this.is('.input-daterange') || opts.inputs){
+					var ropts = {
+						inputs: opts.inputs || $this.find('input').toArray()
+					};
+					$this.data('datepicker', (data = new DateRangePicker(this, $.extend(opts, ropts))));
+				}
+				else{
+					$this.data('datepicker', (data = new Datepicker(this, opts)));
+				}
+			}
+			if (typeof option == 'string' && typeof data[option] == 'function') {
+				internal_return = data[option].apply(data, args);
+				if (internal_return !== undefined)
+					return false;
+			}
+		});
+		if (internal_return !== undefined)
+			return internal_return;
+		else
+			return this;
+	};
+
+	var defaults = $.fn.datepicker.defaults = {
+		autoclose: false,
+		beforeShowDay: $.noop,
+		calendarWeeks: false,
+		clearBtn: false,
+		daysOfWeekDisabled: [],
+		endDate: Infinity,
+		forceParse: true,
+		format: 'mm/dd/yyyy',
+		keyboardNavigation: true,
+		language: 'en',
+		minViewMode: 0,
+		orientation: "auto",
+		rtl: false,
+		startDate: -Infinity,
+		startView: 0,
+		todayBtn: false,
+		todayHighlight: false,
+		weekStart: 0
+	};
+	var locale_opts = $.fn.datepicker.locale_opts = [
+		'format',
+		'rtl',
+		'weekStart'
+	];
+	$.fn.datepicker.Constructor = Datepicker;
+	var dates = $.fn.datepicker.dates = {
+		en: {
+			days: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+			daysShort: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+			daysMin: ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"],
+			months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+			monthsShort: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+			today: "Today",
+			clear: "Clear"
+		}
+	};
+
+	var DPGlobal = {
+		modes: [
+			{
+				clsName: 'days',
+				navFnc: 'Month',
+				navStep: 1
+			},
+			{
+				clsName: 'months',
+				navFnc: 'FullYear',
+				navStep: 1
+			},
+			{
+				clsName: 'years',
+				navFnc: 'FullYear',
+				navStep: 10
+		}],
+		isLeapYear: function (year) {
+			return (((year % 4 === 0) && (year % 100 !== 0)) || (year % 400 === 0));
+		},
+		getDaysInMonth: function (year, month) {
+			return [31, (DPGlobal.isLeapYear(year) ? 29 : 28), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31][month];
+		},
+		validParts: /dd?|DD?|mm?|MM?|yy(?:yy)?/g,
+		nonpunctuation: /[^ -\/:-@\[\u3400-\u9fff-`{-~\t\n\r]+/g,
+		parseFormat: function(format){
+			// IE treats \0 as a string end in inputs (truncating the value),
+			// so it's a bad format delimiter, anyway
+			var separators = format.replace(this.validParts, '\0').split('\0'),
+				parts = format.match(this.validParts);
+			if (!separators || !separators.length || !parts || parts.length === 0){
+				throw new Error("Invalid date format.");
+			}
+			return {separators: separators, parts: parts};
+		},
+		parseDate: function(date, format, language) {
+			if (date instanceof Date) return date;
+			if (typeof format === 'string')
+				format = DPGlobal.parseFormat(format);
+			if (/^[\-+]\d+[dmwy]([\s,]+[\-+]\d+[dmwy])*$/.test(date)) {
+				var part_re = /([\-+]\d+)([dmwy])/,
+					parts = date.match(/([\-+]\d+)([dmwy])/g),
+					part, dir;
+				date = new Date();
+				for (var i=0; i<parts.length; i++) {
+					part = part_re.exec(parts[i]);
+					dir = parseInt(part[1]);
+					switch(part[2]){
+						case 'd':
+							date.setUTCDate(date.getUTCDate() + dir);
+							break;
+						case 'm':
+							date = Datepicker.prototype.moveMonth.call(Datepicker.prototype, date, dir);
+							break;
+						case 'w':
+							date.setUTCDate(date.getUTCDate() + dir * 7);
+							break;
+						case 'y':
+							date = Datepicker.prototype.moveYear.call(Datepicker.prototype, date, dir);
+							break;
+					}
+				}
+				return UTCDate(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate(), 0, 0, 0);
+			}
+			var parts = date && date.match(this.nonpunctuation) || [],
+				date = new Date(),
+				parsed = {},
+				setters_order = ['yyyy', 'yy', 'M', 'MM', 'm', 'mm', 'd', 'dd'],
+				setters_map = {
+					yyyy: function(d,v){ return d.setUTCFullYear(v); },
+					yy: function(d,v){ return d.setUTCFullYear(2000+v); },
+					m: function(d,v){
+						if (isNaN(d))
+							return d;
+						v -= 1;
+						while (v<0) v += 12;
+						v %= 12;
+						d.setUTCMonth(v);
+						while (d.getUTCMonth() != v)
+							d.setUTCDate(d.getUTCDate()-1);
+						return d;
+					},
+					d: function(d,v){ return d.setUTCDate(v); }
+				},
+				val, filtered, part;
+			setters_map['M'] = setters_map['MM'] = setters_map['mm'] = setters_map['m'];
+			setters_map['dd'] = setters_map['d'];
+			date = UTCDate(date.getFullYear(), date.getMonth(), date.getDate(), 0, 0, 0);
+			var fparts = format.parts.slice();
+			// Remove noop parts
+			if (parts.length != fparts.length) {
+				fparts = $(fparts).filter(function(i,p){
+					return $.inArray(p, setters_order) !== -1;
+				}).toArray();
+			}
+			// Process remainder
+			if (parts.length == fparts.length) {
+				for (var i=0, cnt = fparts.length; i < cnt; i++) {
+					val = parseInt(parts[i], 10);
+					part = fparts[i];
+					if (isNaN(val)) {
+						switch(part) {
+							case 'MM':
+								filtered = $(dates[language].months).filter(function(){
+									var m = this.slice(0, parts[i].length),
+										p = parts[i].slice(0, m.length);
+									return m == p;
+								});
+								val = $.inArray(filtered[0], dates[language].months) + 1;
+								break;
+							case 'M':
+								filtered = $(dates[language].monthsShort).filter(function(){
+									var m = this.slice(0, parts[i].length),
+										p = parts[i].slice(0, m.length);
+									return m == p;
+								});
+								val = $.inArray(filtered[0], dates[language].monthsShort) + 1;
+								break;
+						}
+					}
+					parsed[part] = val;
+				}
+				for (var i=0, _date, s; i<setters_order.length; i++){
+					s = setters_order[i];
+					if (s in parsed && !isNaN(parsed[s])){
+						_date = new Date(date);
+						setters_map[s](_date, parsed[s]);
+						if (!isNaN(_date))
+							date = _date;
+					}
+				}
+			}
+			return date;
+		},
+		formatDate: function(date, format, language){
+			if (typeof format === 'string')
+				format = DPGlobal.parseFormat(format);
+			var val = {
+				d: date.getUTCDate(),
+				D: dates[language].daysShort[date.getUTCDay()],
+				DD: dates[language].days[date.getUTCDay()],
+				m: date.getUTCMonth() + 1,
+				M: dates[language].monthsShort[date.getUTCMonth()],
+				MM: dates[language].months[date.getUTCMonth()],
+				yy: date.getUTCFullYear().toString().substring(2),
+				yyyy: date.getUTCFullYear()
+			};
+			val.dd = (val.d < 10 ? '0' : '') + val.d;
+			val.mm = (val.m < 10 ? '0' : '') + val.m;
+			var date = [],
+				seps = $.extend([], format.separators);
+			for (var i=0, cnt = format.parts.length; i <= cnt; i++) {
+				if (seps.length)
+					date.push(seps.shift());
+				date.push(val[format.parts[i]]);
+			}
+			return date.join('');
+		},
+		headTemplate: '<thead>'+
+							'<tr>'+
+								'<th class="prev"><i class="icon-angle-left"></i></th>'+
+								'<th colspan="5" class="datepicker-switch"></th>'+
+								'<th class="next"><i class="icon-angle-right"></i></th>'+
+							'</tr>'+
+						'</thead>',
+		contTemplate: '<tbody><tr><td colspan="7"></td></tr></tbody>',
+		footTemplate: '<tfoot><tr><th colspan="7" class="today"></th></tr><tr><th colspan="7" class="clear"></th></tr></tfoot>'
+	};
+	DPGlobal.template = '<div class="datepicker">'+
+							'<div class="datepicker-days">'+
+								'<table class=" table-condensed">'+
+									DPGlobal.headTemplate+
+									'<tbody></tbody>'+
+									DPGlobal.footTemplate+
+								'</table>'+
+							'</div>'+
+							'<div class="datepicker-months">'+
+								'<table class="table-condensed">'+
+									DPGlobal.headTemplate+
+									DPGlobal.contTemplate+
+									DPGlobal.footTemplate+
+								'</table>'+
+							'</div>'+
+							'<div class="datepicker-years">'+
+								'<table class="table-condensed">'+
+									DPGlobal.headTemplate+
+									DPGlobal.contTemplate+
+									DPGlobal.footTemplate+
+								'</table>'+
+							'</div>'+
+						'</div>';
+
+	$.fn.datepicker.DPGlobal = DPGlobal;
+
+
+	/* DATEPICKER NO CONFLICT
+	* =================== */
+
+	$.fn.datepicker.noConflict = function(){
+		$.fn.datepicker = old;
+		return this;
+	};
+
+
+	/* DATEPICKER DATA-API
+	* ================== */
+
+	$(document).on(
+		'focus.datepicker.data-api click.datepicker.data-api',
+		'[data-provide="datepicker"]',
+		function(e){
+			var $this = $(this);
+			if ($this.data('datepicker')) return;
+			e.preventDefault();
+			// component click requires us to explicitly show it
+			$this.datepicker('show');
+		}
+	);
+	$(function(){
+		$('[data-provide="datepicker-inline"]').datepicker();
+	});
+
+}( window.jQuery ));
+
+/*! fancyBox v2.1.3 fancyapps.com | fancyapps.com/fancybox/#license */
+(function(B,x,f,q){var r=f(B),m=f(x),b=f.fancybox=function(){b.open.apply(this,arguments)},u=null,n=x.createTouch!==q,s=function(a){return a&&a.hasOwnProperty&&a instanceof f},p=function(a){return a&&"string"===f.type(a)},E=function(a){return p(a)&&0<a.indexOf("%")},k=function(a,d){var e=parseInt(a,10)||0;d&&E(a)&&(e*=b.getViewport()[d]/100);return Math.ceil(e)},v=function(a,b){return k(a,b)+"px"};f.extend(b,{version:"2.1.3",defaults:{padding:15,margin:20,width:800,height:600,minWidth:100,minHeight:100,
+maxWidth:9999,maxHeight:9999,autoSize:!0,autoHeight:!1,autoWidth:!1,autoResize:!0,autoCenter:!n,fitToView:!0,aspectRatio:!1,topRatio:0.5,leftRatio:0.5,scrolling:"auto",wrapCSS:"",arrows:!0,closeBtn:!0,closeClick:!1,nextClick:!1,mouseWheel:!0,autoPlay:!1,playSpeed:3E3,preload:3,modal:!1,loop:!0,ajax:{dataType:"html",headers:{"X-fancyBox":!0}},iframe:{scrolling:"auto",preload:!0},swf:{wmode:"transparent",allowfullscreen:"true",allowscriptaccess:"always"},keys:{next:{13:"left",34:"up",39:"left",40:"up"},
+prev:{8:"right",33:"down",37:"right",38:"down"},close:[27],play:[32],toggle:[70]},direction:{next:"left",prev:"right"},scrollOutside:!0,index:0,type:null,href:null,content:null,title:null,tpl:{wrap:'<div class="fancybox-wrap" tabIndex="-1"><div class="fancybox-skin"><div class="fancybox-outer"><div class="fancybox-inner"></div></div></div></div>',image:'<img class="fancybox-image" src="{href}" alt="" />',iframe:'<iframe id="fancybox-frame{rnd}" name="fancybox-frame{rnd}" class="fancybox-iframe" frameborder="0" vspace="0" hspace="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen'+
+(f.browser.msie?' allowtransparency="true"':"")+"></iframe>",error:'<p class="fancybox-error">The requested content cannot be loaded.<br/>Please try again later.</p>',closeBtn:'<a title="Close" class="fancybox-item fancybox-close" href="javascript:;"></a>',next:'<a title="Next" class="fancybox-nav fancybox-next" href="javascript:;"><span></span></a>',prev:'<a title="Previous" class="fancybox-nav fancybox-prev" href="javascript:;"><span></span></a>'},openEffect:"fade",openSpeed:250,openEasing:"swing",
+openOpacity:!0,openMethod:"zoomIn",closeEffect:"fade",closeSpeed:250,closeEasing:"swing",closeOpacity:!0,closeMethod:"zoomOut",nextEffect:"elastic",nextSpeed:250,nextEasing:"swing",nextMethod:"changeIn",prevEffect:"elastic",prevSpeed:250,prevEasing:"swing",prevMethod:"changeOut",helpers:{overlay:!0,title:!0},onCancel:f.noop,beforeLoad:f.noop,afterLoad:f.noop,beforeShow:f.noop,afterShow:f.noop,beforeChange:f.noop,beforeClose:f.noop,afterClose:f.noop},group:{},opts:{},previous:null,coming:null,current:null,
+isActive:!1,isOpen:!1,isOpened:!1,wrap:null,skin:null,outer:null,inner:null,player:{timer:null,isActive:!1},ajaxLoad:null,imgPreload:null,transitions:{},helpers:{},open:function(a,d){if(a&&(f.isPlainObject(d)||(d={}),!1!==b.close(!0)))return f.isArray(a)||(a=s(a)?f(a).get():[a]),f.each(a,function(e,c){var j={},g,h,i,l,k;"object"===f.type(c)&&(c.nodeType&&(c=f(c)),s(c)?(j={href:c.data("fancybox-href")||c.attr("href"),title:c.data("fancybox-title")||c.attr("title"),isDom:!0,element:c},f.metadata&&f.extend(!0,
+j,c.metadata())):j=c);g=d.href||j.href||(p(c)?c:null);h=d.title!==q?d.title:j.title||"";l=(i=d.content||j.content)?"html":d.type||j.type;!l&&j.isDom&&(l=c.data("fancybox-type"),l||(l=(l=c.prop("class").match(/fancybox\.(\w+)/))?l[1]:null));p(g)&&(l||(b.isImage(g)?l="image":b.isSWF(g)?l="swf":"#"===g.charAt(0)?l="inline":p(c)&&(l="html",i=c)),"ajax"===l&&(k=g.split(/\s+/,2),g=k.shift(),k=k.shift()));i||("inline"===l?g?i=f(p(g)?g.replace(/.*(?=#[^\s]+$)/,""):g):j.isDom&&(i=c):"html"===l?i=g:!l&&(!g&&
+j.isDom)&&(l="inline",i=c));f.extend(j,{href:g,type:l,content:i,title:h,selector:k});a[e]=j}),b.opts=f.extend(!0,{},b.defaults,d),d.keys!==q&&(b.opts.keys=d.keys?f.extend({},b.defaults.keys,d.keys):!1),b.group=a,b._start(b.opts.index)},cancel:function(){var a=b.coming;a&&!1!==b.trigger("onCancel")&&(b.hideLoading(),b.ajaxLoad&&b.ajaxLoad.abort(),b.ajaxLoad=null,b.imgPreload&&(b.imgPreload.onload=b.imgPreload.onerror=null),a.wrap&&a.wrap.stop(!0,!0).trigger("onReset").remove(),b.coming=null,b.current||
+b._afterZoomOut(a))},close:function(a){b.cancel();!1!==b.trigger("beforeClose")&&(b.unbindEvents(),b.isActive&&(!b.isOpen||!0===a?(f(".fancybox-wrap").stop(!0).trigger("onReset").remove(),b._afterZoomOut()):(b.isOpen=b.isOpened=!1,b.isClosing=!0,f(".fancybox-item, .fancybox-nav").remove(),b.wrap.stop(!0,!0).removeClass("fancybox-opened"),b.transitions[b.current.closeMethod]())))},play:function(a){var d=function(){clearTimeout(b.player.timer)},e=function(){d();b.current&&b.player.isActive&&(b.player.timer=
+setTimeout(b.next,b.current.playSpeed))},c=function(){d();f("body").unbind(".player");b.player.isActive=!1;b.trigger("onPlayEnd")};if(!0===a||!b.player.isActive&&!1!==a){if(b.current&&(b.current.loop||b.current.index<b.group.length-1))b.player.isActive=!0,f("body").bind({"afterShow.player onUpdate.player":e,"onCancel.player beforeClose.player":c,"beforeLoad.player":d}),e(),b.trigger("onPlayStart")}else c()},next:function(a){var d=b.current;d&&(p(a)||(a=d.direction.next),b.jumpto(d.index+1,a,"next"))},
+prev:function(a){var d=b.current;d&&(p(a)||(a=d.direction.prev),b.jumpto(d.index-1,a,"prev"))},jumpto:function(a,d,e){var c=b.current;c&&(a=k(a),b.direction=d||c.direction[a>=c.index?"next":"prev"],b.router=e||"jumpto",c.loop&&(0>a&&(a=c.group.length+a%c.group.length),a%=c.group.length),c.group[a]!==q&&(b.cancel(),b._start(a)))},reposition:function(a,d){var e=b.current,c=e?e.wrap:null,j;c&&(j=b._getPosition(d),a&&"scroll"===a.type?(delete j.position,c.stop(!0,!0).animate(j,200)):(c.css(j),e.pos=f.extend({},
+e.dim,j)))},update:function(a){var d=a&&a.type,e=!d||"orientationchange"===d;e&&(clearTimeout(u),u=null);b.isOpen&&!u&&(u=setTimeout(function(){var c=b.current;c&&!b.isClosing&&(b.wrap.removeClass("fancybox-tmp"),(e||"load"===d||"resize"===d&&c.autoResize)&&b._setDimension(),"scroll"===d&&c.canShrink||b.reposition(a),b.trigger("onUpdate"),u=null)},e&&!n?0:300))},toggle:function(a){b.isOpen&&(b.current.fitToView="boolean"===f.type(a)?a:!b.current.fitToView,n&&(b.wrap.removeAttr("style").addClass("fancybox-tmp"),
+b.trigger("onUpdate")),b.update())},hideLoading:function(){m.unbind(".loading");f("#fancybox-loading").remove()},showLoading:function(){var a,d;b.hideLoading();a=f('<div id="fancybox-loading"><div></div></div>').click(b.cancel).appendTo("body");m.bind("keydown.loading",function(a){if(27===(a.which||a.keyCode))a.preventDefault(),b.cancel()});b.defaults.fixed||(d=b.getViewport(),a.css({position:"absolute",top:0.5*d.h+d.y,left:0.5*d.w+d.x}))},getViewport:function(){var a=b.current&&b.current.locked||
+!1,d={x:r.scrollLeft(),y:r.scrollTop()};a?(d.w=a[0].clientWidth,d.h=a[0].clientHeight):(d.w=n&&B.innerWidth?B.innerWidth:r.width(),d.h=n&&B.innerHeight?B.innerHeight:r.height());return d},unbindEvents:function(){b.wrap&&s(b.wrap)&&b.wrap.unbind(".fb");m.unbind(".fb");r.unbind(".fb")},bindEvents:function(){var a=b.current,d;a&&(r.bind("orientationchange.fb"+(n?"":" resize.fb")+(a.autoCenter&&!a.locked?" scroll.fb":""),b.update),(d=a.keys)&&m.bind("keydown.fb",function(e){var c=e.which||e.keyCode,j=
+e.target||e.srcElement;if(27===c&&b.coming)return!1;!e.ctrlKey&&(!e.altKey&&!e.shiftKey&&!e.metaKey&&(!j||!j.type&&!f(j).is("[contenteditable]")))&&f.each(d,function(d,j){if(1<a.group.length&&j[c]!==q)return b[d](j[c]),e.preventDefault(),!1;if(-1<f.inArray(c,j))return b[d](),e.preventDefault(),!1})}),f.fn.mousewheel&&a.mouseWheel&&b.wrap.bind("mousewheel.fb",function(d,c,j,g){for(var h=f(d.target||null),i=!1;h.length&&!i&&!h.is(".fancybox-skin")&&!h.is(".fancybox-wrap");)i=h[0]&&!(h[0].style.overflow&&
+"hidden"===h[0].style.overflow)&&(h[0].clientWidth&&h[0].scrollWidth>h[0].clientWidth||h[0].clientHeight&&h[0].scrollHeight>h[0].clientHeight),h=f(h).parent();if(0!==c&&!i&&1<b.group.length&&!a.canShrink){if(0<g||0<j)b.prev(0<g?"down":"left");else if(0>g||0>j)b.next(0>g?"up":"right");d.preventDefault()}}))},trigger:function(a,d){var e,c=d||b.coming||b.current;if(c){f.isFunction(c[a])&&(e=c[a].apply(c,Array.prototype.slice.call(arguments,1)));if(!1===e)return!1;c.helpers&&f.each(c.helpers,function(d,
+e){e&&(b.helpers[d]&&f.isFunction(b.helpers[d][a]))&&(e=f.extend(!0,{},b.helpers[d].defaults,e),b.helpers[d][a](e,c))});f.event.trigger(a+".fb")}},isImage:function(a){return p(a)&&a.match(/(^data:image\/.*,)|(\.(jp(e|g|eg)|gif|png|bmp|webp)((\?|#).*)?$)/i)},isSWF:function(a){return p(a)&&a.match(/\.(swf)((\?|#).*)?$/i)},_start:function(a){var d={},e,c,a=k(a);e=b.group[a]||null;if(!e)return!1;d=f.extend(!0,{},b.opts,e);e=d.margin;c=d.padding;"number"===f.type(e)&&(d.margin=[e,e,e,e]);"number"===f.type(c)&&
+(d.padding=[c,c,c,c]);d.modal&&f.extend(!0,d,{closeBtn:!1,closeClick:!1,nextClick:!1,arrows:!1,mouseWheel:!1,keys:null,helpers:{overlay:{closeClick:!1}}});d.autoSize&&(d.autoWidth=d.autoHeight=!0);"auto"===d.width&&(d.autoWidth=!0);"auto"===d.height&&(d.autoHeight=!0);d.group=b.group;d.index=a;b.coming=d;if(!1===b.trigger("beforeLoad"))b.coming=null;else{c=d.type;e=d.href;if(!c)return b.coming=null,b.current&&b.router&&"jumpto"!==b.router?(b.current.index=a,b[b.router](b.direction)):!1;b.isActive=
+!0;if("image"===c||"swf"===c)d.autoHeight=d.autoWidth=!1,d.scrolling="visible";"image"===c&&(d.aspectRatio=!0);"iframe"===c&&n&&(d.scrolling="scroll");d.wrap=f(d.tpl.wrap).addClass("fancybox-"+(n?"mobile":"desktop")+" fancybox-type-"+c+" fancybox-tmp "+d.wrapCSS).appendTo(d.parent||"body");f.extend(d,{skin:f(".fancybox-skin",d.wrap),outer:f(".fancybox-outer",d.wrap),inner:f(".fancybox-inner",d.wrap)});f.each(["Top","Right","Bottom","Left"],function(a,b){d.skin.css("padding"+b,v(d.padding[a]))});b.trigger("onReady");
+if("inline"===c||"html"===c){if(!d.content||!d.content.length)return b._error("content")}else if(!e)return b._error("href");"image"===c?b._loadImage():"ajax"===c?b._loadAjax():"iframe"===c?b._loadIframe():b._afterLoad()}},_error:function(a){f.extend(b.coming,{type:"html",autoWidth:!0,autoHeight:!0,minWidth:0,minHeight:0,scrolling:"no",hasError:a,content:b.coming.tpl.error});b._afterLoad()},_loadImage:function(){var a=b.imgPreload=new Image;a.onload=function(){this.onload=this.onerror=null;b.coming.width=
+this.width;b.coming.height=this.height;b._afterLoad()};a.onerror=function(){this.onload=this.onerror=null;b._error("image")};a.src=b.coming.href;!0!==a.complete&&b.showLoading()},_loadAjax:function(){var a=b.coming;b.showLoading();b.ajaxLoad=f.ajax(f.extend({},a.ajax,{url:a.href,error:function(a,e){b.coming&&"abort"!==e?b._error("ajax",a):b.hideLoading()},success:function(d,e){"success"===e&&(a.content=d,b._afterLoad())}}))},_loadIframe:function(){var a=b.coming,d=f(a.tpl.iframe.replace(/\{rnd\}/g,
+(new Date).getTime())).attr("scrolling",n?"auto":a.iframe.scrolling).attr("src",a.href);f(a.wrap).bind("onReset",function(){try{f(this).find("iframe").hide().attr("src","//about:blank").end().empty()}catch(a){}});a.iframe.preload&&(b.showLoading(),d.one("load",function(){f(this).data("ready",1);n||f(this).bind("load.fb",b.update);f(this).parents(".fancybox-wrap").width("100%").removeClass("fancybox-tmp").show();b._afterLoad()}));a.content=d.appendTo(a.inner);a.iframe.preload||b._afterLoad()},_preloadImages:function(){var a=
+b.group,d=b.current,e=a.length,c=d.preload?Math.min(d.preload,e-1):0,f,g;for(g=1;g<=c;g+=1)f=a[(d.index+g)%e],"image"===f.type&&f.href&&((new Image).src=f.href)},_afterLoad:function(){var a=b.coming,d=b.current,e,c,j,g,h;b.hideLoading();if(a&&!1!==b.isActive)if(!1===b.trigger("afterLoad",a,d))a.wrap.stop(!0).trigger("onReset").remove(),b.coming=null;else{d&&(b.trigger("beforeChange",d),d.wrap.stop(!0).removeClass("fancybox-opened").find(".fancybox-item, .fancybox-nav").remove());b.unbindEvents();
+e=a.content;c=a.type;j=a.scrolling;f.extend(b,{wrap:a.wrap,skin:a.skin,outer:a.outer,inner:a.inner,current:a,previous:d});g=a.href;switch(c){case "inline":case "ajax":case "html":a.selector?e=f("<div>").html(e).find(a.selector):s(e)&&(e.data("fancybox-placeholder")||e.data("fancybox-placeholder",f('<div class="fancybox-placeholder"></div>').insertAfter(e).hide()),e=e.show().detach(),a.wrap.bind("onReset",function(){f(this).find(e).length&&e.hide().replaceAll(e.data("fancybox-placeholder")).data("fancybox-placeholder",
+!1)}));break;case "image":e=a.tpl.image.replace("{href}",g);break;case "swf":e='<object id="fancybox-swf" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="100%" height="100%"><param name="movie" value="'+g+'"></param>',h="",f.each(a.swf,function(a,b){e+='<param name="'+a+'" value="'+b+'"></param>';h+=" "+a+'="'+b+'"'}),e+='<embed src="'+g+'" type="application/x-shockwave-flash" width="100%" height="100%"'+h+"></embed></object>"}(!s(e)||!e.parent().is(a.inner))&&a.inner.append(e);b.trigger("beforeShow");
+a.inner.css("overflow","yes"===j?"scroll":"no"===j?"hidden":j);b._setDimension();b.reposition();b.isOpen=!1;b.coming=null;b.bindEvents();if(b.isOpened){if(d.prevMethod)b.transitions[d.prevMethod]()}else f(".fancybox-wrap").not(a.wrap).stop(!0).trigger("onReset").remove();b.transitions[b.isOpened?a.nextMethod:a.openMethod]();b._preloadImages()}},_setDimension:function(){var a=b.getViewport(),d=0,e=!1,c=!1,e=b.wrap,j=b.skin,g=b.inner,h=b.current,c=h.width,i=h.height,l=h.minWidth,t=h.minHeight,m=h.maxWidth,
+n=h.maxHeight,r=h.scrolling,p=h.scrollOutside?h.scrollbarWidth:0,w=h.margin,y=k(w[1]+w[3]),q=k(w[0]+w[2]),x,z,s,C,A,F,B,D,u;e.add(j).add(g).width("auto").height("auto").removeClass("fancybox-tmp");w=k(j.outerWidth(!0)-j.width());x=k(j.outerHeight(!0)-j.height());z=y+w;s=q+x;C=E(c)?(a.w-z)*k(c)/100:c;A=E(i)?(a.h-s)*k(i)/100:i;if("iframe"===h.type){if(u=h.content,h.autoHeight&&1===u.data("ready"))try{u[0].contentWindow.document.location&&(g.width(C).height(9999),F=u.contents().find("body"),p&&F.css("overflow-x",
+"hidden"),A=F.height())}catch(G){}}else if(h.autoWidth||h.autoHeight)g.addClass("fancybox-tmp"),h.autoWidth||g.width(C),h.autoHeight||g.height(A),h.autoWidth&&(C=g.width()),h.autoHeight&&(A=g.height()),g.removeClass("fancybox-tmp");c=k(C);i=k(A);D=C/A;l=k(E(l)?k(l,"w")-z:l);m=k(E(m)?k(m,"w")-z:m);t=k(E(t)?k(t,"h")-s:t);n=k(E(n)?k(n,"h")-s:n);F=m;B=n;h.fitToView&&(m=Math.min(a.w-z,m),n=Math.min(a.h-s,n));z=a.w-y;q=a.h-q;h.aspectRatio?(c>m&&(c=m,i=k(c/D)),i>n&&(i=n,c=k(i*D)),c<l&&(c=l,i=k(c/D)),i<t&&
+(i=t,c=k(i*D))):(c=Math.max(l,Math.min(c,m)),h.autoHeight&&"iframe"!==h.type&&(g.width(c),i=g.height()),i=Math.max(t,Math.min(i,n)));if(h.fitToView)if(g.width(c).height(i),e.width(c+w),a=e.width(),y=e.height(),h.aspectRatio)for(;(a>z||y>q)&&(c>l&&i>t)&&!(19<d++);)i=Math.max(t,Math.min(n,i-10)),c=k(i*D),c<l&&(c=l,i=k(c/D)),c>m&&(c=m,i=k(c/D)),g.width(c).height(i),e.width(c+w),a=e.width(),y=e.height();else c=Math.max(l,Math.min(c,c-(a-z))),i=Math.max(t,Math.min(i,i-(y-q)));p&&("auto"===r&&i<A&&c+w+
+p<z)&&(c+=p);g.width(c).height(i);e.width(c+w);a=e.width();y=e.height();e=(a>z||y>q)&&c>l&&i>t;c=h.aspectRatio?c<F&&i<B&&c<C&&i<A:(c<F||i<B)&&(c<C||i<A);f.extend(h,{dim:{width:v(a),height:v(y)},origWidth:C,origHeight:A,canShrink:e,canExpand:c,wPadding:w,hPadding:x,wrapSpace:y-j.outerHeight(!0),skinSpace:j.height()-i});!u&&(h.autoHeight&&i>t&&i<n&&!c)&&g.height("auto")},_getPosition:function(a){var d=b.current,e=b.getViewport(),c=d.margin,f=b.wrap.width()+c[1]+c[3],g=b.wrap.height()+c[0]+c[2],c={position:"absolute",
+top:c[0],left:c[3]};d.autoCenter&&d.fixed&&!a&&g<=e.h&&f<=e.w?c.position="fixed":d.locked||(c.top+=e.y,c.left+=e.x);c.top=v(Math.max(c.top,c.top+(e.h-g)*d.topRatio));c.left=v(Math.max(c.left,c.left+(e.w-f)*d.leftRatio));return c},_afterZoomIn:function(){var a=b.current;a&&(b.isOpen=b.isOpened=!0,b.wrap.css("overflow","visible").addClass("fancybox-opened"),b.update(),(a.closeClick||a.nextClick&&1<b.group.length)&&b.inner.css("cursor","pointer").bind("click.fb",function(d){!f(d.target).is("a")&&!f(d.target).parent().is("a")&&
+(d.preventDefault(),b[a.closeClick?"close":"next"]())}),a.closeBtn&&f(a.tpl.closeBtn).appendTo(b.skin).bind(n?"touchstart.fb":"click.fb",function(a){a.preventDefault();b.close()}),a.arrows&&1<b.group.length&&((a.loop||0<a.index)&&f(a.tpl.prev).appendTo(b.outer).bind("click.fb",b.prev),(a.loop||a.index<b.group.length-1)&&f(a.tpl.next).appendTo(b.outer).bind("click.fb",b.next)),b.trigger("afterShow"),!a.loop&&a.index===a.group.length-1?b.play(!1):b.opts.autoPlay&&!b.player.isActive&&(b.opts.autoPlay=
+!1,b.play()))},_afterZoomOut:function(a){a=a||b.current;f(".fancybox-wrap").trigger("onReset").remove();f.extend(b,{group:{},opts:{},router:!1,current:null,isActive:!1,isOpened:!1,isOpen:!1,isClosing:!1,wrap:null,skin:null,outer:null,inner:null});b.trigger("afterClose",a)}});b.transitions={getOrigPosition:function(){var a=b.current,d=a.element,e=a.orig,c={},f=50,g=50,h=a.hPadding,i=a.wPadding,l=b.getViewport();!e&&(a.isDom&&d.is(":visible"))&&(e=d.find("img:first"),e.length||(e=d));s(e)?(c=e.offset(),
+e.is("img")&&(f=e.outerWidth(),g=e.outerHeight())):(c.top=l.y+(l.h-g)*a.topRatio,c.left=l.x+(l.w-f)*a.leftRatio);if("fixed"===b.wrap.css("position")||a.locked)c.top-=l.y,c.left-=l.x;return c={top:v(c.top-h*a.topRatio),left:v(c.left-i*a.leftRatio),width:v(f+i),height:v(g+h)}},step:function(a,d){var e,c,f=d.prop;c=b.current;var g=c.wrapSpace,h=c.skinSpace;if("width"===f||"height"===f)e=d.end===d.start?1:(a-d.start)/(d.end-d.start),b.isClosing&&(e=1-e),c="width"===f?c.wPadding:c.hPadding,c=a-c,b.skin[f](k("width"===
+f?c:c-g*e)),b.inner[f](k("width"===f?c:c-g*e-h*e))},zoomIn:function(){var a=b.current,d=a.pos,e=a.openEffect,c="elastic"===e,j=f.extend({opacity:1},d);delete j.position;c?(d=this.getOrigPosition(),a.openOpacity&&(d.opacity=0.1)):"fade"===e&&(d.opacity=0.1);b.wrap.css(d).animate(j,{duration:"none"===e?0:a.openSpeed,easing:a.openEasing,step:c?this.step:null,complete:b._afterZoomIn})},zoomOut:function(){var a=b.current,d=a.closeEffect,e="elastic"===d,c={opacity:0.1};e&&(c=this.getOrigPosition(),a.closeOpacity&&
+(c.opacity=0.1));b.wrap.animate(c,{duration:"none"===d?0:a.closeSpeed,easing:a.closeEasing,step:e?this.step:null,complete:b._afterZoomOut})},changeIn:function(){var a=b.current,d=a.nextEffect,e=a.pos,c={opacity:1},f=b.direction,g;e.opacity=0.1;"elastic"===d&&(g="down"===f||"up"===f?"top":"left","down"===f||"right"===f?(e[g]=v(k(e[g])-200),c[g]="+=200px"):(e[g]=v(k(e[g])+200),c[g]="-=200px"));"none"===d?b._afterZoomIn():b.wrap.css(e).animate(c,{duration:a.nextSpeed,easing:a.nextEasing,complete:function(){setTimeout(b._afterZoomIn,
+20)}})},changeOut:function(){var a=b.previous,d=a.prevEffect,e={opacity:0.1},c=b.direction;"elastic"===d&&(e["down"===c||"up"===c?"top":"left"]=("up"===c||"left"===c?"-":"+")+"=200px");a.wrap.animate(e,{duration:"none"===d?0:a.prevSpeed,easing:a.prevEasing,complete:function(){f(this).trigger("onReset").remove()}})}};b.helpers.overlay={defaults:{closeClick:!0,speedOut:200,showEarly:!0,css:{},locked:!n,fixed:!0},overlay:null,fixed:!1,create:function(a){a=f.extend({},this.defaults,a);this.overlay&&this.close();
+this.overlay=f('<div class="fancybox-overlay"></div>').appendTo("body");this.fixed=!1;a.fixed&&b.defaults.fixed&&(this.overlay.addClass("fancybox-overlay-fixed"),this.fixed=!0)},open:function(a){var d=this,a=f.extend({},this.defaults,a);this.overlay?this.overlay.unbind(".overlay").width("auto").height("auto"):this.create(a);this.fixed||(r.bind("resize.overlay",f.proxy(this.update,this)),this.update());a.closeClick&&this.overlay.bind("click.overlay",function(a){f(a.target).hasClass("fancybox-overlay")&&
+(b.isActive?b.close():d.close())});this.overlay.css(a.css).show()},close:function(){f(".fancybox-overlay").remove();r.unbind("resize.overlay");this.overlay=null;!1!==this.margin&&(f("body").css("margin-right",this.margin),this.margin=!1);this.el&&this.el.removeClass("fancybox-lock")},update:function(){var a="100%",b;this.overlay.width(a).height("100%");f.browser.msie?(b=Math.max(x.documentElement.offsetWidth,x.body.offsetWidth),m.width()>b&&(a=m.width())):m.width()>r.width()&&(a=m.width());this.overlay.width(a).height(m.height())},
+onReady:function(a,b){f(".fancybox-overlay").stop(!0,!0);this.overlay||(this.margin=m.height()>r.height()||"scroll"===f("body").css("overflow-y")?f("body").css("margin-right"):!1,this.el=x.all&&!x.querySelector?f("html"):f("body"),this.create(a));a.locked&&this.fixed&&(b.locked=this.overlay.append(b.wrap),b.fixed=!1);!0===a.showEarly&&this.beforeShow.apply(this,arguments)},beforeShow:function(a,b){b.locked&&(this.el.addClass("fancybox-lock"),!1!==this.margin&&f("body").css("margin-right",k(this.margin)+
+b.scrollbarWidth));this.open(a)},onUpdate:function(){this.fixed||this.update()},afterClose:function(a){this.overlay&&!b.isActive&&this.overlay.fadeOut(a.speedOut,f.proxy(this.close,this))}};b.helpers.title={defaults:{type:"float",position:"bottom"},beforeShow:function(a){var d=b.current,e=d.title,c=a.type;f.isFunction(e)&&(e=e.call(d.element,d));if(p(e)&&""!==f.trim(e)){d=f('<div class="fancybox-title fancybox-title-'+c+'-wrap">'+e+"</div>");switch(c){case "inside":c=b.skin;break;case "outside":c=
+b.wrap;break;case "over":c=b.inner;break;default:c=b.skin,d.appendTo("body"),f.browser.msie&&d.width(d.width()),d.wrapInner('<span class="child"></span>'),b.current.margin[2]+=Math.abs(k(d.css("margin-bottom")))}d["top"===a.position?"prependTo":"appendTo"](c)}}};f.fn.fancybox=function(a){var d,e=f(this),c=this.selector||"",j=function(g){var h=f(this).blur(),i=d,j,k;!g.ctrlKey&&(!g.altKey&&!g.shiftKey&&!g.metaKey)&&!h.is(".fancybox-wrap")&&(j=a.groupAttr||"data-fancybox-group",k=h.attr(j),k||(j="rel",
+k=h.get(0)[j]),k&&(""!==k&&"nofollow"!==k)&&(h=c.length?f(c):e,h=h.filter("["+j+'="'+k+'"]'),i=h.index(this)),a.index=i,!1!==b.open(h,a)&&g.preventDefault())},a=a||{};d=a.index||0;!c||!1===a.live?e.unbind("click.fb-start").bind("click.fb-start",j):m.undelegate(c,"click.fb-start").delegate(c+":not('.fancybox-item, .fancybox-nav')","click.fb-start",j);this.filter("[data-fancybox-start=1]").trigger("click");return this};m.ready(function(){f.scrollbarWidth===q&&(f.scrollbarWidth=function(){var a=f('<div style="width:50px;height:50px;overflow:auto"><div/></div>').appendTo("body"),
+b=a.children(),b=b.innerWidth()-b.height(99).innerWidth();a.remove();return b});if(f.support.fixedPosition===q){var a=f.support,d=f('<div style="position:fixed;top:20px;"></div>').appendTo("body"),e=20===d[0].offsetTop||15===d[0].offsetTop;d.remove();a.fixedPosition=e}f.extend(b.defaults,{scrollbarWidth:f.scrollbarWidth(),fixed:f.support.fixedPosition,parent:f("body")})})})(window,document,jQuery);
+
+/*
+ * jQuery UI Widget 1.10.3+amd
+ * https://github.com/blueimp/jQuery-File-Upload
+ *
+ * Copyright 2013 jQuery Foundation and other contributors
+ * Released under the MIT license.
+ * http://jquery.org/license
+ *
+ * http://api.jqueryui.com/jQuery.widget/
+ */
+
+(function (factory) {
+    if (typeof define === "function" && define.amd) {
+        // Register as an anonymous AMD module:
+        define(["jquery"], factory);
+    } else {
+        // Browser globals:
+        factory(jQuery);
+    }
+}(function( $, undefined ) {
+
+var uuid = 0,
+	slice = Array.prototype.slice,
+	_cleanData = $.cleanData;
+$.cleanData = function( elems ) {
+	for ( var i = 0, elem; (elem = elems[i]) != null; i++ ) {
+		try {
+			$( elem ).triggerHandler( "remove" );
+		// http://bugs.jquery.com/ticket/8235
+		} catch( e ) {}
+	}
+	_cleanData( elems );
+};
+
+$.widget = function( name, base, prototype ) {
+	var fullName, existingConstructor, constructor, basePrototype,
+		// proxiedPrototype allows the provided prototype to remain unmodified
+		// so that it can be used as a mixin for multiple widgets (#8876)
+		proxiedPrototype = {},
+		namespace = name.split( "." )[ 0 ];
+
+	name = name.split( "." )[ 1 ];
+	fullName = namespace + "-" + name;
+
+	if ( !prototype ) {
+		prototype = base;
+		base = $.Widget;
+	}
+
+	// create selector for plugin
+	$.expr[ ":" ][ fullName.toLowerCase() ] = function( elem ) {
+		return !!$.data( elem, fullName );
+	};
+
+	$[ namespace ] = $[ namespace ] || {};
+	existingConstructor = $[ namespace ][ name ];
+	constructor = $[ namespace ][ name ] = function( options, element ) {
+		// allow instantiation without "new" keyword
+		if ( !this._createWidget ) {
+			return new constructor( options, element );
+		}
+
+		// allow instantiation without initializing for simple inheritance
+		// must use "new" keyword (the code above always passes args)
+		if ( arguments.length ) {
+			this._createWidget( options, element );
+		}
+	};
+	// extend with the existing constructor to carry over any static properties
+	$.extend( constructor, existingConstructor, {
+		version: prototype.version,
+		// copy the object used to create the prototype in case we need to
+		// redefine the widget later
+		_proto: $.extend( {}, prototype ),
+		// track widgets that inherit from this widget in case this widget is
+		// redefined after a widget inherits from it
+		_childConstructors: []
+	});
+
+	basePrototype = new base();
+	// we need to make the options hash a property directly on the new instance
+	// otherwise we'll modify the options hash on the prototype that we're
+	// inheriting from
+	basePrototype.options = $.widget.extend( {}, basePrototype.options );
+	$.each( prototype, function( prop, value ) {
+		if ( !$.isFunction( value ) ) {
+			proxiedPrototype[ prop ] = value;
+			return;
+		}
+		proxiedPrototype[ prop ] = (function() {
+			var _super = function() {
+					return base.prototype[ prop ].apply( this, arguments );
+				},
+				_superApply = function( args ) {
+					return base.prototype[ prop ].apply( this, args );
+				};
+			return function() {
+				var __super = this._super,
+					__superApply = this._superApply,
+					returnValue;
+
+				this._super = _super;
+				this._superApply = _superApply;
+
+				returnValue = value.apply( this, arguments );
+
+				this._super = __super;
+				this._superApply = __superApply;
+
+				return returnValue;
+			};
+		})();
+	});
+	constructor.prototype = $.widget.extend( basePrototype, {
+		// TODO: remove support for widgetEventPrefix
+		// always use the name + a colon as the prefix, e.g., draggable:start
+		// don't prefix for widgets that aren't DOM-based
+		widgetEventPrefix: existingConstructor ? basePrototype.widgetEventPrefix : name
+	}, proxiedPrototype, {
+		constructor: constructor,
+		namespace: namespace,
+		widgetName: name,
+		widgetFullName: fullName
+	});
+
+	// If this widget is being redefined then we need to find all widgets that
+	// are inheriting from it and redefine all of them so that they inherit from
+	// the new version of this widget. We're essentially trying to replace one
+	// level in the prototype chain.
+	if ( existingConstructor ) {
+		$.each( existingConstructor._childConstructors, function( i, child ) {
+			var childPrototype = child.prototype;
+
+			// redefine the child widget using the same prototype that was
+			// originally used, but inherit from the new version of the base
+			$.widget( childPrototype.namespace + "." + childPrototype.widgetName, constructor, child._proto );
+		});
+		// remove the list of existing child constructors from the old constructor
+		// so the old child constructors can be garbage collected
+		delete existingConstructor._childConstructors;
+	} else {
+		base._childConstructors.push( constructor );
+	}
+
+	$.widget.bridge( name, constructor );
+};
+
+$.widget.extend = function( target ) {
+	var input = slice.call( arguments, 1 ),
+		inputIndex = 0,
+		inputLength = input.length,
+		key,
+		value;
+	for ( ; inputIndex < inputLength; inputIndex++ ) {
+		for ( key in input[ inputIndex ] ) {
+			value = input[ inputIndex ][ key ];
+			if ( input[ inputIndex ].hasOwnProperty( key ) && value !== undefined ) {
+				// Clone objects
+				if ( $.isPlainObject( value ) ) {
+					target[ key ] = $.isPlainObject( target[ key ] ) ?
+						$.widget.extend( {}, target[ key ], value ) :
+						// Don't extend strings, arrays, etc. with objects
+						$.widget.extend( {}, value );
+				// Copy everything else by reference
+				} else {
+					target[ key ] = value;
+				}
+			}
+		}
+	}
+	return target;
+};
+
+$.widget.bridge = function( name, object ) {
+	var fullName = object.prototype.widgetFullName || name;
+	$.fn[ name ] = function( options ) {
+		var isMethodCall = typeof options === "string",
+			args = slice.call( arguments, 1 ),
+			returnValue = this;
+
+		// allow multiple hashes to be passed on init
+		options = !isMethodCall && args.length ?
+			$.widget.extend.apply( null, [ options ].concat(args) ) :
+			options;
+
+		if ( isMethodCall ) {
+			this.each(function() {
+				var methodValue,
+					instance = $.data( this, fullName );
+				if ( !instance ) {
+					return $.error( "cannot call methods on " + name + " prior to initialization; " +
+						"attempted to call method '" + options + "'" );
+				}
+				if ( !$.isFunction( instance[options] ) || options.charAt( 0 ) === "_" ) {
+					return $.error( "no such method '" + options + "' for " + name + " widget instance" );
+				}
+				methodValue = instance[ options ].apply( instance, args );
+				if ( methodValue !== instance && methodValue !== undefined ) {
+					returnValue = methodValue && methodValue.jquery ?
+						returnValue.pushStack( methodValue.get() ) :
+						methodValue;
+					return false;
+				}
+			});
+		} else {
+			this.each(function() {
+				var instance = $.data( this, fullName );
+				if ( instance ) {
+					instance.option( options || {} )._init();
+				} else {
+					$.data( this, fullName, new object( options, this ) );
+				}
+			});
+		}
+
+		return returnValue;
+	};
+};
+
+$.Widget = function( /* options, element */ ) {};
+$.Widget._childConstructors = [];
+
+$.Widget.prototype = {
+	widgetName: "widget",
+	widgetEventPrefix: "",
+	defaultElement: "<div>",
+	options: {
+		disabled: false,
+
+		// callbacks
+		create: null
+	},
+	_createWidget: function( options, element ) {
+		element = $( element || this.defaultElement || this )[ 0 ];
+		this.element = $( element );
+		this.uuid = uuid++;
+		this.eventNamespace = "." + this.widgetName + this.uuid;
+		this.options = $.widget.extend( {},
+			this.options,
+			this._getCreateOptions(),
+			options );
+
+		this.bindings = $();
+		this.hoverable = $();
+		this.focusable = $();
+
+		if ( element !== this ) {
+			$.data( element, this.widgetFullName, this );
+			this._on( true, this.element, {
+				remove: function( event ) {
+					if ( event.target === element ) {
+						this.destroy();
+					}
+				}
+			});
+			this.document = $( element.style ?
+				// element within the document
+				element.ownerDocument :
+				// element is window or document
+				element.document || element );
+			this.window = $( this.document[0].defaultView || this.document[0].parentWindow );
+		}
+
+		this._create();
+		this._trigger( "create", null, this._getCreateEventData() );
+		this._init();
+	},
+	_getCreateOptions: $.noop,
+	_getCreateEventData: $.noop,
+	_create: $.noop,
+	_init: $.noop,
+
+	destroy: function() {
+		this._destroy();
+		// we can probably remove the unbind calls in 2.0
+		// all event bindings should go through this._on()
+		this.element
+			.unbind( this.eventNamespace )
+			// 1.9 BC for #7810
+			// TODO remove dual storage
+			.removeData( this.widgetName )
+			.removeData( this.widgetFullName )
+			// support: jquery <1.6.3
+			// http://bugs.jquery.com/ticket/9413
+			.removeData( $.camelCase( this.widgetFullName ) );
+		this.widget()
+			.unbind( this.eventNamespace )
+			.removeAttr( "aria-disabled" )
+			.removeClass(
+				this.widgetFullName + "-disabled " +
+				"ui-state-disabled" );
+
+		// clean up events and states
+		this.bindings.unbind( this.eventNamespace );
+		this.hoverable.removeClass( "ui-state-hover" );
+		this.focusable.removeClass( "ui-state-focus" );
+	},
+	_destroy: $.noop,
+
+	widget: function() {
+		return this.element;
+	},
+
+	option: function( key, value ) {
+		var options = key,
+			parts,
+			curOption,
+			i;
+
+		if ( arguments.length === 0 ) {
+			// don't return a reference to the internal hash
+			return $.widget.extend( {}, this.options );
+		}
+
+		if ( typeof key === "string" ) {
+			// handle nested keys, e.g., "foo.bar" => { foo: { bar: ___ } }
+			options = {};
+			parts = key.split( "." );
+			key = parts.shift();
+			if ( parts.length ) {
+				curOption = options[ key ] = $.widget.extend( {}, this.options[ key ] );
+				for ( i = 0; i < parts.length - 1; i++ ) {
+					curOption[ parts[ i ] ] = curOption[ parts[ i ] ] || {};
+					curOption = curOption[ parts[ i ] ];
+				}
+				key = parts.pop();
+				if ( value === undefined ) {
+					return curOption[ key ] === undefined ? null : curOption[ key ];
+				}
+				curOption[ key ] = value;
+			} else {
+				if ( value === undefined ) {
+					return this.options[ key ] === undefined ? null : this.options[ key ];
+				}
+				options[ key ] = value;
+			}
+		}
+
+		this._setOptions( options );
+
+		return this;
+	},
+	_setOptions: function( options ) {
+		var key;
+
+		for ( key in options ) {
+			this._setOption( key, options[ key ] );
+		}
+
+		return this;
+	},
+	_setOption: function( key, value ) {
+		this.options[ key ] = value;
+
+		if ( key === "disabled" ) {
+			this.widget()
+				.toggleClass( this.widgetFullName + "-disabled ui-state-disabled", !!value )
+				.attr( "aria-disabled", value );
+			this.hoverable.removeClass( "ui-state-hover" );
+			this.focusable.removeClass( "ui-state-focus" );
+		}
+
+		return this;
+	},
+
+	enable: function() {
+		return this._setOption( "disabled", false );
+	},
+	disable: function() {
+		return this._setOption( "disabled", true );
+	},
+
+	_on: function( suppressDisabledCheck, element, handlers ) {
+		var delegateElement,
+			instance = this;
+
+		// no suppressDisabledCheck flag, shuffle arguments
+		if ( typeof suppressDisabledCheck !== "boolean" ) {
+			handlers = element;
+			element = suppressDisabledCheck;
+			suppressDisabledCheck = false;
+		}
+
+		// no element argument, shuffle and use this.element
+		if ( !handlers ) {
+			handlers = element;
+			element = this.element;
+			delegateElement = this.widget();
+		} else {
+			// accept selectors, DOM elements
+			element = delegateElement = $( element );
+			this.bindings = this.bindings.add( element );
+		}
+
+		$.each( handlers, function( event, handler ) {
+			function handlerProxy() {
+				// allow widgets to customize the disabled handling
+				// - disabled as an array instead of boolean
+				// - disabled class as method for disabling individual parts
+				if ( !suppressDisabledCheck &&
+						( instance.options.disabled === true ||
+							$( this ).hasClass( "ui-state-disabled" ) ) ) {
+					return;
+				}
+				return ( typeof handler === "string" ? instance[ handler ] : handler )
+					.apply( instance, arguments );
+			}
+
+			// copy the guid so direct unbinding works
+			if ( typeof handler !== "string" ) {
+				handlerProxy.guid = handler.guid =
+					handler.guid || handlerProxy.guid || $.guid++;
+			}
+
+			var match = event.match( /^(\w+)\s*(.*)$/ ),
+				eventName = match[1] + instance.eventNamespace,
+				selector = match[2];
+			if ( selector ) {
+				delegateElement.delegate( selector, eventName, handlerProxy );
+			} else {
+				element.bind( eventName, handlerProxy );
+			}
+		});
+	},
+
+	_off: function( element, eventName ) {
+		eventName = (eventName || "").split( " " ).join( this.eventNamespace + " " ) + this.eventNamespace;
+		element.unbind( eventName ).undelegate( eventName );
+	},
+
+	_delay: function( handler, delay ) {
+		function handlerProxy() {
+			return ( typeof handler === "string" ? instance[ handler ] : handler )
+				.apply( instance, arguments );
+		}
+		var instance = this;
+		return setTimeout( handlerProxy, delay || 0 );
+	},
+
+	_hoverable: function( element ) {
+		this.hoverable = this.hoverable.add( element );
+		this._on( element, {
+			mouseenter: function( event ) {
+				$( event.currentTarget ).addClass( "ui-state-hover" );
+			},
+			mouseleave: function( event ) {
+				$( event.currentTarget ).removeClass( "ui-state-hover" );
+			}
+		});
+	},
+
+	_focusable: function( element ) {
+		this.focusable = this.focusable.add( element );
+		this._on( element, {
+			focusin: function( event ) {
+				$( event.currentTarget ).addClass( "ui-state-focus" );
+			},
+			focusout: function( event ) {
+				$( event.currentTarget ).removeClass( "ui-state-focus" );
+			}
+		});
+	},
+
+	_trigger: function( type, event, data ) {
+		var prop, orig,
+			callback = this.options[ type ];
+
+		data = data || {};
+		event = $.Event( event );
+		event.type = ( type === this.widgetEventPrefix ?
+			type :
+			this.widgetEventPrefix + type ).toLowerCase();
+		// the original event may come from any element
+		// so we need to reset the target on the new event
+		event.target = this.element[ 0 ];
+
+		// copy original event properties over to the new event
+		orig = event.originalEvent;
+		if ( orig ) {
+			for ( prop in orig ) {
+				if ( !( prop in event ) ) {
+					event[ prop ] = orig[ prop ];
+				}
+			}
+		}
+
+		this.element.trigger( event, data );
+		return !( $.isFunction( callback ) &&
+			callback.apply( this.element[0], [ event ].concat( data ) ) === false ||
+			event.isDefaultPrevented() );
+	}
+};
+
+$.each( { show: "fadeIn", hide: "fadeOut" }, function( method, defaultEffect ) {
+	$.Widget.prototype[ "_" + method ] = function( element, options, callback ) {
+		if ( typeof options === "string" ) {
+			options = { effect: options };
+		}
+		var hasOptions,
+			effectName = !options ?
+				method :
+				options === true || typeof options === "number" ?
+					defaultEffect :
+					options.effect || defaultEffect;
+		options = options || {};
+		if ( typeof options === "number" ) {
+			options = { duration: options };
+		}
+		hasOptions = !$.isEmptyObject( options );
+		options.complete = callback;
+		if ( options.delay ) {
+			element.delay( options.delay );
+		}
+		if ( hasOptions && $.effects && $.effects.effect[ effectName ] ) {
+			element[ method ]( options );
+		} else if ( effectName !== method && element[ effectName ] ) {
+			element[ effectName ]( options.duration, options.easing, callback );
+		} else {
+			element.queue(function( next ) {
+				$( this )[ method ]();
+				if ( callback ) {
+					callback.call( element[ 0 ] );
+				}
+				next();
+			});
+		}
+	};
+});
+
+}));
+
+!function(e){"use strict";var n=function(e,t){var c=/[^\w\-\.:]/.test(e)?new Function(n.arg+",tmpl","var _e=tmpl.encode"+n.helper+",_s='"+e.replace(n.regexp,n.func)+"';return _s;"):n.cache[e]=n.cache[e]||n(n.load(e));return t?c(t,n):function(e){return c(e,n)}};n.cache={},n.load=function(e){return document.getElementById(e).innerHTML},n.regexp=/([\s'\\])(?!(?:[^{]|\{(?!%))*%\})|(?:\{%(=|#)([\s\S]+?)%\})|(\{%)|(%\})/g,n.func=function(e,n,t,c,r,u){return n?{"\n":"\\n","\r":"\\r","	":"\\t"," ":" "}[n]||"\\"+n:t?"="===t?"'+_e("+c+")+'":"'+("+c+"==null?'':"+c+")+'":r?"';":u?"_s+='":void 0},n.encReg=/[<>&"'\x00]/g,n.encMap={"<":"&lt;",">":"&gt;","&":"&amp;",'"':"&quot;","'":"&#39;"},n.encode=function(e){return(null==e?"":""+e).replace(n.encReg,function(e){return n.encMap[e]||""})},n.arg="o",n.helper=",print=function(s,e){_s+=e?(s==null?'':s):_e(s);},include=function(s,d){_s+=tmpl(s,d);}","function"==typeof define&&define.amd?define(function(){return n}):e.tmpl=n}(this);
+
+(function(e){"use strict";var t=function(e,i,a){var n,r,o=document.createElement("img");if(o.onerror=i,o.onload=function(){!r||a&&a.noRevoke||t.revokeObjectURL(r),i&&i(t.scale(o,a))},t.isInstanceOf("Blob",e)||t.isInstanceOf("File",e))n=r=t.createObjectURL(e),o._type=e.type;else{if("string"!=typeof e)return!1;n=e,a&&a.crossOrigin&&(o.crossOrigin=a.crossOrigin)}return n?(o.src=n,o):t.readFile(e,function(e){var t=e.target;t&&t.result?o.src=t.result:i&&i(e)})},i=window.createObjectURL&&window||window.URL&&URL.revokeObjectURL&&URL||window.webkitURL&&webkitURL;t.isInstanceOf=function(e,t){return Object.prototype.toString.call(t)==="[object "+e+"]"},t.transformCoordinates=function(){},t.getTransformedOptions=function(e){return e},t.renderImageToCanvas=function(e,t,i,a,n,r,o,s,d,l){return e.getContext("2d").drawImage(t,i,a,n,r,o,s,d,l),e},t.hasCanvasOption=function(e){return e.canvas||e.crop},t.scale=function(e,i){i=i||{};var a,n,r,o,s,d,l,c,u,g=document.createElement("canvas"),f=e.getContext||t.hasCanvasOption(i)&&g.getContext,h=e.naturalWidth||e.width,m=e.naturalHeight||e.height,p=h,S=m,b=function(){var e=Math.max((r||p)/p,(o||S)/S);e>1&&(p=Math.ceil(p*e),S=Math.ceil(S*e))},v=function(){var e=Math.min((a||p)/p,(n||S)/S);1>e&&(p=Math.ceil(p*e),S=Math.ceil(S*e))};return f&&(i=t.getTransformedOptions(i),l=i.left||0,c=i.top||0,i.sourceWidth?(s=i.sourceWidth,void 0!==i.right&&void 0===i.left&&(l=h-s-i.right)):s=h-l-(i.right||0),i.sourceHeight?(d=i.sourceHeight,void 0!==i.bottom&&void 0===i.top&&(c=m-d-i.bottom)):d=m-c-(i.bottom||0),p=s,S=d),a=i.maxWidth,n=i.maxHeight,r=i.minWidth,o=i.minHeight,f&&a&&n&&i.crop?(p=a,S=n,u=s/d-a/n,0>u?(d=n*s/a,void 0===i.top&&void 0===i.bottom&&(c=(m-d)/2)):u>0&&(s=a*d/n,void 0===i.left&&void 0===i.right&&(l=(h-s)/2))):((i.contain||i.cover)&&(r=a=a||r,o=n=n||o),i.cover?(v(),b()):(b(),v())),f?(g.width=p,g.height=S,t.transformCoordinates(g,i),t.renderImageToCanvas(g,e,l,c,s,d,0,0,p,S)):(e.width=p,e.height=S,e)},t.createObjectURL=function(e){return i?i.createObjectURL(e):!1},t.revokeObjectURL=function(e){return i?i.revokeObjectURL(e):!1},t.readFile=function(e,t,i){if(window.FileReader){var a=new FileReader;if(a.onload=a.onerror=t,i=i||"readAsDataURL",a[i])return a[i](e),a}return!1},"function"==typeof define&&define.amd?define(function(){return t}):e.loadImage=t})(this),function(e){"use strict";"function"==typeof define&&define.amd?define(["load-image"],e):e(window.loadImage)}(function(e){"use strict";if(window.navigator&&window.navigator.platform&&/iP(hone|od|ad)/.test(window.navigator.platform)){var t=e.renderImageToCanvas;e.detectSubsampling=function(e){var t,i;return e.width*e.height>1048576?(t=document.createElement("canvas"),t.width=t.height=1,i=t.getContext("2d"),i.drawImage(e,-e.width+1,0),0===i.getImageData(0,0,1,1).data[3]):!1},e.detectVerticalSquash=function(e,t){var i,a,n,r,o,s=e.naturalHeight||e.height,d=document.createElement("canvas"),l=d.getContext("2d");for(t&&(s/=2),d.width=1,d.height=s,l.drawImage(e,0,0),i=l.getImageData(0,0,1,s).data,a=0,n=s,r=s;r>a;)o=i[4*(r-1)+3],0===o?n=r:a=r,r=n+a>>1;return r/s||1},e.renderImageToCanvas=function(i,a,n,r,o,s,d,l,c,u){if("image/jpeg"===a._type){var g,f,h,m,p=i.getContext("2d"),S=document.createElement("canvas"),b=1024,v=S.getContext("2d");if(S.width=b,S.height=b,p.save(),g=e.detectSubsampling(a),g&&(n/=2,r/=2,o/=2,s/=2),f=e.detectVerticalSquash(a,g),g||1!==f){for(r*=f,c=Math.ceil(b*c/o),u=Math.ceil(b*u/s/f),l=0,m=0;s>m;){for(d=0,h=0;o>h;)v.clearRect(0,0,b,b),v.drawImage(a,n,r,o,s,-h,-m,o,s),p.drawImage(S,0,0,b,b,d,l,c,u),h+=b,d+=c;m+=b,l+=u}return p.restore(),i}}return t(i,a,n,r,o,s,d,l,c,u)}}}),function(e){"use strict";"function"==typeof define&&define.amd?define(["load-image"],e):e(window.loadImage)}(function(e){"use strict";var t=e.hasCanvasOption;e.hasCanvasOption=function(e){return t(e)||e.orientation},e.transformCoordinates=function(e,t){var i=e.getContext("2d"),a=e.width,n=e.height,r=t.orientation;if(r)switch(r>4&&(e.width=n,e.height=a),r){case 2:i.translate(a,0),i.scale(-1,1);break;case 3:i.translate(a,n),i.rotate(Math.PI);break;case 4:i.translate(0,n),i.scale(1,-1);break;case 5:i.rotate(.5*Math.PI),i.scale(1,-1);break;case 6:i.rotate(.5*Math.PI),i.translate(0,-n);break;case 7:i.rotate(.5*Math.PI),i.translate(a,-n),i.scale(-1,1);break;case 8:i.rotate(-.5*Math.PI),i.translate(-a,0)}},e.getTransformedOptions=function(e){if(!e.orientation||1===e.orientation)return e;var t,i={};for(t in e)e.hasOwnProperty(t)&&(i[t]=e[t]);switch(e.orientation){case 2:i.left=e.right,i.right=e.left;break;case 3:i.left=e.right,i.top=e.bottom,i.right=e.left,i.bottom=e.top;break;case 4:i.top=e.bottom,i.bottom=e.top;break;case 5:i.left=e.top,i.top=e.left,i.right=e.bottom,i.bottom=e.right;break;case 6:i.left=e.top,i.top=e.right,i.right=e.bottom,i.bottom=e.left;break;case 7:i.left=e.bottom,i.top=e.right,i.right=e.top,i.bottom=e.left;break;case 8:i.left=e.bottom,i.top=e.left,i.right=e.top,i.bottom=e.right}return e.orientation>4&&(i.maxWidth=e.maxHeight,i.maxHeight=e.maxWidth,i.minWidth=e.minHeight,i.minHeight=e.minWidth,i.sourceWidth=e.sourceHeight,i.sourceHeight=e.sourceWidth),i}}),function(e){"use strict";"function"==typeof define&&define.amd?define(["load-image"],e):e(window.loadImage)}(function(e){"use strict";var t=window.Blob&&(Blob.prototype.slice||Blob.prototype.webkitSlice||Blob.prototype.mozSlice);e.blobSlice=t&&function(){var e=this.slice||this.webkitSlice||this.mozSlice;return e.apply(this,arguments)},e.metaDataParsers={jpeg:{65505:[]}},e.parseMetaData=function(t,i,a){a=a||{};var n=this,r=a.maxMetaDataSize||262144,o={},s=!(window.DataView&&t&&t.size>=12&&"image/jpeg"===t.type&&e.blobSlice);(s||!e.readFile(e.blobSlice.call(t,0,r),function(t){var r,s,d,l,c=t.target.result,u=new DataView(c),g=2,f=u.byteLength-4,h=g;if(65496===u.getUint16(0)){for(;f>g&&(r=u.getUint16(g),r>=65504&&65519>=r||65534===r);){if(s=u.getUint16(g+2)+2,g+s>u.byteLength){console.log("Invalid meta data: Invalid segment size.");break}if(d=e.metaDataParsers.jpeg[r])for(l=0;d.length>l;l+=1)d[l].call(n,u,g,s,o,a);g+=s,h=g}!a.disableImageHead&&h>6&&(o.imageHead=c.slice?c.slice(0,h):new Uint8Array(c).subarray(0,h))}else console.log("Invalid JPEG file: Missing JPEG marker.");i(o)},"readAsArrayBuffer"))&&i(o)}}),function(e){"use strict";"function"==typeof define&&define.amd?define(["load-image","load-image-meta"],e):e(window.loadImage)}(function(e){"use strict";e.ExifMap=function(){return this},e.ExifMap.prototype.map={Orientation:274},e.ExifMap.prototype.get=function(e){return this[e]||this[this.map[e]]},e.getExifThumbnail=function(e,t,i){var a,n,r;if(!i||t+i>e.byteLength)return console.log("Invalid Exif data: Invalid thumbnail data."),void 0;for(a=[],n=0;i>n;n+=1)r=e.getUint8(t+n),a.push((16>r?"0":"")+r.toString(16));return"data:image/jpeg,%"+a.join("%")},e.exifTagTypes={1:{getValue:function(e,t){return e.getUint8(t)},size:1},2:{getValue:function(e,t){return String.fromCharCode(e.getUint8(t))},size:1,ascii:!0},3:{getValue:function(e,t,i){return e.getUint16(t,i)},size:2},4:{getValue:function(e,t,i){return e.getUint32(t,i)},size:4},5:{getValue:function(e,t,i){return e.getUint32(t,i)/e.getUint32(t+4,i)},size:8},9:{getValue:function(e,t,i){return e.getInt32(t,i)},size:4},10:{getValue:function(e,t,i){return e.getInt32(t,i)/e.getInt32(t+4,i)},size:8}},e.exifTagTypes[7]=e.exifTagTypes[1],e.getExifValue=function(t,i,a,n,r,o){var s,d,l,c,u,g,f=e.exifTagTypes[n];if(!f)return console.log("Invalid Exif data: Invalid tag type."),void 0;if(s=f.size*r,d=s>4?i+t.getUint32(a+8,o):a+8,d+s>t.byteLength)return console.log("Invalid Exif data: Invalid data offset."),void 0;if(1===r)return f.getValue(t,d,o);for(l=[],c=0;r>c;c+=1)l[c]=f.getValue(t,d+c*f.size,o);if(f.ascii){for(u="",c=0;l.length>c&&(g=l[c],"\0"!==g);c+=1)u+=g;return u}return l},e.parseExifTag=function(t,i,a,n,r){var o=t.getUint16(a,n);r.exif[o]=e.getExifValue(t,i,a,t.getUint16(a+2,n),t.getUint32(a+4,n),n)},e.parseExifTags=function(e,t,i,a,n){var r,o,s;if(i+6>e.byteLength)return console.log("Invalid Exif data: Invalid directory offset."),void 0;if(r=e.getUint16(i,a),o=i+2+12*r,o+4>e.byteLength)return console.log("Invalid Exif data: Invalid directory size."),void 0;for(s=0;r>s;s+=1)this.parseExifTag(e,t,i+2+12*s,a,n);return e.getUint32(o,a)},e.parseExifData=function(t,i,a,n,r){if(!r.disableExif){var o,s,d,l=i+10;if(1165519206===t.getUint32(i+4)){if(l+8>t.byteLength)return console.log("Invalid Exif data: Invalid segment size."),void 0;if(0!==t.getUint16(i+8))return console.log("Invalid Exif data: Missing byte alignment offset."),void 0;switch(t.getUint16(l)){case 18761:o=!0;break;case 19789:o=!1;break;default:return console.log("Invalid Exif data: Invalid byte alignment marker."),void 0}if(42!==t.getUint16(l+2,o))return console.log("Invalid Exif data: Missing TIFF marker."),void 0;s=t.getUint32(l+4,o),n.exif=new e.ExifMap,s=e.parseExifTags(t,l,l+s,o,n),s&&!r.disableExifThumbnail&&(d={exif:{}},s=e.parseExifTags(t,l,l+s,o,d),d.exif[513]&&(n.exif.Thumbnail=e.getExifThumbnail(t,l+d.exif[513],d.exif[514]))),n.exif[34665]&&!r.disableExifSub&&e.parseExifTags(t,l,l+n.exif[34665],o,n),n.exif[34853]&&!r.disableExifGps&&e.parseExifTags(t,l,l+n.exif[34853],o,n)}}},e.metaDataParsers.jpeg[65505].push(e.parseExifData)}),function(e){"use strict";"function"==typeof define&&define.amd?define(["load-image","load-image-exif"],e):e(window.loadImage)}(function(e){"use strict";var t,i,a;e.ExifMap.prototype.tags={256:"ImageWidth",257:"ImageHeight",34665:"ExifIFDPointer",34853:"GPSInfoIFDPointer",40965:"InteroperabilityIFDPointer",258:"BitsPerSample",259:"Compression",262:"PhotometricInterpretation",274:"Orientation",277:"SamplesPerPixel",284:"PlanarConfiguration",530:"YCbCrSubSampling",531:"YCbCrPositioning",282:"XResolution",283:"YResolution",296:"ResolutionUnit",273:"StripOffsets",278:"RowsPerStrip",279:"StripByteCounts",513:"JPEGInterchangeFormat",514:"JPEGInterchangeFormatLength",301:"TransferFunction",318:"WhitePoint",319:"PrimaryChromaticities",529:"YCbCrCoefficients",532:"ReferenceBlackWhite",306:"DateTime",270:"ImageDescription",271:"Make",272:"Model",305:"Software",315:"Artist",33432:"Copyright",36864:"ExifVersion",40960:"FlashpixVersion",40961:"ColorSpace",40962:"PixelXDimension",40963:"PixelYDimension",42240:"Gamma",37121:"ComponentsConfiguration",37122:"CompressedBitsPerPixel",37500:"MakerNote",37510:"UserComment",40964:"RelatedSoundFile",36867:"DateTimeOriginal",36868:"DateTimeDigitized",37520:"SubSecTime",37521:"SubSecTimeOriginal",37522:"SubSecTimeDigitized",33434:"ExposureTime",33437:"FNumber",34850:"ExposureProgram",34852:"SpectralSensitivity",34855:"PhotographicSensitivity",34856:"OECF",34864:"SensitivityType",34865:"StandardOutputSensitivity",34866:"RecommendedExposureIndex",34867:"ISOSpeed",34868:"ISOSpeedLatitudeyyy",34869:"ISOSpeedLatitudezzz",37377:"ShutterSpeedValue",37378:"ApertureValue",37379:"BrightnessValue",37380:"ExposureBias",37381:"MaxApertureValue",37382:"SubjectDistance",37383:"MeteringMode",37384:"LightSource",37385:"Flash",37396:"SubjectArea",37386:"FocalLength",41483:"FlashEnergy",41484:"SpatialFrequencyResponse",41486:"FocalPlaneXResolution",41487:"FocalPlaneYResolution",41488:"FocalPlaneResolutionUnit",41492:"SubjectLocation",41493:"ExposureIndex",41495:"SensingMethod",41728:"FileSource",41729:"SceneType",41730:"CFAPattern",41985:"CustomRendered",41986:"ExposureMode",41987:"WhiteBalance",41988:"DigitalZoomRatio",41989:"FocalLengthIn35mmFilm",41990:"SceneCaptureType",41991:"GainControl",41992:"Contrast",41993:"Saturation",41994:"Sharpness",41995:"DeviceSettingDescription",41996:"SubjectDistanceRange",42016:"ImageUniqueID",42032:"CameraOwnerName",42033:"BodySerialNumber",42034:"LensSpecification",42035:"LensMake",42036:"LensModel",42037:"LensSerialNumber",0:"GPSVersionID",1:"GPSLatitudeRef",2:"GPSLatitude",3:"GPSLongitudeRef",4:"GPSLongitude",5:"GPSAltitudeRef",6:"GPSAltitude",7:"GPSTimeStamp",8:"GPSSatellites",9:"GPSStatus",10:"GPSMeasureMode",11:"GPSDOP",12:"GPSSpeedRef",13:"GPSSpeed",14:"GPSTrackRef",15:"GPSTrack",16:"GPSImgDirectionRef",17:"GPSImgDirection",18:"GPSMapDatum",19:"GPSDestLatitudeRef",20:"GPSDestLatitude",21:"GPSDestLongitudeRef",22:"GPSDestLongitude",23:"GPSDestBearingRef",24:"GPSDestBearing",25:"GPSDestDistanceRef",26:"GPSDestDistance",27:"GPSProcessingMethod",28:"GPSAreaInformation",29:"GPSDateStamp",30:"GPSDifferential",31:"GPSHPositioningError"},e.ExifMap.prototype.stringValues={ExposureProgram:{0:"Undefined",1:"Manual",2:"Normal program",3:"Aperture priority",4:"Shutter priority",5:"Creative program",6:"Action program",7:"Portrait mode",8:"Landscape mode"},MeteringMode:{0:"Unknown",1:"Average",2:"CenterWeightedAverage",3:"Spot",4:"MultiSpot",5:"Pattern",6:"Partial",255:"Other"},LightSource:{0:"Unknown",1:"Daylight",2:"Fluorescent",3:"Tungsten (incandescent light)",4:"Flash",9:"Fine weather",10:"Cloudy weather",11:"Shade",12:"Daylight fluorescent (D 5700 - 7100K)",13:"Day white fluorescent (N 4600 - 5400K)",14:"Cool white fluorescent (W 3900 - 4500K)",15:"White fluorescent (WW 3200 - 3700K)",17:"Standard light A",18:"Standard light B",19:"Standard light C",20:"D55",21:"D65",22:"D75",23:"D50",24:"ISO studio tungsten",255:"Other"},Flash:{0:"Flash did not fire",1:"Flash fired",5:"Strobe return light not detected",7:"Strobe return light detected",9:"Flash fired, compulsory flash mode",13:"Flash fired, compulsory flash mode, return light not detected",15:"Flash fired, compulsory flash mode, return light detected",16:"Flash did not fire, compulsory flash mode",24:"Flash did not fire, auto mode",25:"Flash fired, auto mode",29:"Flash fired, auto mode, return light not detected",31:"Flash fired, auto mode, return light detected",32:"No flash function",65:"Flash fired, red-eye reduction mode",69:"Flash fired, red-eye reduction mode, return light not detected",71:"Flash fired, red-eye reduction mode, return light detected",73:"Flash fired, compulsory flash mode, red-eye reduction mode",77:"Flash fired, compulsory flash mode, red-eye reduction mode, return light not detected",79:"Flash fired, compulsory flash mode, red-eye reduction mode, return light detected",89:"Flash fired, auto mode, red-eye reduction mode",93:"Flash fired, auto mode, return light not detected, red-eye reduction mode",95:"Flash fired, auto mode, return light detected, red-eye reduction mode"},SensingMethod:{1:"Undefined",2:"One-chip color area sensor",3:"Two-chip color area sensor",4:"Three-chip color area sensor",5:"Color sequential area sensor",7:"Trilinear sensor",8:"Color sequential linear sensor"},SceneCaptureType:{0:"Standard",1:"Landscape",2:"Portrait",3:"Night scene"},SceneType:{1:"Directly photographed"},CustomRendered:{0:"Normal process",1:"Custom process"},WhiteBalance:{0:"Auto white balance",1:"Manual white balance"},GainControl:{0:"None",1:"Low gain up",2:"High gain up",3:"Low gain down",4:"High gain down"},Contrast:{0:"Normal",1:"Soft",2:"Hard"},Saturation:{0:"Normal",1:"Low saturation",2:"High saturation"},Sharpness:{0:"Normal",1:"Soft",2:"Hard"},SubjectDistanceRange:{0:"Unknown",1:"Macro",2:"Close view",3:"Distant view"},FileSource:{3:"DSC"},ComponentsConfiguration:{0:"",1:"Y",2:"Cb",3:"Cr",4:"R",5:"G",6:"B"},Orientation:{1:"top-left",2:"top-right",3:"bottom-right",4:"bottom-left",5:"left-top",6:"right-top",7:"right-bottom",8:"left-bottom"}},e.ExifMap.prototype.getText=function(e){var t=this.get(e);switch(e){case"LightSource":case"Flash":case"MeteringMode":case"ExposureProgram":case"SensingMethod":case"SceneCaptureType":case"SceneType":case"CustomRendered":case"WhiteBalance":case"GainControl":case"Contrast":case"Saturation":case"Sharpness":case"SubjectDistanceRange":case"FileSource":case"Orientation":return this.stringValues[e][t];case"ExifVersion":case"FlashpixVersion":return String.fromCharCode(t[0],t[1],t[2],t[3]);case"ComponentsConfiguration":return this.stringValues[e][t[0]]+this.stringValues[e][t[1]]+this.stringValues[e][t[2]]+this.stringValues[e][t[3]];case"GPSVersionID":return t[0]+"."+t[1]+"."+t[2]+"."+t[3]}return t+""},t=e.ExifMap.prototype.tags,i=e.ExifMap.prototype.map;for(a in t)t.hasOwnProperty(a)&&(i[t[a]]=a);e.ExifMap.prototype.getAll=function(){var e,i,a={};for(e in this)this.hasOwnProperty(e)&&(i=t[e],i&&(a[i]=this.getText(i)));return a}});
+
+!function(t){"use strict";var e=t.HTMLCanvasElement&&t.HTMLCanvasElement.prototype,n=t.Blob&&function(){try{return Boolean(new Blob)}catch(t){return!1}}(),o=n&&t.Uint8Array&&function(){try{return 100===new Blob([new Uint8Array(100)]).size}catch(t){return!1}}(),r=t.BlobBuilder||t.WebKitBlobBuilder||t.MozBlobBuilder||t.MSBlobBuilder,i=(n||r)&&t.atob&&t.ArrayBuffer&&t.Uint8Array&&function(t){var e,i,a,l,u,B;for(e=t.split(",")[0].indexOf("base64")>=0?atob(t.split(",")[1]):decodeURIComponent(t.split(",")[1]),i=new ArrayBuffer(e.length),a=new Uint8Array(i),l=0;l<e.length;l+=1)a[l]=e.charCodeAt(l);return u=t.split(",")[0].split(":")[1].split(";")[0],n?new Blob([o?a:i],{type:u}):(B=new r,B.append(i),B.getBlob(u))};t.HTMLCanvasElement&&!e.toBlob&&(e.mozGetAsFile?e.toBlob=function(t,n,o){o&&e.toDataURL&&i?t(i(this.toDataURL(n,o))):t(this.mozGetAsFile("blob",n))}:e.toDataURL&&i&&(e.toBlob=function(t,e,n){t(i(this.toDataURL(e,n)))})),"function"==typeof define&&define.amd?define(function(){return i}):t.dataURLtoBlob=i}(this);
+
+/*
+ * jQuery File Upload Plugin 5.32.3
+ * https://github.com/blueimp/jQuery-File-Upload
+ *
+ * Copyright 2010, Sebastian Tschan
+ * https://blueimp.net
+ *
+ * Licensed under the MIT license:
+ * http://www.opensource.org/licenses/MIT
+ */
+
+/*jslint nomen: true, unparam: true, regexp: true */
+/*global define, window, document, location, File, Blob, FormData */
+
+(function (factory) {
+    'use strict';
+    if (typeof define === 'function' && define.amd) {
+        // Register as an anonymous AMD module:
+        define([
+            'jquery',
+            'jquery.ui.widget'
+        ], factory);
+    } else {
+        // Browser globals:
+        factory(window.jQuery);
+    }
+}(function ($) {
+    'use strict';
+
+    // Detect file input support, based on
+    // http://viljamis.com/blog/2012/file-upload-support-on-mobile/
+    $.support.fileInput = !(new RegExp(
+        // Handle devices which give false positives for the feature detection:
+        '(Android (1\\.[0156]|2\\.[01]))' +
+            '|(Windows Phone (OS 7|8\\.0))|(XBLWP)|(ZuneWP)|(WPDesktop)' +
+            '|(w(eb)?OSBrowser)|(webOS)' +
+            '|(Kindle/(1\\.0|2\\.[05]|3\\.0))'
+    ).test(window.navigator.userAgent) ||
+        // Feature detection for all other devices:
+        $('<input type="file">').prop('disabled'));
+
+    // The FileReader API is not actually used, but works as feature detection,
+    // as e.g. Safari supports XHR file uploads via the FormData API,
+    // but not non-multipart XHR file uploads:
+    $.support.xhrFileUpload = !!(window.XMLHttpRequestUpload && window.FileReader);
+    $.support.xhrFormDataFileUpload = !!window.FormData;
+
+    // Detect support for Blob slicing (required for chunked uploads):
+    $.support.blobSlice = window.Blob && (Blob.prototype.slice ||
+        Blob.prototype.webkitSlice || Blob.prototype.mozSlice);
+
+    // The fileupload widget listens for change events on file input fields defined
+    // via fileInput setting and paste or drop events of the given dropZone.
+    // In addition to the default jQuery Widget methods, the fileupload widget
+    // exposes the "add" and "send" methods, to add or directly send files using
+    // the fileupload API.
+    // By default, files added via file input selection, paste, drag & drop or
+    // "add" method are uploaded immediately, but it is possible to override
+    // the "add" callback option to queue file uploads.
+    $.widget('blueimp.fileupload', {
+
+        options: {
+            // The drop target element(s), by the default the complete document.
+            // Set to null to disable drag & drop support:
+            dropZone: $(document),
+            // The paste target element(s), by the default the complete document.
+            // Set to null to disable paste support:
+            pasteZone: $(document),
+            // The file input field(s), that are listened to for change events.
+            // If undefined, it is set to the file input fields inside
+            // of the widget element on plugin initialization.
+            // Set to null to disable the change listener.
+            fileInput: undefined,
+            // By default, the file input field is replaced with a clone after
+            // each input field change event. This is required for iframe transport
+            // queues and allows change events to be fired for the same file
+            // selection, but can be disabled by setting the following option to false:
+            replaceFileInput: true,
+            // The parameter name for the file form data (the request argument name).
+            // If undefined or empty, the name property of the file input field is
+            // used, or "files[]" if the file input name property is also empty,
+            // can be a string or an array of strings:
+            paramName: undefined,
+            // By default, each file of a selection is uploaded using an individual
+            // request for XHR type uploads. Set to false to upload file
+            // selections in one request each:
+            singleFileUploads: true,
+            // To limit the number of files uploaded with one XHR request,
+            // set the following option to an integer greater than 0:
+            limitMultiFileUploads: undefined,
+            // Set the following option to true to issue all file upload requests
+            // in a sequential order:
+            sequentialUploads: false,
+            // To limit the number of concurrent uploads,
+            // set the following option to an integer greater than 0:
+            limitConcurrentUploads: undefined,
+            // Set the following option to true to force iframe transport uploads:
+            forceIframeTransport: false,
+            // Set the following option to the location of a redirect url on the
+            // origin server, for cross-domain iframe transport uploads:
+            redirect: undefined,
+            // The parameter name for the redirect url, sent as part of the form
+            // data and set to 'redirect' if this option is empty:
+            redirectParamName: undefined,
+            // Set the following option to the location of a postMessage window,
+            // to enable postMessage transport uploads:
+            postMessage: undefined,
+            // By default, XHR file uploads are sent as multipart/form-data.
+            // The iframe transport is always using multipart/form-data.
+            // Set to false to enable non-multipart XHR uploads:
+            multipart: true,
+            // To upload large files in smaller chunks, set the following option
+            // to a preferred maximum chunk size. If set to 0, null or undefined,
+            // or the browser does not support the required Blob API, files will
+            // be uploaded as a whole.
+            maxChunkSize: undefined,
+            // When a non-multipart upload or a chunked multipart upload has been
+            // aborted, this option can be used to resume the upload by setting
+            // it to the size of the already uploaded bytes. This option is most
+            // useful when modifying the options object inside of the "add" or
+            // "send" callbacks, as the options are cloned for each file upload.
+            uploadedBytes: undefined,
+            // By default, failed (abort or error) file uploads are removed from the
+            // global progress calculation. Set the following option to false to
+            // prevent recalculating the global progress data:
+            recalculateProgress: true,
+            // Interval in milliseconds to calculate and trigger progress events:
+            progressInterval: 100,
+            // Interval in milliseconds to calculate progress bitrate:
+            bitrateInterval: 500,
+            // By default, uploads are started automatically when adding files:
+            autoUpload: true,
+
+            // Error and info messages:
+            messages: {
+                uploadedBytes: 'Uploaded bytes exceed file size'
+            },
+
+            // Translation function, gets the message key to be translated
+            // and an object with context specific data as arguments:
+            i18n: function (message, context) {
+                message = this.messages[message] || message.toString();
+                if (context) {
+                    $.each(context, function (key, value) {
+                        message = message.replace('{' + key + '}', value);
+                    });
+                }
+                return message;
+            },
+
+            // Additional form data to be sent along with the file uploads can be set
+            // using this option, which accepts an array of objects with name and
+            // value properties, a function returning such an array, a FormData
+            // object (for XHR file uploads), or a simple object.
+            // The form of the first fileInput is given as parameter to the function:
+            formData: function (form) {
+                return form.serializeArray();
+            },
+
+            // The add callback is invoked as soon as files are added to the fileupload
+            // widget (via file input selection, drag & drop, paste or add API call).
+            // If the singleFileUploads option is enabled, this callback will be
+            // called once for each file in the selection for XHR file uploads, else
+            // once for each file selection.
+            //
+            // The upload starts when the submit method is invoked on the data parameter.
+            // The data object contains a files property holding the added files
+            // and allows you to override plugin options as well as define ajax settings.
+            //
+            // Listeners for this callback can also be bound the following way:
+            // .bind('fileuploadadd', func);
+            //
+            // data.submit() returns a Promise object and allows to attach additional
+            // handlers using jQuery's Deferred callbacks:
+            // data.submit().done(func).fail(func).always(func);
+            add: function (e, data) {
+                if (data.autoUpload || (data.autoUpload !== false &&
+                        $(this).fileupload('option', 'autoUpload'))) {
+                    data.process().done(function () {
+                        data.submit();
+                    });
+                }
+            },
+
+            // Other callbacks:
+
+            // Callback for the submit event of each file upload:
+            // submit: function (e, data) {}, // .bind('fileuploadsubmit', func);
+
+            // Callback for the start of each file upload request:
+            // send: function (e, data) {}, // .bind('fileuploadsend', func);
+
+            // Callback for successful uploads:
+            // done: function (e, data) {}, // .bind('fileuploaddone', func);
+
+            // Callback for failed (abort or error) uploads:
+            // fail: function (e, data) {}, // .bind('fileuploadfail', func);
+
+            // Callback for completed (success, abort or error) requests:
+            // always: function (e, data) {}, // .bind('fileuploadalways', func);
+
+            // Callback for upload progress events:
+            // progress: function (e, data) {}, // .bind('fileuploadprogress', func);
+
+            // Callback for global upload progress events:
+            // progressall: function (e, data) {}, // .bind('fileuploadprogressall', func);
+
+            // Callback for uploads start, equivalent to the global ajaxStart event:
+            // start: function (e) {}, // .bind('fileuploadstart', func);
+
+            // Callback for uploads stop, equivalent to the global ajaxStop event:
+            // stop: function (e) {}, // .bind('fileuploadstop', func);
+
+            // Callback for change events of the fileInput(s):
+            // change: function (e, data) {}, // .bind('fileuploadchange', func);
+
+            // Callback for paste events to the pasteZone(s):
+            // paste: function (e, data) {}, // .bind('fileuploadpaste', func);
+
+            // Callback for drop events of the dropZone(s):
+            // drop: function (e, data) {}, // .bind('fileuploaddrop', func);
+
+            // Callback for dragover events of the dropZone(s):
+            // dragover: function (e) {}, // .bind('fileuploaddragover', func);
+
+            // Callback for the start of each chunk upload request:
+            // chunksend: function (e, data) {}, // .bind('fileuploadchunksend', func);
+
+            // Callback for successful chunk uploads:
+            // chunkdone: function (e, data) {}, // .bind('fileuploadchunkdone', func);
+
+            // Callback for failed (abort or error) chunk uploads:
+            // chunkfail: function (e, data) {}, // .bind('fileuploadchunkfail', func);
+
+            // Callback for completed (success, abort or error) chunk upload requests:
+            // chunkalways: function (e, data) {}, // .bind('fileuploadchunkalways', func);
+
+            // The plugin options are used as settings object for the ajax calls.
+            // The following are jQuery ajax settings required for the file uploads:
+            processData: false,
+            contentType: false,
+            cache: false
+        },
+
+        // A list of options that require reinitializing event listeners and/or
+        // special initialization code:
+        _specialOptions: [
+            'fileInput',
+            'dropZone',
+            'pasteZone',
+            'multipart',
+            'forceIframeTransport'
+        ],
+
+        _blobSlice: $.support.blobSlice && function () {
+            var slice = this.slice || this.webkitSlice || this.mozSlice;
+            return slice.apply(this, arguments);
+        },
+
+        _BitrateTimer: function () {
+            this.timestamp = ((Date.now) ? Date.now() : (new Date()).getTime());
+            this.loaded = 0;
+            this.bitrate = 0;
+            this.getBitrate = function (now, loaded, interval) {
+                var timeDiff = now - this.timestamp;
+                if (!this.bitrate || !interval || timeDiff > interval) {
+                    this.bitrate = (loaded - this.loaded) * (1000 / timeDiff) * 8;
+                    this.loaded = loaded;
+                    this.timestamp = now;
+                }
+                return this.bitrate;
+            };
+        },
+
+        _isXHRUpload: function (options) {
+            return !options.forceIframeTransport &&
+                ((!options.multipart && $.support.xhrFileUpload) ||
+                $.support.xhrFormDataFileUpload);
+        },
+
+        _getFormData: function (options) {
+            var formData;
+            if (typeof options.formData === 'function') {
+                return options.formData(options.form);
+            }
+            if ($.isArray(options.formData)) {
+                return options.formData;
+            }
+            if ($.type(options.formData) === 'object') {
+                formData = [];
+                $.each(options.formData, function (name, value) {
+                    formData.push({name: name, value: value});
+                });
+                return formData;
+            }
+            return [];
+        },
+
+        _getTotal: function (files) {
+            var total = 0;
+            $.each(files, function (index, file) {
+                total += file.size || 1;
+            });
+            return total;
+        },
+
+        _initProgressObject: function (obj) {
+            var progress = {
+                loaded: 0,
+                total: 0,
+                bitrate: 0
+            };
+            if (obj._progress) {
+                $.extend(obj._progress, progress);
+            } else {
+                obj._progress = progress;
+            }
+        },
+
+        _initResponseObject: function (obj) {
+            var prop;
+            if (obj._response) {
+                for (prop in obj._response) {
+                    if (obj._response.hasOwnProperty(prop)) {
+                        delete obj._response[prop];
+                    }
+                }
+            } else {
+                obj._response = {};
+            }
+        },
+
+        _onProgress: function (e, data) {
+            if (e.lengthComputable) {
+                var now = ((Date.now) ? Date.now() : (new Date()).getTime()),
+                    loaded;
+                if (data._time && data.progressInterval &&
+                        (now - data._time < data.progressInterval) &&
+                        e.loaded !== e.total) {
+                    return;
+                }
+                data._time = now;
+                loaded = Math.floor(
+                    e.loaded / e.total * (data.chunkSize || data._progress.total)
+                ) + (data.uploadedBytes || 0);
+                // Add the difference from the previously loaded state
+                // to the global loaded counter:
+                this._progress.loaded += (loaded - data._progress.loaded);
+                this._progress.bitrate = this._bitrateTimer.getBitrate(
+                    now,
+                    this._progress.loaded,
+                    data.bitrateInterval
+                );
+                data._progress.loaded = data.loaded = loaded;
+                data._progress.bitrate = data.bitrate = data._bitrateTimer.getBitrate(
+                    now,
+                    loaded,
+                    data.bitrateInterval
+                );
+                // Trigger a custom progress event with a total data property set
+                // to the file size(s) of the current upload and a loaded data
+                // property calculated accordingly:
+                this._trigger('progress', e, data);
+                // Trigger a global progress event for all current file uploads,
+                // including ajax calls queued for sequential file uploads:
+                this._trigger('progressall', e, this._progress);
+            }
+        },
+
+        _initProgressListener: function (options) {
+            var that = this,
+                xhr = options.xhr ? options.xhr() : $.ajaxSettings.xhr();
+            // Accesss to the native XHR object is required to add event listeners
+            // for the upload progress event:
+            if (xhr.upload) {
+                $(xhr.upload).bind('progress', function (e) {
+                    var oe = e.originalEvent;
+                    // Make sure the progress event properties get copied over:
+                    e.lengthComputable = oe.lengthComputable;
+                    e.loaded = oe.loaded;
+                    e.total = oe.total;
+                    that._onProgress(e, options);
+                });
+                options.xhr = function () {
+                    return xhr;
+                };
+            }
+        },
+
+        _isInstanceOf: function (type, obj) {
+            // Cross-frame instanceof check
+            return Object.prototype.toString.call(obj) === '[object ' + type + ']';
+        },
+
+        _initXHRData: function (options) {
+            var that = this,
+                formData,
+                file = options.files[0],
+                // Ignore non-multipart setting if not supported:
+                multipart = options.multipart || !$.support.xhrFileUpload,
+                paramName = options.paramName[0];
+            options.headers = $.extend({}, options.headers);
+            if (options.contentRange) {
+                options.headers['Content-Range'] = options.contentRange;
+            }
+            if (!multipart || options.blob || !this._isInstanceOf('File', file)) {
+                options.headers['Content-Disposition'] = 'attachment; filename="' +
+                    encodeURI(file.name) + '"';
+            }
+            if (!multipart) {
+                options.contentType = file.type;
+                options.data = options.blob || file;
+            } else if ($.support.xhrFormDataFileUpload) {
+                if (options.postMessage) {
+                    // window.postMessage does not allow sending FormData
+                    // objects, so we just add the File/Blob objects to
+                    // the formData array and let the postMessage window
+                    // create the FormData object out of this array:
+                    formData = this._getFormData(options);
+                    if (options.blob) {
+                        formData.push({
+                            name: paramName,
+                            value: options.blob
+                        });
+                    } else {
+                        $.each(options.files, function (index, file) {
+                            formData.push({
+                                name: options.paramName[index] || paramName,
+                                value: file
+                            });
+                        });
+                    }
+                } else {
+                    if (that._isInstanceOf('FormData', options.formData)) {
+                        formData = options.formData;
+                    } else {
+                        formData = new FormData();
+                        $.each(this._getFormData(options), function (index, field) {
+                            formData.append(field.name, field.value);
+                        });
+                    }
+                    if (options.blob) {
+                        formData.append(paramName, options.blob, file.name);
+                    } else {
+                        $.each(options.files, function (index, file) {
+                            // This check allows the tests to run with
+                            // dummy objects:
+                            if (that._isInstanceOf('File', file) ||
+                                    that._isInstanceOf('Blob', file)) {
+                                formData.append(
+                                    options.paramName[index] || paramName,
+                                    file,
+                                    file.name
+                                );
+                            }
+                        });
+                    }
+                }
+                options.data = formData;
+            }
+            // Blob reference is not needed anymore, free memory:
+            options.blob = null;
+        },
+
+        _initIframeSettings: function (options) {
+            var targetHost = $('<a></a>').prop('href', options.url).prop('host');
+            // Setting the dataType to iframe enables the iframe transport:
+            options.dataType = 'iframe ' + (options.dataType || '');
+            // The iframe transport accepts a serialized array as form data:
+            options.formData = this._getFormData(options);
+            // Add redirect url to form data on cross-domain uploads:
+            if (options.redirect && targetHost && targetHost !== location.host) {
+                options.formData.push({
+                    name: options.redirectParamName || 'redirect',
+                    value: options.redirect
+                });
+            }
+        },
+
+        _initDataSettings: function (options) {
+            if (this._isXHRUpload(options)) {
+                if (!this._chunkedUpload(options, true)) {
+                    if (!options.data) {
+                        this._initXHRData(options);
+                    }
+                    this._initProgressListener(options);
+                }
+                if (options.postMessage) {
+                    // Setting the dataType to postmessage enables the
+                    // postMessage transport:
+                    options.dataType = 'postmessage ' + (options.dataType || '');
+                }
+            } else {
+                this._initIframeSettings(options);
+            }
+        },
+
+        _getParamName: function (options) {
+            var fileInput = $(options.fileInput),
+                paramName = options.paramName;
+            if (!paramName) {
+                paramName = [];
+                fileInput.each(function () {
+                    var input = $(this),
+                        name = input.prop('name') || 'files[]',
+                        i = (input.prop('files') || [1]).length;
+                    while (i) {
+                        paramName.push(name);
+                        i -= 1;
+                    }
+                });
+                if (!paramName.length) {
+                    paramName = [fileInput.prop('name') || 'files[]'];
+                }
+            } else if (!$.isArray(paramName)) {
+                paramName = [paramName];
+            }
+            return paramName;
+        },
+
+        _initFormSettings: function (options) {
+            // Retrieve missing options from the input field and the
+            // associated form, if available:
+            if (!options.form || !options.form.length) {
+                options.form = $(options.fileInput.prop('form'));
+                // If the given file input doesn't have an associated form,
+                // use the default widget file input's form:
+                if (!options.form.length) {
+                    options.form = $(this.options.fileInput.prop('form'));
+                }
+            }
+            options.paramName = this._getParamName(options);
+            if (!options.url) {
+                options.url = options.form.prop('action') || location.href;
+            }
+            // The HTTP request method must be "POST" or "PUT":
+            options.type = (options.type || options.form.prop('method') || '')
+                .toUpperCase();
+            if (options.type !== 'POST' && options.type !== 'PUT' &&
+                    options.type !== 'PATCH') {
+                options.type = 'POST';
+            }
+            if (!options.formAcceptCharset) {
+                options.formAcceptCharset = options.form.attr('accept-charset');
+            }
+        },
+
+        _getAJAXSettings: function (data) {
+            var options = $.extend({}, this.options, data);
+            this._initFormSettings(options);
+            this._initDataSettings(options);
+            return options;
+        },
+
+        // jQuery 1.6 doesn't provide .state(),
+        // while jQuery 1.8+ removed .isRejected() and .isResolved():
+        _getDeferredState: function (deferred) {
+            if (deferred.state) {
+                return deferred.state();
+            }
+            if (deferred.isResolved()) {
+                return 'resolved';
+            }
+            if (deferred.isRejected()) {
+                return 'rejected';
+            }
+            return 'pending';
+        },
+
+        // Maps jqXHR callbacks to the equivalent
+        // methods of the given Promise object:
+        _enhancePromise: function (promise) {
+            promise.success = promise.done;
+            promise.error = promise.fail;
+            promise.complete = promise.always;
+            return promise;
+        },
+
+        // Creates and returns a Promise object enhanced with
+        // the jqXHR methods abort, success, error and complete:
+        _getXHRPromise: function (resolveOrReject, context, args) {
+            var dfd = $.Deferred(),
+                promise = dfd.promise();
+            context = context || this.options.context || promise;
+            if (resolveOrReject === true) {
+                dfd.resolveWith(context, args);
+            } else if (resolveOrReject === false) {
+                dfd.rejectWith(context, args);
+            }
+            promise.abort = dfd.promise;
+            return this._enhancePromise(promise);
+        },
+
+        // Adds convenience methods to the data callback argument:
+        _addConvenienceMethods: function (e, data) {
+            var that = this,
+                getPromise = function (data) {
+                    return $.Deferred().resolveWith(that, [data]).promise();
+                };
+            data.process = function (resolveFunc, rejectFunc) {
+                if (resolveFunc || rejectFunc) {
+                    data._processQueue = this._processQueue =
+                        (this._processQueue || getPromise(this))
+                            .pipe(resolveFunc, rejectFunc);
+                }
+                return this._processQueue || getPromise(this);
+            };
+            data.submit = function () {
+                if (this.state() !== 'pending') {
+                    data.jqXHR = this.jqXHR =
+                        (that._trigger('submit', e, this) !== false) &&
+                        that._onSend(e, this);
+                }
+                return this.jqXHR || that._getXHRPromise();
+            };
+            data.abort = function () {
+                if (this.jqXHR) {
+                    return this.jqXHR.abort();
+                }
+                return that._getXHRPromise();
+            };
+            data.state = function () {
+                if (this.jqXHR) {
+                    return that._getDeferredState(this.jqXHR);
+                }
+                if (this._processQueue) {
+                    return that._getDeferredState(this._processQueue);
+                }
+            };
+            data.progress = function () {
+                return this._progress;
+            };
+            data.response = function () {
+                return this._response;
+            };
+        },
+
+        // Parses the Range header from the server response
+        // and returns the uploaded bytes:
+        _getUploadedBytes: function (jqXHR) {
+            var range = jqXHR.getResponseHeader('Range'),
+                parts = range && range.split('-'),
+                upperBytesPos = parts && parts.length > 1 &&
+                    parseInt(parts[1], 10);
+            return upperBytesPos && upperBytesPos + 1;
+        },
+
+        // Uploads a file in multiple, sequential requests
+        // by splitting the file up in multiple blob chunks.
+        // If the second parameter is true, only tests if the file
+        // should be uploaded in chunks, but does not invoke any
+        // upload requests:
+        _chunkedUpload: function (options, testOnly) {
+            options.uploadedBytes = options.uploadedBytes || 0;
+            var that = this,
+                file = options.files[0],
+                fs = file.size,
+                ub = options.uploadedBytes,
+                mcs = options.maxChunkSize || fs,
+                slice = this._blobSlice,
+                dfd = $.Deferred(),
+                promise = dfd.promise(),
+                jqXHR,
+                upload;
+            if (!(this._isXHRUpload(options) && slice && (ub || mcs < fs)) ||
+                    options.data) {
+                return false;
+            }
+            if (testOnly) {
+                return true;
+            }
+            if (ub >= fs) {
+                file.error = options.i18n('uploadedBytes');
+                return this._getXHRPromise(
+                    false,
+                    options.context,
+                    [null, 'error', file.error]
+                );
+            }
+            // The chunk upload method:
+            upload = function () {
+                // Clone the options object for each chunk upload:
+                var o = $.extend({}, options),
+                    currentLoaded = o._progress.loaded;
+                o.blob = slice.call(
+                    file,
+                    ub,
+                    ub + mcs,
+                    file.type
+                );
+                // Store the current chunk size, as the blob itself
+                // will be dereferenced after data processing:
+                o.chunkSize = o.blob.size;
+                // Expose the chunk bytes position range:
+                o.contentRange = 'bytes ' + ub + '-' +
+                    (ub + o.chunkSize - 1) + '/' + fs;
+                // Process the upload data (the blob and potential form data):
+                that._initXHRData(o);
+                // Add progress listeners for this chunk upload:
+                that._initProgressListener(o);
+                jqXHR = ((that._trigger('chunksend', null, o) !== false && $.ajax(o)) ||
+                        that._getXHRPromise(false, o.context))
+                    .done(function (result, textStatus, jqXHR) {
+                        ub = that._getUploadedBytes(jqXHR) ||
+                            (ub + o.chunkSize);
+                        // Create a progress event if no final progress event
+                        // with loaded equaling total has been triggered
+                        // for this chunk:
+                        if (currentLoaded + o.chunkSize - o._progress.loaded) {
+                            that._onProgress($.Event('progress', {
+                                lengthComputable: true,
+                                loaded: ub - o.uploadedBytes,
+                                total: ub - o.uploadedBytes
+                            }), o);
+                        }
+                        options.uploadedBytes = o.uploadedBytes = ub;
+                        o.result = result;
+                        o.textStatus = textStatus;
+                        o.jqXHR = jqXHR;
+                        that._trigger('chunkdone', null, o);
+                        that._trigger('chunkalways', null, o);
+                        if (ub < fs) {
+                            // File upload not yet complete,
+                            // continue with the next chunk:
+                            upload();
+                        } else {
+                            dfd.resolveWith(
+                                o.context,
+                                [result, textStatus, jqXHR]
+                            );
+                        }
+                    })
+                    .fail(function (jqXHR, textStatus, errorThrown) {
+                        o.jqXHR = jqXHR;
+                        o.textStatus = textStatus;
+                        o.errorThrown = errorThrown;
+                        that._trigger('chunkfail', null, o);
+                        that._trigger('chunkalways', null, o);
+                        dfd.rejectWith(
+                            o.context,
+                            [jqXHR, textStatus, errorThrown]
+                        );
+                    });
+            };
+            this._enhancePromise(promise);
+            promise.abort = function () {
+                return jqXHR.abort();
+            };
+            upload();
+            return promise;
+        },
+
+        _beforeSend: function (e, data) {
+            if (this._active === 0) {
+                // the start callback is triggered when an upload starts
+                // and no other uploads are currently running,
+                // equivalent to the global ajaxStart event:
+                this._trigger('start');
+                // Set timer for global bitrate progress calculation:
+                this._bitrateTimer = new this._BitrateTimer();
+                // Reset the global progress values:
+                this._progress.loaded = this._progress.total = 0;
+                this._progress.bitrate = 0;
+            }
+            // Make sure the container objects for the .response() and
+            // .progress() methods on the data object are available
+            // and reset to their initial state:
+            this._initResponseObject(data);
+            this._initProgressObject(data);
+            data._progress.loaded = data.loaded = data.uploadedBytes || 0;
+            data._progress.total = data.total = this._getTotal(data.files) || 1;
+            data._progress.bitrate = data.bitrate = 0;
+            this._active += 1;
+            // Initialize the global progress values:
+            this._progress.loaded += data.loaded;
+            this._progress.total += data.total;
+        },
+
+        _onDone: function (result, textStatus, jqXHR, options) {
+            var total = options._progress.total,
+                response = options._response;
+            if (options._progress.loaded < total) {
+                // Create a progress event if no final progress event
+                // with loaded equaling total has been triggered:
+                this._onProgress($.Event('progress', {
+                    lengthComputable: true,
+                    loaded: total,
+                    total: total
+                }), options);
+            }
+            response.result = options.result = result;
+            response.textStatus = options.textStatus = textStatus;
+            response.jqXHR = options.jqXHR = jqXHR;
+            this._trigger('done', null, options);
+        },
+
+        _onFail: function (jqXHR, textStatus, errorThrown, options) {
+            var response = options._response;
+            if (options.recalculateProgress) {
+                // Remove the failed (error or abort) file upload from
+                // the global progress calculation:
+                this._progress.loaded -= options._progress.loaded;
+                this._progress.total -= options._progress.total;
+            }
+            response.jqXHR = options.jqXHR = jqXHR;
+            response.textStatus = options.textStatus = textStatus;
+            response.errorThrown = options.errorThrown = errorThrown;
+            this._trigger('fail', null, options);
+        },
+
+        _onAlways: function (jqXHRorResult, textStatus, jqXHRorError, options) {
+            // jqXHRorResult, textStatus and jqXHRorError are added to the
+            // options object via done and fail callbacks
+            this._trigger('always', null, options);
+        },
+
+        _onSend: function (e, data) {
+            if (!data.submit) {
+                this._addConvenienceMethods(e, data);
+            }
+            var that = this,
+                jqXHR,
+                aborted,
+                slot,
+                pipe,
+                options = that._getAJAXSettings(data),
+                send = function () {
+                    that._sending += 1;
+                    // Set timer for bitrate progress calculation:
+                    options._bitrateTimer = new that._BitrateTimer();
+                    jqXHR = jqXHR || (
+                        ((aborted || that._trigger('send', e, options) === false) &&
+                        that._getXHRPromise(false, options.context, aborted)) ||
+                        that._chunkedUpload(options) || $.ajax(options)
+                    ).done(function (result, textStatus, jqXHR) {
+                        that._onDone(result, textStatus, jqXHR, options);
+                    }).fail(function (jqXHR, textStatus, errorThrown) {
+                        that._onFail(jqXHR, textStatus, errorThrown, options);
+                    }).always(function (jqXHRorResult, textStatus, jqXHRorError) {
+                        that._onAlways(
+                            jqXHRorResult,
+                            textStatus,
+                            jqXHRorError,
+                            options
+                        );
+                        that._sending -= 1;
+                        that._active -= 1;
+                        if (options.limitConcurrentUploads &&
+                                options.limitConcurrentUploads > that._sending) {
+                            // Start the next queued upload,
+                            // that has not been aborted:
+                            var nextSlot = that._slots.shift();
+                            while (nextSlot) {
+                                if (that._getDeferredState(nextSlot) === 'pending') {
+                                    nextSlot.resolve();
+                                    break;
+                                }
+                                nextSlot = that._slots.shift();
+                            }
+                        }
+                        if (that._active === 0) {
+                            // The stop callback is triggered when all uploads have
+                            // been completed, equivalent to the global ajaxStop event:
+                            that._trigger('stop');
+                        }
+                    });
+                    return jqXHR;
+                };
+            this._beforeSend(e, options);
+            if (this.options.sequentialUploads ||
+                    (this.options.limitConcurrentUploads &&
+                    this.options.limitConcurrentUploads <= this._sending)) {
+                if (this.options.limitConcurrentUploads > 1) {
+                    slot = $.Deferred();
+                    this._slots.push(slot);
+                    pipe = slot.pipe(send);
+                } else {
+                    this._sequence = this._sequence.pipe(send, send);
+                    pipe = this._sequence;
+                }
+                // Return the piped Promise object, enhanced with an abort method,
+                // which is delegated to the jqXHR object of the current upload,
+                // and jqXHR callbacks mapped to the equivalent Promise methods:
+                pipe.abort = function () {
+                    aborted = [undefined, 'abort', 'abort'];
+                    if (!jqXHR) {
+                        if (slot) {
+                            slot.rejectWith(options.context, aborted);
+                        }
+                        return send();
+                    }
+                    return jqXHR.abort();
+                };
+                return this._enhancePromise(pipe);
+            }
+            return send();
+        },
+
+        _onAdd: function (e, data) {
+            var that = this,
+                result = true,
+                options = $.extend({}, this.options, data),
+                limit = options.limitMultiFileUploads,
+                paramName = this._getParamName(options),
+                paramNameSet,
+                paramNameSlice,
+                fileSet,
+                i;
+            if (!(options.singleFileUploads || limit) ||
+                    !this._isXHRUpload(options)) {
+                fileSet = [data.files];
+                paramNameSet = [paramName];
+            } else if (!options.singleFileUploads && limit) {
+                fileSet = [];
+                paramNameSet = [];
+                for (i = 0; i < data.files.length; i += limit) {
+                    fileSet.push(data.files.slice(i, i + limit));
+                    paramNameSlice = paramName.slice(i, i + limit);
+                    if (!paramNameSlice.length) {
+                        paramNameSlice = paramName;
+                    }
+                    paramNameSet.push(paramNameSlice);
+                }
+            } else {
+                paramNameSet = paramName;
+            }
+            data.originalFiles = data.files;
+            $.each(fileSet || data.files, function (index, element) {
+                var newData = $.extend({}, data);
+                newData.files = fileSet ? element : [element];
+                newData.paramName = paramNameSet[index];
+                that._initResponseObject(newData);
+                that._initProgressObject(newData);
+                that._addConvenienceMethods(e, newData);
+                result = that._trigger('add', e, newData);
+                return result;
+            });
+            return result;
+        },
+
+        _replaceFileInput: function (input) {
+            var inputClone = input.clone(true);
+            $('<form></form>').append(inputClone)[0].reset();
+            // Detaching allows to insert the fileInput on another form
+            // without loosing the file input value:
+            input.after(inputClone).detach();
+            // Avoid memory leaks with the detached file input:
+            $.cleanData(input.unbind('remove'));
+            // Replace the original file input element in the fileInput
+            // elements set with the clone, which has been copied including
+            // event handlers:
+            this.options.fileInput = this.options.fileInput.map(function (i, el) {
+                if (el === input[0]) {
+                    return inputClone[0];
+                }
+                return el;
+            });
+            // If the widget has been initialized on the file input itself,
+            // override this.element with the file input clone:
+            if (input[0] === this.element[0]) {
+                this.element = inputClone;
+            }
+        },
+
+        _handleFileTreeEntry: function (entry, path) {
+            var that = this,
+                dfd = $.Deferred(),
+                errorHandler = function (e) {
+                    if (e && !e.entry) {
+                        e.entry = entry;
+                    }
+                    // Since $.when returns immediately if one
+                    // Deferred is rejected, we use resolve instead.
+                    // This allows valid files and invalid items
+                    // to be returned together in one set:
+                    dfd.resolve([e]);
+                },
+                dirReader;
+            path = path || '';
+            if (entry.isFile) {
+                if (entry._file) {
+                    // Workaround for Chrome bug #149735
+                    entry._file.relativePath = path;
+                    dfd.resolve(entry._file);
+                } else {
+                    entry.file(function (file) {
+                        file.relativePath = path;
+                        dfd.resolve(file);
+                    }, errorHandler);
+                }
+            } else if (entry.isDirectory) {
+                dirReader = entry.createReader();
+                dirReader.readEntries(function (entries) {
+                    that._handleFileTreeEntries(
+                        entries,
+                        path + entry.name + '/'
+                    ).done(function (files) {
+                        dfd.resolve(files);
+                    }).fail(errorHandler);
+                }, errorHandler);
+            } else {
+                // Return an empy list for file system items
+                // other than files or directories:
+                dfd.resolve([]);
+            }
+            return dfd.promise();
+        },
+
+        _handleFileTreeEntries: function (entries, path) {
+            var that = this;
+            return $.when.apply(
+                $,
+                $.map(entries, function (entry) {
+                    return that._handleFileTreeEntry(entry, path);
+                })
+            ).pipe(function () {
+                return Array.prototype.concat.apply(
+                    [],
+                    arguments
+                );
+            });
+        },
+
+        _getDroppedFiles: function (dataTransfer) {
+            dataTransfer = dataTransfer || {};
+            var items = dataTransfer.items;
+            if (items && items.length && (items[0].webkitGetAsEntry ||
+                    items[0].getAsEntry)) {
+                return this._handleFileTreeEntries(
+                    $.map(items, function (item) {
+                        var entry;
+                        if (item.webkitGetAsEntry) {
+                            entry = item.webkitGetAsEntry();
+                            if (entry) {
+                                // Workaround for Chrome bug #149735:
+                                entry._file = item.getAsFile();
+                            }
+                            return entry;
+                        }
+                        return item.getAsEntry();
+                    })
+                );
+            }
+            return $.Deferred().resolve(
+                $.makeArray(dataTransfer.files)
+            ).promise();
+        },
+
+        _getSingleFileInputFiles: function (fileInput) {
+            fileInput = $(fileInput);
+            var entries = fileInput.prop('webkitEntries') ||
+                    fileInput.prop('entries'),
+                files,
+                value;
+            if (entries && entries.length) {
+                return this._handleFileTreeEntries(entries);
+            }
+            files = $.makeArray(fileInput.prop('files'));
+            if (!files.length) {
+                value = fileInput.prop('value');
+                if (!value) {
+                    return $.Deferred().resolve([]).promise();
+                }
+                // If the files property is not available, the browser does not
+                // support the File API and we add a pseudo File object with
+                // the input value as name with path information removed:
+                files = [{name: value.replace(/^.*\\/, '')}];
+            } else if (files[0].name === undefined && files[0].fileName) {
+                // File normalization for Safari 4 and Firefox 3:
+                $.each(files, function (index, file) {
+                    file.name = file.fileName;
+                    file.size = file.fileSize;
+                });
+            }
+            return $.Deferred().resolve(files).promise();
+        },
+
+        _getFileInputFiles: function (fileInput) {
+            if (!(fileInput instanceof $) || fileInput.length === 1) {
+                return this._getSingleFileInputFiles(fileInput);
+            }
+            return $.when.apply(
+                $,
+                $.map(fileInput, this._getSingleFileInputFiles)
+            ).pipe(function () {
+                return Array.prototype.concat.apply(
+                    [],
+                    arguments
+                );
+            });
+        },
+
+        _onChange: function (e) {
+            var that = this,
+                data = {
+                    fileInput: $(e.target),
+                    form: $(e.target.form)
+                };
+            this._getFileInputFiles(data.fileInput).always(function (files) {
+                data.files = files;
+                if (that.options.replaceFileInput) {
+                    that._replaceFileInput(data.fileInput);
+                }
+                if (that._trigger('change', e, data) !== false) {
+                    that._onAdd(e, data);
+                }
+            });
+        },
+
+        _onPaste: function (e) {
+            var items = e.originalEvent && e.originalEvent.clipboardData &&
+                    e.originalEvent.clipboardData.items,
+                data = {files: []};
+            if (items && items.length) {
+                $.each(items, function (index, item) {
+                    var file = item.getAsFile && item.getAsFile();
+                    if (file) {
+                        data.files.push(file);
+                    }
+                });
+                if (this._trigger('paste', e, data) === false ||
+                        this._onAdd(e, data) === false) {
+                    return false;
+                }
+            }
+        },
+
+        _onDrop: function (e) {
+            e.dataTransfer = e.originalEvent && e.originalEvent.dataTransfer;
+            var that = this,
+                dataTransfer = e.dataTransfer,
+                data = {};
+            if (dataTransfer && dataTransfer.files && dataTransfer.files.length) {
+                e.preventDefault();
+                this._getDroppedFiles(dataTransfer).always(function (files) {
+                    data.files = files;
+                    if (that._trigger('drop', e, data) !== false) {
+                        that._onAdd(e, data);
+                    }
+                });
+            }
+        },
+
+        _onDragOver: function (e) {
+            e.dataTransfer = e.originalEvent && e.originalEvent.dataTransfer;
+            var dataTransfer = e.dataTransfer;
+            if (dataTransfer) {
+                if (this._trigger('dragover', e) === false) {
+                    return false;
+                }
+                if ($.inArray('Files', dataTransfer.types) !== -1) {
+                    dataTransfer.dropEffect = 'copy';
+                    e.preventDefault();
+                }
+            }
+        },
+
+        _initEventHandlers: function () {
+            if (this._isXHRUpload(this.options)) {
+                this._on(this.options.dropZone, {
+                    dragover: this._onDragOver,
+                    drop: this._onDrop
+                });
+                this._on(this.options.pasteZone, {
+                    paste: this._onPaste
+                });
+            }
+            if ($.support.fileInput) {
+                this._on(this.options.fileInput, {
+                    change: this._onChange
+                });
+            }
+        },
+
+        _destroyEventHandlers: function () {
+            this._off(this.options.dropZone, 'dragover drop');
+            this._off(this.options.pasteZone, 'paste');
+            this._off(this.options.fileInput, 'change');
+        },
+
+        _setOption: function (key, value) {
+            var reinit = $.inArray(key, this._specialOptions) !== -1;
+            if (reinit) {
+                this._destroyEventHandlers();
+            }
+            this._super(key, value);
+            if (reinit) {
+                this._initSpecialOptions();
+                this._initEventHandlers();
+            }
+        },
+
+        _initSpecialOptions: function () {
+            var options = this.options;
+            if (options.fileInput === undefined) {
+                options.fileInput = this.element.is('input[type="file"]') ?
+                        this.element : this.element.find('input[type="file"]');
+            } else if (!(options.fileInput instanceof $)) {
+                options.fileInput = $(options.fileInput);
+            }
+            if (!(options.dropZone instanceof $)) {
+                options.dropZone = $(options.dropZone);
+            }
+            if (!(options.pasteZone instanceof $)) {
+                options.pasteZone = $(options.pasteZone);
+            }
+        },
+
+        _getRegExp: function (str) {
+            var parts = str.split('/'),
+                modifiers = parts.pop();
+            parts.shift();
+            return new RegExp(parts.join('/'), modifiers);
+        },
+
+        _isRegExpOption: function (key, value) {
+            return key !== 'url' && $.type(value) === 'string' &&
+                /^\/.*\/[igm]{0,3}$/.test(value);
+        },
+
+        _initDataAttributes: function () {
+            var that = this,
+                options = this.options;
+            // Initialize options set via HTML5 data-attributes:
+            $.each(
+                $(this.element[0].cloneNode(false)).data(),
+                function (key, value) {
+                    if (that._isRegExpOption(key, value)) {
+                        value = that._getRegExp(value);
+                    }
+                    options[key] = value;
+                }
+            );
+        },
+
+        _create: function () {
+            this._initDataAttributes();
+            this._initSpecialOptions();
+            this._slots = [];
+            this._sequence = this._getXHRPromise(true);
+            this._sending = this._active = 0;
+            this._initProgressObject(this);
+            this._initEventHandlers();
+        },
+
+        // This method is exposed to the widget API and allows to query
+        // the number of active uploads:
+        active: function () {
+            return this._active;
+        },
+
+        // This method is exposed to the widget API and allows to query
+        // the widget upload progress.
+        // It returns an object with loaded, total and bitrate properties
+        // for the running uploads:
+        progress: function () {
+            return this._progress;
+        },
+
+        // This method is exposed to the widget API and allows adding files
+        // using the fileupload API. The data parameter accepts an object which
+        // must have a files property and can contain additional options:
+        // .fileupload('add', {files: filesList});
+        add: function (data) {
+            var that = this;
+            if (!data || this.options.disabled) {
+                return;
+            }
+            if (data.fileInput && !data.files) {
+                this._getFileInputFiles(data.fileInput).always(function (files) {
+                    data.files = files;
+                    that._onAdd(null, data);
+                });
+            } else {
+                data.files = $.makeArray(data.files);
+                this._onAdd(null, data);
+            }
+        },
+
+        // This method is exposed to the widget API and allows sending files
+        // using the fileupload API. The data parameter accepts an object which
+        // must have a files or fileInput property and can contain additional options:
+        // .fileupload('send', {files: filesList});
+        // The method returns a Promise object for the file upload call.
+        send: function (data) {
+            if (data && !this.options.disabled) {
+                if (data.fileInput && !data.files) {
+                    var that = this,
+                        dfd = $.Deferred(),
+                        promise = dfd.promise(),
+                        jqXHR,
+                        aborted;
+                    promise.abort = function () {
+                        aborted = true;
+                        if (jqXHR) {
+                            return jqXHR.abort();
+                        }
+                        dfd.reject(null, 'abort', 'abort');
+                        return promise;
+                    };
+                    this._getFileInputFiles(data.fileInput).always(
+                        function (files) {
+                            if (aborted) {
+                                return;
+                            }
+                            if (!files.length) {
+                                dfd.reject();
+                                return;
+                            }
+                            data.files = files;
+                            jqXHR = that._onSend(null, data).then(
+                                function (result, textStatus, jqXHR) {
+                                    dfd.resolve(result, textStatus, jqXHR);
+                                },
+                                function (jqXHR, textStatus, errorThrown) {
+                                    dfd.reject(jqXHR, textStatus, errorThrown);
+                                }
+                            );
+                        }
+                    );
+                    return this._enhancePromise(promise);
+                }
+                data.files = $.makeArray(data.files);
+                if (data.files.length) {
+                    return this._onSend(null, data);
+                }
+            }
+            return this._getXHRPromise(false, data && data.context);
+        }
+
+    });
+
+}));
+
+/*
+ * jQuery File Upload Processing Plugin 1.2.2
+ * https://github.com/blueimp/jQuery-File-Upload
+ *
+ * Copyright 2012, Sebastian Tschan
+ * https://blueimp.net
+ *
+ * Licensed under the MIT license:
+ * http://www.opensource.org/licenses/MIT
+ */
+
+/*jslint nomen: true, unparam: true */
+/*global define, window */
+
+(function (factory) {
+    'use strict';
+    if (typeof define === 'function' && define.amd) {
+        // Register as an anonymous AMD module:
+        define([
+            'jquery',
+            './jquery.fileupload'
+        ], factory);
+    } else {
+        // Browser globals:
+        factory(
+            window.jQuery
+        );
+    }
+}(function ($) {
+    'use strict';
+
+    var originalAdd = $.blueimp.fileupload.prototype.options.add;
+
+    // The File Upload Processing plugin extends the fileupload widget
+    // with file processing functionality:
+    $.widget('blueimp.fileupload', $.blueimp.fileupload, {
+
+        options: {
+            // The list of processing actions:
+            processQueue: [
+                /*
+                {
+                    action: 'log',
+                    type: 'debug'
+                }
+                */
+            ],
+            add: function (e, data) {
+                var $this = $(this);
+                data.process(function () {
+                    return $this.fileupload('process', data);
+                });
+                originalAdd.call(this, e, data);
+            }
+        },
+
+        processActions: {
+            /*
+            log: function (data, options) {
+                console[options.type](
+                    'Processing "' + data.files[data.index].name + '"'
+                );
+            }
+            */
+        },
+
+        _processFile: function (data) {
+            var that = this,
+                dfd = $.Deferred().resolveWith(that, [data]),
+                chain = dfd.promise();
+            this._trigger('process', null, data);
+            $.each(data.processQueue, function (i, settings) {
+                var func = function (data) {
+                    return that.processActions[settings.action].call(
+                        that,
+                        data,
+                        settings
+                    );
+                };
+                chain = chain.pipe(func, settings.always && func);
+            });
+            chain
+                .done(function () {
+                    that._trigger('processdone', null, data);
+                    that._trigger('processalways', null, data);
+                })
+                .fail(function () {
+                    that._trigger('processfail', null, data);
+                    that._trigger('processalways', null, data);
+                });
+            return chain;
+        },
+
+        // Replaces the settings of each processQueue item that
+        // are strings starting with an "@", using the remaining
+        // substring as key for the option map,
+        // e.g. "@autoUpload" is replaced with options.autoUpload:
+        _transformProcessQueue: function (options) {
+            var processQueue = [];
+            $.each(options.processQueue, function () {
+                var settings = {},
+                    action = this.action,
+                    prefix = this.prefix === true ? action : this.prefix;
+                $.each(this, function (key, value) {
+                    if ($.type(value) === 'string' &&
+                            value.charAt(0) === '@') {
+                        settings[key] = options[
+                            value.slice(1) || (prefix ? prefix +
+                                key.charAt(0).toUpperCase() + key.slice(1) : key)
+                        ];
+                    } else {
+                        settings[key] = value;
+                    }
+
+                });
+                processQueue.push(settings);
+            });
+            options.processQueue = processQueue;
+        },
+
+        // Returns the number of files currently in the processsing queue:
+        processing: function () {
+            return this._processing;
+        },
+
+        // Processes the files given as files property of the data parameter,
+        // returns a Promise object that allows to bind callbacks:
+        process: function (data) {
+            var that = this,
+                options = $.extend({}, this.options, data);
+            if (options.processQueue && options.processQueue.length) {
+                this._transformProcessQueue(options);
+                if (this._processing === 0) {
+                    this._trigger('processstart');
+                }
+                $.each(data.files, function (index) {
+                    var opts = index ? $.extend({}, options) : options,
+                        func = function () {
+                            return that._processFile(opts);
+                        };
+                    opts.index = index;
+                    that._processing += 1;
+                    that._processingQueue = that._processingQueue.pipe(func, func)
+                        .always(function () {
+                            that._processing -= 1;
+                            if (that._processing === 0) {
+                                that._trigger('processstop');
+                            }
+                        });
+                });
+            }
+            return this._processingQueue;
+        },
+
+        _create: function () {
+            this._super();
+            this._processing = 0;
+            this._processingQueue = $.Deferred().resolveWith(this)
+                .promise();
+        }
+
+    });
+
+}));
+
+/*
+ * jQuery File Upload Image Preview & Resize Plugin 1.2.3
+ * https://github.com/blueimp/jQuery-File-Upload
+ *
+ * Copyright 2013, Sebastian Tschan
+ * https://blueimp.net
+ *
+ * Licensed under the MIT license:
+ * http://www.opensource.org/licenses/MIT
+ */
+
+/*jslint nomen: true, unparam: true, regexp: true */
+/*global define, window, document, DataView, Blob, Uint8Array */
+
+(function (factory) {
+    'use strict';
+    if (typeof define === 'function' && define.amd) {
+        // Register as an anonymous AMD module:
+        define([
+            'jquery',
+            'load-image',
+            'load-image-meta',
+            'load-image-exif',
+            'load-image-ios',
+            'canvas-to-blob',
+            './jquery.fileupload-process'
+        ], factory);
+    } else {
+        // Browser globals:
+        factory(
+            window.jQuery,
+            window.loadImage
+        );
+    }
+}(function ($, loadImage) {
+    'use strict';
+
+    // Prepend to the default processQueue:
+    $.blueimp.fileupload.prototype.options.processQueue.unshift(
+        {
+            action: 'loadImageMetaData',
+            disableImageHead: '@',
+            disableExif: '@',
+            disableExifThumbnail: '@',
+            disableExifSub: '@',
+            disableExifGps: '@',
+            disabled: '@disableImageMetaDataLoad'
+        },
+        {
+            action: 'loadImage',
+            // Use the action as prefix for the "@" options:
+            prefix: true,
+            fileTypes: '@',
+            maxFileSize: '@',
+            noRevoke: '@',
+            disabled: '@disableImageLoad'
+        },
+        {
+            action: 'resizeImage',
+            // Use "image" as prefix for the "@" options:
+            prefix: 'image',
+            maxWidth: '@',
+            maxHeight: '@',
+            minWidth: '@',
+            minHeight: '@',
+            crop: '@',
+            disabled: '@disableImageResize'
+        },
+        {
+            action: 'saveImage',
+            disabled: '@disableImageResize'
+        },
+        {
+            action: 'saveImageMetaData',
+            disabled: '@disableImageMetaDataSave'
+        },
+        {
+            action: 'resizeImage',
+            // Use "preview" as prefix for the "@" options:
+            prefix: 'preview',
+            maxWidth: '@',
+            maxHeight: '@',
+            minWidth: '@',
+            minHeight: '@',
+            crop: '@',
+            orientation: '@',
+            thumbnail: '@',
+            canvas: '@',
+            disabled: '@disableImagePreview'
+        },
+        {
+            action: 'setImage',
+            name: '@imagePreviewName',
+            disabled: '@disableImagePreview'
+        }
+    );
+
+    // The File Upload Resize plugin extends the fileupload widget
+    // with image resize functionality:
+    $.widget('blueimp.fileupload', $.blueimp.fileupload, {
+
+        options: {
+            // The regular expression for the types of images to load:
+            // matched against the file type:
+            loadImageFileTypes: /^image\/(gif|jpeg|png)$/,
+            // The maximum file size of images to load:
+            loadImageMaxFileSize: 10000000, // 10MB
+            // The maximum width of resized images:
+            imageMaxWidth: 1920,
+            // The maximum height of resized images:
+            imageMaxHeight: 1080,
+            // Define if resized images should be cropped or only scaled:
+            imageCrop: false,
+            // Disable the resize image functionality by default:
+            disableImageResize: true,
+            // The maximum width of the preview images:
+            previewMaxWidth: 80,
+            // The maximum height of the preview images:
+            previewMaxHeight: 80,
+            // Defines the preview orientation (1-8) or takes the orientation
+            // value from Exif data if set to true:
+            previewOrientation: true,
+            // Create the preview using the Exif data thumbnail:
+            previewThumbnail: true,
+            // Define if preview images should be cropped or only scaled:
+            previewCrop: false,
+            // Define if preview images should be resized as canvas elements:
+            previewCanvas: true
+        },
+
+        processActions: {
+
+            // Loads the image given via data.files and data.index
+            // as img element if the browser supports canvas.
+            // Accepts the options fileTypes (regular expression)
+            // and maxFileSize (integer) to limit the files to load:
+            loadImage: function (data, options) {
+                if (options.disabled) {
+                    return data;
+                }
+                var that = this,
+                    file = data.files[data.index],
+                    dfd = $.Deferred();
+                if (($.type(options.maxFileSize) === 'number' &&
+                            file.size > options.maxFileSize) ||
+                        (options.fileTypes &&
+                            !options.fileTypes.test(file.type)) ||
+                        !loadImage(
+                            file,
+                            function (img) {
+                                if (img.src) {
+                                    data.img = img;
+                                }
+                                dfd.resolveWith(that, [data]);
+                            },
+                            options
+                        )) {
+                    return data;
+                }
+                return dfd.promise();
+            },
+
+            // Resizes the image given as data.canvas or data.img
+            // and updates data.canvas or data.img with the resized image.
+            // Accepts the options maxWidth, maxHeight, minWidth,
+            // minHeight, canvas and crop:
+            resizeImage: function (data, options) {
+                if (options.disabled) {
+                    return data;
+                }
+                var that = this,
+                    dfd = $.Deferred(),
+                    resolve = function (newImg) {
+                        data[newImg.getContext ? 'canvas' : 'img'] = newImg;
+                        dfd.resolveWith(that, [data]);
+                    },
+                    thumbnail,
+                    img,
+                    newImg;
+                options = $.extend({canvas: true}, options);
+                if (data.exif) {
+                    if (options.orientation === true) {
+                        options.orientation = data.exif.get('Orientation');
+                    }
+                    if (options.thumbnail) {
+                        thumbnail = data.exif.get('Thumbnail');
+                        if (thumbnail) {
+                            loadImage(thumbnail, resolve, options);
+                            return dfd.promise();
+                        }
+                    }
+                }
+                img = (options.canvas && data.canvas) || data.img;
+                if (img) {
+                    newImg = loadImage.scale(img, options);
+                    if (newImg.width !== img.width ||
+                            newImg.height !== img.height) {
+                        resolve(newImg);
+                        return dfd.promise();
+                    }
+                }
+                return data;
+            },
+
+            // Saves the processed image given as data.canvas
+            // inplace at data.index of data.files:
+            saveImage: function (data, options) {
+                if (!data.canvas || options.disabled) {
+                    return data;
+                }
+                var that = this,
+                    file = data.files[data.index],
+                    name = file.name,
+                    dfd = $.Deferred(),
+                    callback = function (blob) {
+                        if (!blob.name) {
+                            if (file.type === blob.type) {
+                                blob.name = file.name;
+                            } else if (file.name) {
+                                blob.name = file.name.replace(
+                                    /\..+$/,
+                                    '.' + blob.type.substr(6)
+                                );
+                            }
+                        }
+                        // Store the created blob at the position
+                        // of the original file in the files list:
+                        data.files[data.index] = blob;
+                        dfd.resolveWith(that, [data]);
+                    };
+                // Use canvas.mozGetAsFile directly, to retain the filename, as
+                // Gecko doesn't support the filename option for FormData.append:
+                if (data.canvas.mozGetAsFile) {
+                    callback(data.canvas.mozGetAsFile(
+                        (/^image\/(jpeg|png)$/.test(file.type) && name) ||
+                            ((name && name.replace(/\..+$/, '')) ||
+                                'blob') + '.png',
+                        file.type
+                    ));
+                } else if (data.canvas.toBlob) {
+                    data.canvas.toBlob(callback, file.type);
+                } else {
+                    return data;
+                }
+                return dfd.promise();
+            },
+
+            loadImageMetaData: function (data, options) {
+                if (options.disabled) {
+                    return data;
+                }
+                var that = this,
+                    dfd = $.Deferred();
+                loadImage.parseMetaData(data.files[data.index], function (result) {
+                    $.extend(data, result);
+                    dfd.resolveWith(that, [data]);
+                }, options);
+                return dfd.promise();
+            },
+
+            saveImageMetaData: function (data, options) {
+                if (!(data.imageHead && data.canvas &&
+                        data.canvas.toBlob && !options.disabled)) {
+                    return data;
+                }
+                var file = data.files[data.index],
+                    blob = new Blob([
+                        data.imageHead,
+                        // Resized images always have a head size of 20 bytes,
+                        // including the JPEG marker and a minimal JFIF header:
+                        this._blobSlice.call(file, 20)
+                    ], {type: file.type});
+                blob.name = file.name;
+                data.files[data.index] = blob;
+                return data;
+            },
+
+            // Sets the resized version of the image as a property of the
+            // file object, must be called after "saveImage":
+            setImage: function (data, options) {
+                var img = data.canvas || data.img;
+                if (img && !options.disabled) {
+                    data.files[data.index][options.name || 'preview'] = img;
+                }
+                return data;
+            }
+
+        }
+
+    });
+
+}));
+
+/*
+ * jQuery File Upload Validation Plugin 1.1.1
+ * https://github.com/blueimp/jQuery-File-Upload
+ *
+ * Copyright 2013, Sebastian Tschan
+ * https://blueimp.net
+ *
+ * Licensed under the MIT license:
+ * http://www.opensource.org/licenses/MIT
+ */
+
+/*jslint nomen: true, unparam: true, regexp: true */
+/*global define, window */
+
+(function (factory) {
+    'use strict';
+    if (typeof define === 'function' && define.amd) {
+        // Register as an anonymous AMD module:
+        define([
+            'jquery',
+            './jquery.fileupload-process'
+        ], factory);
+    } else {
+        // Browser globals:
+        factory(
+            window.jQuery
+        );
+    }
+}(function ($) {
+    'use strict';
+
+    // Append to the default processQueue:
+    $.blueimp.fileupload.prototype.options.processQueue.push(
+        {
+            action: 'validate',
+            // Always trigger this action,
+            // even if the previous action was rejected: 
+            always: true,
+            // Options taken from the global options map:
+            acceptFileTypes: '@',
+            maxFileSize: '@',
+            minFileSize: '@',
+            maxNumberOfFiles: '@',
+            disabled: '@disableValidation'
+        }
+    );
+
+    // The File Upload Validation plugin extends the fileupload widget
+    // with file validation functionality:
+    $.widget('blueimp.fileupload', $.blueimp.fileupload, {
+
+        options: {
+            /*
+            // The regular expression for allowed file types, matches
+            // against either file type or file name:
+            acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i,
+            // The maximum allowed file size in bytes:
+            maxFileSize: 10000000, // 10 MB
+            // The minimum allowed file size in bytes:
+            minFileSize: undefined, // No minimal file size
+            // The limit of files to be uploaded:
+            maxNumberOfFiles: 10,
+            */
+
+            // Function returning the current number of files,
+            // has to be overriden for maxNumberOfFiles validation:
+            getNumberOfFiles: $.noop,
+
+            // Error and info messages:
+            messages: {
+                maxNumberOfFiles: 'Maximum number of files exceeded',
+                acceptFileTypes: 'File type not allowed',
+                maxFileSize: 'File is too large',
+                minFileSize: 'File is too small'
+            }
+        },
+
+        processActions: {
+
+            validate: function (data, options) {
+                if (options.disabled) {
+                    return data;
+                }
+                var dfd = $.Deferred(),
+                    settings = this.options,
+                    file = data.files[data.index];
+                if ($.type(options.maxNumberOfFiles) === 'number' &&
+                        (settings.getNumberOfFiles() || 0) + data.files.length >
+                            options.maxNumberOfFiles) {
+                    file.error = settings.i18n('maxNumberOfFiles');
+                } else if (options.acceptFileTypes &&
+                        !(options.acceptFileTypes.test(file.type) ||
+                        options.acceptFileTypes.test(file.name))) {
+                    file.error = settings.i18n('acceptFileTypes');
+                } else if (options.maxFileSize && file.size >
+                        options.maxFileSize) {
+                    file.error = settings.i18n('maxFileSize');
+                } else if ($.type(file.size) === 'number' &&
+                        file.size < options.minFileSize) {
+                    file.error = settings.i18n('minFileSize');
+                } else {
+                    delete file.error;
+                }
+                if (file.error || data.files.error) {
+                    data.files.error = true;
+                    dfd.rejectWith(this, [data]);
+                } else {
+                    dfd.resolveWith(this, [data]);
+                }
+                return dfd.promise();
+            }
+
+        }
+
+    });
+
+}));
+
+/*
+ * jQuery File Upload User Interface Plugin 8.8.5
+ * https://github.com/blueimp/jQuery-File-Upload
+ *
+ * Copyright 2010, Sebastian Tschan
+ * https://blueimp.net
+ *
+ * Licensed under the MIT license:
+ * http://www.opensource.org/licenses/MIT
+ */
+
+/*jslint nomen: true, unparam: true, regexp: true */
+/*global define, window, URL, webkitURL, FileReader */
+
+(function (factory) {
+    'use strict';
+    if (typeof define === 'function' && define.amd) {
+        // Register as an anonymous AMD module:
+        define([
+            'jquery',
+            'tmpl',
+            './jquery.fileupload-image',
+            './jquery.fileupload-audio',
+            './jquery.fileupload-video',
+            './jquery.fileupload-validate'
+        ], factory);
+    } else {
+        // Browser globals:
+        factory(
+            window.jQuery,
+            window.tmpl
+        );
+    }
+}(function ($, tmpl, loadImage) {
+    'use strict';
+
+    $.blueimp.fileupload.prototype._specialOptions.push(
+        'filesContainer',
+        'uploadTemplateId',
+        'downloadTemplateId'
+    );
+
+    // The UI version extends the file upload widget
+    // and adds complete user interface interaction:
+    $.widget('blueimp.fileupload', $.blueimp.fileupload, {
+
+        options: {
+            // By default, files added to the widget are uploaded as soon
+            // as the user clicks on the start buttons. To enable automatic
+            // uploads, set the following option to true:
+            
+            autoUpload: false,
+            // The ID of the upload template:
+            uploadTemplateId: 'template-upload',
+            // The ID of the download template:
+            downloadTemplateId: 'template-download',
+            // The container for the list of files. If undefined, it is set to
+            // an element with class "files" inside of the widget element:
+            filesContainer: undefined,
+            // By default, files are appended to the files container.
+            // Set the following option to true, to prepend files instead:
+            prependFiles: false,
+            // The expected data type of the upload response, sets the dataType
+            // option of the $.ajax upload requests:
+            dataType: 'json',
+
+            // Function returning the current number of files,
+            // used by the maxNumberOfFiles validation:
+            getNumberOfFiles: function () {
+                return this.filesContainer.children().length;
+            },
+
+            // Callback to retrieve the list of files from the server response:
+            getFilesFromResponse: function (data) {
+                if (data.result && $.isArray(data.result.files)) {
+                    return data.result.files;
+                }
+                return [];
+            },
+
+            // The add callback is invoked as soon as files are added to the fileupload
+            // widget (via file input selection, drag & drop or add API call).
+            // See the basic file upload widget for more information:
+            add: function (e, data) {
+                var $this = $(this),
+                    that = $this.data('blueimp-fileupload') ||
+                        $this.data('fileupload'),
+                    options = that.options,
+                    files = data.files;
+                data.process(function () {
+                    return $this.fileupload('process', data);
+                }).always(function () {
+                    data.context = that._renderUpload(files).data('data', data);
+                    that._renderPreviews(data);
+                    options.filesContainer[
+                        options.prependFiles ? 'prepend' : 'append'
+                    ](data.context);
+                    that._forceReflow(data.context);
+                    that._transition(data.context).done(
+                        function () {
+                            if ((that._trigger('added', e, data) !== false) &&
+                                    (options.autoUpload || data.autoUpload) &&
+                                    data.autoUpload !== false && !data.files.error) {
+                                data.submit();
+                            }
+                        }
+                    );
+                });
+            },
+            // Callback for the start of each file upload request:
+            send: function (e, data) {
+                var that = $(this).data('blueimp-fileupload') ||
+                        $(this).data('fileupload');
+                if (data.context && data.dataType &&
+                        data.dataType.substr(0, 6) === 'iframe') {
+                    // Iframe Transport does not support progress events.
+                    // In lack of an indeterminate progress bar, we set
+                    // the progress to 100%, showing the full animated bar:
+                    data.context
+                        .find('.progress').addClass(
+                            !$.support.transition && 'progress-animated'
+                        )
+                        .attr('aria-valuenow', 100)
+                        .children().first().css(
+                            'width',
+                            '100%'
+                        );
+                }
+                return that._trigger('sent', e, data);
+            },
+            // Callback for successful uploads:
+            done: function (e, data) {
+                var that = $(this).data('blueimp-fileupload') ||
+                        $(this).data('fileupload'),
+                    getFilesFromResponse = data.getFilesFromResponse ||
+                        that.options.getFilesFromResponse,
+                    files = getFilesFromResponse(data),
+                    template,
+                    deferred;
+                if (data.context) {
+                    data.context.each(function (index) {
+                        var file = files[index] ||
+                                {error: 'Empty file upload result'};
+                        deferred = that._addFinishedDeferreds();
+                        that._transition($(this)).done(
+                            function () {
+                                var node = $(this);
+                                template = that._renderDownload([file])
+                                    .replaceAll(node);
+                                that._forceReflow(template);
+                                that._transition(template).done(
+                                    function () {
+                                        data.context = $(this);
+                                        that._trigger('completed', e, data);
+                                        that._trigger('finished', e, data);
+                                        deferred.resolve();
+                                    }
+                                );
+                            }
+                        );
+                    });
+                } else {
+                    template = that._renderDownload(files)[
+                        that.options.prependFiles ? 'prependTo' : 'appendTo'
+                    ](that.options.filesContainer);
+                    that._forceReflow(template);
+                    deferred = that._addFinishedDeferreds();
+                    that._transition(template).done(
+                        function () {
+                            data.context = $(this);
+                            that._trigger('completed', e, data);
+                            that._trigger('finished', e, data);
+                            deferred.resolve();
+                        }
+                    );
+                }
+            },
+            // Callback for failed (abort or error) uploads:
+            fail: function (e, data) {
+                var that = $(this).data('blueimp-fileupload') ||
+                        $(this).data('fileupload'),
+                    template,
+                    deferred;
+                if (data.context) {
+                    data.context.each(function (index) {
+                        if (data.errorThrown !== 'abort') {
+                            var file = data.files[index];
+                            file.error = file.error || data.errorThrown ||
+                                true;
+                            deferred = that._addFinishedDeferreds();
+                            that._transition($(this)).done(
+                                function () {
+                                    var node = $(this);
+                                    template = that._renderDownload([file])
+                                        .replaceAll(node);
+                                    that._forceReflow(template);
+                                    that._transition(template).done(
+                                        function () {
+                                            data.context = $(this);
+                                            that._trigger('failed', e, data);
+                                            that._trigger('finished', e, data);
+                                            deferred.resolve();
+                                        }
+                                    );
+                                }
+                            );
+                        } else {
+                            deferred = that._addFinishedDeferreds();
+                            that._transition($(this)).done(
+                                function () {
+                                    $(this).remove();
+                                    that._trigger('failed', e, data);
+                                    that._trigger('finished', e, data);
+                                    deferred.resolve();
+                                }
+                            );
+                        }
+                    });
+                } else if (data.errorThrown !== 'abort') {
+                    data.context = that._renderUpload(data.files)[
+                        that.options.prependFiles ? 'prependTo' : 'appendTo'
+                    ](that.options.filesContainer)
+                        .data('data', data);
+                    that._forceReflow(data.context);
+                    deferred = that._addFinishedDeferreds();
+                    that._transition(data.context).done(
+                        function () {
+                            data.context = $(this);
+                            that._trigger('failed', e, data);
+                            that._trigger('finished', e, data);
+                            deferred.resolve();
+                        }
+                    );
+                } else {
+                    that._trigger('failed', e, data);
+                    that._trigger('finished', e, data);
+                    that._addFinishedDeferreds().resolve();
+                }
+            },
+            // Callback for upload progress events:
+            progress: function (e, data) {
+                var progress = Math.floor(data.loaded / data.total * 100);
+                if (data.context) {
+                    data.context.each(function () {
+                        $(this).find('.progress')
+                            .attr('aria-valuenow', progress)
+                            .children().first().css(
+                                'width',
+                                progress + '%'
+                            );
+                    });
+                }
+            },
+            // Callback for global upload progress events:
+            progressall: function (e, data) {
+                var $this = $(this),
+                    progress = Math.floor(data.loaded / data.total * 100),
+                    globalProgressNode = $this.find('.fileupload-progress'),
+                    extendedProgressNode = globalProgressNode
+                        .find('.progress-extended');
+                if (extendedProgressNode.length) {
+                    extendedProgressNode.html(
+                        ($this.data('blueimp-fileupload') || $this.data('fileupload'))
+                            ._renderExtendedProgress(data)
+                    );
+                }
+                globalProgressNode
+                    .find('.progress')
+                    .attr('aria-valuenow', progress)
+                    .children().first().css(
+                        'width',
+                        progress + '%'
+                    );
+            },
+            // Callback for uploads start, equivalent to the global ajaxStart event:
+            start: function (e) {
+                var that = $(this).data('blueimp-fileupload') ||
+                        $(this).data('fileupload');
+                that._resetFinishedDeferreds();
+                that._transition($(this).find('.fileupload-progress')).done(
+                    function () {
+                        that._trigger('started', e);
+                    }
+                );
+            },
+            // Callback for uploads stop, equivalent to the global ajaxStop event:
+            stop: function (e) {
+                var that = $(this).data('blueimp-fileupload') ||
+                        $(this).data('fileupload'),
+                    deferred = that._addFinishedDeferreds();
+                $.when.apply($, that._getFinishedDeferreds())
+                    .done(function () {
+                        that._trigger('stopped', e);
+                    });
+                that._transition($(this).find('.fileupload-progress')).done(
+                    function () {
+                        $(this).find('.progress')
+                            .attr('aria-valuenow', '0')
+                            .children().first().css('width', '0%');
+                        $(this).find('.progress-extended').html('&nbsp;');
+                        deferred.resolve();
+                    }
+                );
+            },
+            processstart: function () {
+                $(this).addClass('fileupload-processing');
+            },
+            processstop: function () {
+                $(this).removeClass('fileupload-processing');
+            },
+            // Callback for file deletion:
+            destroy: function (e, data) {
+                var that = $(this).data('blueimp-fileupload') ||
+                        $(this).data('fileupload'),
+                    removeNode = function () {
+                        that._transition(data.context).done(
+                            function () {
+                                $(this).remove();
+                                that._trigger('destroyed', e, data);
+                            }
+                        );
+                    };
+                if (data.url) {
+                    $.ajax(data).done(removeNode);
+                } else {
+                    removeNode();
+                }
+            }
+        },
+
+        _resetFinishedDeferreds: function () {
+            this._finishedUploads = [];
+        },
+
+        _addFinishedDeferreds: function (deferred) {
+            if (!deferred) {
+                deferred = $.Deferred();
+            }
+            this._finishedUploads.push(deferred);
+            return deferred;
+        },
+
+        _getFinishedDeferreds: function () {
+            return this._finishedUploads;
+        },
+
+        // Link handler, that allows to download files
+        // by drag & drop of the links to the desktop:
+        _enableDragToDesktop: function () {
+            var link = $(this),
+                url = link.prop('href'),
+                name = link.prop('download'),
+                type = 'application/octet-stream';
+            link.bind('dragstart', function (e) {
+                try {
+                    e.originalEvent.dataTransfer.setData(
+                        'DownloadURL',
+                        [type, name, url].join(':')
+                    );
+                } catch (ignore) {}
+            });
+        },
+
+        _formatFileSize: function (bytes) {
+            if (typeof bytes !== 'number') {
+                return '';
+            }
+            if (bytes >= 1000000000) {
+                return (bytes / 1000000000).toFixed(2) + ' GB';
+            }
+            if (bytes >= 1000000) {
+                return (bytes / 1000000).toFixed(2) + ' MB';
+            }
+            return (bytes / 1000).toFixed(2) + ' KB';
+        },
+
+        _formatBitrate: function (bits) {
+            if (typeof bits !== 'number') {
+                return '';
+            }
+            if (bits >= 1000000000) {
+                return (bits / 1000000000).toFixed(2) + ' Gbit/s';
+            }
+            if (bits >= 1000000) {
+                return (bits / 1000000).toFixed(2) + ' Mbit/s';
+            }
+            if (bits >= 1000) {
+                return (bits / 1000).toFixed(2) + ' kbit/s';
+            }
+            return bits.toFixed(2) + ' bit/s';
+        },
+
+        _formatTime: function (seconds) {
+            var date = new Date(seconds * 1000),
+                days = Math.floor(seconds / 86400);
+            days = days ? days + 'd ' : '';
+            return days +
+                ('0' + date.getUTCHours()).slice(-2) + ':' +
+                ('0' + date.getUTCMinutes()).slice(-2) + ':' +
+                ('0' + date.getUTCSeconds()).slice(-2);
+        },
+
+        _formatPercentage: function (floatValue) {
+            return (floatValue * 100).toFixed(2) + ' %';
+        },
+
+        _renderExtendedProgress: function (data) {
+            return this._formatBitrate(data.bitrate) + ' | ' +
+                this._formatTime(
+                    (data.total - data.loaded) * 8 / data.bitrate
+                ) + ' | ' +
+                this._formatPercentage(
+                    data.loaded / data.total
+                ) + ' | ' +
+                this._formatFileSize(data.loaded) + ' / ' +
+                this._formatFileSize(data.total);
+        },
+
+        _renderTemplate: function (func, files) {
+            if (!func) {
+                return $();
+            }
+            var result = func({
+                files: files,
+                formatFileSize: this._formatFileSize,
+                options: this.options
+            });
+            if (result instanceof $) {
+                return result;
+            }
+            return $(this.options.templatesContainer).html(result).children();
+        },
+
+        _renderPreviews: function (data) {
+            data.context.find('.preview').each(function (index, elm) {
+                $(elm).append(data.files[index].preview);
+            });
+        },
+
+        _renderUpload: function (files) {
+            return this._renderTemplate(
+                this.options.uploadTemplate,
+                files
+            );
+        },
+
+        _renderDownload: function (files) {
+            return this._renderTemplate(
+                this.options.downloadTemplate,
+                files
+            ).find('a[download]').each(this._enableDragToDesktop).end();
+        },
+
+        _startHandler: function (e) {
+            e.preventDefault();
+            var button = $(e.currentTarget),
+                template = button.closest('.template-upload'),
+                data = template.data('data');
+            if (data && data.submit && !data.jqXHR && data.submit()) {
+                button.prop('disabled', true);
+            }
+        },
+
+        _cancelHandler: function (e) {
+            e.preventDefault();
+            var template = $(e.currentTarget)
+                    .closest('.template-upload,.template-download'),
+                data = template.data('data') || {};
+            if (!data.jqXHR) {
+                data.context = data.context || template;
+                data.errorThrown = 'abort';
+                this._trigger('fail', e, data);
+            } else {
+                data.jqXHR.abort();
+            }
+        },
+
+        _deleteHandler: function (e) {
+            e.preventDefault();
+            var button = $(e.currentTarget);
+            this._trigger('destroy', e, $.extend({
+                context: button.closest('.template-download'),
+                type: 'DELETE'
+            }, button.data()));
+        },
+
+        _forceReflow: function (node) {
+            return $.support.transition && node.length &&
+                node[0].offsetWidth;
+        },
+
+        _transition: function (node) {
+            var dfd = $.Deferred();
+            if ($.support.transition && node.hasClass('fade') && node.is(':visible')) {
+                node.bind(
+                    $.support.transition.end,
+                    function (e) {
+                        // Make sure we don't respond to other transitions events
+                        // in the container element, e.g. from button elements:
+                        if (e.target === node[0]) {
+                            node.unbind($.support.transition.end);
+                            dfd.resolveWith(node);
+                        }
+                    }
+                ).toggleClass('in');
+            } else {
+                node.toggleClass('in');
+                dfd.resolveWith(node);
+            }
+            return dfd;
+        },
+
+        _initButtonBarEventHandlers: function () {
+            var fileUploadButtonBar = this.element.find('.fileupload-buttonbar'),
+                filesList = this.options.filesContainer;
+            this._on(fileUploadButtonBar.find('.start'), {
+                click: function (e) {
+                    e.preventDefault();
+                    filesList.find('.start').click();
+                }
+            });
+            this._on(fileUploadButtonBar.find('.cancel'), {
+                click: function (e) {
+                    e.preventDefault();
+                    filesList.find('.cancel').click();
+                }
+            });
+            this._on(fileUploadButtonBar.find('.delete'), {
+                click: function (e) {
+                    e.preventDefault();
+                    filesList.find('.toggle:checked')
+                        .closest('.template-download')
+                        .find('.delete').click();
+                    fileUploadButtonBar.find('.toggle')
+                        .prop('checked', false);
+                }
+            });
+            this._on(fileUploadButtonBar.find('.toggle'), {
+                change: function (e) {
+                    filesList.find('.toggle').prop(
+                        'checked',
+                        $(e.currentTarget).is(':checked')
+                    );
+                }
+            });
+        },
+
+        _destroyButtonBarEventHandlers: function () {
+            this._off(
+                this.element.find('.fileupload-buttonbar')
+                    .find('.start, .cancel, .delete'),
+                'click'
+            );
+            this._off(
+                this.element.find('.fileupload-buttonbar .toggle'),
+                'change.'
+            );
+        },
+
+        _initEventHandlers: function () {
+            this._super();
+            this._on(this.options.filesContainer, {
+                'click .start': this._startHandler,
+                'click .cancel': this._cancelHandler,
+                'click .delete': this._deleteHandler
+            });
+            this._initButtonBarEventHandlers();
+        },
+
+        _destroyEventHandlers: function () {
+            this._destroyButtonBarEventHandlers();
+            this._off(this.options.filesContainer, 'click');
+            this._super();
+        },
+
+        _enableFileInputButton: function () {
+            this.element.find('.fileinput-button input')
+                .prop('disabled', false)
+                .parent().removeClass('disabled');
+        },
+
+        _disableFileInputButton: function () {
+            this.element.find('.fileinput-button input')
+                .prop('disabled', true)
+                .parent().addClass('disabled');
+        },
+
+        _initTemplates: function () {
+            var options = this.options;
+            options.templatesContainer = this.document[0].createElement(
+                options.filesContainer.prop('nodeName')
+            );
+            if (tmpl) {
+                if (options.uploadTemplateId) {
+                    options.uploadTemplate = tmpl(options.uploadTemplateId);
+                }
+                if (options.downloadTemplateId) {
+                    options.downloadTemplate = tmpl(options.downloadTemplateId);
+                }
+            }
+        },
+
+        _initFilesContainer: function () {
+            var options = this.options;
+            if (options.filesContainer === undefined) {
+                options.filesContainer = this.element.find('.files');
+            } else if (!(options.filesContainer instanceof $)) {
+                options.filesContainer = $(options.filesContainer);
+            }
+        },
+
+        _initSpecialOptions: function () {
+            this._super();
+            this._initFilesContainer();
+            this._initTemplates();
+        },
+
+        _create: function () {
+            this._super();
+            this._resetFinishedDeferreds();
+            if (!$.support.fileInput) {
+                this._disableFileInputButton();
+            }
+        },
+
+        enable: function () {
+            var wasDisabled = false;
+            if (this.options.disabled) {
+                wasDisabled = true;
+            }
+            this._super();
+            if (wasDisabled) {
+                this.element.find('input, button').prop('disabled', false);
+                this._enableFileInputButton();
+            }
+        },
+
+        disable: function () {
+            if (!this.options.disabled) {
+                this.element.find('input, button').prop('disabled', true);
+                this._disableFileInputButton();
+            }
+            this._super();
+        }
+
+    });
+
+}));
+
+/**
+Core script to handle the entire theme and core functions
+**/
+var App = function () {
+
+    // IE mode
+    var isRTL = false;
+    var isIE8 = false;
+    var isIE9 = false;
+    var isIE10 = false;
+
+    var sidebarWidth = 225;
+    var sidebarCollapsedWidth = 35;
+
+    var responsiveHandlers = [];
+
+    // theme layout color set
+    var layoutColorCodes = {
+        'blue': '#4b8df8',
+        'red': '#e02222',
+        'green': '#35aa47',
+        'purple': '#852b99',
+        'grey': '#555555',
+        'light-grey': '#fafafa',
+        'yellow': '#ffb848'
+    };
+
+    // To get the correct viewport width based on  http://andylangton.co.uk/articles/javascript/get-viewport-size-javascript/
+    var _getViewPort = function () {
+        var e = window, a = 'inner';
+        if (!('innerWidth' in window)) {
+            a = 'client';
+            e = document.documentElement || document.body;
+        }
+        return {
+            width: e[a + 'Width'],
+            height: e[a + 'Height']
+        }
+    }
+
+    // initializes main settings
+    var handleInit = function () {
+
+        if ($('body').css('direction') === 'rtl') {
+            isRTL = true;
+        }
+
+        isIE8 = !! navigator.userAgent.match(/MSIE 8.0/);
+        isIE9 = !! navigator.userAgent.match(/MSIE 9.0/);
+        isIE10 = !! navigator.userAgent.match(/MSIE 10.0/);
+
+        if (isIE10) {
+            jQuery('html').addClass('ie10'); // detect IE10 version
+        }
+        
+        if (isIE10 || isIE9 || isIE8) {
+            jQuery('html').addClass('ie'); // detect IE10 version
+        }
+
+        /*
+          Virtual keyboards:
+          Also, note that if you're using inputs in your modal â€“ iOS has a rendering bug which doesn't 
+          update the position of fixed elements when the virtual keyboard is triggered  
+        */
+        var deviceAgent = navigator.userAgent.toLowerCase();
+        if (deviceAgent.match(/(iphone|ipod|ipad)/)) {
+            $(document).on('focus', 'input, textarea', function () {
+                $('.header').hide();
+                $('.footer').hide();
+            });
+            $(document).on('blur', 'input, textarea', function () {
+                $('.header').show();
+                $('.footer').show();
+            });
+        }
+    }
+
+    var handleSidebarState = function () {
+        // remove sidebar toggler if window width smaller than 992(for tablet and phone mode)
+        var viewport = _getViewPort();
+        if (viewport.width < 992) {
+            $('body').removeClass("page-sidebar-closed");
+        }
+    }
+
+    // runs callback functions set by App.addResponsiveHandler().
+    var runResponsiveHandlers = function () {
+        // reinitialize other subscribed elements
+        for (var i in responsiveHandlers) {
+            var each = responsiveHandlers[i];
+            each.call();
+        }
+    }
+
+    // reinitialize the laypot on window resize
+    var handleResponsive = function () {
+        handleSidebarState();
+        handleSidebarAndContentHeight();
+        handleFixedSidebar();
+        runResponsiveHandlers();
+    }
+
+    // initialize the layout on page load
+    var handleResponsiveOnInit = function () {
+        handleSidebarState();
+        handleSidebarAndContentHeight();
+    }
+
+    // handle the layout reinitialization on window resize
+    var handleResponsiveOnResize = function () {
+        var resize;
+        if (isIE8) {
+            var currheight;
+            $(window).resize(function () {
+                if (currheight == document.documentElement.clientHeight) {
+                    return; //quite event since only body resized not window.
+                }
+                if (resize) {
+                    clearTimeout(resize);
+                }
+                resize = setTimeout(function () {
+                    handleResponsive();
+                }, 50); // wait 50ms until window resize finishes.                
+                currheight = document.documentElement.clientHeight; // store last body client height
+            });
+        } else {
+            $(window).resize(function () {
+                if (resize) {
+                    clearTimeout(resize);
+                }
+                resize = setTimeout(function () {
+                    handleResponsive();
+                }, 50); // wait 50ms until window resize finishes.
+            });
+        }
+    }
+
+    //* BEGIN:CORE HANDLERS *//
+    // this function handles responsive layout on screen size resize or mobile device rotate.
+
+    // Set proper height for sidebar and content. The content and sidebar height must be synced always.
+    var handleSidebarAndContentHeight = function () {
+        var content = $('.page-content');
+        var sidebar = $('.page-sidebar');
+        var body = $('body');
+        var height;
+
+        if (body.hasClass("page-footer-fixed") === true && body.hasClass("page-sidebar-fixed") === false) {
+            var available_height = $(window).height() - $('.footer').outerHeight();
+            if (content.height() < available_height) {
+                content.attr('style', 'min-height:' + available_height + 'px !important');
+            }
+        } else {
+            if (body.hasClass('page-sidebar-fixed')) {
+                height = _calculateFixedSidebarViewportHeight();
+            } else {
+                height = sidebar.height() + 20;
+            }
+            if (height >= content.height()) {
+                content.attr('style', 'min-height:' + height + 'px !important');
+            }
+        }
+    }
+
+    // Handle sidebar menu
+    var handleSidebarMenu = function () {
+        jQuery('.page-sidebar').on('click', 'li > a', function (e) {
+            if ($(this).next().hasClass('sub-menu') == false) {
+                if ($('.btn-navbar').hasClass('collapsed') == false) {
+                    $('.btn-navbar').click();
+                }
+                return;
+            }
+
+            if ($(this).next().hasClass('sub-menu.always-open')) {
+                return;
+            }
+
+            var parent = $(this).parent().parent();
+            var the = $(this);
+
+            parent.children('li.open').children('a').children('.arrow').removeClass('open');
+            parent.children('li.open').children('.sub-menu').slideUp(200);
+            parent.children('li.open').removeClass('open');
+
+            var sub = jQuery(this).next();
+            var slideOffeset = -200;
+            var slideSpeed = 200;
+
+            if (sub.is(":visible")) {
+                jQuery('.arrow', jQuery(this)).removeClass("open");
+                jQuery(this).parent().removeClass("open");
+                sub.slideUp(slideSpeed, function () {
+                    if ($('body').hasClass('page-sidebar-fixed') == false && $('body').hasClass('page-sidebar-closed') == false) {
+                        App.scrollTo(the, slideOffeset);
+                    }
+                    handleSidebarAndContentHeight();
+                });
+            } else {
+                jQuery('.arrow', jQuery(this)).addClass("open");
+                jQuery(this).parent().addClass("open");
+                sub.slideDown(slideSpeed, function () {
+                    if ($('body').hasClass('page-sidebar-fixed') == false && $('body').hasClass('page-sidebar-closed') == false) {
+                        App.scrollTo(the, slideOffeset);
+                    }
+                    handleSidebarAndContentHeight();
+                });
+            }
+
+            e.preventDefault();
+        });
+
+        // handle ajax links
+        jQuery('.page-sidebar').on('click', ' li > a.ajaxify', function (e) {
+            e.preventDefault();
+            App.scrollTop();
+
+            var url = $(this).attr("href");
+            var menuContainer = jQuery('.page-sidebar ul');
+            var pageContent = $('.page-content');
+            var pageContentBody = $('.page-content .page-content-body');
+
+            menuContainer.children('li.active').removeClass('active');
+            menuContainer.children('arrow.open').removeClass('open');
+
+            $(this).parents('li').each(function () {
+                $(this).addClass('active');
+                $(this).children('a > span.arrow').addClass('open');
+            });
+            $(this).parents('li').addClass('active');
+
+            App.blockUI(pageContent, false);
+
+            $.ajax({
+                type: "GET",
+                cache: false,
+                url: url,
+                dataType: "html",
+                success: function (res) {
+                    App.unblockUI(pageContent);
+                    pageContentBody.html(res);
+                    App.fixContentHeight(); // fix content height
+                    App.initAjax(); // initialize core stuff
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    pageContentBody.html('<h4>Could not load the requested content.</h4>');
+                    App.unblockUI(pageContent);
+                },
+                async: false
+            });
+        });
+    }
+
+    // Helper function to calculate sidebar height for fixed sidebar layout.
+    var _calculateFixedSidebarViewportHeight = function () {
+        var sidebarHeight = $(window).height() - $('.header').height() + 1;
+        if ($('body').hasClass("page-footer-fixed")) {
+            sidebarHeight = sidebarHeight - $('.footer').outerHeight();
+        }
+
+        return sidebarHeight;
+    }
+
+    // Handles fixed sidebar
+    var handleFixedSidebar = function () {
+        var menu = $('.page-sidebar-menu');
+
+        if (menu.parent('.slimScrollDiv').size() === 1) { // destroy existing instance before updating the height
+            menu.slimScroll({
+                destroy: true
+            });
+            menu.removeAttr('style');
+            $('.page-sidebar').removeAttr('style');
+        }
+
+        if ($('.page-sidebar-fixed').size() === 0) {
+            handleSidebarAndContentHeight();
+            return;
+        }
+
+        var viewport = _getViewPort();
+        if (viewport.width >= 992) {
+            var sidebarHeight = _calculateFixedSidebarViewportHeight();
+
+            menu.slimScroll({
+                size: '7px',
+                color: '#a1b2bd',
+                opacity: .3,
+                position: isRTL ? 'left' : 'right',
+                height: sidebarHeight,
+                allowPageScroll: false,
+                disableFadeOut: false
+            });
+            handleSidebarAndContentHeight();
+        }
+    }
+
+    // Handles the sidebar menu hover effect for fixed sidebar.
+    var handleFixedSidebarHoverable = function () {
+        if ($('body').hasClass('page-sidebar-fixed') === false) {
+            return;
+        }
+
+        $('.page-sidebar').off('mouseenter').on('mouseenter', function () {
+            var body = $('body');
+
+            if ((body.hasClass('page-sidebar-closed') === false || body.hasClass('page-sidebar-fixed') === false) || $(this).hasClass('page-sidebar-hovering')) {
+                return;
+            }
+
+            body.removeClass('page-sidebar-closed').addClass('page-sidebar-hover-on');
+            $(this).addClass('page-sidebar-hovering');
+            $(this).animate({
+                width: sidebarWidth
+            }, 400, '', function () {
+                $(this).removeClass('page-sidebar-hovering');
+            });
+        });
+
+        $('.page-sidebar').off('mouseleave').on('mouseleave', function () {
+            var body = $('body');
+
+            if ((body.hasClass('page-sidebar-hover-on') === false || body.hasClass('page-sidebar-fixed') === false) || $(this).hasClass('page-sidebar-hovering')) {
+                return;
+            }
+
+            $(this).addClass('page-sidebar-hovering');
+            $(this).animate({
+                width: sidebarCollapsedWidth
+            }, 400, '', function () {
+                $('body').addClass('page-sidebar-closed').removeClass('page-sidebar-hover-on');
+                $(this).removeClass('page-sidebar-hovering');
+            });
+        });
+    }
+
+    // Handles sidebar toggler to close/hide the sidebar.
+    var handleSidebarToggler = function () {
+        var viewport = _getViewPort();
+        if ($.cookie('sidebar_closed') === '1' && viewport.width >= 992) {
+            $('body').addClass('page-sidebar-closed');
+        }
+
+        // handle sidebar show/hide
+        $('.page-sidebar').on('click', '.sidebar-toggler', function (e) {
+            var body = $('body');
+            var sidebar = $('.page-sidebar');
+
+            if ((body.hasClass("page-sidebar-hover-on") && body.hasClass('page-sidebar-fixed')) || sidebar.hasClass('page-sidebar-hovering')) {
+                body.removeClass('page-sidebar-hover-on');
+                sidebar.css('width', '').hide().show();
+                $.cookie('sidebar_closed', '0');
+                e.stopPropagation();
+                runResponsiveHandlers();
+                return;
+            }
+
+            $(".sidebar-search", sidebar).removeClass("open");
+
+            if (body.hasClass("page-sidebar-closed")) {
+                body.removeClass("page-sidebar-closed");
+                if (body.hasClass('page-sidebar-fixed')) {
+                    sidebar.css('width', '');
+                }
+                $.cookie('sidebar_closed', '0');
+            } else {
+                body.addClass("page-sidebar-closed");
+                $.cookie('sidebar_closed', '1');
+            }
+            runResponsiveHandlers();
+        });
+
+        // handle the search bar close
+        $('.page-sidebar').on('click', '.sidebar-search .remove', function (e) {
+            e.preventDefault();
+            $('.sidebar-search').removeClass("open");
+        });
+
+        // handle the search query submit on enter press
+        $('.page-sidebar').on('keypress', '.sidebar-search input', function (e) {
+            if (e.which == 13) {
+                $('.sidebar-search').submit();
+                return false; //<---- Add this line
+            }
+        });
+
+        // handle the search submit
+        $('.sidebar-search .submit').on('click', function (e) {
+            e.preventDefault();
+            if ($('body').hasClass("page-sidebar-closed")) {
+                if ($('.sidebar-search').hasClass('open') == false) {
+                    if ($('.page-sidebar-fixed').size() === 1) {
+                        $('.page-sidebar .sidebar-toggler').click(); //trigger sidebar toggle button
+                    }
+                    $('.sidebar-search').addClass("open");
+                } else {
+                    $('.sidebar-search').submit();
+                }
+            } else {
+                $('.sidebar-search').submit();
+            }
+        });
+    }
+
+    // Handles the horizontal menu
+    var handleHorizontalMenu = function () {
+        //handle hor menu search form toggler click
+        $('.header').on('click', '.hor-menu .hor-menu-search-form-toggler', function (e) {
+            if ($(this).hasClass('off')) {
+                $(this).removeClass('off');
+                $('.header .hor-menu .search-form').hide();
+            } else {
+                $(this).addClass('off');
+                $('.header .hor-menu .search-form').show();
+            }
+            e.preventDefault();
+        });
+
+        //handle hor menu search button click
+        $('.header').on('click', '.hor-menu .search-form .btn', function (e) {
+            $('.form-search').submit();
+            e.preventDefault();
+        });
+
+        //handle hor menu search form on enter press
+        $('.header').on('keypress', '.hor-menu .search-form input', function (e) {
+            if (e.which == 13) {
+                $('.form-search').submit();
+                return false;
+            }
+        });
+    }
+
+    // Handles the go to top button at the footer
+    var handleGoTop = function () {
+        /* set variables locally for increased performance */
+        jQuery('.footer').on('click', '.go-top', function (e) {
+            App.scrollTo();
+            e.preventDefault();
+        });
+    }
+
+    // Handles portlet tools & actions
+    var handlePortletTools = function () {
+        jQuery('body').on('click', '.portlet > .portlet-title > .tools > a.remove', function (e) {
+            e.preventDefault();
+            jQuery(this).closest(".portlet").remove();
+        });
+
+        jQuery('body').on('click', '.portlet > .portlet-title > .tools > a.reload', function (e) {
+            e.preventDefault();
+            var el = jQuery(this).closest(".portlet").children(".portlet-body");
+            App.blockUI(el);
+            window.setTimeout(function () {
+                App.unblockUI(el);
+            }, 1000);
+        });
+
+        jQuery('body').on('click', '.portlet > .portlet-title > .tools > .collapse, .portlet .portlet-title > .tools > .expand', function (e) {
+            e.preventDefault();
+            var el = jQuery(this).closest(".portlet").children(".portlet-body");
+            if (jQuery(this).hasClass("collapse")) {
+                jQuery(this).removeClass("collapse").addClass("expand");
+                el.slideUp(200);
+            } else {
+                jQuery(this).removeClass("expand").addClass("collapse");
+                el.slideDown(200);
+            }
+        });
+    }
+
+    // Handles custom checkboxes & radios using jQuery Uniform plugin
+    var handleUniform = function () {
+        if (!jQuery().uniform) {
+            return;
+        }
+        var test = $("input[type=checkbox]:not(.toggle), input[type=radio]:not(.toggle, .star)");
+        if (test.size() > 0) {
+            test.each(function () {
+                if ($(this).parents(".checker").size() == 0) {
+                    $(this).show();
+                    $(this).uniform();
+                }
+            });
+        }
+    }
+
+    // Handles Bootstrap Accordions.
+    var handleAccordions = function () {
+        var lastClicked;
+        //add scrollable class name if you need scrollable panes
+        jQuery('body').on('click', '.accordion.scrollable .accordion-toggle', function () {
+            lastClicked = jQuery(this);
+        }); //move to faq section
+
+        jQuery('body').on('show.bs.collapse', '.accordion.scrollable', function () {
+            jQuery('html,body').animate({
+                scrollTop: lastClicked.offset().top - 150
+            }, 'slow');
+        });
+    }
+
+    // Handles Bootstrap Tabs.
+    var handleTabs = function () {
+        // fix content height on tab click
+        $('body').on('shown.bs.tab', '.nav.nav-tabs', function () {
+            handleSidebarAndContentHeight();
+        });
+
+        //activate tab if tab id provided in the URL
+        if (location.hash) {
+            var tabid = location.hash.substr(1);
+            $('a[href="#' + tabid + '"]').click();
+        }
+    }
+
+    // Handles Bootstrap Modals.
+    var handleModals = function () {
+
+        // fix stackable modal issue: when 2 or more modals opened, closing one of modal will remove .modal-open class. 
+        $('body').on('hide.bs.modal', function () {
+           if ($('.modal:visible').size() > 1 && $('html').hasClass('modal-open') == false) {
+              $('html').addClass('modal-open');
+           } else if ($('.modal:visible').size() <= 1) {
+              $('html').removeClass('modal-open');
+           }
+        });
+    }
+
+    // Handles Bootstrap Tooltips.
+    var handleTooltips = function () {
+       jQuery('.tooltips').tooltip();
+    }
+
+    // Handles Bootstrap Dropdowns
+    var handleDropdowns = function () {
+        /*
+          For touch supported devices disable the 
+          hoverable dropdowns - data-hover="dropdown"  
+        */
+        if (App.isTouchDevice()) {
+            $('[data-hover="dropdown"]').each(function(){
+                $(this).parent().off("hover");
+                $(this).off("hover");
+            });
+        }
+        /*
+          Hold dropdown on click  
+        */
+        $('body').on('click', '.dropdown-menu.hold-on-click', function (e) {
+            e.stopPropagation();
+        })
+    }
+
+    // Handle Hower Dropdowns
+    var handleDropdownHover = function () {
+        $('[data-hover="dropdown"]').dropdownHover();
+    }
+
+    // Handles Bootstrap Popovers
+
+    // last popep popover
+    var lastPopedPopover;
+
+    var handlePopovers = function () {
+        jQuery('.popovers').popover();
+
+        // close last poped popover
+
+        $(document).on('click.bs.popover.data-api', function (e) {
+            if (lastPopedPopover) {
+                lastPopedPopover.popover('hide');
+            }
+        });
+    }
+
+    // Handles scrollable contents using jQuery SlimScroll plugin.
+    var handleScrollers = function () {
+        $('.scroller').each(function () {
+            var height;
+            if ($(this).attr("data-height")) {
+                height = $(this).attr("data-height");
+            } else {
+                height = $(this).css('height');
+            }
+            $(this).slimScroll({
+                size: '7px',
+                color: ($(this).attr("data-handle-color")  ? $(this).attr("data-handle-color") : '#a1b2bd'),
+                railColor: ($(this).attr("data-rail-color")  ? $(this).attr("data-rail-color") : '#333'),
+                position: isRTL ? 'left' : 'right',
+                height: height,
+                alwaysVisible: ($(this).attr("data-always-visible") == "1" ? true : false),
+                railVisible: ($(this).attr("data-rail-visible") == "1" ? true : false),
+                disableFadeOut: true
+            });
+        });
+    }
+
+    // Handles Image Preview using jQuery Fancybox plugin
+    var handleFancybox = function () {
+        if (!jQuery.fancybox) {
+            return;
+        }
+
+        if (jQuery(".fancybox-button").size() > 0) {
+            jQuery(".fancybox-button").fancybox({
+                groupAttr: 'data-rel',
+                prevEffect: 'none',
+                nextEffect: 'none',
+                closeBtn: true,
+                helpers: {
+                    title: {
+                        type: 'inside'
+                    }
+                }
+            });
+        }
+    }
+
+    // Fix input placeholder issue for IE8 and IE9
+    var handleFixInputPlaceholderForIE = function () {
+        //fix html5 placeholder attribute for ie7 & ie8
+        if (isIE8 || isIE9) { // ie8 & ie9
+            // this is html5 placeholder fix for inputs, inputs with placeholder-no-fix class will be skipped(e.g: we need this for password fields)
+            jQuery('input[placeholder]:not(.placeholder-no-fix), textarea[placeholder]:not(.placeholder-no-fix)').each(function () {
+
+                var input = jQuery(this);
+
+                if (input.val() == '' && input.attr("placeholder") != '') {
+                    input.addClass("placeholder").val(input.attr('placeholder'));
+                }
+
+                input.focus(function () {
+                    if (input.val() == input.attr('placeholder')) {
+                        input.val('');
+                    }
+                });
+
+                input.blur(function () {
+                    if (input.val() == '' || input.val() == input.attr('placeholder')) {
+                        input.val(input.attr('placeholder'));
+                    }
+                });
+            });
+        }
+    }
+
+    // Handle full screen mode toggle
+    var handleFullScreenMode = function() {
+        // mozfullscreenerror event handler
+       
+        // toggle full screen
+        function toggleFullScreen() {
+          if (!document.fullscreenElement &&    // alternative standard method
+              !document.mozFullScreenElement && !document.webkitFullscreenElement) {  // current working methods
+            if (document.documentElement.requestFullscreen) {
+              document.documentElement.requestFullscreen();
+            } else if (document.documentElement.mozRequestFullScreen) {
+              document.documentElement.mozRequestFullScreen();
+            } else if (document.documentElement.webkitRequestFullscreen) {
+              document.documentElement.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+            }
+          } else {
+            if (document.cancelFullScreen) {
+              document.cancelFullScreen();
+            } else if (document.mozCancelFullScreen) {
+              document.mozCancelFullScreen();
+            } else if (document.webkitCancelFullScreen) {
+              document.webkitCancelFullScreen();
+            }
+          }
+        }
+
+        $('#trigger_fullscreen').click(function() {
+            toggleFullScreen();
+        });
+    }
+
+    // Handle Select2 Dropdowns
+    var handleSelect2 = function() {
+        if (jQuery().select2) {
+            $('.select2me').select2({
+                placeholder: "Select",
+                allowClear: true
+            });
+        }
+    }
+
+    // Handle Theme Settings
+    var handleTheme = function () {
+
+        var panel = $('.theme-panel');
+
+        if ($('body').hasClass('page-boxed') == false) {
+            $('.layout-option', panel).val("fluid");
+        }
+
+        $('.sidebar-option', panel).val("default");
+        $('.header-option', panel).val("fixed");
+        $('.footer-option', panel).val("default");
+
+        //handle theme layout
+        var resetLayout = function () {
+            $("body").
+            removeClass("page-boxed").
+            removeClass("page-footer-fixed").
+            removeClass("page-sidebar-fixed").
+            removeClass("page-header-fixed");
+
+            $('.header > .header-inner').removeClass("container");
+
+            if ($('.page-container').parent(".container").size() === 1) {
+                $('.page-container').insertAfter('body > .clearfix');
+            }
+
+            if ($('.footer > .container').size() === 1) {
+                $('.footer').html($('.footer > .container').html());
+            } else if ($('.footer').parent(".container").size() === 1) {
+                $('.footer').insertAfter('.page-container');
+            }
+
+            $('body > .container').remove();
+        }
+
+        var lastSelectedLayout = '';
+
+        var setLayout = function () {
+
+            var layoutOption = $('.layout-option', panel).val();
+            var sidebarOption = $('.sidebar-option', panel).val();
+            var headerOption = $('.header-option', panel).val();
+            var footerOption = $('.footer-option', panel).val();
+
+            if (sidebarOption == "fixed" && headerOption == "default") {
+                alert('Default Header with Fixed Sidebar option is not supported. Proceed with Fixed Header with Fixed Sidebar.');
+                $('.header-option', panel).val("fixed");
+                $('.sidebar-option', panel).val("fixed");
+                sidebarOption = 'fixed';
+                headerOption = 'fixed';
+            }
+
+            resetLayout(); // reset layout to default state
+
+            if (layoutOption === "boxed") {
+                $("body").addClass("page-boxed");
+
+                // set header
+                $('.header > .header-inner').addClass("container");
+                var cont = $('body > .clearfix').after('<div class="container"></div>');
+
+                // set content
+                $('.page-container').appendTo('body > .container');
+
+                // set footer
+                if (footerOption === 'fixed') {
+                    $('.footer').html('<div class="container">' + $('.footer').html() + '</div>');
+                } else {
+                    $('.footer').appendTo('body > .container');
+                }
+            }
+
+            if (lastSelectedLayout != layoutOption) {
+                //layout changed, run responsive handler:
+                runResponsiveHandlers();
+            }
+            lastSelectedLayout = layoutOption;
+
+            //header
+            if (headerOption === 'fixed') {
+                $("body").addClass("page-header-fixed");
+                $(".header").removeClass("navbar-static-top").addClass("navbar-fixed-top");
+            } else {
+                $("body").removeClass("page-header-fixed");
+                $(".header").removeClass("navbar-fixed-top").addClass("navbar-static-top");
+            }
+
+            //sidebar
+            if (sidebarOption === 'fixed') {
+                $("body").addClass("page-sidebar-fixed");
+            } else {
+                $("body").removeClass("page-sidebar-fixed");
+            }
+
+            //footer 
+            if (footerOption === 'fixed') {
+                $("body").addClass("page-footer-fixed");
+            } else {
+                $("body").removeClass("page-footer-fixed");
+            }
+
+            handleSidebarAndContentHeight(); // fix content height            
+            handleFixedSidebar(); // reinitialize fixed sidebar
+            handleFixedSidebarHoverable(); // reinitialize fixed sidebar hover effect
+        }
+
+        // handle theme colors
+        var setColor = function (color) {
+            $('#style_color').attr("href", "assets/css/themes/" + color + ".css");
+            $.cookie('style_color', color);
+        }
+
+        $('.toggler', panel).click(function () {
+            $('.toggler').hide();
+            $('.toggler-close').show();
+            $('.theme-panel > .theme-options').show();
+        });
+
+        $('.toggler-close', panel).click(function () {
+            $('.toggler').show();
+            $('.toggler-close').hide();
+            $('.theme-panel > .theme-options').hide();
+        });
+
+        $('.theme-colors > ul > li', panel).click(function () {
+            var color = $(this).attr("data-style");
+            setColor(color);
+            $('ul > li', panel).removeClass("current");
+            $(this).addClass("current");
+        });
+
+        $('.layout-option, .header-option, .sidebar-option, .footer-option', panel).change(setLayout);
+
+        if ($.cookie('style_color')) {
+            setColor($.cookie('style_color'));
+        }
+    }
+
+    //* END:CORE HANDLERS *//
+
+    return {
+
+        //main function to initiate the theme
+        init: function () {
+
+            //IMPORTANT!!!: Do not modify the core handlers call order.
+
+            //core handlers
+            handleInit(); // initialize core variables
+            handleResponsiveOnResize(); // set and handle responsive    
+            handleUniform(); // hanfle custom radio & checkboxes
+            handleScrollers(); // handles slim scrolling contents 
+            handleResponsiveOnInit(); // handler responsive elements on page load
+
+            //layout handlers
+            handleFixedSidebar(); // handles fixed sidebar menu
+            handleFixedSidebarHoverable(); // handles fixed sidebar on hover effect 
+            handleSidebarMenu(); // handles main menu
+            handleHorizontalMenu(); // handles horizontal menu
+            handleSidebarToggler(); // handles sidebar hide/show            
+            handleFixInputPlaceholderForIE(); // fixes/enables html5 placeholder attribute for IE9, IE8
+            handleGoTop(); //handles scroll to top functionality in the footer
+            handleTheme(); // handles style customer tool
+
+            //ui component handlers
+            handleFancybox() // handle fancy box
+            handleSelect2(); // handle custom Select2 dropdowns
+            handlePortletTools(); // handles portlet action bar functionality(refresh, configure, toggle, remove)
+            handleDropdowns(); // handle dropdowns
+            handleTabs(); // handle tabs
+            handleTooltips(); // handle bootstrap tooltips
+            handlePopovers(); // handles bootstrap popovers
+            handleAccordions(); //handles accordions 
+            handleModals(); // handle modals
+            handleFullScreenMode(); // handles full screen
+        },
+
+        //main function to initiate core javascript after ajax complete
+        initAjax: function () {
+            handleSelect2(); // handle custom Select2 dropdowns
+            handleDropdowns(); // handle dropdowns
+            handleTooltips(); // handle bootstrap tooltips
+            handlePopovers(); // handles bootstrap popovers
+            handleAccordions(); //handles accordions 
+            handleUniform(); // hanfle custom radio & checkboxes     
+            handleDropdownHover() // handles dropdown hover       
+        },
+
+        //public function to fix the sidebar and content height accordingly
+        fixContentHeight: function () {
+            handleSidebarAndContentHeight();
+        },
+
+        //public function to remember last opened popover that needs to be closed on click
+        setLastPopedPopover: function (el) {
+            lastPopedPopover = el;
+        },
+
+        //public function to add callback a function which will be called on window resize
+        addResponsiveHandler: function (func) {
+            responsiveHandlers.push(func);
+        },
+
+        // useful function to make equal height for contacts stand side by side
+        setEqualHeight: function (els) {
+            var tallestEl = 0;
+            els = jQuery(els);
+            els.each(function () {
+                var currentHeight = $(this).height();
+                if (currentHeight > tallestEl) {
+                    tallestColumn = currentHeight;
+                }
+            });
+            els.height(tallestEl);
+        },
+
+        // wrapper function to scroll(focus) to an element
+        scrollTo: function (el, offeset) {
+            pos = (el && el.size() > 0) ? el.offset().top : 0;
+            jQuery('html,body').animate({
+                scrollTop: pos + (offeset ? offeset : 0)
+            }, 'slow');
+        },
+
+        // function to scroll to the top
+        scrollTop: function () {
+            App.scrollTo();
+        },
+
+        // wrapper function to  block element(indicate loading)
+        blockUI: function (el, centerY) {
+            var el = jQuery(el);
+            if (el.height() <= 400) {
+                centerY = true;
+            }
+            el.block({
+                message: '<img src="./assets/img/ajax-loading.gif" align="">',
+                centerY: centerY != undefined ? centerY : true,
+                css: {
+                    top: '10%',
+                    border: 'none',
+                    padding: '2px',
+                    backgroundColor: 'none'
+                },
+                overlayCSS: {
+                    backgroundColor: '#000',
+                    opacity: 0.05,
+                    cursor: 'wait'
+                }
+            });
+        },
+
+        // wrapper function to  un-block element(finish loading)
+        unblockUI: function (el) {
+            jQuery(el).unblock({
+                onUnblock: function () {
+                    jQuery(el).removeAttr("style");
+                }
+            });
+        },
+
+        // initializes uniform elements
+        initUniform: function (els) {
+            if (els) {
+                jQuery(els).each(function () {
+                    if ($(this).parents(".checker").size() == 0) {
+                        $(this).show();
+                        $(this).uniform();
+                    }
+                });
+            } else {
+                handleUniform();
+            }
+
+        },
+
+        //wrapper function to update/sync jquery uniform checkbox & radios
+        updateUniform: function (els) {
+            $.uniform.update(els); // update the uniform checkbox & radios UI after the actual input control state changed
+        },
+
+        //public function to initialize the fancybox plugin
+        initFancybox: function () {
+            handleFancybox();
+        },
+
+        //public helper function to get actual input value(used in IE9 and IE8 due to placeholder attribute not supported)
+        getActualVal: function (el) {
+            var el = jQuery(el);
+            if (el.val() === el.attr("placeholder")) {
+                return "";
+            }
+            return el.val();
+        },
+
+        //public function to get a paremeter by name from URL
+        getURLParameter: function (paramName) {
+            var searchString = window.location.search.substring(1),
+                i, val, params = searchString.split("&");
+
+            for (i = 0; i < params.length; i++) {
+                val = params[i].split("=");
+                if (val[0] == paramName) {
+                    return unescape(val[1]);
+                }
+            }
+            return null;
+        },
+
+        // check for device touch support
+        isTouchDevice: function () {
+            try {
+                document.createEvent("TouchEvent");
+                return true;
+            } catch (e) {
+                return false;
+            }
+        },
+
+        // check IE8 mode
+        isIE8: function () {
+            return isIE8;
+        },
+
+        // check IE9 mode
+        isIE9: function () {
+            return isIE9;
+        },
+
+        //check RTL mode
+        isRTL: function () {
+            return isRTL;
+        },
+
+        // get layout color code by color name
+        getLayoutColorCode: function (name) {
+            if (layoutColorCodes[name]) {
+                return layoutColorCodes[name];
+            } else {
+                return '';
+            }
+        }
+
+    };
+
+}();
+
+var FormFileUpload = function () {
+
+
+    return {
+        //main function to initiate the module
+        init: function () {
+
+             // Initialize the jQuery File Upload widget:
+            $('#fileupload').fileupload({
+                // Uncomment the following to send cross-domain cookies:
+                //xhrFields: {withCredentials: true},                
+                url: 'http://hugde-env-symvyatdmf.elasticbeanstalk.com/hugde_assets/plugins/jquery-file-upload/server/php/'
+            });
+
+            // Enable iframe cross-domain access via redirect option:
+            $('#fileupload').fileupload(
+                'option',
+                'redirect',
+                window.location.href.replace(
+                    /\/[^\/]*$/,
+                    '/cors/result.html?%s'
+                )
+            );
+
+            // Demo settings:
+            $('#fileupload').fileupload('option', {
+                url: $('#fileupload').fileupload('option', 'url'),
+                // Enable image resizing, except for Android and Opera,
+                // which actually support image resizing, but fail to
+                // send Blob objects via XHR requests:
+                /*
+                disableImageResize: /Android(?!.*Chrome)|Opera/
+                    .test(window.navigator.userAgent),*/
+                disableImageResize: false,
+                maxFileSize: 5000000,
+                imageMaxWidth: 493,
+                imageMinWidth: 702,
+                singleFileUploads: false,
+                //maxNumberOfFiles: 1,
+                limitMultiFileUploads:1,
+                acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i
+            }).on('fileuploadsubmit', function (e, data) {
+			    data.formData = $('#fileupload').serializeArray();
+			});
+
+                // Upload server status check for browsers with CORS support:
+            if ($.support.cors) {
+                $.ajax({
+                    url: 'http://hugde-env-symvyatdmf.elasticbeanstalk.com/hugde_assets/plugins/jquery-file-upload/server/php/',
+                    type: 'HEAD'
+                }).fail(function () {
+                    $('<div class="alert alert-danger"/>')
+                        .text('Upload server currently unavailable - ' +
+                                new Date())
+                        .appendTo('#fileupload');
+                });
+            }
+            
+            ////////////////////
+
+            // Initialize the jQuery File Upload widget:
+            $('#fileupload').fileupload({
+                // Uncomment the following to send cross-domain cookies:
+                //xhrFields: {withCredentials: true},
+                autoUpload: false,
+                url: 'http://hugde-env-symvyatdmf.elasticbeanstalk.com/hugde_assets/plugins/jquery-file-upload/server/php/'
+            });
+
+            // initialize uniform checkboxes  
+            App.initUniform('.fileupload-toggle-checkbox');
+        },
+        
+        submit: function(){
+        	
+        }
+
+    };
+
+}();
+
+
+var Login = function () {
+
+	var handleLogin = function() {
+		$('.login-form').validate({
+	            errorElement: 'span', //default input error message container
+	            errorClass: 'help-block', // default input error message class
+	            focusInvalid: false, // do not focus the last invalid input
+	            rules: {
+	                email: {
+	                    required: true
+	                },
+	                password: {
+	                    required: true
+	                },
+	                remember: {
+	                    required: false
+	                }
+	            },
+
+	            messages: {
+	                email: {
+	                    required: "Email is required1."
+	                },
+	                password: {
+	                    required: "Password is required."
+	                }
+	            },
+
+	            invalidHandler: function (event, validator) { //display error alert on form submit   
+	                $('.alert-error', $('.login-form')).show();
+	            },
+
+	            highlight: function (element) { // hightlight error inputs
+	                $(element)
+	                    .closest('.form-group').addClass('has-error'); // set error class to the control group
+	            },
+
+	            success: function (label) {
+	                label.closest('.form-group').removeClass('has-error');
+	                label.remove();
+	            },
+
+	            errorPlacement: function (error, element) {
+	                error.insertAfter(element.closest('.input-icon'));
+	            },
+
+	            submitHandler: function (form) {
+	                form.submit();
+	            }
+	        });
+
+	        $('.login-form input').keypress(function (e) {
+	            if (e.which == 13) {
+	                if ($('.login-form').validate().form()) {
+	                	//Make an ajax query to the server
+	                	var temp=$(".login-form").serialize();  //converting into string
+						$.ajax({
+						
+						//url to send the data to
+						url: "http://hugde.com/login2/login_user",
+						data: {'temp':temp},
+						type: 'post',
+						dataType: 'json',
+						beforeSend:function(){
+						//Show Autosaving div
+							$("#spinner").css('display','block');
+						},
+						complete:function(){
+							
+						},
+						success:function(data){
+							a = data['result'];
+							if(a==0){
+								$("#spinner").css('display','none');
+								$("#loginError").css('display','block');
+							}
+							else{
+								window.location.replace("http://hugde.com/home");
+							}
+							//console.log(a);
+						}
+						});
+	                    //$('.login-form').submit();
+	                }
+	                return false;
+	            }
+	        });
+	        
+	        $('#loginBtn').click(function(){
+	        	//Make an ajax query to the server
+	                	var temp=$(".login-form").serialize();  //converting into string
+						$.ajax({
+						
+						//url to send the data to
+						url: "http://hugde.com/login2/login_user",
+						data: {'temp':temp},
+						type: 'post',
+						dataType: 'json',
+						beforeSend:function(){
+						//Show Autosaving div
+							$("#spinner").css('display','block');
+						},
+						complete:function(){
+							
+						},
+						success:function(data){
+							a = data['result'];
+							if(a==0){
+								$("#spinner").css('display','none');
+								$("#loginError").css('display','block');
+							}
+							else{
+								window.location.replace("http://hugde.com/home");
+							}
+							//console.log(a);
+						}
+						});
+	                   
+	        });
+	        
+	        $('#addFiles').click(function(){
+	        	var title = $('#maxlength_defaultconfig').val();
+	        	console.log(title);
+	        	if(title==''){
+	        		console.log('inside if');
+	        		alert('Dont forget to give title');
+	        	}
+	        });
+	}
+
+////////////////////////////////////////////////////////////////////////////////////
+
+	var handleDatePickers = function () {
+		console.log("Inside datepicker");
+        if (jQuery().datepicker) {
+            $('.date-picker').datepicker({
+                rtl: App.isRTL(),
+                autoclose: true
+            });
+            $('body').removeClass("modal-open"); // fix bug when inline picker is used in modal
+        }
+    }
+
+	var handleForgetPassword = function () {
+		$('.forget-form').validate({
+	            errorElement: 'span', //default input error message container
+	            errorClass: 'help-block', // default input error message class
+	            focusInvalid: false, // do not focus the last invalid input
+	            ignore: "",
+	            rules: {
+	                email: {
+	                    required: true,
+	                    email: true
+	                }
+	            },
+
+	            messages: {
+	                email: {
+	                    required: "Email is required."
+	                }
+	            },
+
+	            invalidHandler: function (event, validator) { //display error alert on form submit   
+
+	            },
+
+	            highlight: function (element) { // hightlight error inputs
+	                $(element)
+	                    .closest('.form-group').addClass('has-error'); // set error class to the control group
+	            },
+
+	            success: function (label) {
+	                label.closest('.form-group').removeClass('has-error');
+	                label.remove();
+	            },
+
+	            errorPlacement: function (error, element) {
+	                error.insertAfter(element.closest('.input-icon'));
+	            },
+
+	            submitHandler: function (form) {
+	                form.submit();
+	            }
+	        });
+
+	        $('.forget-form input').keypress(function (e) {
+	            if (e.which == 13) {
+	                if ($('.forget-form').validate().form()) {
+	                    $('.forget-form').submit();
+	                }
+	                return false;
+	            }
+	        });
+
+	        jQuery('#forget-password').click(function () {
+	            jQuery('.login-form').hide();
+	            jQuery('.forget-form').show();
+	        });
+
+	        jQuery('#back-btn').click(function () {
+	            jQuery('.login-form').show();
+	            jQuery('.forget-form').hide();
+	        });
+
+	}
+
+	var handleRegister = function () {
+
+		function format(state) {
+            if (!state.id) return state.text; // optgroup
+            return "<img class='flag' src='assets/img/flags/" + state.id.toLowerCase() + ".png'/>&nbsp;&nbsp;" + state.text;
+        }
+
+		/*
+		$("#select2_sample4").select2({
+		  	placeholder: '<i class="icon-map-marker"></i>&nbsp;Select a Country',
+            allowClear: true,
+            formatResult: format,
+            formatSelection: format,
+            escapeMarkup: function (m) {
+                return m;
+            }
+        });
+
+
+			$('#select2_sample4').change(function () {
+                $('.register-form').validate().element($(this)); //revalidate the chosen dropdown value and show error or success message for the input
+            });
+
+		*/
+
+         $('.register-form').validate({
+	            errorElement: 'span', //default input error message container
+	            errorClass: 'help-block', // default input error message class
+	            focusInvalid: false, // do not focus the last invalid input
+	            ignore: "",
+	            rules: {
+	                
+	                name: {
+	                    required: true
+	                },
+	                email: {
+	                    required: true,
+	                    email: true
+	                },
+	                country: {
+	                    required: true
+	                },
+	                dob: {
+	                    required: true
+	                },
+	                password: {
+	                    required: true
+	                },
+	                rpassword: {
+	                    equalTo: "#register_password"
+	                },
+	                tnc: {
+	                    required: true
+	                }
+	            },
+
+	            messages: { // custom messages for radio buttons and checkboxes
+	                tnc: {
+	                    required: "Please accept TNC first."
+	                }
+	            },
+
+	            invalidHandler: function (event, validator) { //display error alert on form submit   
+
+	            },
+
+	            highlight: function (element) { // hightlight error inputs
+	                $(element)
+	                    .closest('.form-group').addClass('has-error'); // set error class to the control group
+	            },
+
+	            success: function (label) {
+	                label.closest('.form-group').removeClass('has-error');
+	                label.remove();
+	            },
+
+	            errorPlacement: function (error, element) {
+	                if (element.attr("name") == "tnc") { // insert checkbox errors after the container                  
+	                    error.insertAfter($('#register_tnc_error'));
+	                } else if (element.closest('.input-icon').size() === 1) {
+	                    error.insertAfter(element.closest('.input-icon'));
+	                } else {
+	                	error.insertAfter(element);
+	                }
+	            },
+
+	            submitHandler: function (form) {
+	                form.submit();
+	            }
+	        });
+
+			$('.register-form input').keypress(function (e) {
+	            if (e.which == 13) {
+	                if ($('.register-form').validate().form()) {
+	                    $('.register-form').submit();
+	                }
+	                return false;
+	            }
+	        });
+
+	        jQuery('#register-btn').click(function () {
+	            jQuery('.login-form').hide();
+	            jQuery('.register-form').show();
+	        });
+
+	        jQuery('#register-back-btn').click(function () {
+	            jQuery('.login-form').show();
+	            jQuery('.register-form').hide();
+	        });
+	}
+    
+    return {
+        //main function to initiate the module
+        init: function () {
+        	
+            handleLogin();
+            //handleForgetPassword();
+            handleRegister();        
+	        handleDatePickers();
+	        /*
+	       	$.backstretch([
+		        "assets/img/bg/1.jpg",
+		        "assets/img/bg/2.jpg",
+		        "assets/img/bg/3.jpg",
+		        "assets/img/bg/4.jpg"
+		        ], {
+		          fade: 1000,
+		          duration: 8000
+		    });
+		    */
+        }
+
+    };
+
+}();
+
+
+//$(document).ready(function(){
+	
+	var loginStatus;
+	var lickStatus;
+	var flushStatus;
+	
+	//Initialize functions
+	checklogin();
+	
+	function lick(userId,huggaId,param){
+		
+		//checkLickStatus(param);
+		//checkFlushStatus(param);
+		
+		if(loginStatus=='0'){
+			$('#basic').modal('show');  //show login dialog box in case on logged out
+		}
+		
+		else{	//check if it is licked
+			//lickStatus = $(this).attr('id'); //licked or notlicked
+			//if(lickStatus == 1){
+			if($(param).hasClass('green')){
+				//decrement the lick count
+				lickcnt = $(param).find('.badge-danger').text();
+				lickcntInt = parseInt(lickcnt);
+				updatedLickCnt = lickcntInt - 1;
+				$(param).find('.badge-danger').text(updatedLickCnt);
+				$(param).removeClass('green');
+				$(param).addClass('default');
+				$(param).next().css('opacity',1);
+				//get flush count
+				flushcntInt = parseInt($(param).next().find('.badge-success').text());
+				//calculate home index
+				//updateHomeIndex(huggaId,updatedLickCnt,flushcntInt);
+				//updateTrendingIndex(huggaId);
+				//update to the new lick count to server
+				updateLickCount(updatedLickCnt,huggaId);
+				
+				//delete lick entry from the db
+				deleteLick(huggaId,userId)
+			}
+			else{
+				//if(flushStatus == 1){
+				if($(param).next().hasClass('red')){
+					//Do nothing
+				}
+				else{
+					//increment the lick count
+					lickcnt = $(param).find('.badge-danger').text();
+					//console.log(lickcnt);
+					lickcntInt = parseInt(lickcnt);
+					updatedLickCnt = lickcntInt + 1;
+					//console.log(updatedLickCnt);
+					$(param).find('.badge-danger').text(updatedLickCnt);
+					$(param).removeClass('default');
+					$(param).addClass('green');
+					$(param).next().css('opacity',0.3);
+					//get flush count
+					flushcntInt = parseInt($(param).next().find('.badge-success').text());
+					//calculate home index
+					updateHomeIndex(huggaId,updatedLickCnt,flushcntInt);
+					//updateTrendingIndex(huggaId);	
+					//update to the new lick count to server
+					updateLickCount(updatedLickCnt,huggaId);
+					
+					//insert lick
+					insertLick(huggaId,userId);
+				}
+			} 
+		}
+	}
+	
+	function flush(userId,huggaId,param){
+		
+		//checkLickStatus(userId,huggaId);
+		//checkFlushStatus(userId,huggaId);
+		
+		if(loginStatus=='0'){
+			$('#basic').modal('show');  //show login dialog box in case on logged out
+		}
+		
+		else{	//check if it is licked
+			//lickStatus = $(this).attr('id'); //licked or notlicked
+			//if(flushStatus == 1){
+			if($(param).hasClass('red')){
+				//decrement the lick count
+				flushcnt = $(param).find('.badge-success').text();
+				flushcntInt = parseInt(flushcnt);
+				updatedFlushCnt = flushcntInt - 1;
+				$(param).find('.badge-success').text(updatedFlushCnt);
+				$(param).removeClass('red');
+				$(param).addClass('default');
+				$(param).prev().css('opacity',1);
+				//get lick count
+				lickcntInt = parseInt($(param).next().find('.badge-danger').text());
+				//calculate home index
+				//updateHomeIndex(huggaId,lickcntInt,updatedFlushCnt);
+				//updateTrendingIndex(huggaId);
+				//update new flush count to the server
+				updateFlushCount(updatedFlushCnt,huggaId);
+				//delete flush entry from the db
+				deleteFlush(huggaId,userId)
+			}
+			else{
+				//if(lickStatus == 1){
+				if($(param).prev().hasClass('green')){
+					//Do nothing
+				}
+				else{
+					//increment the flush count
+					flushcnt = $(param).find('.badge-success').text();
+					flushcntInt = parseInt(flushcnt);
+					updatedFlushCnt = flushcntInt + 1;
+					$(param).find('.badge-success').text(updatedFlushCnt);
+					$(param).removeClass('default');
+					$(param).addClass('red');
+					$(param).prev().css('opacity',0.3);
+				
+					//get lick count
+					lickcntInt = parseInt($(param).next().find('.badge-danger').text());
+					//calculate home index
+					//updateHomeIndex(huggaId,lickcntInt,updatedFlushCnt);
+					//updateTrendingIndex(huggaId);
+					//update new flush count to the server
+					updateFlushCount(updatedFlushCnt,huggaId);
+					
+					//insert flush
+					insertFlush(huggaId,userId);
+				}
+			} 
+		}
+	}
+	
+	function checklogin(){
+		
+		$.ajax({
+	    	url: "http://hugde.com/login/checklogin",
+	    	async: false,
+	    	dataType: 'json',
+	    	success: function(response) {
+	    		loginStatus = response.loginStatus;
+	    	}
+   		});		
+	}
+	/*
+	function checkLickStatus(userId,huggaId){
+		//query db
+		$.ajax({
+	    	url: "http://hugde.com/lickflush/checkLickStatus/"+huggaId+'/'+userId,
+	    	async: false,
+	    	dataType: 'json',
+	    	success: function(response) {
+	    		lickStatus = response.response;
+	    	}
+   		});	
+	}
+	
+	function checkFlushStatus(userId,huggaId){
+		//query db
+		$.ajax({
+	    	url: "http://hugde.com/lickflush/checkFlushStatus/"+huggaId+'/'+userId,
+	    	async: false,
+	    	dataType: 'json',
+	    	success: function(response) {
+	    		flushStatus = response.response;
+	    	}
+   		});	
+	}
+	*/
+	function checkLickStatus(param){
+		if($(param).hasClass('green')){
+			lickStatus=1;
+		}else{
+			lickStatus=0;
+		}
+	}
+	
+	function checkFlushStatus(param){
+		if($(param).hasClass('red')){
+			flushStatus=1;
+		}else{
+			flushStatus=0;
+		}
+	}
+	
+	function updateLickCount(updatedLickCnt,huggaId){
+		//query db
+		$.ajax({
+	    	url: "http://hugde.com/lickflush/updateLickCount/"+huggaId+'/'+updatedLickCnt,
+	    	async: true,
+	    	dataType: 'json',
+	    	success: function(response) {
+	    		
+	    	}
+   		});	
+	}
+	
+	function updateFlushCount(updatedFlushCnt,huggaId){
+		//query db
+		$.ajax({
+	    	url: "http://hugde.com/lickflush/updateFlushCount/"+huggaId+'/'+updatedFlushCnt,
+	    	async: true,
+	    	dataType: 'json',
+	    	success: function(response) {
+	    		
+	    	}
+   		});	
+	}
+	
+	function updateHomeIndex(huggaId,licks,flushes){
+		//query db
+		$.ajax({
+	    	url: "http://hugde.com/lickflush/updateHomeIndex/"+huggaId+'/'+licks+'/'+flushes,
+	    	async: true,
+	    	dataType: 'json',
+	    	success: function(response) {
+	    		console.log(response);
+	    	}
+   		});	
+	}
+	
+	function updateTrendingIndex(huggaId){
+		//query db
+		$.ajax({
+	    	url: "http://hugde.com/lickflush/updateTrendingIndex/"+huggaId,
+	    	async: true,
+	    	dataType: 'json',
+	    	success: function(response) {
+	    		console.log(response);
+	    	}
+   		});	
+	}
+	
+	function deleteLick(huggaId,userId){
+		//query db
+		$.ajax({
+	    	url: "http://hugde.com/lickflush/deleteLick/"+huggaId+'/'+userId,
+	    	async: true,
+	    	dataType: 'json',
+	    	success: function(response) {
+	    		
+	    	}
+   		});	
+	}
+	
+	function deleteFlush(huggaId,userId){
+		//query db
+		$.ajax({
+	    	url: "http://hugde.com/lickflush/deleteFlush/"+huggaId+'/'+userId,
+	    	async: true,
+	    	dataType: 'json',
+	    	success: function(response) {
+	    		
+	    	}
+   		});	
+	}
+	
+	function insertLick(huggaId,userId){
+		//query db
+		$.ajax({
+	    	url: "http://hugde.com/lickflush/insertLick/"+huggaId+'/'+userId,
+	    	async: true,
+	    	dataType: 'json',
+	    	success: function(response) {
+	    		
+	    	}
+   		});	
+	}
+	
+	function insertFlush(huggaId,userId){
+		//query db
+		$.ajax({
+	    	url: "http://hugde.com/lickflush/insertFlush/"+huggaId+'/'+userId,
+	    	async: true,
+	    	dataType: 'json',
+	    	success: function(response) {
+	    		
+	    	}
+   		});	
+	}
+	
+	
+//});
+
+$(document).ready(function(){
+	var pagesLoaded = 2; //1st page already loaded during intitialization
+	var totalHuggas;
+	var loading = false;
+	$.ajax({
+		url:"http://hugde.com/home/totalhuggas",
+		async:false,
+		dataType:"json",
+		success:function(data){
+			totalHuggas = data[0].count;
+		}
+		
+	});
+	var huggasPerPage = 2;
+	//console.log(totalHuggas);
+	var totalPages = Math.round(parseInt(totalHuggas)/parseInt(huggasPerPage));
+	//console.log(totalPages);
+	var category = $("#pageType").val();
+	function getDocHeight() {
+    var D = document;
+    return Math.max(
+        Math.max(D.body.scrollHeight, D.documentElement.scrollHeight),
+        Math.max(D.body.offsetHeight, D.documentElement.offsetHeight),
+        Math.max(D.body.clientHeight, D.documentElement.clientHeight)
+    );
+	}
+	  
+    $(window).scroll(function() { //detect page scroll
+        
+        if($(window).scrollTop() + $(window).height() >= (getDocHeight()))  //user scrolled to bottom of the page?
+        {
+            
+            if(pagesLoaded < totalPages && loading==false) //there's more data to load
+            {
+                loading = true; //prevent further ajax loading
+                //$('.animation_image').show(); //show loading image
+                
+                //load data from the server using a HTTP POST request
+                $.post('http://hugde.com/home/autoload/'+category,{'HPP': huggasPerPage,'PN':pagesLoaded+1}, function(data){
+                                    
+                    $(".article-block").append(data); //append received data into the element
+					try{
+				        FB.XFBML.parse();
+				        twttr.widgets.load(); 
+				    }catch(ex){}
+				    console.log("Autoscroll called"+pagesLoaded);
+                    pagesLoaded++; //loaded group increment
+                    loading = false; 
+                    //hide loading image
+                    //$('.animation_image').hide(); //hide loading image once data is received
+                    
+                
+                }).fail(function(xhr, ajaxOptions, thrownError) { //any errors?
+                    
+                    //alert(thrownError); //alert with HTTP error
+                    //$('.animation_image').hide(); //hide loading image
+                    loading = false;
+                
+                });
+                
+            }
+        }
+   
+	});
+});
