@@ -58,7 +58,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
       <div class="header-inner">
          <!-- BEGIN LOGO -->  
          <a class="navbar-brand" href="http://hugde.com/home">
-         <img src="<?php echo assets_url(); ?>img/hugdew.jpg" alt="logo" class="img-responsive" style="margin-top: -13px;height: 41px;" />
+         <img src="<?php echo assets_url(); ?>img/hugdew.jpg" alt="logo" class="img-responsive" style="margin-top: -13px;height: 59px;" />
          </a>
          <!-- END LOGO -->
          <!-- BEGIN RESPONSIVE MENU TOGGLER --> 
@@ -68,7 +68,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
          <!-- BEGIN HORIZANTAL MENU -->
 			<div class="hor-menu hidden-sm hidden-xs" style="margin-left: -4px">
 				<ul class="nav navbar-nav" style="padding: 9px">
-					<li class="active">
+					<li>
 						<a href="<?php echo base_url(),'home'; ?>">
 						Home
 						</a>
@@ -185,7 +185,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
      <!-- BEGIN EMPTY PAGE SIDEBAR -->
 		<div class="page-sidebar navbar-collapse collapse">
 			<ul class="page-sidebar-menu visible-sm visible-xs">
-				<li class="active">
+				<li >
 					<a href="<?php echo base_url(),'home'; ?>">
 					Home
 					</a>
@@ -245,113 +245,30 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                         <!-- BEGIN FILTER -->           
                         <div class="margin-top-10">
                            <ul class="mix-filter">
-                              <li class="filter" data-filter="all">All</li>
-                              <li class="filter" data-filter="category_1">UI Design</li>
-                              <li class="filter" data-filter="category_2">Web Development</li>
-                              <li class="filter" data-filter="category_3">Photography</li>
-                              <li class="filter" data-filter="category_3 category_1">Wordpress and Logo</li>
+                              <li class="filter" data-filter="Desi Firangi Seasonal Labs">All</li>
+                              <li class="filter" data-filter="Desi">Desi</li>
+                              <li class="filter" data-filter="Firangi">Firangi</li>
+                              <li class="filter" data-filter="Seasonal">Seasonal</li>
+                              <li class="filter" data-filter="Labs">Labs</li>
                            </ul>
                            <div class="row mix-grid">
-                              <div class="col-md-3 col-sm-4 mix category_1">
+                           	<?php
+							foreach($huggas as $item){
+							?>
+                              <div class="col-md-3 col-sm-4 mix <?php echo $item['category']; ?>">
                                  <div class="mix-inner">
-                                    <img class="img-responsive" src="<?php echo assets_url(); ?>img/works/img1.jpg" alt="">
+                                    <img class="img-responsive" src="<?php echo $item['images'][0]['originalImageUrl']; ?>" alt="">
                                     <div class="mix-details">
-                                       <h4>Cascusamus et iusto odio</h4>
+                                       <h4><?php echo $item['title']; ?></h4>
                                        <a class="mix-link"><i class="icon-link"></i></a>
-                                       <a class="mix-preview fancybox-button" href="<?php echo assets_url(); ?>img/works/img1.jpg" title="Project Name" data-rel="fancybox-button"><i class="icon-search"></i></a>
+                                       <a class="mix-preview fancybox-button" href="<?php echo $item['images'][0]['originalImageUrl']; ?>" title="<?php echo $item['title']; ?>" data-rel="fancybox-button"><i class="icon-search"></i></a>
                                     </div>
                                  </div>
                               </div>
-                              <div class="col-md-3 col-sm-4 mix category_2">
-                                 <div class="mix-inner">
-                                    <img class="img-responsive" src="<?php echo assets_url(); ?>img/works/img2.jpg" alt="">
-                                    <div class="mix-details">
-                                       <h4>Cascusamus et iusto accusamus</h4>
-                                       <a class="mix-link"><i class="icon-link"></i></a>
-                                       <a class="mix-preview fancybox-button" href="<?php echo assets_url(); ?>img/works/img2.jpg" title="Project Name" data-rel="fancybox-button"><i class="icon-search"></i></a>
-                                    </div>
-                                 </div>
-                              </div>
-                              <div class="col-md-3 col-sm-4 mix category_3">
-                                 <div class="mix-inner">
-                                    <img class="img-responsive" src="<?php echo assets_url(); ?>img/works/img3.jpg" alt="">
-                                    <div class="mix-details">
-                                       <h4>Cascusamus et iusto accusamus</h4>
-                                       <a class="mix-link"><i class="icon-link"></i></a>
-                                       <a class="mix-preview fancybox-button" href="<?php echo assets_url(); ?>img/works/img3.jpg" title="Project Name" data-rel="fancybox-button"><i class="icon-search"></i></a>
-                                    </div>
-                                 </div>
-                              </div>
-                              <div class="col-md-3 col-sm-4 mix category_1 category_2">
-                                 <div class="mix-inner">
-                                    <img class="img-responsive" src="<?php echo assets_url(); ?>img/works/img4.jpg" alt="">
-                                    <div class="mix-details">
-                                       <h4>Cascusamus et iusto accusamus</h4>
-                                       <a class="mix-link"><i class="icon-link"></i></a>
-                                       <a class="mix-preview fancybox-button" href="<?php echo assets_url(); ?>img/works/img4.jpg" title="Project Name" data-rel="fancybox-button"><i class="icon-search"></i></a>                            
-                                    </div>
-                                 </div>
-                              </div>
-                              <div class="col-md-3 col-sm-4 mix category_2 category_1">
-                                 <div class="mix-inner">
-                                    <img class="img-responsive" src="<?php echo assets_url(); ?>img/works/img5.jpg" alt="">
-                                    <div class="mix-details">
-                                       <h4>Cascusamus et iusto accusamus</h4>
-                                       <a class="mix-link"><i class="icon-link"></i></a>
-                                       <a class="mix-preview fancybox-button" href="<?php echo assets_url(); ?>img/works/img5.jpg" title="Project Name" data-rel="fancybox-button"><i class="icon-search"></i></a>                            
-                                    </div>
-                                 </div>
-                              </div>
-                              <div class="col-md-3 col-sm-4 mix category_1 category_2">
-                                 <div class="mix-inner">
-                                    <img class="img-responsive" src="<?php echo assets_url(); ?>img/works/img6.jpg" alt="">
-                                    <div class="mix-details">
-                                       <h4>Cascusamus et iusto accusamus</h4>
-                                       <a class="mix-link"><i class="icon-link"></i></a>
-                                       <a class="mix-preview fancybox-button" href="<?php echo assets_url(); ?>img/works/img6.jpg" title="Project Name" data-rel="fancybox-button"><i class="icon-search"></i></a>                            
-                                    </div>
-                                 </div>
-                              </div>
-                              <div class="col-md-3 col-sm-4 mix category_2 category_3">
-                                 <div class="mix-inner">
-                                    <img class="img-responsive" src="<?php echo assets_url(); ?>img/works/img1.jpg" alt="">
-                                    <div class="mix-details">
-                                       <h4>Cascusamus et iusto accusamus</h4>
-                                       <a class="mix-link"><i class="icon-link"></i></a>
-                                       <a class="mix-preview fancybox-button" href="<?php echo assets_url(); ?>img/works/img1.jpg" title="Project Name" data-rel="fancybox-button"><i class="icon-search"></i></a>                            
-                                    </div>
-                                 </div>
-                              </div>
-                              <div class="col-md-3 col-sm-4 mix category_1 category_2">
-                                 <div class="mix-inner">
-                                    <img class="img-responsive" src="<?php echo assets_url(); ?>img/works/img2.jpg" alt="">
-                                    <div class="mix-details">
-                                       <h4>Cascusamus et iusto accusamus</h4>
-                                       <a class="mix-link"><i class="icon-link"></i></a>
-                                       <a class="mix-preview fancybox-button" href="<?php echo assets_url(); ?>img/works/img2.jpg" title="Project Name" data-rel="fancybox-button"><i class="icon-search"></i></a>                            
-                                    </div>
-                                 </div>
-                              </div>
-                              <div class="col-md-3 col-sm-4 mix category_3">
-                                 <div class="mix-inner">
-                                    <img class="img-responsive" src="<?php echo assets_url(); ?>img/works/img4.jpg" alt="">
-                                    <div class="mix-details">
-                                       <h4>Cascusamus et iusto accusamus</h4>
-                                       <a class="mix-link"><i class="icon-link"></i></a>
-                                       <a class="mix-preview fancybox-button" href="<?php echo assets_url(); ?>img/works/img4.jpg" title="Project Name" data-rel="fancybox-button"><i class="icon-search"></i></a>                            
-                                    </div>
-                                 </div>
-                              </div>
-                              <div class="col-md-3 col-sm-4 mix category_1">
-                                 <div class="mix-inner">
-                                    <img class="img-responsive" src="<?php echo assets_url(); ?>img/works/img3.jpg" alt="">
-                                    <div class="mix-details">
-                                       <h4>Cascusamus et iusto accusamus</h4>
-                                       <a class="mix-link"><i class="icon-link"></i></a>
-                                       <a class="mix-preview fancybox-button" href="<?php echo assets_url(); ?>img/works/img3.jpg" title="Project Name" data-rel="fancybox-button"><i class="icon-search"></i></a>
-                                    </div>
-                                 </div>
-                              </div>
+                            <?php
+							}
+							?>
+                              
                            </div>
                         </div>
                         <!-- END FILTER -->    

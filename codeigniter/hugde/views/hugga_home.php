@@ -61,7 +61,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
          <!-- BEGIN HORIZANTAL MENU -->
 			<div class="hor-menu hidden-sm hidden-xs" style="margin-left: -4px">
 				<ul class="nav navbar-nav" style="padding: 9px">
-					<li class="active">
+					<li <?php if($category=='ALL'){echo 'class="active"';} ?>>
 						<a href="<?php echo base_url(),'home'; ?>">
 						Home
 						</a>
@@ -70,16 +70,16 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 					<li>
 						<a href="#">Trending</a>
 					</li>-->
-					<li>
+					<li <?php if($category=='Desi'){echo 'class="active"';} ?> >
 						<a href="<?php echo base_url(),'desi'; ?>">Desi</a>
 					</li>
-					<li>
+					<li <?php if($category=='Firangi'){echo 'class="active"';} ?>>
 						<a href="<?php echo base_url(),'firangi'; ?>">Firangi</a>
 					</li>
-					<li>
+					<li <?php if($category=='Seasonal'){echo 'class="active"';} ?>>
 						<a href="<?php echo base_url(),'seasonal'; ?>">Seasonal</a>
 					</li>
-					<li>
+					<li <?php if($category=='Labs'){echo 'class="active"';} ?>>
 						<a href="<?php echo base_url(),'labs'; ?>">Labs</a>
 					</li>
 					<!--<li>

@@ -76,7 +76,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
          <!-- BEGIN HORIZANTAL MENU -->
 			<div class="hor-menu hidden-sm hidden-xs" style="margin-left: -4px">
 				<ul class="nav navbar-nav" style="padding: 9px">
-					<li class="active">
+					<li>
 						<a href="<?php echo base_url(),'home'; ?>">
 						Home
 						</a>
@@ -188,7 +188,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
       <!-- BEGIN EMPTY PAGE SIDEBAR -->
 		<div class="page-sidebar navbar-collapse collapse">
 			<ul class="page-sidebar-menu visible-sm visible-xs">
-				<li class="active">
+				<li>
 					<a href="<?php echo base_url(),'home'; ?>">
 					Home
 					</a>
