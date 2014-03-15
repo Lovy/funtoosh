@@ -105,10 +105,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 				</ul>
 			</div>
 			<!-- END HORIZANTAL MENU -->
-			<!-- BEGIN RESPONSIVE MENU TOGGLER -->
-			<a href="javascript:;" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-			<img src="<?php echo assets_url().'/img/menu-toggler.png'; ?>" alt="" />
-			</a>  
+			 
          <!-- END RESPONSIVE MENU TOGGLER -->
          <!-- BEGIN TOP NAVIGATION MENU -->
          <ul class="nav navbar-nav pull-right" style="margin-top: 5px">
@@ -257,7 +254,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 							?>
                               <div class="col-md-3 col-sm-4 mix <?php echo $item['category']; ?>">
                                  <div class="mix-inner">
-                                    <img class="img-responsive" src="<?php echo $item['images'][0]['originalImageUrl']; ?>" alt="" style="width: 284px;height: 287px">
+                                    <img class="img-responsive" src="<?php echo $item['images'][0]['originalImageUrl']; ?>" alt="" style="width: 300px;height: 287px">
                                     <div class="mix-details">
                                        <h4><?php if($item['title']!=''){echo $item['title'];}else{echo'No Title Set';} ?></h4>
                                        <h5>Views: <?php echo $item['views']; ?></h5>
@@ -285,7 +282,27 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
       <!-- END PAGE -->    
    </div>
    <!-- END CONTAINER -->
-   
+   <!------------------------------------------------Delete Modal------------------------------------------------->
+   	<div class="modal fade" id="delete" tabindex="-1" role="basic" aria-hidden="true">
+    	<div class="modal-dialog">
+        	<div class="modal-content">
+            	<div class="modal-header">
+                	<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title">Delete</h4>
+                </div>
+                <div class="modal-body">
+                     Are you sure want to delete?
+                </div>
+                <div class="modal-footer">
+                	<button type="button" class="btn default" data-dismiss="modal">No</button>
+                    <button type="button" class="btn blue">Yes</button>
+                </div>
+           	</div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+   </div>
+   <!-- /.modal -->
    <!------------------------------------------------Login Modal------------------------------------------------->
    					<div class="modal fade" id="basic" tabindex="-1" role="basic" aria-hidden="true">
                         <div class="modal-dialog">
