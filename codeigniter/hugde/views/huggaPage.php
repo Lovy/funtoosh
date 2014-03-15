@@ -345,13 +345,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                            	<a href="https://plus.google.com/share?url=http%3A%2F%2Fhugde.com%2Fhugga%2F<?php echo $item['huggaId'];?>" onclick="javascript:window.open(this.href,'','menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;" class="btn btn-danger"><i class="icon-google-plus"></i> Google Plus</a>
                            	<a href="#" class="btn btn-xs red" >Flag <i class=" icon-flag"></i></a>
                            	</div>
-                           	<script type="text/javascript">
-								  (function() {
-								    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-								    po.src = 'https://apis.google.com/js/plusone.js';
-								    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-								  })();
-								</script>
+                           	
                           	<!--<div class="col-md-3">
                           		Posted by: {{postedBy}}
                           	</div>
@@ -1067,7 +1061,14 @@ HTML;
   ga('create', 'UA-48595506-1', 'hugde.com');
   ga('send', 'pageview');
 
-</script>
+	</script>
+	<script type="text/javascript">
+		(function() {
+		var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+		po.src = 'https://apis.google.com/js/plusone.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+		})();
+	</script>
    <!-- END JAVASCRIPTS -->
 </body>
 <!-- END BODY -->
