@@ -33,7 +33,7 @@ $(document).ready(function(){
             if(pagesLoaded < totalPages && loading==false) //there's more data to load
             {
                 loading = true; //prevent further ajax loading
-                $('.article-block').append('<div id="ajaxLoading"><img src="http://hugde.com/hugde_assets/img/ajax-loading.gif" /></div>'); //show loading image
+                $('.article-block').append('<div id="ajaxLoading" style="text-align:center"><img src="http://hugde.com/hugde_assets/img/ajax-loader.gif" /></div>'); //show loading image
                 
                 //load data from the server using a HTTP POST request
                 $.post('http://hugde.com/home/autoload/'+category,{'HPP': huggasPerPage,'PN':pagesLoaded+1}, function(data){
