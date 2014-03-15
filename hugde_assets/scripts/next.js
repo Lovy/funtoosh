@@ -5,12 +5,14 @@
 	    	async: false,
 	    	dataType: 'json',
 	    	beforeSend:function(){
-	    		el = document.getElementById('huggaContent');
-				blockUI(el);
+	    		var loader='<img src="http://hugde.com/hugde_assets/img/longLoader.gif" >';
+	    		$('#huggaContent').html(loader);
+	    		//el = document.getElementById('huggaContent');
+				//blockUI(el);
 			},
 			complete:function(){
-				el = document.getElementById('huggaContent');
-				unblockUI(el);			
+				//el = document.getElementById('huggaContent');
+				//unblockUI(el);			
 			},
 	    	success: function(response) {
 	    		checklogin();
