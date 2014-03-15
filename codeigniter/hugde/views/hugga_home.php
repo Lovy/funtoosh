@@ -808,6 +808,9 @@ HTML;
                         <!-- /.modal-dialog -->
 	</div>
  <!----------------------------------------------------END upload modal----------------------------------------->  
+   <div id="ajaxLoading" style="display: none">
+   	<img src="http://hugde.com/hugde_assets/img/ajax-loading.gif" />
+   </div>
    <!-- BEGIN FOOTER -->
    <div class="footer">
       <div class="footer-inner">
