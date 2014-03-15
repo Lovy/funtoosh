@@ -24,10 +24,14 @@ $(document).ready(function(){
         Math.max(D.body.clientHeight, D.documentElement.clientHeight)
     );
 	}
+	
+	function showDiv(){
+		
+	}
 	  
     $(window).scroll(function() { //detect page scroll
         
-        if($(window).scrollTop() + $(window).height() >= (getDocHeight()))  //user scrolled to bottom of the page?
+        if($(window).scrollTop() + $(window).height() >= (0.8*getDocHeight()))  //user scrolled to bottom of the page?
         {
             
             if(pagesLoaded < totalPages && loading==false) //there's more data to load
@@ -44,6 +48,7 @@ $(document).ready(function(){
 				        twttr.widgets.load(); 
 				    }catch(ex){}
 				    console.log("Autoscroll called"+pagesLoaded);
+				    
                     pagesLoaded++; //loaded group increment
                     loading = false; 
                     //hide loading image

@@ -157,7 +157,7 @@ class home extends CI_Controller{
                   	</div>
                   	 <a href="'.base_url().'hugga/'.$item['huggaId'].'"><h3><b>'.$item['title'].'</b></h3></a>
                      <div class="blog-tag-data">
-                     	<a href="'.base_url().'hugga/'.$item['huggaId'].'"><img src="'. $item['images'][0]['originalImageUrl'].'" class="img-responsive" alt="" style="width:100%"></a>
+                     	<a href="'.base_url().'hugga/'.$item['huggaId'].'"><img src="http://hugde.com/hugde_assets/img/loading.gif" onload="this.src=\''. $item['images'][0]['originalImageUrl'].'\'" class="img-responsive" alt="" style="width:100%"></a>
                         <div class="row">
                            <!--<div class="col-md-2">
                            	
@@ -174,7 +174,7 @@ class home extends CI_Controller{
                            		<!--<a href="https://twitter.com/share?count=horizontal" class="twitter-share-button" data-lang="en">Tweet</a>
                            		<!--<div class="pull-right" style="margin-top:-25px"><i class="icon-calendar"></i> <a href="#">April 16, 2013</a></div>-->
                            	<a href="https://twitter.com/share?count=horizontal" class="btn btn-info"><i class="icon-twitter"></i> Twitter</a>
-                           	<a href="#" onclick="window.open(\'https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fhugde.com%2Fhugga%2F'.$item['huggaId'].',\'facebook-share-dialog\',\'width=626,height=436\');return false;" class="btn btn-primary"><i class="icon-facebook"></i> Facebook</a>
+                           	<a href="#" onclick="window.open(\'https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fhugde.com%2Fhugga%2F'.$item['huggaId'].'\',\'facebook-share-dialog\',\'width=626,height=436\');return false;" class="btn btn-primary"><i class="icon-facebook"></i> Facebook</a>
                            	<a href="https://plus.google.com/share?url=http%3A%2F%2Fhugde.com%2Fhugga%2F'.$item['huggaId'].'" onclick="javascript:window.open(this.href,\'\',\'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600\');return false;" class="btn btn-danger"><i class="icon-google-plus"></i> Google Plus</a>
                            	
                            	</div>
