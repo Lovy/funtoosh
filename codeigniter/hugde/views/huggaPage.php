@@ -380,7 +380,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                            <ul class="list-inline">
                               <li><i class="icon-chevron-up"></i> <a href="<?php echo base_url().'hugga/'.$item['huggaId']; ?>"><?php echo $item['sidebar'][0]['licks']; ?></a></li>
                               <li><i class="icon-chevron-down"></i> <a href="<?php echo base_url().'hugga/'.$item['huggaId']; ?>"><?php echo $item['sidebar'][0]['flushes']; ?></a></li>
-                              <li><i class="icon-comments"></i> <a href="<?php echo base_url().'hugga/'.$item['huggaId']; ?>">38 Comments</a></li>
+                              <!--<li><i class="icon-comments"></i> <a href="<?php echo base_url().'hugga/'.$item['huggaId']; ?>">38 Comments</a></li>-->
                            </ul>
                            
                         </div>

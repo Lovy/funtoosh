@@ -207,7 +207,7 @@ class home extends CI_Controller{
 			//Detect mobile and load no-sidebar version
 			$mobile = $this->mobile_detect->isMobile();
 			if($mobile){
-				$this->load->view('hugga_home_myhuggas',$response);
+				$this->load->view('myHuggas',$response);
 			}
 			else{
 				//var_dump($response);
