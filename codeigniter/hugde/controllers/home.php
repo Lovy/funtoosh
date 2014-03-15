@@ -157,7 +157,7 @@ class home extends CI_Controller{
                   	</div>
                   	 <a href="'.base_url().'hugga/'.$item['huggaId'].'"><h3><b>'.$item['title'].'</b></h3></a>
                      <div class="blog-tag-data">
-                     	<a href="'.base_url().'hugga/'.$item['huggaId'].'"><img src="http://hugde.com/hugde_assets/img/loading.gif" onload="this.src=\''. $item['images'][0]['originalImageUrl'].'\'" class="img-responsive" alt="" style="width:100%"></a>
+                     	<a href="'.base_url().'hugga/'.$item['huggaId'].'"><img src="http://hugde.com/hugde_assets/img/longLoader.gif" onload="this.src=\''. $item['images'][0]['originalImageUrl'].'\'" class="img-responsive" alt="" style="width:100%"></a>
                         <div class="row">
                            <!--<div class="col-md-2">
                            	
