@@ -807,12 +807,11 @@ HTML;
                               </select>
                     </div>
                     <div class="form-group">
-                             
-                              <div class="checkbox-list">
-                                 <label>
-                                 <div class="checker"><span class=""><input type="checkbox" name="anon"></span></div> Post as Anonymous
-                                 </label>
-                              </div>
+                              <label>Posting As</label>
+                              <select name="anon" class="form-control input-medium">
+                                 <option>Anonymous</option>
+                                 <option>Use my name</option>
+                              </select>
                     </div>
                		<!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
                   	<div class="row fileupload-buttonbar">
@@ -854,7 +853,7 @@ HTML;
 	                     <tbody class="files"></tbody>
 	                  </table>
                			</form>
-               			<div class="panel panel-success">
+               			<!--<div class="panel panel-success">
 		                  <div class="panel-heading">
 		                     <h3 class="panel-title">Notes</h3>
 		                  </div>
@@ -865,7 +864,7 @@ HTML;
 		                        <li>Uploaded files will be deleted automatically after <strong>5 minutes</strong> (demo setting).</li>
 		                     </ul>
 		                  </div>
-               			</div>
+               			</div>-->
             			</div>
          			</div>
                 	</div>
@@ -879,6 +878,10 @@ HTML;
                         <!-- /.modal-dialog -->
 	</div>
  <!----------------------------------------------------END upload modal----------------------------------------->  
+   <div id="ajaxLoading" style="display: none">
+   	<img src="http://hugde.com/hugde_assets/img/ajax-loading.gif" />
+   </div>
+   
    <!-- BEGIN FOOTER -->
    <div class="footer">
       <div class="footer-inner">

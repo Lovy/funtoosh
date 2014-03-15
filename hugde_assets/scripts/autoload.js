@@ -33,7 +33,7 @@ $(document).ready(function(){
             if(pagesLoaded < totalPages && loading==false) //there's more data to load
             {
                 loading = true; //prevent further ajax loading
-                //$('.animation_image').show(); //show loading image
+                $('#ajaxLoading').show(); //show loading image
                 
                 //load data from the server using a HTTP POST request
                 $.post('http://hugde.com/home/autoload/'+category,{'HPP': huggasPerPage,'PN':pagesLoaded+1}, function(data){
@@ -47,7 +47,7 @@ $(document).ready(function(){
                     pagesLoaded++; //loaded group increment
                     loading = false; 
                     //hide loading image
-                    //$('.animation_image').hide(); //hide loading image once data is received
+                    $('#ajaxLoading').show(); //hide loading image once data is received
                     
                 
                 }).fail(function(xhr, ajaxOptions, thrownError) { //any errors?
