@@ -246,9 +246,9 @@ class home extends CI_Controller{
 	
 	function flag($huggaId){
 		$userId = $this->session->userdata('userId');
-		$response = $this->input->post(NULL,TRUE);
-		var_dump($response);
-		$feedback=$response;
+		$response = $this->input->post('temp');
+		parse_str($response,$output);
+		$feedback=$output['feedback'];
 		$this->load->model('modellickflush');
 		$this->modellickflush->updateFlagCount($huggaId);
 		$this->modellickflush->insertFlag($huggaId,$userId,$feedback);	
