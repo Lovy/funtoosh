@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://d2nds2wyuzde9r.cloudfront.net';
+$config['base_url']	= 'http://hugde.com';
 
 /*
 |--------------------------------------------------------------------------
