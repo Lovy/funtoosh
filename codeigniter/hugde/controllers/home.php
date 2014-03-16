@@ -61,7 +61,7 @@ class home extends CI_Controller{
 			//var_dump($data);
 			$this->load->model('modelhome');
 			$this->modelhome->deleteHugga($huggaId);   //(huggasPerPage,pageNo)
-			$url = 'http://d2nds2wyuzde9r.cloudfront.net/home/myhugge';
+			$url = 'http://hugde.com/home/myhugge';
 			redirect ($url);
 		}
 	}
