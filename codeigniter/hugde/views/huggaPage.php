@@ -94,9 +94,9 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 					<li>
 						<a href="<?php echo base_url(),'seasonal'; ?>">Seasonal</a>
 					</li>
-					<li>
+					<!--<li>
 						<a href="<?php echo base_url(),'labs'; ?>">Labs</a>
-					</li>
+					</li>-->
 					<!--<li>
 						<span class="hor-menu-search-form-toggler">&nbsp;</span>
 						<div class="search-form">
@@ -206,9 +206,9 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 					<li>
 						<a href="<?php echo base_url(),'seasonal'; ?>">Seasonal</a>
 					</li>
-					<li>
+					<!--<li>
 						<a href="<?php echo base_url(),'labs'; ?>">Labs</a>
-					</li>
+					</li>-->
 				
 			</ul>
 		</div>

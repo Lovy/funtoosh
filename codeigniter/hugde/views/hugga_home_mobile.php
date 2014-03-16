@@ -55,8 +55,8 @@
          <!-- BEGIN HORIZANTAL MENU -->
          <div class="hor-menu hidden-sm hidden-xs" style="margin-left: -4px">
 				<ul class="nav navbar-nav" style="padding: 9px">
-					<li class="active">
-						<a href="<?php echo base_url().'home'; ?>">
+					<li <?php if($category=='ALL'){echo 'class="active"';} ?>>
+						<a href="<?php echo base_url(),'home'; ?>">
 						Home
 						</a>
 					</li>
@@ -64,18 +64,18 @@
 					<li>
 						<a href="#">Trending</a>
 					</li>-->
-					<li>
-						<a href="<?php echo base_url().'desi'; ?>">Desi</a>
+					<li <?php if($category=='Desi'){echo 'class="active"';} ?> >
+						<a href="<?php echo base_url(),'desi'; ?>">Desi</a>
 					</li>
-					<li>
-						<a href="<?php echo base_url().'firangi'; ?>">Firangi</a>
+					<li <?php if($category=='Firangi'){echo 'class="active"';} ?>>
+						<a href="<?php echo base_url(),'firangi'; ?>">Firangi</a>
 					</li>
-					<li>
-						<a href="<?php echo base_url().'seasonal'; ?>">Seasonal</a>
+					<li <?php if($category=='Seasonal'){echo 'class="active"';} ?>>
+						<a href="<?php echo base_url(),'seasonal'; ?>">Seasonal</a>
 					</li>
-					<li>
+					<!--<li>
 						<a href="<?php echo base_url().'labs'; ?>">Labs</a>
-					</li>
+					</li>-->
 					<!--<li>
 						<span class="hor-menu-search-form-toggler">&nbsp;</span>
 						<div class="search-form">
@@ -172,27 +172,27 @@
        <!-- BEGIN EMPTY PAGE SIDEBAR -->
 		<div class="page-sidebar navbar-collapse collapse">
 			<ul class="page-sidebar-menu visible-sm visible-xs">
-				<li class="active">
-					<a href="<?php echo base_url().'home'; ?>">
-					Home
-					</a>
-				</li>
-				<!--
+				<li <?php if($category=='ALL'){echo 'class="active"';} ?>>
+						<a href="<?php echo base_url(),'home'; ?>">
+						Home
+						</a>
+					</li>
+					<!--
 					<li>
 						<a href="#">Trending</a>
 					</li>-->
-					<li>
-						<a href="<?php echo base_url().'desi'; ?>">Desi</a>
+					<li <?php if($category=='Desi'){echo 'class="active"';} ?> >
+						<a href="<?php echo base_url(),'desi'; ?>">Desi</a>
 					</li>
-					<li>
-						<a href="<?php echo base_url().'firangi'; ?>">Firangi</a>
+					<li <?php if($category=='Firangi'){echo 'class="active"';} ?>>
+						<a href="<?php echo base_url(),'firangi'; ?>">Firangi</a>
 					</li>
-					<li>
-						<a href="<?php echo base_url().'seasonal'; ?>">Seasonal</a>
+					<li <?php if($category=='Seasonal'){echo 'class="active"';} ?>>
+						<a href="<?php echo base_url(),'seasonal'; ?>">Seasonal</a>
 					</li>
-					<li>
+					<!--<li>
 						<a href="<?php echo base_url().'labs'; ?>">Labs</a>
-					</li>
+					</li>-->
 				
 			</ul>
 		</div>

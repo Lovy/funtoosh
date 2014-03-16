@@ -79,9 +79,9 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 					<li <?php if($category=='Seasonal'){echo 'class="active"';} ?>>
 						<a href="<?php echo base_url(),'seasonal'; ?>">Seasonal</a>
 					</li>
-					<li <?php if($category=='Labs'){echo 'class="active"';} ?>>
+					<!--<li <?php if($category=='Labs'){echo 'class="active"';} ?>>
 						<a href="<?php echo base_url(),'labs'; ?>">Labs</a>
-					</li>
+					</li>-->
 					<!--<li>
 						<span class="hor-menu-search-form-toggler">&nbsp;</span>
 						<div class="search-form">
@@ -178,26 +178,23 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 	<!-- BEGIN EMPTY PAGE SIDEBAR -->
 		<div class="page-sidebar navbar-collapse collapse">
 			<ul class="page-sidebar-menu visible-sm visible-xs">
-				<li class="active">
-					<a href="<?php echo base_url(),'home'; ?>">
-					Home
-					</a>
-				</li>
-				<!--
+				<li <?php if($category=='ALL'){echo 'class="active"';} ?>>
+						<a href="<?php echo base_url(),'home'; ?>">
+						Home
+						</a>
+					</li>
+					<!--
 					<li>
 						<a href="#">Trending</a>
 					</li>-->
-					<li>
+					<li <?php if($category=='Desi'){echo 'class="active"';} ?> >
 						<a href="<?php echo base_url(),'desi'; ?>">Desi</a>
 					</li>
-					<li>
+					<li <?php if($category=='Firangi'){echo 'class="active"';} ?>>
 						<a href="<?php echo base_url(),'firangi'; ?>">Firangi</a>
 					</li>
-					<li>
+					<li <?php if($category=='Seasonal'){echo 'class="active"';} ?>>
 						<a href="<?php echo base_url(),'seasonal'; ?>">Seasonal</a>
-					</li>
-					<li>
-						<a href="<?php echo base_url(),'labs'; ?>">Labs</a>
 					</li>
 				
 			</ul>
