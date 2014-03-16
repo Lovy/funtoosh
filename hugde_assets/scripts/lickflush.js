@@ -133,8 +133,12 @@
 	}
 	
 	function flag(){
-		var temp=$("#flagForm").serialize();  //converting into string
-		var huggaId=$("#flagHuggaId").val();
+		if(loginStatus=='0'){
+			$('#basic').modal('show');  //show login dialog box in case on logged out
+		}
+		else{
+			var temp=$("#flagForm").serialize();  //converting into string
+			var huggaId=$("#flagHuggaId").val();
 			$.ajax({
 				
 			//url to send the data to
@@ -155,6 +159,8 @@
 				//console.log(a);
 			}
 			});
+		}
+		
 	}
 	
 	function checklogin(){
