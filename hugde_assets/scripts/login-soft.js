@@ -57,7 +57,7 @@ var Login = function () {
 						$.ajax({
 						
 						//url to send the data to
-						url: "http://hugde.com/login2/login_user",
+						url: "http://d2nds2wyuzde9r.cloudfront.net/login2/login_user",
 						data: {'temp':temp},
 						type: 'post',
 						dataType: 'json',
@@ -75,7 +75,7 @@ var Login = function () {
 								$("#loginError").css('display','block');
 							}
 							else{
-								window.location.replace("http://hugde.com/home");
+								window.location.replace("http://d2nds2wyuzde9r.cloudfront.net/home");
 							}
 							//console.log(a);
 						}
@@ -92,7 +92,7 @@ var Login = function () {
 						$.ajax({
 						
 						//url to send the data to
-						url: "http://hugde.com/login2/login_user",
+						url: "http://d2nds2wyuzde9r.cloudfront.net/login2/login_user",
 						data: {'temp':temp},
 						type: 'post',
 						dataType: 'json',
@@ -110,7 +110,7 @@ var Login = function () {
 								$("#loginError").css('display','block');
 							}
 							else{
-								window.location.replace("http://hugde.com/home");
+								window.location.replace("http://d2nds2wyuzde9r.cloudfront.net/home");
 							}
 							//console.log(a);
 						}

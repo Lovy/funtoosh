@@ -64,7 +64,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
       <!-- BEGIN TOP NAVIGATION BAR -->
       <div class="header-inner">
          <!-- BEGIN LOGO -->  
-         <a class="navbar-brand" href="http://hugde.com/home">
+         <a class="navbar-brand" href="http://d2nds2wyuzde9r.cloudfront.net/home">
          <img src="<?php echo assets_url(); ?>img/hugdew.jpg" alt="logo" class="img-responsive" style="margin-top: -13px;height: 59px;;margin-left: 10px" />
          </a>
          <!-- END LOGO -->
@@ -156,7 +156,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 					}
 					else{
 				?>
-				<img alt="" src="http://hugde.com/hugde_assets/img/poopicon.jpg" style="width:29px"/>
+				<img alt="" src="http://d2nds2wyuzde9r.cloudfront.net/hugde_assets/img/poopicon.jpg" style="width:29px"/>
 				<?php
 					}
 				?>
@@ -164,10 +164,10 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                <i class="icon-angle-down"></i>
                </a>
                <ul class="dropdown-menu">
-                  <li><a href="http://hugde.com/home/myhugge"><i class="icon-user"></i> My Hugge</a>
+                  <li><a href="http://d2nds2wyuzde9r.cloudfront.net/home/myhugge"><i class="icon-user"></i> My Hugge</a>
                   </li>
                   
-                  <li><a href="http://hugde.com/logout" onclick="javascript:logout();"><i class="icon-key"></i> Log Out</a>
+                  <li><a href="http://d2nds2wyuzde9r.cloudfront.net/logout" onclick="javascript:logout();"><i class="icon-key"></i> Log Out</a>
                   </li>
                </ul>
             </li>                	
@@ -321,9 +321,9 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                   			</div>		
                   		</div>	
                   	</div>
-                  	 <a href="http://hugde.com/hugga/{{huggaId}}"><h3><b>{{title}}</b></h3></a>
+                  	 <a href="http://d2nds2wyuzde9r.cloudfront.net/hugga/{{huggaId}}"><h3><b>{{title}}</b></h3></a>
                      <div class="blog-tag-data">
-                     	<a href="http://hugde.com/hugga/{{huggaId}}"><img src="{{originalImageUrl}}" class="img-responsive" alt="" style="width:100%"></a>
+                     	<a href="http://d2nds2wyuzde9r.cloudfront.net/hugga/{{huggaId}}"><img src="{{originalImageUrl}}" class="img-responsive" alt="" style="width:100%"></a>
                         <div class="row">
                            <div class="col-md-2">
                            	
@@ -333,7 +333,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                            	</div>
                            	<div class="col-md-4">
                            		
-                           	  	<div class="fb-like" data-href="http://hugde.com/hugga/{{huggaId}}" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true" style="width: 150px !important"></div>
+                           	  	<div class="fb-like" data-href="http://d2nds2wyuzde9r.cloudfront.net/hugga/{{huggaId}}" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true" style="width: 150px !important"></div>
                            		
                           	</div>
                           	<!--
@@ -364,7 +364,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 						.fb_iframe_widget span,
 						.fb_iframe_widget iframe[style]  {width: 100% !important;}
                      </style>
-                     <div class="fb-comments" data-href="http://hugde.com/hugga/{{huggaId}}" data-numposts="20" data-colorscheme="light"></div>
+                     <div class="fb-comments" data-href="http://d2nds2wyuzde9r.cloudfront.net/hugga/{{huggaId}}" data-numposts="20" data-colorscheme="light"></div>
                     </script>
                   
                   <!--------------------------------END OF TEMPLATE---------------------------------->
@@ -422,7 +422,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                      We have received your feedback and the hugga is under scrutiny.
                 </div>
                 <div class="modal-footer">
-                	<button type="button" onclick="window.location.href='http://hugde.com/home'" class="btn default" data-dismiss="modal">Okay</button>                  
+                	<button type="button" onclick="window.location.href='http://d2nds2wyuzde9r.cloudfront.net/home'" class="btn default" data-dismiss="modal">Okay</button>                  
                 </div>
            	</div>
             <!-- /.modal-content -->
@@ -945,7 +945,7 @@ HTML;
                 	</div>
                     <div class="modal-footer">
                     	<button type="button" class="btn default" data-dismiss="modal">Close</button>
-                        <button type="button" onclick="window.location.href='http://hugde.com/home/myhugge'" class="btn blue">Save changes</button>
+                        <button type="button" onclick="window.location.href='http://d2nds2wyuzde9r.cloudfront.net/home/myhugge'" class="btn blue">Save changes</button>
                     </div>
              </div>
                            <!-- /.modal-content -->

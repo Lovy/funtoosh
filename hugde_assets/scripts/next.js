@@ -1,11 +1,11 @@
 
 	function onclicknext(huggaId,userId){
 		$.ajax({
-	    	url: "http://hugde.com/home/next/"+huggaId+'/'+userId,
+	    	url: "http://d2nds2wyuzde9r.cloudfront.net/home/next/"+huggaId+'/'+userId,
 	    	async: false,
 	    	dataType: 'json',
 	    	beforeSend:function(){
-	    		var loader='<img src="http://hugde.com/hugde_assets/img/longLoader.gif" >';
+	    		var loader='<img src="http://d2nds2wyuzde9r.cloudfront.net/hugde_assets/img/longLoader.gif" >';
 	    		$('#huggaContent').html(loader);
 	    		//el = document.getElementById('huggaContent');
 				//blockUI(el);
@@ -60,7 +60,7 @@
                 centerY = true;
             }
             el.block({
-                message: '<img src="http://hugde.com/hugde_assets/img/ajax-loading.gif" align="">',
+                message: '<img src="http://d2nds2wyuzde9r.cloudfront.net/hugde_assets/img/ajax-loading.gif" align="">',
                 centerY: centerY != undefined ? centerY : true,
                 css: {
                     top: '10%',

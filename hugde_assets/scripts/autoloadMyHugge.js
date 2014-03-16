@@ -3,7 +3,7 @@ $(document).ready(function(){
 	var totalHuggas;
 	var loading = false;
 	$.ajax({
-		url:"http://hugde.com/home/totalhuggas",
+		url:"http://d2nds2wyuzde9r.cloudfront.net/home/totalhuggas",
 		async:false,
 		dataType:"json",
 		success:function(data){
@@ -36,7 +36,7 @@ $(document).ready(function(){
                 //$('.animation_image').show(); //show loading image
                 
                 //load data from the server using a HTTP POST request
-                $.post('http://hugde.com/home/autoloadMyhugge/ALL',{'HPP': huggasPerPage,'PN':pagesLoaded+1}, function(data){
+                $.post('http://d2nds2wyuzde9r.cloudfront.net/home/autoloadMyhugge/ALL',{'HPP': huggasPerPage,'PN':pagesLoaded+1}, function(data){
                                     
                     $(".article-block").append(data); //append received data into the element
 					try{

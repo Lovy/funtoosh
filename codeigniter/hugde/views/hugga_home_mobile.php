@@ -140,7 +140,7 @@
 					}
 					else{
 				?>
-				<img alt="" src="http://hugde.com/hugde_assets/img/poopicon.jpg" style="width:29px"/>
+				<img alt="" src="http://d2nds2wyuzde9r.cloudfront.net/hugde_assets/img/poopicon.jpg" style="width:29px"/>
 				<?php
 					}
 				?>
@@ -148,10 +148,10 @@
                <i class="icon-angle-down"></i>
                </a>
                <ul class="dropdown-menu">
-                  <li><a href="http://hugde.com/home/myhugge"><i class="icon-user"></i> My Hugge</a>
+                  <li><a href="http://d2nds2wyuzde9r.cloudfront.net/home/myhugge"><i class="icon-user"></i> My Hugge</a>
                   </li>
                   
-                  <li><a href="http://hugde.com/logout" onclick="javascript:logout();"><i class="icon-key"></i> Log Out</a>
+                  <li><a href="http://d2nds2wyuzde9r.cloudfront.net/logout" onclick="javascript:logout();"><i class="icon-key"></i> Log Out</a>
                   </li>
                </ul>
             </li>                	
@@ -247,7 +247,7 @@
                   	</div>
                   	 <a href="<?php echo base_url().'hugga/'.$item['huggaId']; ?>"><h3><b><?php echo $item['title']; ?></b></h3></a>
                      <div class="blog-tag-data">
-                     	<a href="<?php echo base_url().'hugga/'.$item['huggaId']; ?>"><img src="http://hugde.com/hugde_assets/img/longLoader.gif" onload="this.src='<?php echo $item['images'][0]['originalImageUrl']; ?>'" class="img-responsive" alt="" style="width:100%"></a>
+                     	<a href="<?php echo base_url().'hugga/'.$item['huggaId']; ?>"><img src="http://d2nds2wyuzde9r.cloudfront.net/hugde_assets/img/longLoader.gif" onload="this.src='<?php echo $item['images'][0]['originalImageUrl']; ?>'" class="img-responsive" alt="" style="width:100%"></a>
                         <div class="row">
                            <!--<div class="col-md-2">
                            	
@@ -776,7 +776,7 @@ HTML;
                 	</div>
                     <div class="modal-footer">
                     	<button type="button" class="btn default" data-dismiss="modal">Close</button>
-                        <button type="button" onclick="window.location.href='http://hugde.com/home/myhugge'" class="btn blue">Save changes</button>
+                        <button type="button" onclick="window.location.href='http://d2nds2wyuzde9r.cloudfront.net/home/myhugge'" class="btn blue">Save changes</button>
                     </div>
              </div>
                            <!-- /.modal-content -->
