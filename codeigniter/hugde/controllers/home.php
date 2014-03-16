@@ -244,7 +244,14 @@ class home extends CI_Controller{
 		echo json_encode($result);
 	}
 	
-	
+	function flag($huggaId){
+		$userId = $this->session->userdata('userId');
+		$response = $this->input->post(NULL,TRUE);
+		$feedback=$response['feedback'];
+		$this->load->model('modellickflush');
+		$this->modellickflush->updateFlagCount($huggaId);
+		$this->modellickflush->insertFlag($huggaId,$userId,$feedback);	
+	}
 }
 
 ?>

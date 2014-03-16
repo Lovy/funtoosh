@@ -38,6 +38,15 @@ class modellickflush extends CI_Model{
 		$sql = 'update hugga set flushes = ? where huggaId = ?';
 		$this->db->query($sql, array($flushValue, $huggaId));
 	}
+
+	function updateFlagCount($huggaId){
+		$sql1="select flags from hugga where huggaId=?";
+		$query=$this->db->query($sql1,array($huggaId));
+		$flagCount = $query->first_row()->flags;
+		$newflagCount = intval($flagCount)+1;
+		$sql2 = 'update hugga set flags = ? where huggaId = ?';
+		$this->db->query($sql2, array($newflagCount, $huggaId));
+	}
 	
 	function deleteLick($huggaId,$userId){
 		$sql = 'delete from userlick where userId=? and huggaId=?';
@@ -56,6 +65,11 @@ class modellickflush extends CI_Model{
 	
 	function insertFlush($huggaId,$userId){
 		$sql = "insert into userflush (huggaId,userId) values ('$huggaId','$userId')";
+		$this->db->query($sql);
+	}
+	
+	function insertFlag($huggaId,$userId,$feedback){
+		$sql = "insert into userflag (huggaId,userId,feedback) values ('$huggaId','$userId','$feedback')";
 		$this->db->query($sql);
 	}
 	

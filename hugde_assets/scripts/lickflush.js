@@ -132,6 +132,31 @@
 		}
 	}
 	
+	function flag(){
+		var temp=$("#flagForm").serialize();  //converting into string
+		var huggaId=$("#flagHuggaId").val();
+			$.ajax({
+				
+			//url to send the data to
+			url: "http://hugde.com/home/flag/"+huggaId,
+			data: {'temp':temp},
+			type: 'post',
+			dataType: 'json',
+			beforeSend:function(){
+			//Show Autosaving div
+				//$("#spinner").css('display','block');
+			},
+			complete:function(){
+						
+			},
+			success:function(data){
+				$('#flagResponse').modal('show');
+					//window.location.replace("http://hugde.com/home");
+				//console.log(a);
+			}
+			});
+	}
+	
 	function checklogin(){
 		
 		$.ajax({

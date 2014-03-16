@@ -279,14 +279,14 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                            		
                           	</div>
                           	
-                          	<div class="col-md-3">
+                          	<!--<div class="col-md-3">
                           		Posted by: <?php echo $item['postedBy']; ?>
                           	</div>
-                          	<div class="col-md-3" style="font-size: 18px">
+                          	<!--<div class="col-md-3" style="font-size: 18px">
                           		Views <?php echo $item['views']; ?>
-                          	</div>
-                          	<div class="col-md-2">
-                          		 <a href="#" class="btn btn-xs red" >Flag <i class=" icon-flag"></i></a>
+                          	</div>-->
+                          	<div class="col-md-2" <?php if($item['flag']['flagged']==1){echo 'style="display: none"';} ?>>
+                          		 <a data-toggle="modal" href="#flag" class="btn btn-xs red" >Flag <i class=" icon-flag"></i></a>
                           	</div>
                         </div>
                      </div>
@@ -317,7 +317,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                   			<a href="javascript:void(0);" onclick="lick({{userId}},{{huggaId}},this);" class="btn {{licktype}} lick" id="licked">Lick <i class="icon-chevron-up"></i> <span class="badge badge-danger">{{licks}}</span></a>                			
                   			<a href="javascript:void(0);" onclick="flush({{userId}},{{huggaId}},this);" class="btn {{flushtype}} flush" id="flushed">Flush <i class="icon-chevron-down"></i> <span class="badge badge-success">{{flushes}}</span></a>                           
                   			<a href="javascript:void(0)" onclick="javascript:onclicknext({{huggaId}},{{userId}});" class="btn blue pull-right" >Next <i class=" icon-chevron-right"></i></a>
-                  		    
+                  		    <input id="flagHuggaId" type="hidden" value="{{huggaId}}" />
                   			</div>		
                   		</div>	
                   	</div>
@@ -325,36 +325,35 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                      <div class="blog-tag-data">
                      	<a href="http://hugde.com/hugga/{{huggaId}}"><img src="{{originalImageUrl}}" class="img-responsive" alt="" style="width:100%"></a>
                         <div class="row">
-                           <!--<div class="col-md-2">
+                           <div class="col-md-2">
                            	
                            		<a href="https://twitter.com/share?count=horizontal" class="twitter-share-button" data-lang="en">Tweet</a>
-                           		<!--<div class="pull-right" style="margin-top:-25px"><i class="icon-calendar"></i> <a href="#">April 16, 2013</a></div>
+                           		<!--<div class="pull-right" style="margin-top:-25px"><i class="icon-calendar"></i> <a href="#">April 16, 2013</a></div>-->
                            
                            	</div>
                            	<div class="col-md-4">
                            		
                            	  	<div class="fb-like" data-href="http://hugde.com/hugga/{{huggaId}}" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true" style="width: 150px !important"></div>
                            		
-                          	</div>-->
-                          	<div class="col-md-12">
-                           	
-                           		<!--<a href="https://twitter.com/share?count=horizontal" class="twitter-share-button" data-lang="en">Tweet</a>
-                           		<!--<div class="pull-right" style="margin-top:-25px"><i class="icon-calendar"></i> <a href="#">April 16, 2013</a></div>-->
-                           	<a href="https://twitter.com/share?count=horizontal" class="btn btn-info"><i class="icon-twitter"></i> Twitter</a>
-                           	<a href="#" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fhugde.com%2Fhugga%2F<?php echo $item['huggaId'];?>','facebook-share-dialog','width=626,height=436');return false;" class="btn btn-primary"><i class="icon-facebook"></i> Facebook</a>
-                           	<a href="https://plus.google.com/share?url=http%3A%2F%2Fhugde.com%2Fhugga%2F<?php echo $item['huggaId'];?>" onclick="javascript:window.open(this.href,'','menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;" class="btn btn-danger"><i class="icon-google-plus"></i> Google Plus</a>
-                           	<a href="#" class="btn btn-xs red" >Flag <i class=" icon-flag"></i></a>
-                           	</div>
+                          	</div>
+                          	<!--
+							  <div class="col-md-12">
+																															<a href="https://twitter.com/share?count=horizontal" class="btn btn-info"><i class="icon-twitter"></i> Twitter</a>
+															 <a href="#" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fhugde.com%2Fhugga%2F<?php echo $item['huggaId'];?>','facebook-share-dialog','width=626,height=436');return false;" class="btn btn-primary"><i class="icon-facebook"></i> Facebook</a>
+															 <a href="https://plus.google.com/share?url=http%3A%2F%2Fhugde.com%2Fhugga%2F<?php echo $item['huggaId'];?>" onclick="javascript:window.open(this.href,'','menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;" class="btn btn-danger"><i class="icon-google-plus"></i> Google Plus</a>
+															 <a data-toggle="modal" href="#flag" class="btn btn-xs red" >Flag <i class=" icon-flag"></i></a>
+															 </div>-->
+							  
                            	
                           	<!--<div class="col-md-3">
                           		Posted by: {{postedBy}}
                           	</div>
-                          	<div class="col-md-3" style="font-size: 18px">
+                          	<!--<div class="col-md-3" style="font-size: 18px">
                           		Views {{views}}
-                          	</div>
-                          	<div class="col-md-2">
-                          		 <a href="#" class="btn btn-xs red" >Flag <i class=" icon-flag"></i></a>
                           	</div>-->
+                          	<div class="col-md-2">
+                          		 <a data-toggle="modal" href="#flag" class="btn btn-xs red" >Flag <i class=" icon-flag"></i></a>
+                          	</div>
                         </div>
                      </div>
                      <!--end news-tag-data-->
@@ -411,7 +410,74 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
       <!-- END PAGE -->    
    </div>
    <!-- END CONTAINER -->
-   
+   <!-----------------------------------------------Flag Response------------------------------------->
+   	<div class="modal fade" id="flagResponse" tabindex="-1" role="basic" aria-hidden="true">
+    	<div class="modal-dialog">
+        	<div class="modal-content">
+            	<div class="modal-header">
+                	<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title">A Big Thank You !!</h4>
+                </div>
+                <div class="modal-body">
+                     We have received your feedback and the hugga is under scrutiny.
+                </div>
+                <div class="modal-footer">
+                	<button type="button" onclick="window.location.href='http://hugde.com/home'" class="btn default" data-dismiss="modal">Okay</button>                  
+                </div>
+           	</div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+   </div>
+   <!-- /.modal -->
+  <!------------------------------------------------Flag Modal-------------------------------------------------->
+   <div class="modal fade" id="flag" tabindex="-1" role="basic" aria-hidden="true">
+      	<div class="modal-dialog">
+        	<div class="modal-content">
+            	<div class="modal-header">
+                	<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title"></h4>
+                </div>
+            <div class="modal-body">
+             <!-- BEGIN REGISTRATION FORM -->
+      			<form id="flagForm" class="register-form" action="<?php echo base_url().'flag'; ?>" method="post">
+         		<h3 >Ohh But why so?</h3>
+         		<p>Let us know the reason:</p>
+		         <div class="form-group">
+		            <label>
+		            <input type="checkbox" name="a"/> It may hurt someone's sentiments
+		            </label>  
+		           
+		         </div>
+		         <div class="form-group">
+		            <label>
+		            <input type="checkbox" name="b"/> It's annoying and contains pornographic content.
+		            </label>  
+		           
+		         </div>
+		         <div class="form-group">
+		            <label>
+		            <input type="checkbox" name="c"/> This should not be on Hugde
+		            </label>  	            
+		         </div>
+		         <div class="form-group">
+		         	<button type="button" class="btn default" data-dismiss="modal">Close</button>
+                    <button id="flagSubmit" type="button" class="btn blue">Submit</button>
+		         </div>
+		        
+      			</form>
+      			<!-- END REGISTRATION FORM -->
+                              </div>
+                              <!--<div class="modal-footer">
+                                 <button type="button" class="btn default" data-dismiss="modal">Close</button>
+                                 <button type="submit" class="btn blue">Submit</button>
+                              </div>-->
+                           </div>
+                           <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal-dialog -->
+                     </div>
+
    <!------------------------------------------------Login Modal------------------------------------------------->
    					<div class="modal fade" id="basic" tabindex="-1" role="basic" aria-hidden="true">
                         <div class="modal-dialog">
