@@ -150,12 +150,13 @@
 			var flagHuggaId=$("#flagHuggaId").val();
 			console.log(oldHuggaId);
 			console.log(flagHuggaId);
-			if(oldHuggaId=='' || oldHuggaId==NULL){
-				huggaId=flagHuggaId;
+			if(oldHuggaId!='' || oldHuggaId!=NULL){
+				huggaId=oldHuggaId;
 				console.log(huggaId);
 			}
 			else{
-				huggaId=oldHuggaId;
+				huggaId=flagHuggaId;
+				console.log(huggaId);
 			}
 			$.ajax({
 				
