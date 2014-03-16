@@ -161,6 +161,7 @@
 						
 			},
 			success:function(data){
+				$("#flag").modal('hide');
 				$('#flagResponse').modal('show');
 					//window.location.replace("http://hugde.com/home");
 				//console.log(a);
