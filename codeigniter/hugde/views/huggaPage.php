@@ -44,7 +44,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
    <link href="<?php echo assets_url(); ?>plugins/jquery-file-upload/css/jquery.fileupload-ui.css" rel="stylesheet" />
    <link href="<?php echo assets_url(); ?>css/pages/login-soft.css" rel="stylesheet" type="text/css"/>
    <!-- END THEME STYLES -->
-   <link rel="shortcut icon" href="favicon.ico" />
+   <link rel="shortcut icon" href="<?php echo assets_url(); ?>img/favicon.ico" />
    <!------------Facebook JS--------------->
    <script src="<?php echo assets_url(); ?>scripts/facebook.js" type="text/javascript"></script>
    <script src="<?php echo assets_url(); ?>scripts/mustache.js" type="text/javascript"></script>
