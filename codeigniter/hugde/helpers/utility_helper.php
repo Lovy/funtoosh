@@ -1,7 +1,7 @@
 <?php
 
 function assets_url(){
-   return 'http://hugde-env-symvyatdmf.elasticbeanstalk.com/hugde_assets/';
+   return 'http://d2nds2wyuzde9r.cloudfront.net/hugde_assets/';
 }
 
 
