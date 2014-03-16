@@ -150,7 +150,7 @@
 			var flagHuggaId=$("#flagHuggaId").val();
 			console.log(oldHuggaId);
 			console.log(flagHuggaId);
-			if(oldHuggaId=='' or oldHuggaId==NULL){
+			if(oldHuggaId=='' || oldHuggaId==NULL){
 				huggaId=flagHuggaId;
 				console.log(huggaId);
 			}
