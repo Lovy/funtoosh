@@ -286,7 +286,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                           		Views <?php echo $item['views']; ?>
                           	</div>-->
                           	<div class="col-md-2" <?php if($item['flag']['flagged']==1){echo 'style="display: none"';} ?>>
-                          		 <a data-toggle="modal" href="#flag" class="btn btn-xs red" >Flag <i class=" icon-flag"></i></a>
+                          		 <a href="javascript:void(0)" onclick="flagModal();" class="btn btn-xs red" >Flag <i class=" icon-flag"></i></a>
                           	</div>
                         </div>
                      </div>
@@ -352,7 +352,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                           		Views {{views}}
                           	</div>-->
                           	<div class="col-md-2">
-                          		 <a data-toggle="modal" href="#flag" class="btn btn-xs red" >Flag <i class=" icon-flag"></i></a>
+                          		 <a href="javascript:void(0)" onclick="flagModal();" class="btn btn-xs red" >Flag <i class=" icon-flag"></i></a>
                           	</div>
                         </div>
                      </div>
@@ -462,7 +462,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 		         </div>
 		         <div class="form-group">
 		         	<button type="button" class="btn default" data-dismiss="modal">Close</button>
-                    <button id="flagSubmit" onclick="javascript:flag();" type="button" class="btn blue">Submit</button>
+                    <button id="flagSubmit" onclick="flag();" type="button" class="btn blue">Submit</button>
 		         </div>
 		        
       			</form>

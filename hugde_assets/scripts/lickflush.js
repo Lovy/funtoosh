@@ -132,11 +132,18 @@
 		}
 	}
 	
-	function flag(){
+	function flagModal(){
 		if(loginStatus=='0'){
 			$('#basic').modal('show');  //show login dialog box in case on logged out
 		}
 		else{
+			$('#flag').modal('show');
+		}
+		
+	}
+	
+	function flag(){
+		
 			var temp=$("#flagForm").serialize();  //converting into string
 			var huggaId=$("#flagHuggaId").val();
 			$.ajax({
@@ -159,8 +166,6 @@
 				//console.log(a);
 			}
 			});
-		}
-		
 	}
 	
 	function checklogin(){
