@@ -31,7 +31,7 @@ $(document).ready(function(){
 	  
     $(window).scroll(function() { //detect page scroll
         
-        if($(window).scrollTop() + $(window).height() >= (0.85*getDocHeight()))  //user scrolled to bottom of the page?
+        if($(window).scrollTop() + $(window).height() >= (getDocHeight()))  //user scrolled to bottom of the page?
         {
             
             if(pagesLoaded < totalPages && loading==false) //there's more data to load

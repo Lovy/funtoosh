@@ -250,7 +250,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                   			</div>		
                   		</div>	
                   	</div>
-                  	 <a href="<?php echo base_url().'hugga/'.$item['huggaId']; ?>"><h3><b><?php echo $item['title']; ?></b></h3></a>
+                  	 <a href="<?php echo base_url().'hugga/'.$item['huggaId']; ?>"><h3 style="font-weight: 600 !important"><?php echo $item['title']; ?></h3></a>
                      <div class="blog-tag-data">
                      	<a href="<?php echo base_url().'hugga/'.$item['huggaId']; ?>"><img src="http://d2nds2wyuzde9r.cloudfront.net/hugde_assets/img/longLoader.gif" onload="this.src='<?php echo $item['images'][0]['originalImageUrl']; ?>'" class="img-responsive" alt="" style="width:100%"></a>
                         <div class="row">

@@ -12,12 +12,14 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 <!-- BEGIN HEAD -->
 <head>
    <meta charset="utf-8" />
-   <title>Hugde | Making shit awesome</title>
+   <title><?php if($item['title']!=''){echo 'Hugde|'.$item['title'];}else{ echo 'Hugde: Making shit awesome';}; ?></title>
    <?php
    foreach($huggas as $item){
    ?>
    <meta property="og:title" content="<?php if($item['title']!=''){echo $item['title'];}else{ echo 'Hugde: Making shit awesome';}; ?>" /> 
    <meta property="og:image" content="<?php echo $item['images'][0]['originalImageUrl']; ?>" />
+   <meta property="og:description" content="Making s**t awesome" />
+   
    <?php
    }
    ?> 
@@ -263,7 +265,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                   			</div>		
                   		</div>	
                   	</div>
-                  	 <a href="<?php echo base_url().'hugga/'.$item['huggaId']; ?>"><h3><b><?php echo $item['title']; ?></b></h3></a>
+                  	 <a href="<?php echo base_url().'hugga/'.$item['huggaId']; ?>"><h3 style="font-weight: 600 !important"><?php echo $item['title']; ?></h3></a>
                      <div class="blog-tag-data">
                      	<a href="<?php echo base_url().'hugga/'.$item['huggaId']; ?>"><img src="<?php echo $item['images'][0]['originalImageUrl']; ?>" class="img-responsive" alt="" style="width:100%"></a>
                         <div class="row">
