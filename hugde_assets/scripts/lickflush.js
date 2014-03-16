@@ -148,16 +148,15 @@
 			var huggaId;
 			var oldHuggaId=$("#oldHuggaId").val();
 			var flagHuggaId=$("#flagHuggaId").val();
-			console.log(oldHuggaId);
-			console.log(flagHuggaId);
-			if(oldHuggaId!='' || oldHuggaId!=NULL){
-				huggaId=oldHuggaId;
-				console.log(huggaId);
+			//console.log(oldHuggaId);
+			//console.log(flagHuggaId);
+			if(typeof oldHuggaId === 'undefined'){
+				huggaId=flagHuggaId;
 			}
 			else{
-				huggaId=flagHuggaId;
-				console.log(huggaId);
+				huggaId=oldHuggaId;
 			}
+			
 			$.ajax({
 				
 			//url to send the data to

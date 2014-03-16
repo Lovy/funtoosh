@@ -424,7 +424,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                      We have received your feedback and the hugga is under scrutiny.
                 </div>
                 <div class="modal-footer">
-                	<button type="button" onclick="window.location.href='http://d2nds2wyuzde9r.cloudfront.net/home'" class="btn default" data-dismiss="modal">Okay</button>                  
+                	<button type="button" onclick="window.location.href='http://hugde.com/home'" class="btn default" data-dismiss="modal">Okay</button>                  
                 </div>
            	</div>
             <!-- /.modal-content -->
