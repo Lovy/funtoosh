@@ -160,7 +160,7 @@
 			$.ajax({
 				
 			//url to send the data to
-			url: "http://d2nds2wyuzde9r.cloudfront.net/home/flag/"+huggaId,
+			url: "http://hugde.com/home/flag/"+huggaId,
 			data: {'temp':temp},
 			type: 'post',
 			dataType: 'json',
@@ -183,7 +183,7 @@
 	function checklogin(){
 		
 		$.ajax({
-	    	url: "http://d2nds2wyuzde9r.cloudfront.net/login/checklogin",
+	    	url: "http://hugde.com/login/checklogin",
 	    	async: false,
 	    	dataType: 'json',
 	    	success: function(response) {
@@ -235,7 +235,7 @@
 	function updateLickCount(updatedLickCnt,huggaId){
 		//query db
 		$.ajax({
-	    	url: "http://d2nds2wyuzde9r.cloudfront.net/lickflush/updateLickCount/"+huggaId+'/'+updatedLickCnt,
+	    	url: "http://hugde.com/lickflush/updateLickCount/"+huggaId+'/'+updatedLickCnt,
 	    	async: true,
 	    	dataType: 'json',
 	    	success: function(response) {
@@ -247,7 +247,7 @@
 	function updateFlushCount(updatedFlushCnt,huggaId){
 		//query db
 		$.ajax({
-	    	url: "http://d2nds2wyuzde9r.cloudfront.net/lickflush/updateFlushCount/"+huggaId+'/'+updatedFlushCnt,
+	    	url: "http://hugde.com/lickflush/updateFlushCount/"+huggaId+'/'+updatedFlushCnt,
 	    	async: true,
 	    	dataType: 'json',
 	    	success: function(response) {
@@ -259,7 +259,7 @@
 	function updateHomeIndex(huggaId,licks,flushes){
 		//query db
 		$.ajax({
-	    	url: "http://d2nds2wyuzde9r.cloudfront.net/lickflush/updateHomeIndex/"+huggaId+'/'+licks+'/'+flushes,
+	    	url: "http://hugde.com/lickflush/updateHomeIndex/"+huggaId+'/'+licks+'/'+flushes,
 	    	async: true,
 	    	dataType: 'json',
 	    	success: function(response) {
@@ -271,7 +271,7 @@
 	function updateTrendingIndex(huggaId){
 		//query db
 		$.ajax({
-	    	url: "http://d2nds2wyuzde9r.cloudfront.net/lickflush/updateTrendingIndex/"+huggaId,
+	    	url: "http://hugde.com/lickflush/updateTrendingIndex/"+huggaId,
 	    	async: true,
 	    	dataType: 'json',
 	    	success: function(response) {
@@ -283,7 +283,7 @@
 	function deleteLick(huggaId,userId){
 		//query db
 		$.ajax({
-	    	url: "http://d2nds2wyuzde9r.cloudfront.net/lickflush/deleteLick/"+huggaId+'/'+userId,
+	    	url: "http://hugde.com/lickflush/deleteLick/"+huggaId+'/'+userId,
 	    	async: true,
 	    	dataType: 'json',
 	    	success: function(response) {
@@ -295,7 +295,7 @@
 	function deleteFlush(huggaId,userId){
 		//query db
 		$.ajax({
-	    	url: "http://d2nds2wyuzde9r.cloudfront.net/lickflush/deleteFlush/"+huggaId+'/'+userId,
+	    	url: "http://hugde.com/lickflush/deleteFlush/"+huggaId+'/'+userId,
 	    	async: true,
 	    	dataType: 'json',
 	    	success: function(response) {
@@ -307,7 +307,7 @@
 	function insertLick(huggaId,userId){
 		//query db
 		$.ajax({
-	    	url: "http://d2nds2wyuzde9r.cloudfront.net/lickflush/insertLick/"+huggaId+'/'+userId,
+	    	url: "http://hugde.com/lickflush/insertLick/"+huggaId+'/'+userId,
 	    	async: true,
 	    	dataType: 'json',
 	    	success: function(response) {
@@ -319,7 +319,7 @@
 	function insertFlush(huggaId,userId){
 		//query db
 		$.ajax({
-	    	url: "http://d2nds2wyuzde9r.cloudfront.net/lickflush/insertFlush/"+huggaId+'/'+userId,
+	    	url: "http://hugde.com/lickflush/insertFlush/"+huggaId+'/'+userId,
 	    	async: true,
 	    	dataType: 'json',
 	    	success: function(response) {
