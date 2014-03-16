@@ -16,9 +16,9 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
    foreach($huggas as $item){
    ?>
    <title><?php if($item['title']!=''){echo 'Hugde|'.$item['title'];}else{ echo 'Hugde: Making shit awesome';}; ?></title> 
-   <meta property="og:title" content="Hugde: Making s**t awesome" /> 
+   <meta property="og:title" content="<?php if($item['title']!=''){echo $item['title'];}else{echo 'Making s**t awesome"';} ?>" /> 
    <meta property="og:image" content="<?php echo $item['images'][0]['originalImageUrl']; ?>" />
-   <meta property="og:description" content="<?php if($item['title']!=''){echo $item['title'];}else{echo 'Making s**t awesome"';} ?>" />
+   <meta property="og:description" content="Hugde: Making s**t awesome" />
    
    <?php
    }
