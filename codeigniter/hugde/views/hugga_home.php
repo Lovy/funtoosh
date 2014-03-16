@@ -763,7 +763,7 @@ HTML;
 	                        <span class="btn green fileinput-button" id="addFiles">
 	                        <i class="icon-plus"></i>
 	                        <span>Add files...</span>
-	                        <input type="file" name="files[]" multiple>
+	                        <input type="file" name="files[]">
 	                        </span>
 	                        <button type="submit" class="btn blue start">
 	                        <i class="icon-upload"></i>
