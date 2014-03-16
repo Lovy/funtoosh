@@ -41,13 +41,17 @@ class modelhome extends CI_Model{
 					//check lick flush status for this hugga
 					$lick = array();
 					$flush = array();
+					$flag=array();
 					$this->load->model('modellickflush');
 					$lickResponse = $this->modellickflush->getLickStatus($row['huggaId'],$userId);
 					$flushResponse = $this->modellickflush->getFlushStatus($row['huggaId'],$userId);
+					$flagResponse = $this->modellickflush->getFlagStatus($row['huggaId'],$userId);
 					$lick['licked']=$lickResponse;
 					$flush['flushed']=$flushResponse;
+					$flag['flagged']=$flagResponse;
 					$row['lick']=$lick;
 					$row['flush']=$flush;
+					$row['flag']=$flag;
 					$hugga[]=$row;
 				}
 				return $hugga;
@@ -76,13 +80,17 @@ class modelhome extends CI_Model{
 					//check lick flush status for this hugga
 					$lick = array();
 					$flush = array();
+					$flag=array();
 					$this->load->model('modellickflush');
 					$lickResponse = $this->modellickflush->getLickStatus($row['huggaId'],$userId);
 					$flushResponse = $this->modellickflush->getFlushStatus($row['huggaId'],$userId);
+					$flagResponse = $this->modellickflush->getFlagStatus($row['huggaId'],$userId);
 					$lick['licked']=$lickResponse;
 					$flush['flushed']=$flushResponse;
+					$flag['flagged']=$flagResponse;
 					$row['lick']=$lick;
 					$row['flush']=$flush;
+					$row['flag']=$flag;
 					$hugga[]=$row;
 				}
 				return $hugga;
@@ -112,13 +120,17 @@ class modelhome extends CI_Model{
 					//check lick flush status for this hugga
 					$lick = array();
 					$flush = array();
+					$flag=array();
 					$this->load->model('modellickflush');
 					$lickResponse = $this->modellickflush->getLickStatus($row['huggaId'],$userId);
 					$flushResponse = $this->modellickflush->getFlushStatus($row['huggaId'],$userId);
+					$flagResponse = $this->modellickflush->getFlagStatus($row['huggaId'],$userId);
 					$lick['licked']=$lickResponse;
 					$flush['flushed']=$flushResponse;
+					$flag['flagged']=$flagResponse;
 					$row['lick']=$lick;
 					$row['flush']=$flush;
+					$row['flag']=$flag;
 					$hugga[]=$row;
 				}
 				return $hugga;
@@ -148,13 +160,17 @@ class modelhome extends CI_Model{
 					//check lick flush status for this hugga
 					$lick = array();
 					$flush = array();
+					$flag=array();
 					$this->load->model('modellickflush');
 					$lickResponse = $this->modellickflush->getLickStatus($row['huggaId'],$userId);
 					$flushResponse = $this->modellickflush->getFlushStatus($row['huggaId'],$userId);
+					$flagResponse = $this->modellickflush->getFlagStatus($row['huggaId'],$userId);
 					$lick['licked']=$lickResponse;
 					$flush['flushed']=$flushResponse;
+					$flag['flagged']=$flagResponse;
 					$row['lick']=$lick;
 					$row['flush']=$flush;
+					$row['flag']=$flag;
 					$hugga[]=$row;
 				}
 				return $hugga;
@@ -274,13 +290,17 @@ class modelhome extends CI_Model{
 					//check lick flush status for this hugga
 					$lick = array();
 					$flush = array();
+					$flag=array();
 					$this->load->model('modellickflush');
 					$lickResponse = $this->modellickflush->getLickStatus($row['huggaId'],$userId);
 					$flushResponse = $this->modellickflush->getFlushStatus($row['huggaId'],$userId);
+					$flagResponse = $this->modellickflush->getFlagStatus($row['huggaId'],$userId);
 					$lick['licked']=$lickResponse;
 					$flush['flushed']=$flushResponse;
+					$flag['flagged']=$flagResponse;
 					$row['lick']=$lick;
 					$row['flush']=$flush;
+					$row['flag']=$flag;
 					$hugga[]=$row;
 				}
 				return $hugga;

@@ -29,6 +29,17 @@ class modellickflush extends CI_Model{
 		}
 	}
 	
+	function getFlagStatus($huggaId,$userId){
+		$query = $this->db->get_where("userflag",array("userId"=>$userId,"huggaId"=>$huggaId));
+		if($query->num_rows()==0){
+				//insert new entry			
+				return 0;
+		}
+		else{
+				return 1;
+		}
+	}
+	
 	function updateLickCount($huggaId,$lickValue){
 		$sql = 'update hugga set licks = ? where huggaId = ?';
 		$this->db->query($sql, array($lickValue, $huggaId));
