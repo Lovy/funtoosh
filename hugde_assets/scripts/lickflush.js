@@ -145,7 +145,18 @@
 	function flag(){
 		
 			var temp=$("#flagForm").serialize();  //converting into string
-			var huggaId=$("#flagHuggaId").val();
+			var huggaId;
+			var oldHuggaId=$("#oldHuggaId").val();
+			var flagHuggaId=$("#flagHuggaId").val();
+			console.log(oldHuggaId);
+			console.log(flagHuggaId);
+			if(oldHuggaId=='' or oldHuggaId==NULL){
+				huggaId=flagHuggaId;
+				console.log(huggaId);
+			}
+			else{
+				huggaId=oldHuggaId;
+			}
 			$.ajax({
 				
 			//url to send the data to
