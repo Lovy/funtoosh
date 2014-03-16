@@ -462,7 +462,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 		         </div>
 		         <div class="form-group">
 		         	<button type="button" class="btn default" data-dismiss="modal">Close</button>
-                    <button id="flagSubmit" type="button" class="btn blue">Submit</button>
+                    <button id="flagSubmit" onclick="javascript:flag();" type="button" class="btn blue">Submit</button>
 		         </div>
 		        
       			</form>
