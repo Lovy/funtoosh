@@ -445,13 +445,13 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
          		<p>Let us know the reason:</p>
 		         <div class="form-group">
 		            <label>
-		            <input type="radio" name="feedback" value="It may hurt someone's sentiments"/> It may hurt someone's sentiments
+		            <input type="radio" name="feedback" value="It may hurt someones sentiments"/> It may hurt someone's sentiments
 		            </label>  
 		           
 		         </div>
 		         <div class="form-group">
 		            <label>
-		            <input type="radio" name="feedback" value="It's annoying and contains pornographic content."/> It's annoying and contains pornographic content.
+		            <input type="radio" name="feedback" value="It is annoying and contains pornographic content."/> It's annoying and contains pornographic content.
 		            </label>  
 		           
 		         </div>
