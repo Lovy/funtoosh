@@ -35,6 +35,7 @@
 
 
 	$("#fblogin").click(){
+		console.log("clicked");
 		FB.login(function(response) {
 		    if (response.authResponse) {
 		        // The person logged into your app
