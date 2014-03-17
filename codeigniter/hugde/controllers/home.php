@@ -221,7 +221,8 @@ class home extends CI_Controller{
 			$response['data']=$data;
 			//Detect mobile and load no-sidebar version
 			$mobile = $this->mobile_detect->isMobile();
-			if(empty($response['huggas'])){
+			if(is_null($response['huggas'])){
+				echo "I am ".$response['huggas'];
 				$response['huggas']=0;
 			}
 			if($mobile){
