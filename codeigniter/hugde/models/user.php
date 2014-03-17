@@ -62,14 +62,14 @@ class user extends CI_Model{
 				$this->db->where('email',$data['email']);
 				$this->db->update('users',$array);
 				
-				$data = array("email"=>$data['email'],"facebookId"=>$data['id'],"userId"=>$result[0]['userId'],"name"=>$data['name'],"facebookProfilePhotoUrl"=>$data['picture']['data']['url'],"IsLoggedIn"=>TRUE);
+				$data = array("email"=>$data['email'],"facebookId"=>$data['id'],"userId"=>$result[0]['userId'],"name"=>$data['name'],"FbProfilePhotoUrl"=>$data['picture']['data']['url'],"IsLoggedIn"=>TRUE);
 				return $data;
 			}
 			else{
 				$array = array("email"=>$data['email'],"facebookId"=>$data['id'],"name"=>$data['name'],"facebookProfilePhotoUrl"=>$data['picture']['data']['url']);
 				$this->db->insert('users',$array);
 				$id = $this->db->insert_id();
-				$data = array("email"=>$data['email'],"facebookId"=>$data['id'],"userId"=>$id,"name"=>$data['name'],"facebookProfilePhotoUrl"=>$data['picture']['data']['url'],"IsLoggedIn"=>TRUE);
+				$data = array("email"=>$data['email'],"facebookId"=>$data['id'],"userId"=>$id,"name"=>$data['name'],"FbProfilePhotoUrl"=>$data['picture']['data']['url'],"IsLoggedIn"=>TRUE);
 				return $data;
 			}
 			
