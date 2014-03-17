@@ -39,8 +39,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
    <link href="<?php echo assets_url(); ?>css/pages/login-soft.css" rel="stylesheet" type="text/css"/>
    <!-- END THEME STYLES -->
    <link rel="shortcut icon" href="<?php echo assets_url(); ?>img/favicon.ico" />
-   <!------------Facebook JS--------------->
-    <script src="<?php echo assets_url(); ?>scripts/facebook.js" type="text/javascript"></script>  
+  
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
@@ -956,7 +955,9 @@ HTML;
    <script src="<?php echo assets_url(); ?>scripts/form-fileupload.js" type="text/javascript"></script>
    <script src="<?php echo assets_url(); ?>scripts/login-soft.js" type="text/javascript"></script> 
    <script src="<?php echo assets_url(); ?>scripts/lickflush.js" type="text/javascript"></script>   
-   <script src="<?php echo assets_url(); ?>scripts/autoload.js" type="text/javascript"></script>      
+   <script src="<?php echo assets_url(); ?>scripts/autoload.js" type="text/javascript"></script>
+    <!------------Facebook JS--------------->
+    <script src="<?php echo assets_url(); ?>scripts/facebook.js" type="text/javascript"></script>        
    <script>
       jQuery(document).ready(function() {    
          App.init();
