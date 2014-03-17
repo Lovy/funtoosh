@@ -908,35 +908,35 @@ HTML;
    <script src="<?php echo assets_url(); ?>plugins/jquery.blockui.min.js" type="text/javascript"></script>  
    <script src="<?php echo assets_url(); ?>plugins/jquery.cookie.min.js" type="text/javascript"></script>
    <script src="<?php echo assets_url(); ?>plugins/uniform/jquery.uniform.min.js" type="text/javascript" ></script>
-   <script src="<?php echo assets_url(); ?>scripts/jquery.validate.min.js" type="text/javascript"></script>
-   <script src="<?php echo assets_url(); ?>plugins/backstretch/jquery.backstretch.min.js" type="text/javascript"></script>
+   <script src="<?php echo assets_url(); ?>scripts/jquery.validate.min.js" type="text/javascript" type="text/javascript"></script>
+   <script src="<?php echo assets_url(); ?>plugins/backstretch/jquery.backstretch.min.js" type="text/javascript" type="text/javascript"></script>
    
    <!--<script type="text/javascript" src="<?php echo assets_url(); ?>plugins/select2/select2.min.js"></script>-->
-   <script type="text/javascript" src="<?php echo assets_url(); ?>plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+   <script type="text/javascript" src="<?php echo assets_url(); ?>plugins/bootstrap-datepicker/js/bootstrap-datepicker.js" type="text/javascript"></script>
    
    <!-- END CORE PLUGINS -->
     <!-- BEGIN PAGE LEVEL PLUGINS -->
-   <script src="<?php echo assets_url(); ?>plugins/fancybox/source/jquery.fancybox.pack.js"></script>
+   <script src="<?php echo assets_url(); ?>plugins/fancybox/source/jquery.fancybox.pack.js" type="text/javascript"></script>
    <!-- END PAGE LEVEL PLUGINS-->
    <!-- BEGIN:File Upload Plugin JS files-->
    <!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
-   <script src="<?php echo assets_url(); ?>plugins/jquery-file-upload/js/vendor/jquery.ui.widget.js"></script>
+   <script src="<?php echo assets_url(); ?>plugins/jquery-file-upload/js/vendor/jquery.ui.widget.js" type="text/javascript"></script>
    <!-- The Templates plugin is included to render the upload/download listings-->
-   <script src="<?php echo assets_url(); ?>plugins/jquery-file-upload/js/vendor/tmpl.min.js"></script>
+   <script src="<?php echo assets_url(); ?>plugins/jquery-file-upload/js/vendor/tmpl.min.js" type="text/javascript"></script>
    <!-- The Load Image plugin is included for the preview images and image resizing functionality -->
-   <script src="<?php echo assets_url(); ?>plugins/jquery-file-upload/js/vendor/load-image.min.js"></script>
+   <script src="<?php echo assets_url(); ?>plugins/jquery-file-upload/js/vendor/load-image.min.js" type="text/javascript"></script>
    <!-- The Canvas to Blob plugin is included for image resizing functionality -->
-   <script src="<?php echo assets_url(); ?>plugins/jquery-file-upload/js/vendor/canvas-to-blob.min.js"></script>
+   <script src="<?php echo assets_url(); ?>plugins/jquery-file-upload/js/vendor/canvas-to-blob.min.js" type="text/javascript"></script>
    <!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
    <!--
    <script src="<?php echo assets_url(); ?>plugins/jquery-file-upload/js/jquery.iframe-transport.js"></script>
    <!-- The basic File Upload plugin -->
-   <script src="<?php echo assets_url(); ?>plugins/jquery-file-upload/js/jquery.fileupload.js"></script>
+   <script src="<?php echo assets_url(); ?>plugins/jquery-file-upload/js/jquery.fileupload.js" type="text/javascript"></script>
    <!-- The File Upload processing plugin -->
-   <script src="<?php echo assets_url(); ?>plugins/jquery-file-upload/js/jquery.fileupload-process.js"></script>
+   <script src="<?php echo assets_url(); ?>plugins/jquery-file-upload/js/jquery.fileupload-process.js" type="text/javascript"></script>
    <!-- The File Upload image preview & resize plugin -->
    
-   <script src="<?php echo assets_url(); ?>plugins/jquery-file-upload/js/jquery.fileupload-image.js"></script>
+   <script src="<?php echo assets_url(); ?>plugins/jquery-file-upload/js/jquery.fileupload-image.js" type="text/javascript"></script>
    <!-- The File Upload audio preview plugin -->
    <!--
    <script src="<?php echo assets_url(); ?>plugins/jquery-file-upload/js/jquery.fileupload-audio.js"></script>
@@ -944,15 +944,15 @@ HTML;
    <!--
    <script src="<?php echo assets_url(); ?>plugins/jquery-file-upload/js/jquery.fileupload-video.js"></script>
    <!-- The File Upload validation plugin -->
-   <script src="<?php echo assets_url(); ?>plugins/jquery-file-upload/js/jquery.fileupload-validate.js"></script>
+   <script src="<?php echo assets_url(); ?>plugins/jquery-file-upload/js/jquery.fileupload-validate.js" type="text/javascript"></script>
    <!-- The File Upload user interface plugin -->
-   <script src="<?php echo assets_url(); ?>plugins/jquery-file-upload/js/jquery.fileupload-ui.js"></script>
+   <script src="<?php echo assets_url(); ?>plugins/jquery-file-upload/js/jquery.fileupload-ui.js" type="text/javascript"></script>
    <!-- The main application script -->
    <!-- The XDomainRequest Transport is included for cross-domain file deletion for IE 8 and IE 9 -->
    <!--[if (gte IE 8)&(lt IE 10)]>
    <script src="assets/plugins/jquery-file-upload/js/cors/jquery.xdr-transport.js"></script>
    <![endif]-->
-   <script src="<?php echo assets_url(); ?>scripts/app.js"></script>
+   <script src="<?php echo assets_url(); ?>scripts/app.js" type="text/javascript"></script>
    <script src="<?php echo assets_url(); ?>scripts/form-fileupload.js"></script>
    <script src="<?php echo assets_url(); ?>scripts/login-soft.js" type="text/javascript"></script> 
    <script src="<?php echo assets_url(); ?>scripts/lickflush.js" type="text/javascript"></script>   
