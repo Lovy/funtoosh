@@ -221,8 +221,13 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                               <li class="filter" data-filter="Desi Firangi Seasonal Labs">All</li>
                               <li class="filter" data-filter="Desi">Desi</li>
                               <li class="filter" data-filter="Firangi">Firangi</li>
-                              <li class="filter" data-filter="Seasonal">Seasonal</li>
-                              <li class="filter" data-filter="Labs">Labs</li>
+                               <?php
+                                 if(!empty($data['IsAdmin'])){
+                                 	echo' <li class="filter" data-filter="Seasonal">Seasonal</li>
+                              				<li class="filter" data-filter="Labs">Labs</li>';
+                                 } 
+                               ?>  
+                             
                            </ul>
                            <div class="row mix-grid">
                            	<?php
