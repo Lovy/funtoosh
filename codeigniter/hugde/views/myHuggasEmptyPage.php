@@ -661,9 +661,12 @@ HTML;
                               <select name="category" class="form-control input-medium">
                                  <option>Desi</option>
                                  <option>Firangi</option>
-                                 <option>Seasonal</option>
-                                 <option>Labs</option>
-                                
+                                  <?php
+                                 if(!empty($data['IsAdmin'])){
+                                 	echo'<option>Seasonal</option>
+                                 		<option>Labs</option>';
+                                 } 
+                                 ?> 
                               </select>
                     </div>
                     <div class="form-group">

@@ -12,7 +12,12 @@ class user extends CI_Model{
     	if ($query->num_rows() > 0) {
     		//Pass the data to our local function to create an object for us and return this new object
     		$row = $query->row_array();
-			$data = array("email"=>$row['email'],"userId"=>$row['userId'],"name"=>$row['name'],"FbProfilePhotoUrl"=>$row['facebookProfilePhotoUrl'],"IsLoggedIn"=>TRUE);
+			if($email=='admin@hugde.com'){
+				$data = array("email"=>$row['email'],"userId"=>$row['userId'],"name"=>$row['name'],"FbProfilePhotoUrl"=>$row['facebookProfilePhotoUrl'],"IsLoggedIn"=>TRUE,"IsAdmin"=>TRUE);
+			}else{
+				$data = array("email"=>$row['email'],"userId"=>$row['userId'],"name"=>$row['name'],"FbProfilePhotoUrl"=>$row['facebookProfilePhotoUrl'],"IsLoggedIn"=>TRUE);
+			}
+			
 			return $data;
     	}
 		return FALSE;
