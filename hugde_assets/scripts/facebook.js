@@ -66,7 +66,7 @@
 						},
 						complete:function(){
 							console.log("complete");
-							window.location.href("http://hugde.com/home");
+							window.location.replace("http://hugde.com/home");
 						},
 						success:function(data){
 							console.log("success");
