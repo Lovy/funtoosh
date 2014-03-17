@@ -48,8 +48,6 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
    <link href="<?php echo assets_url(); ?>css/pages/login-soft.css" rel="stylesheet" type="text/css"/>
    <!-- END THEME STYLES -->
    <link rel="shortcut icon" href="<?php echo assets_url(); ?>img/favicon.ico" />
-   <!------------Facebook JS--------------->
-   <script src="<?php echo assets_url(); ?>scripts/facebook.js" type="text/javascript"></script>
    <script src="<?php echo assets_url(); ?>scripts/mustache.js" type="text/javascript"></script>
    <script src="<?php echo assets_url(); ?>scripts/next.js" type="text/javascript"></script>    
 </head>
@@ -489,7 +487,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 								            <img id="spinner" style="display: none" src="<?php echo assets_url().'img/input-spinner.gif'; ?>" />
 								       </div>
 								       <div class="form-group" style="text-align: center">
-								       		<a href="#" onclick="javascript:fblogin();"><img src="<?php echo assets_url().'img/active_404.png'; ?>" /></a>
+								       		<a href="#" id="fblogin"><img src="<?php echo assets_url().'img/active_404.png'; ?>" /></a>
 								       		<!--<fb:login-button scope="email,user_photos" show-faces="true" width="200" max-rows="1"></fb:login-button>
 								       		<!--<div class="fb-login-button" data-max-rows="1" data-size="large" data-show-faces="true" data-auto-logout-link="true"></div>-->
 								       </div>
@@ -1086,7 +1084,9 @@ HTML;
    <script src="<?php echo assets_url(); ?>scripts/app.js"></script>
    <script src="<?php echo assets_url(); ?>scripts/form-fileupload.js"></script>
    <script src="<?php echo assets_url(); ?>scripts/login-soft.js" type="text/javascript"></script> 
-   <script src="<?php echo assets_url(); ?>scripts/lickflush.js" type="text/javascript"></script>       
+   <script src="<?php echo assets_url(); ?>scripts/lickflush.js" type="text/javascript"></script>  
+    <!------------Facebook JS--------------->
+    <script src="<?php echo assets_url(); ?>scripts/facebook.js" type="text/javascript"></script>       
    <script>
       jQuery(document).ready(function() {    
          App.init();
