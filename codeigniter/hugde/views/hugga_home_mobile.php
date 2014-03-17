@@ -23,6 +23,7 @@
    <link href="<?php echo assets_url(); ?>css/style.css" rel="stylesheet" type="text/css"/>
    <link href="<?php echo assets_url(); ?>css/style-responsive.css" rel="stylesheet" type="text/css"/>
    <link href="<?php echo assets_url(); ?>css/plugins.css" rel="stylesheet" type="text/css"/>
+   <link rel="stylesheet" type="text/css" href="<?php echo assets_url(); ?>plugins/bootstrap-datepicker/css/datepicker.css" />
    <link href="<?php echo assets_url(); ?>css/pages/blog.css" rel="stylesheet" type="text/css"/>
    <link href="<?php echo assets_url(); ?>css/themes/default.css" rel="stylesheet" type="text/css" id="style_color"/>
    <link href="<?php echo assets_url(); ?>css/custom.css" rel="stylesheet" type="text/css"/>
