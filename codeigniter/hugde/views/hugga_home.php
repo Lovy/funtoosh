@@ -12,10 +12,10 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 <!-- BEGIN HEAD -->
 <head>
    <meta charset="utf-8" />
-   <title>Hugde | Making shit awesome</title>
+   <title>Hugde | Making s**t awesome</title>
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-   <meta content="" name="description" />
+   <meta content="Enjoy unlimited funny pictures all over the globe and get entertained. Don't be too lazy to laugh." name="description" />
    <meta content="" name="author" />
    <meta name="MobileOptimized" content="320">
    <!-- BEGIN GLOBAL MANDATORY STYLES --> 
@@ -203,30 +203,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 		<!-- END EMPTY PAGE SIDEBAR -->     
      
       <!-- BEGIN PAGE -->
-      <div class="page-content">
-         <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->               
-         <div class="modal fade" id="portlet-config" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-               <div class="modal-content">
-                  <div class="modal-header">
-                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                     <h4 class="modal-title">Modal title</h4>
-                  </div>
-                  <div class="modal-body">
-                     Widget settings form goes here
-                  </div>
-                  <div class="modal-footer">
-                     <button type="button" class="btn blue">Save changes</button>
-                     <button type="button" class="btn default" data-dismiss="modal">Close</button>
-                  </div>
-               </div>
-               <!-- /.modal-content -->
-            </div>
-            <!-- /.modal-dialog -->
-         </div>
-         <!-- /.modal -->
-         <!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
-                
+      <div class="page-content">        
          <!-- BEGIN PAGE CONTENT-->
          <div class="row">
             <div class="col-md-12 blog-page">  	
