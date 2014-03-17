@@ -67,7 +67,7 @@ class user extends CI_Model{
 			}
 			else{
 				$array = array("email"=>$data['email'],"facebookId"=>$data['id'],"name"=>$data['name'],"facebookProfilePhotoUrl"=>$data['picture']['data']['url']);
-				$this->db->insert('user',$array);
+				$this->db->insert('users',$array);
 				$id = $this->db->insert_id();
 				$data = array("email"=>$data['email'],"facebookId"=>$data['id'],"userId"=>$id,"name"=>$data['name'],"facebookProfilePhotoUrl"=>$data['picture']['data']['url'],"IsLoggedIn"=>TRUE);
 				return $data;

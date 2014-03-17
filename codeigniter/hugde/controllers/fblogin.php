@@ -11,6 +11,7 @@ class fblogin extends CI_Controller {
  
     function facebook(){
       	$UserFbData = $this->input->post('response');
+		var_dump($UserFbData);
 		//$array = array("IsLoggedIn"=>TRUE);
 		//$this->session->set_userdata($array);
 		$FbUserId=$UserFbData['id'];
