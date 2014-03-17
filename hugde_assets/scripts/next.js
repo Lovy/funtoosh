@@ -5,7 +5,7 @@
 	    	async: false,
 	    	dataType: 'json',
 	    	beforeSend:function(){
-	    		var loader='<img src="http://d2nds2wyuzde9r.cloudfront.net/hugde_assets/img/longLoader.gif" >';
+	    		var loader='<img src="http://hugde.com/hugde_assets/img/longLoader.gif" >';
 	    		$('#huggaContent').html(loader);
 	    		//el = document.getElementById('huggaContent');
 				//blockUI(el);
