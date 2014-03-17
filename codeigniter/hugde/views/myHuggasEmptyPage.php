@@ -237,7 +237,9 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 			</div>
 		</div>
 		<div class="row">
-			<h3>You have not uploaded any hugga. Start Uploading</h3>
+			<div class="col-md-12">
+				<h3>You have not uploaded any hugga. Start Uploading</h3>
+			</div>	
 		</div>
       </div>
       <!-- END PAGE -->    
