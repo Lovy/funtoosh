@@ -34,8 +34,7 @@
   }(document));
 
 
-	$("#fblogin").click(){
-		console.log("clicked");
+	$("#fblogin").click(function(){
 		FB.login(function(response) {
 		    if (response.authResponse) {
 		        // The person logged into your app
@@ -46,7 +45,8 @@
 		        // The person cancelled the login dialog
 		    }
 		},{scope:'email'});
-	}
+	});
+		
   // Here we run a very simple test of the Graph API after login is successful. 
   // This testAPI() function is only called in those cases. 
   function getData() {
