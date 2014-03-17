@@ -22,6 +22,7 @@ SetOutputFilter DEFLATE
 <IfModule mod_expires.c>
     ExpiresActive On
     ExpiresByType text/css "access plus 1 month"
+	ExpiresByType text/javascript "access plus 1 week"
     ExpiresByType text/plain "access plus 1 month"
     ExpiresByType image/gif "access plus 1 month"
     ExpiresByType image/png "access plus 1 month"
