@@ -295,7 +295,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                   	<div class="row">     		
                         <div class="col-md-12 blog-img blog-tag-data">
                         	<a href="<?php echo base_url().'hugga/'.$item['huggaId']; ?>"><h4><?php echo $item['sidebar'][0]['title']; ?></h4></a>
-                           <img src="<?php echo $item['images'][0]['originalImageUrl']; ?>" alt="" class="img-responsive" >
+                           <img src="<?php echo $item['sidebar'][0]['sidebarImageUrl']; ?>" alt="" class="img-responsive" >
                            <ul class="list-inline">
                               <li><i class="icon-chevron-up"></i> <a href="<?php echo base_url().'hugga/'.$item['huggaId']; ?>"><?php echo $item['sidebar'][0]['licks']; ?></a></li>
                               <li><i class="icon-chevron-down"></i> <a href="<?php echo base_url().'hugga/'.$item['huggaId']; ?>"><?php echo $item['sidebar'][0]['flushes']; ?></a></li>
