@@ -354,7 +354,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 								       </div>
 								       <hr>
 								       <div class="form-group" style="text-align: center">
-								       		<a href="#" onclick="javascript:fblogin();"><img src="<?php echo assets_url().'img/active_404.png'; ?>" /></a>
+								       		<a href="#" id="fblogin"><img src="<?php echo assets_url().'img/active_404.png'; ?>" /></a>
 								       		<!--<fb:login-button scope="email,user_photos" show-faces="true" width="200" max-rows="1"></fb:login-button>-->
 								       		<!--<div class="fb-login-button" data-max-rows="1" data-size="large" data-show-faces="true" data-auto-logout-link="true"></div>-->
 								       </div>
