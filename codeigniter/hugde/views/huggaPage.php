@@ -67,7 +67,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
       <!-- BEGIN TOP NAVIGATION BAR -->
       <div class="header-inner">
          <!-- BEGIN LOGO -->  
-         <a class="navbar-brand" href="http://d2nds2wyuzde9r.cloudfront.net/home">
+         <a class="navbar-brand" href="http://hugde.com/home">
          <img src="<?php echo assets_url(); ?>img/hugdew.jpg" alt="logo" class="img-responsive" style="margin-top: -13px;height: 59px;;margin-left: 10px" />
          </a>
          <!-- END LOGO -->

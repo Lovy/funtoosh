@@ -53,13 +53,13 @@ class CustomUploadHandler extends UploadHandlerS3 {
 		
         if (empty($file->error)) {
         	//var_dump($file);
-        	
-            $sql = 'INSERT INTO '.$this->options['db_table'].' (originalImageUrl,size,type,name)'.' VALUES (?,?, ?,?)';
+        	/*
+            $sql = 'INSERT INTO '.$this->options['db_table'].' (originalImageUrl,thumbnailImageUrl,size,type,name)'.' VALUES (?,?,?, ?,?)';
             $query = $this->db->prepare($sql);
             $query->bind_param(
-                'siss',
+                'ssiss',
                 $file->url,
-               // $file->thumbnailUrl,
+                $file->thumbnailUrl,
                 $file->size,
                 $file->type,
                 $file->name
@@ -91,6 +91,8 @@ class CustomUploadHandler extends UploadHandlerS3 {
 			$query2=$this->db->prepare($sql2);
 			$query2->bind_param('ii',$file->userId,$file->id);
 			$query2->execute(); 
+			 * 
+			 */
         }
         return $file;
     }

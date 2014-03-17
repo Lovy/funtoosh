@@ -161,7 +161,7 @@ $this->s3 =  S3Client::factory(array(
                     'max_width' => 800,
                     'max_height' => 600
                 ),
-                
+                */
                'thumbnail' => array(
                     // Uncomment the following to use a defined directory for the thumbnails
                     // instead of a subdirectory based on the version identifier.
@@ -172,10 +172,10 @@ $this->s3 =  S3Client::factory(array(
                     //'upload_url' => $this->get_full_url().'/thumb/',
                     // Uncomment the following to force the max
                     // dimensions and e.g. create square thumbnails:
-                    //'crop' => true,
-                    'max_width' => 80,
-                    'max_height' => 80
-                )*/
+                    'crop' => true,
+                    'max_width' => 284,
+                    'max_height' => 150
+                )
             )  
 
         );
@@ -1431,12 +1431,19 @@ $this->s3 =  S3Client::factory(array(
                             null, null,
                             $content_range
                         );  
-              
+              			
+						$context = stream_context_create(array(
+    's3' => array(
+    "access_key_id" => "AKIAI5YSRH55J3SSQY7A",
+          "secret_access_key" => "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",
+        'ACL' => 'public-read'
+    )
+));	
 
                         file_put_contents(
                             $this->options['upload_dir'].'thumbnail/'.$upload['name'],
-                            fopen($upload['thumbnail'], 'r'),
-                            FILE_APPEND //$append_file ? FILE_APPEND : 0
+                            fopen($upload['thumbnail'], 'r',0),
+                            FILE_APPEND,$context //$append_file ? FILE_APPEND : 0
                         );                        
 
 

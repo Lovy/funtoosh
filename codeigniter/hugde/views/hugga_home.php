@@ -953,7 +953,7 @@ HTML;
    <script src="assets/plugins/jquery-file-upload/js/cors/jquery.xdr-transport.js"></script>
    <![endif]-->
    <script src="<?php echo assets_url(); ?>scripts/app.js" type="text/javascript"></script>
-   <script src="<?php echo assets_url(); ?>scripts/form-fileupload.js"></script>
+   <script src="<?php echo assets_url(); ?>scripts/form-fileupload.js" type="text/javascript"></script>
    <script src="<?php echo assets_url(); ?>scripts/login-soft.js" type="text/javascript"></script> 
    <script src="<?php echo assets_url(); ?>scripts/lickflush.js" type="text/javascript"></script>   
    <script src="<?php echo assets_url(); ?>scripts/autoload.js" type="text/javascript"></script>      
