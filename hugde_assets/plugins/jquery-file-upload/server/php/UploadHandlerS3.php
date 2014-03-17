@@ -1439,12 +1439,14 @@ $this->s3 =  S3Client::factory(array(
         'ACL' => 'public-read'
     )
 ));	
-
+						/*
                         file_put_contents(
                             $this->options['upload_dir'].'thumbnail/'.$upload['name'],
                             fopen($upload['thumbnail'], 'r',0),
                             FILE_APPEND,$context //$append_file ? FILE_APPEND : 0
-                        );                        
+                        ); 
+						 * 
+						 */                       
 
 
             }
