@@ -223,7 +223,7 @@ class home extends CI_Controller{
 			$mobile = $this->mobile_detect->isMobile();
 			if(is_null($response['huggas'])){
 				echo "I am ".$response['huggas'];
-				$response['huggas']=0;
+				$response['huggas']=array('0');
 			}
 			if($mobile){
 				$this->load->view('myHuggas',$response);
