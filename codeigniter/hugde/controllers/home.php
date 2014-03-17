@@ -222,17 +222,18 @@ class home extends CI_Controller{
 			//Detect mobile and load no-sidebar version
 			$mobile = $this->mobile_detect->isMobile();
 			if(is_null($response['huggas'])){
-				echo "I am ".$response['huggas'];
-				$response['huggas']=array('0');
-			}
-			if($mobile){
+				$this->load->view('myHuggasEmptyPage',$response);
+			}else{
+				if($mobile){
 				$this->load->view('myHuggas',$response);
+				}
+				else{
+					//var_dump($response);
+					//$this->load->view('hugga_home_myhuggas',$response);
+					$this->load->view('myHuggas',$response);
+				}
 			}
-			else{
-				//var_dump($response);
-				//$this->load->view('hugga_home_myhuggas',$response);
-				$this->load->view('myHuggas',$response);
-			}
+			
 		}
 		else{
 			echo "Not logged in";
