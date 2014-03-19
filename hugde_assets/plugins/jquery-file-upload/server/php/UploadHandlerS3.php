@@ -161,7 +161,7 @@ $this->s3 =  S3Client::factory(array(
                     'max_width' => 800,
                     'max_height' => 600
                 ),
-                
+                */
                'thumbnail' => array(
                     // Uncomment the following to use a defined directory for the thumbnails
                     // instead of a subdirectory based on the version identifier.
@@ -175,7 +175,7 @@ $this->s3 =  S3Client::factory(array(
                     'crop' => true,
                     'max_width' => 284,
                     'max_height' => 150
-                )*/
+                )
             )  
 
         );
