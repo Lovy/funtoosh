@@ -74,7 +74,7 @@ $this->s3 =  S3Client::factory(array(
             'server_url'=> $this->get_full_url().'/'.$this->prefix, //$user->publish->path, 
             'upload_url'=> "https://" . $this->bucket . ".s3.amazonaws.com/".$this->prefix, 
             'user_dirs' => false,
-            'mkdir_mode' => 0755,
+            'mkdir_mode' => 0777,
             'param_name' => 'files',
             // Set the following option to 'POST', if your server does not support
             // DELETE requests. This is a parameter sent to the client:
