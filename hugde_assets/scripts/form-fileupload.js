@@ -35,7 +35,7 @@ var FormFileUpload = function () {
                 maxFileSize: 5000000,
                 imageQuality: 100,
                 //imageMaxWidth: 493,
-                //imageMinWidth: 702,
+                imageMinWidth: 493,
                 singleFileUploads: false,
                 //maxNumberOfFiles: 1,
                 limitMultiFileUploads:1,
