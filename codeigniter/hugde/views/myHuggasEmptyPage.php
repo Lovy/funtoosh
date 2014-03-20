@@ -668,7 +668,8 @@ HTML;
                                   <?php
                                  if(!empty($data['IsAdmin'])){
                                  	echo'<option>Seasonal</option>
-                                 		<option>Labs</option>';
+                                 		<option>Labs</option>
+                                 		<option>Featured</option>';
                                  } 
                                  ?> 
                               </select>

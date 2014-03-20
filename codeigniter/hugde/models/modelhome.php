@@ -179,7 +179,7 @@ class modelhome extends CI_Model{
 	}
 
 	function loadSideBar(){
-		$sql = "select huggaId from sidebar";
+		$sql = "select huggaId from hugga where category='Featured'";
 		$query = $this->db->query($sql);
 		if($query->num_rows()>0){
 			//create an array to store huggas

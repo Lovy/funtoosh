@@ -32,10 +32,10 @@ var FormFileUpload = function () {
                 disableImageResize: /Android(?!.*Chrome)|Opera/
                     .test(window.navigator.userAgent),*/
                 disableImageResize: false,
-                maxFileSize: 50000000,
+                maxFileSize: 5000000,
                 imageQuality: 1,
-                //imageMaxWidth: 493,
-                //imageMinWidth: 702,
+                imageMaxWidth: 493,
+                imageMinWidth: 702,
                 singleFileUploads: false,
                 //maxNumberOfFiles: 1,
                 limitMultiFileUploads:1,

@@ -29,7 +29,7 @@ class home extends CI_Controller{
 				$this->load->view('hugga_home_mobile',$response);
 			}
 			else{
-				$this->load->view('hugga_home',$response);
+				$this->load->view('hugga_home_mobile',$response);
 			}
 			
 		}
@@ -48,7 +48,7 @@ class home extends CI_Controller{
 				$this->load->view('hugga_home_mobile',$response);
 			}
 			else{
-				$this->load->view('hugga_home',$response);
+				$this->load->view('hugga_home_mobile',$response);
 			}
 			
 		}
