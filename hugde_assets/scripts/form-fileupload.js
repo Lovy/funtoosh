@@ -32,10 +32,10 @@ var FormFileUpload = function () {
                 disableImageResize: /Android(?!.*Chrome)|Opera/
                     .test(window.navigator.userAgent),*/
                 disableImageResize: false,
-                maxFileSize: 5000000,
-                imageQuality: 0.8,
-                imageMaxWidth: 493,
-                imageMinWidth: 702,
+                maxFileSize: 50000000,
+                imageQuality: 1,
+                //imageMaxWidth: 493,
+                //imageMinWidth: 702,
                 singleFileUploads: false,
                 //maxNumberOfFiles: 1,
                 limitMultiFileUploads:1,
@@ -47,7 +47,7 @@ var FormFileUpload = function () {
                 // Upload server status check for browsers with CORS support:
             if ($.support.cors) {
                 $.ajax({
-                    url: 'http://hugde-env-symvyatdmf.elasticbeanstalk.com/hugde_assets/plugins/jquery-file-upload/server/php/',
+                    url: 'http://hugde.com/hugde_assets/plugins/jquery-file-upload/server/php/',
                     type: 'HEAD'
                 }).fail(function () {
                     $('<div class="alert alert-danger"/>')
@@ -64,7 +64,7 @@ var FormFileUpload = function () {
                 // Uncomment the following to send cross-domain cookies:
                 //xhrFields: {withCredentials: true},
                 autoUpload: false,
-                url: 'http://hugde-env-symvyatdmf.elasticbeanstalk.com/hugde_assets/plugins/jquery-file-upload/server/php/'
+                url: 'http://hugde.com/hugde_assets/plugins/jquery-file-upload/server/php/'
             });
 
             // initialize uniform checkboxes  
