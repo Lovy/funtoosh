@@ -1390,7 +1390,7 @@ $this->s3 =  S3Client::factory(array(
         if ($upload && is_array($upload['tmp_name'])) {
             // param_name is an array identifier like "files[]",
             // $_FILES is a multi-dimensional array:
-            /*
+            
             foreach ($upload['tmp_name'] as $index => $value) {
                 $files[] = $this->handle_file_upload(
                     $upload['tmp_name'][$index],
@@ -1402,7 +1402,7 @@ $this->s3 =  S3Client::factory(array(
                     $content_range
                 );
             }
-			*/
+			
         } else {
 
 
