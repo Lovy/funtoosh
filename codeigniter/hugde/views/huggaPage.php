@@ -165,10 +165,10 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                <i class="icon-angle-down"></i>
                </a>
                <ul class="dropdown-menu">
-                  <li><a href="http://d2nds2wyuzde9r.cloudfront.net/home/myhugge"><i class="icon-user"></i> My Hugge</a>
+                  <li><a href="http://hugde.com/home/myhugge"><i class="icon-user"></i> My Hugge</a>
                   </li>
                   
-                  <li><a href="http://d2nds2wyuzde9r.cloudfront.net/logout" onclick="javascript:logout();"><i class="icon-key"></i> Log Out</a>
+                  <li><a href="http://hugde.com/logout" onclick="javascript:logout();"><i class="icon-key"></i> Log Out</a>
                   </li>
                </ul>
             </li>                	
@@ -251,7 +251,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                            		<!--<div class="pull-right" style="margin-top:-25px"><i class="icon-calendar"></i> <a href="#">April 16, 2013</a></div>-->
                            
                            	</div>
-                           	<div class="col-md-4">
+                           	<div class="col-md-8">
                            		
                            	  	<div class="fb-like" data-href="<?php echo base_url().'hugga/'.$item['huggaId']; ?>" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true" style="width: 150px !important"></div>
                            		
