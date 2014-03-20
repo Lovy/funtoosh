@@ -33,7 +33,7 @@ var FormFileUpload = function () {
                     .test(window.navigator.userAgent),*/
                 disableImageResize: false,
                 maxFileSize: 5000000,
-                imageQuality: 1,
+                imageQuality: 100,
                 imageMaxWidth: 493,
                 imageMinWidth: 702,
                 singleFileUploads: false,
