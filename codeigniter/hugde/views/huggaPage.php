@@ -82,7 +82,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 						Home
 						</a>
 					</li>
-					<li <?php if($category=='JustOut'){echo 'class="active"';} ?>>
+					<li>
 						<a href="<?php echo base_url().'justout'; ?>">Just Out</a>
 					</li>
 					<li>
