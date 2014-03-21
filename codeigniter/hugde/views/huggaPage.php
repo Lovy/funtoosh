@@ -15,7 +15,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
    <?php
    foreach($huggas as $item){
    ?>
-   <title><?php if($item['title']!=''){echo 'Hugde | '.$item['title'];}else{ echo 'Hugde: Making s**t awesome';}; ?></title> 
+   <title><?php if($item['title']!=''){echo 'Hugde | '.$item['title'];}else{ echo 'Hugde: Making sh*t awesome';}; ?></title> 
    <meta property="og:title" content="<?php if($item['title']!=''){echo $item['title'];}else{echo '';} ?>" /> 
    <meta property="og:image" content="<?php echo $item['images'][0]['originalImageUrl']; ?>" />
    <meta property="og:description" content="Hugde: For moments when a facepalm is not enough" />
@@ -82,10 +82,9 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 						Home
 						</a>
 					</li>
-					<!--
-					<li>
-						<a href="#">Trending</a>
-					</li>-->
+					<li <?php if($category=='JustOut'){echo 'class="active"';} ?>>
+						<a href="<?php echo base_url().'justout'; ?>">Just Out</a>
+					</li>
 					<li>
 						<a href="<?php echo base_url(),'desi'; ?>">Desi</a>
 					</li>

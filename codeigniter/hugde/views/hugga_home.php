@@ -12,7 +12,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 <!-- BEGIN HEAD -->
 <head>
    <meta charset="utf-8" />
-   <title>Hugde | Making s**t awesome</title>
+   <title>Hugde | Making sh*t awesome</title>
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
    <meta content="Enjoy unlimited funny pictures all over the globe and get entertained. Don't be too lazy to laugh." name="description" />
@@ -63,22 +63,22 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 			<div class="hor-menu hidden-sm hidden-xs" style="margin-left: -4px">
 				<ul class="nav navbar-nav" style="padding: 9px">
 					<li <?php if($category=='ALL'){echo 'class="active"';} ?>>
-						<a href="<?php echo base_url(),'home'; ?>">
+						<a href="<?php echo base_url().'home'; ?>">
 						Home
 						</a>
 					</li>
-					<!--
-					<li>
-						<a href="#">Trending</a>
-					</li>-->
+					
+					<li <?php if($category=='JustOut'){echo 'class="active"';} ?>>
+						<a href="<?php echo base_url().'justout'; ?>">Just Out</a>
+					</li>
 					<li <?php if($category=='Desi'){echo 'class="active"';} ?> >
-						<a href="<?php echo base_url(),'desi'; ?>">Desi</a>
+						<a href="<?php echo base_url().'desi'; ?>">Desi</a>
 					</li>
 					<li <?php if($category=='Firangi'){echo 'class="active"';} ?>>
-						<a href="<?php echo base_url(),'firangi'; ?>">Firangi</a>
+						<a href="<?php echo base_url().'firangi'; ?>">Firangi</a>
 					</li>
 					<li <?php if($category=='Seasonal'){echo 'class="active"';} ?>>
-						<a href="<?php echo base_url(),'seasonal'; ?>">Seasonal</a>
+						<a href="<?php echo base_url().'seasonal'; ?>">Seasonal</a>
 					</li>
 					<!--<li <?php if($category=='Labs'){echo 'class="active"';} ?>>
 						<a href="<?php echo base_url(),'labs'; ?>">Labs</a>

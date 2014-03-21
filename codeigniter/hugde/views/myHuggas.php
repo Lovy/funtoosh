@@ -12,7 +12,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 <!-- BEGIN HEAD -->
 <head>
    <meta charset="utf-8" />
-   <title>Hugde | Making s**t awesome</title>
+   <title>Hugde | Making sh*t awesome</title>
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
    <meta content="Enjoy unlimited funny pictures all over the globe and get entertained. Don't be too lazy to laugh." name="description" />
@@ -72,10 +72,9 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 						Home
 						</a>
 					</li>
-					<!--
-					<li>
-						<a href="#">Trending</a>
-					</li>-->
+					<li <?php if($category=='JustOut'){echo 'class="active"';} ?>>
+						<a href="<?php echo base_url().'justout'; ?>">Just Out</a>
+					</li>
 					<li>
 						<a href="<?php echo base_url(),'desi'; ?>">Desi</a>
 					</li>

@@ -175,6 +175,46 @@ class modelhome extends CI_Model{
 				}
 				return $hugga;
 			}
+		}
+
+		if($huggaId=='0' && $myhugga=='HIDE' && $category=='JustOut'){ //show all huggas
+			
+			$sql1 = "select * from hugga order by uploadTimeStamp desc LIMIT ?,?";
+			$huggasPerPage = intval($huggasPerPage);
+			$query = $this->db->query($sql1,array(($huggasPerPage*($pageNo-1)),($huggasPerPage)));
+			//$this->db->order_by('timestamp','desc');
+			if($query->num_rows()>0){
+				//create an array to store huggas
+				$hugga = array();
+				//Loop through each row returned from the query
+    			foreach ($query->result_array() as $row) {
+    				//Retrieve images for each space
+    				$sql ="select * from images where imageId =?";
+    				$query2 =$this->db->query($sql,array($row['imageId']));
+					$images= array();
+					foreach ($query2->result_array() as $row2) {
+						$images[]=$row2;
+					}
+					$row['images']=$images;
+					
+					//check lick flush status for this hugga
+					$lick = array();
+					$flush = array();
+					$flag=array();
+					$this->load->model('modellickflush');
+					$lickResponse = $this->modellickflush->getLickStatus($row['huggaId'],$userId);
+					$flushResponse = $this->modellickflush->getFlushStatus($row['huggaId'],$userId);
+					$flagResponse = $this->modellickflush->getFlagStatus($row['huggaId'],$userId);
+					$lick['licked']=$lickResponse;
+					$flush['flushed']=$flushResponse;
+					$flag['flagged']=$flagResponse;
+					$row['lick']=$lick;
+					$row['flush']=$flush;
+					$row['flag']=$flag;
+					$hugga[]=$row;
+				}
+				return $hugga;
+			}
 		}			
 	}
 
