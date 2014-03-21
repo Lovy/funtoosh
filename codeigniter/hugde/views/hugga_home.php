@@ -283,11 +283,6 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                   
                   <div class="col-md-3 blog-sidebar" style="background-color: #ffd703">
                   	<div class="row">
-                  		<div class="col-md-12">
-                  			<div class="fb-like-box" data-href="https://www.facebook.com/hugdedotcom" data-colorscheme="dark" data-show-faces="true" data-header="false" data-stream="false" data-show-border="true"></div>
-                  		</div>
-                  	</div>
-                  	<div class="row">
                   		<ul class="list-group">
                        
                         <li class="list-group-item bg-purple" style="font-size: 15px;text-align: center">Featured</li>
