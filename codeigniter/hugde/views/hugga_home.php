@@ -40,6 +40,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
    <!-- END THEME STYLES -->
    <link rel="shortcut icon" href="<?php echo assets_url(); ?>img/favicon.ico" />
    <link href='http://fonts.googleapis.com/css?family=Peralta' rel='stylesheet' type='text/css'>
+   <link href='http://fonts.googleapis.com/css?family=Autour+One' rel='stylesheet' type='text/css'>
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
@@ -295,7 +296,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 					?>
                   	<div class="row">     		
                         <div class="col-md-12 blog-img blog-tag-data">
-                        	<a href="<?php echo base_url().'hugga/'.$item['huggaId']; ?>"><h4><?php echo $item['sidebar'][0]['title']; ?></h4></a>
+                        	<a href="<?php echo base_url().'hugga/'.$item['huggaId']; ?>"><h4 style="font-family: 'Autour One', cursive;"><?php echo $item['sidebar'][0]['title']; ?></h4></a>
                            <a href="<?php echo base_url().'hugga/'.$item['huggaId']; ?>"><img src="<?php echo $item['images'][0]['thumbnailImageUrl']; ?>" alt="" class="img-responsive" ></a>
                            <ul class="list-inline">
                               <li><i class="icon-chevron-up"></i> <a href="<?php echo base_url().'hugga/'.$item['huggaId']; ?>"><?php echo $item['sidebar'][0]['licks']; ?></a></li>
