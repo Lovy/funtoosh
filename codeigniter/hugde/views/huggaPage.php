@@ -49,7 +49,9 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
    <!-- END THEME STYLES -->
    <link rel="shortcut icon" href="<?php echo assets_url(); ?>img/favicon.ico" />
    <script src="<?php echo assets_url(); ?>scripts/mustache.js" type="text/javascript"></script>
-   <script src="<?php echo assets_url(); ?>scripts/next.js" type="text/javascript"></script>    
+   <script src="<?php echo assets_url(); ?>scripts/next.js" type="text/javascript"></script>
+   <link href='http://fonts.googleapis.com/css?family=Peralta' rel='stylesheet' type='text/css'>
+   <link href='http://fonts.googleapis.com/css?family=Autour+One' rel='stylesheet' type='text/css'>    
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
@@ -345,13 +347,14 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                     </script>
                   
                   <!--------------------------------END OF TEMPLATE---------------------------------->
+                  <div class="fb-like-box" data-href="https://www.facebook.com/hugdedotcom" data-colorscheme="dark" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false"></div>		
                   
                   <!--end col-md-9-->
                   <div class="col-md-3 blog-sidebar" style="background-color: #ffd703">
                   	<div class="row">
-                  		<ul class="list-group">
+                  		<ul class="list-group" style="text-align: center;font-size: 23px">
                        
-                        <li class="list-group-item bg-purple" style="font-size: 22px">Featured</li>
+                        <li class="list-group-item bg-purple" style="font-family: 'Peralta', cursive;">Featured</li>
                        
                      </ul>
                   	</div>
@@ -360,7 +363,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 					?>
                   	<div class="row">     		
                         <div class="col-md-12 blog-img blog-tag-data">
-                        	<a href="<?php echo base_url().'hugga/'.$item['huggaId']; ?>"><h4><?php echo $item['sidebar'][0]['title']; ?></h4></a>
+                        	<a href="<?php echo base_url().'hugga/'.$item['huggaId']; ?>"><h4 style="font-family: 'Autour One', cursive;"><?php echo $item['sidebar'][0]['title']; ?></h4></a>
                            <img src="<?php echo $item['images'][0]['thumbnailImageUrl']; ?>" alt="" class="img-responsive" >
                            <ul class="list-inline">
                               <li><i class="icon-chevron-up"></i> <a href="<?php echo base_url().'hugga/'.$item['huggaId']; ?>"><?php echo $item['sidebar'][0]['licks']; ?></a></li>
