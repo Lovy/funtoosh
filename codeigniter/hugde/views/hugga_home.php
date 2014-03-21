@@ -286,7 +286,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                   	<div class="row">
                   		<ul class="list-group" style="text-align: center;font-size: 23px">
                        
-                        <li class="list-group-item bg-purple" style="font-size: 15px;text-align: center">Featured</li>
+                        <li class="list-group-item bg-purple" style="font-family: 'Peralta', cursive;">Featured</li>
                        
                      </ul>
                   	</div>
