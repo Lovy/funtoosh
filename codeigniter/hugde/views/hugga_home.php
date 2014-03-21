@@ -39,7 +39,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
    <link href="<?php echo assets_url(); ?>css/pages/login-soft.css" rel="stylesheet" type="text/css"/>
    <!-- END THEME STYLES -->
    <link rel="shortcut icon" href="<?php echo assets_url(); ?>img/favicon.ico" />
-  
+   <link href='http://fonts.googleapis.com/css?family=Peralta' rel='stylesheet' type='text/css'>
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
