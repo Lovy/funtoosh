@@ -274,7 +274,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                     <style>
                      	.fb_iframe_widget,
 						.fb_iframe_widget span,
-						.fb_iframe_widget iframe[style]  {width: 100% !important;}
+						/*.fb_iframe_widget iframe[style]  {width: 100% !important;}*/
                      </style>
                      <div class="fb-comments" data-href="<?php echo base_url().'hugga/'.$item['huggaId']; ?> " data-numposts="20" data-colorscheme="light"></div>
                      
