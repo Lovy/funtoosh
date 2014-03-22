@@ -141,7 +141,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                         			<button data-toggle="modal" href="#full" type="button" class="btn green">Upload</button>
             	<!--<a data-toggle="modal" href="#full" >Upload <i class="icon-upload"></i></a>-->
             </li>
-                        		<li class="dropdown user">
+                        		<li class="dropdown user" style="margin-top: -5px">
                <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                <?php
                		if(!empty($data['FbProfilePhotoUrl'])){

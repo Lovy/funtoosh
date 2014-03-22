@@ -108,17 +108,21 @@
             ?>
                         		
                         		<li class="dropdown" >
-            	<a data-toggle="modal" href="#basic" >Upload <i class="icon-upload"></i></a>
+                        		 <button data-toggle="modal" href="#basic" type="button" class="btn green">Upload</button>
+            	<!--<a data-toggle="modal" href="#basic" >Upload <i class="icon-upload"></i></a>-->
             </li>
                         		 <li class="dropdown" >
-            	<a data-toggle="modal" href="#basic" >Login <i class="icon-user"></i></a>
+                        		 	<button  data-toggle="modal" href="#basic" type="button" class="btn blue">Login</button>
+            	<!--<a data-toggle="modal" href="#basic" >Login <i class="icon-user"></i></a>-->
             </li>
             <li class="dropdown">
-            	<a data-toggle="modal" href="#basic2" >SignUp <i class="icon-signin"></i></a>
+            	<button data-toggle="modal" href="#basic2" type="button" class="btn purple">Signup</button>
+            	<!--<a data-toggle="modal" href="#basic2" >SignUp <i class="icon-signin"></i></a>-->
             </li>	
 			<?php
 			}				
             ?>
+            
             
             
             <!-- BEGIN USER LOGIN DROPDOWN -->
@@ -126,9 +130,10 @@
                	if(!empty($data['IsLoggedIn'])){
             ?>
                         		<li class="dropdown" >
-            	<a data-toggle="modal" href="#full" >Upload <i class="icon-upload"></i></a>
+                        			<button data-toggle="modal" href="#full" type="button" class="btn green">Upload</button>
+            	<!--<a data-toggle="modal" href="#full" >Upload <i class="icon-upload"></i></a>-->
             </li>
-                        		<li class="dropdown user">
+                        		<li class="dropdown user" style="margin-top: -5px">
                <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                <?php
                		if(!empty($data['FbProfilePhotoUrl'])){
