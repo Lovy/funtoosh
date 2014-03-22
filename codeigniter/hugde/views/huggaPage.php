@@ -283,7 +283,6 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 					?> 
                      
                   </div>
-                  <div class="fb-like-box" data-href="https://www.facebook.com/hugdedotcom" data-colorscheme="dark" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false"></div>		
                   
                   <!---------------------------------TEMPLATE---------------------------------------->
                   <script id="personTpl" type="text/template">
