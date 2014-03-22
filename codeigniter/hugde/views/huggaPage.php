@@ -347,7 +347,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                     </script>
                   
                   <!--------------------------------END OF TEMPLATE---------------------------------->
-                  <div class="fb-like-box" data-href="https://www.facebook.com/hugdedotcom" data-colorscheme="dark" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false"></div>		
+                  <!--<div class="fb-like-box" data-href="https://www.facebook.com/hugdedotcom" data-colorscheme="dark" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false"></div>		
                   
                   <!--end col-md-9-->
                   <div class="col-md-3 blog-sidebar" style="background-color: #ffd703">
