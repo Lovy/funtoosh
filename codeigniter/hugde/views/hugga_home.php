@@ -105,7 +105,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 			</a>  
          <!-- END RESPONSIVE MENU TOGGLER -->
          <!-- BEGIN TOP NAVIGATION MENU -->
-         <ul class="nav navbar-nav pull-right" style="margin-top: 5px">
+         <ul class="nav navbar-nav pull-right" style="margin-top: 14px">
             <!-- BEGIN NOTIFICATION DROPDOWN -->
             
             <!-- END NOTIFICATION DROPDOWN -->
@@ -117,13 +117,16 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
             ?>
                         		
                         		<li class="dropdown" >
-            	<a data-toggle="modal" href="#basic" >Upload <i class="icon-upload"></i></a>
+                        		 <button data-toggle="modal" href="#basic" type="button" class="btn green">Upload</button>
+            	<!--<a data-toggle="modal" href="#basic" >Upload <i class="icon-upload"></i></a>-->
             </li>
                         		 <li class="dropdown" >
-            	<a data-toggle="modal" href="#basic" >Login <i class="icon-user"></i></a>
+                        		 	<button  data-toggle="modal" href="#basic" type="button" class="btn blue">Login</button>
+            	<!--<a data-toggle="modal" href="#basic" >Login <i class="icon-user"></i></a>-->
             </li>
             <li class="dropdown">
-            	<a data-toggle="modal" href="#basic2" >SignUp <i class="icon-signin"></i></a>
+            	<button data-toggle="modal" href="#basic2" type="button" class="btn purple">Signup</button>
+            	<!--<a data-toggle="modal" href="#basic2" >SignUp <i class="icon-signin"></i></a>-->
             </li>	
 			<?php
 			}				
@@ -135,7 +138,8 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                	if(!empty($data['IsLoggedIn'])){
             ?>
                         		<li class="dropdown" >
-            	<a data-toggle="modal" href="#full" >Upload <i class="icon-upload"></i></a>
+                        			<button data-toggle="modal" href="#full" type="button" class="btn green">Upload</button>
+            	<!--<a data-toggle="modal" href="#full" >Upload <i class="icon-upload"></i></a>-->
             </li>
                         		<li class="dropdown user">
                <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
