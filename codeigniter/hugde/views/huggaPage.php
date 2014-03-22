@@ -355,6 +355,8 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                   
                   		</div>
                   	</div>
+                  	<hr>
+                  	<div class="space20"></div>
                   	<div class="row">
                   		<ul class="list-group" style="text-align: center;font-size: 23px">
                        
