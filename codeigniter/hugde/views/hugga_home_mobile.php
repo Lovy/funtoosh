@@ -175,10 +175,9 @@
 						Home
 						</a>
 					</li>
-					<!--
-					<li>
-						<a href="#">Trending</a>
-					</li>-->
+					<li <?php if($category=='JustOut'){echo 'class="active"';} ?>>
+						<a href="<?php echo base_url().'justout'; ?>">Just Out</a>
+					</li>
 					<li <?php if($category=='Desi'){echo 'class="active"';} ?> >
 						<a href="<?php echo base_url(),'desi'; ?>">Desi</a>
 					</li>
@@ -312,8 +311,8 @@
 								            <button id="loginBtn" type="button" class="btn blue">Submit</button>
 								            <img id="spinner" style="display: none" src="<?php echo assets_url().'img/input-spinner.gif'; ?>" />
 								       </div>
-								       <div class="form-group" style="text-align: center;z-index: 99">
-								       		<a href="javascript:void(0);" id="fblogin"><img src="<?php echo assets_url().'img/active_404.png'; ?>" /></a>
+								       <div class="form-group" style="text-align: center;z-index: 99999">
+								       		<a href="#" id="fblogin"><img src="<?php echo assets_url().'img/active_404.png'; ?>" /></a>
 								       		<!--<fb:login-button scope="email,user_photos" show-faces="true" width="200" max-rows="1"></fb:login-button>
 								       		<!--<div class="fb-login-button" data-max-rows="1" data-size="large" data-show-faces="true" data-auto-logout-link="true"></div>-->
 								       </div>

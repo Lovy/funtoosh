@@ -185,10 +185,9 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 					Home
 					</a>
 				</li>
-				<!--
-					<li>
-						<a href="#">Trending</a>
-					</li>-->
+				<li>
+						<a href="<?php echo base_url().'justout'; ?>">Just Out</a>
+					</li>
 					<li>
 						<a href="<?php echo base_url(),'desi'; ?>">Desi</a>
 					</li>
