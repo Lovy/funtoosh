@@ -116,7 +116,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 			</div>
 			<!-- END HORIZANTAL MENU -->
          <!-- BEGIN TOP NAVIGATION MENU -->
-         <ul class="nav navbar-nav pull-right" style="margin-top: 5px">
+         <ul class="nav navbar-nav pull-right" style="margin-top: 14px">
             <!-- BEGIN NOTIFICATION DROPDOWN -->
             
             <!-- END NOTIFICATION DROPDOWN -->
