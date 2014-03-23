@@ -279,9 +279,10 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                           		 <a href="#" class="btn btn-xs red" >Flag <i class=" icon-flag"></i></a>
                           	</div>-->
                         </div>
+                        <div class="space20"></div>
                         <div class="row">
                         	<div class="col-md-12">
-                        		<div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="standard" data-action="like" data-show-faces="false" data-share="false"></div>
+                        		<div class="fb-like" data-href="<?php echo base_url().'hugga/'.$item['huggaId']; ?>" data-layout="standard" data-action="like" data-show-faces="false" data-share="false"></div>
                         	</div>
                         </div>
                      </div>
@@ -296,7 +297,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                   
                   
                   <!--end col-md-9-->
-                  <div class="fb-like-box" data-href="https://www.facebook.com/hugdedotcom" data-colorscheme="dark" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false"></div>		
+                  <div class="fb-like-box" data-href="http://www.facebook.com/hugdedotcom" data-colorscheme="dark" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false"></div>		
                   
                   <div class="col-md-3 blog-sidebar" style="background-color: #ffd703">
                   	<div class="row">
