@@ -193,6 +193,7 @@ class home extends CI_Controller{
                           	</div>-->
                           	
                         </div>
+                        
                      </div>
                      <!--end news-tag-data-->
                     
