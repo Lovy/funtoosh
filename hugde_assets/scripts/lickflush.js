@@ -132,6 +132,7 @@
 		}
 	}
 	
+	
 	function flagModal(){
 		if(loginStatus=='0'){
 			$('#basic').modal('show');  //show login dialog box in case on logged out

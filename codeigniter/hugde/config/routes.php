@@ -38,7 +38,7 @@
 |
 */
 
-$route['default_controller'] = "home";
+$route['default_controller'] = "justout";
 $route['hugga/(:any)'] = "hugga/index/$1";
 $route['404_override'] = '';
 
