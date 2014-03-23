@@ -193,7 +193,11 @@ class home extends CI_Controller{
                           	</div>-->
                           	
                         </div>
-                        
+                        <div class="row" style="margin-top: 5px">
+                        	<div class="col-md-12">
+                        		<div class="fb-like" data-href="'.base_url().'hugga/'.$item['huggaId'].'" data-layout="standard" data-action="like" data-show-faces="false" data-share="false"></div>
+                        	</div>
+                        </div>
                      </div>
                      <!--end news-tag-data-->
                     
