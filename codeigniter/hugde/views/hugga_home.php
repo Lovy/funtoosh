@@ -260,7 +260,6 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                            	<a href="#" onclick="window.open('https://twitter.com/share?url=http%3A%2F%2Fhugde.com%2Fhugga%2F<?php echo $item['huggaId'];?>','width=626,height=436');return false;" class="btn btn-info"><i class="icon-twitter"></i> Twitter</a>
                            	<a href="#" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fhugde.com%2Fhugga%2F<?php echo $item['huggaId'];?>','facebook-share-dialog','width=626,height=436');return false;" class="btn btn-primary"><i class="icon-facebook"></i> Facebook</a>
                            	<a href="https://plus.google.com/share?url=http%3A%2F%2Fhugde.com%2Fhugga%2F<?php echo $item['huggaId'];?>" onclick="javascript:window.open(this.href,'','menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;" class="btn btn-danger"><i class="icon-google-plus"></i> Google Plus</a>
-                           	<div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-width="20" data-layout="standard" data-action="like" data-show-faces="false" data-share="false"></div>
                            	</div>
                            	<script type="text/javascript">
 								  (function() {
@@ -279,6 +278,11 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                           	<!--<div class="col-md-2">
                           		 <a href="#" class="btn btn-xs red" >Flag <i class=" icon-flag"></i></a>
                           	</div>-->
+                        </div>
+                        <div class="row">
+                        	<div class="col-md-12">
+                        		<div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="standard" data-action="like" data-show-faces="false" data-share="false"></div>
+                        	</div>
                         </div>
                      </div>
                      <!--end news-tag-data-->
