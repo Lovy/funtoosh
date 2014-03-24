@@ -264,7 +264,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                         <div class="row">
                            <div class="col-md-2">
                            	
-                           		<a href="https://twitter.com/share?count=horizontal" class="twitter-share-button" data-lang="en">Tweet</a>
+                           		<a href="https://twitter.com/share?url=http%3A%2F%2Fhugde.com%2Fhugga%2F<?php echo $item['huggaId'];?>&count=horizontal" class="twitter-share-button" data-lang="en">Tweet</a>
                            		<!--<div class="pull-right" style="margin-top:-25px"><i class="icon-calendar"></i> <a href="#">April 16, 2013</a></div>-->
                            
                            	</div>
