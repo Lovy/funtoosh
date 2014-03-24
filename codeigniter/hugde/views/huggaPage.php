@@ -51,7 +51,20 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
    <script src="<?php echo assets_url(); ?>scripts/mustache.js" type="text/javascript"></script>
    <script src="<?php echo assets_url(); ?>scripts/next.js" type="text/javascript"></script>
    <link href='http://fonts.googleapis.com/css?family=Peralta' rel='stylesheet' type='text/css'>
-   <link href='http://fonts.googleapis.com/css?family=Autour+One' rel='stylesheet' type='text/css'>    
+   <link href='http://fonts.googleapis.com/css?family=Autour+One' rel='stylesheet' type='text/css'>
+   <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-48595506-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>    
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
@@ -240,7 +253,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                   			-->	
                   			<a href="javascript:void(0);" onclick="lick(<?php echo $data['userId']; ?>,<?php echo $item['huggaId']; ?>,this);" class="btn <?php if($item['lick']['licked']==1){echo 'green';}else{echo 'default';} ?> lick" id="licked">Lick <i class="icon-chevron-up"></i> <span class="badge badge-danger"><?php echo $item['licks']; ?></span></a>                			
                   			<a href="javascript:void(0);" onclick="flush(<?php echo $data['userId']; ?>,<?php echo $item['huggaId']; ?>,this);" class="btn <?php if($item['flush']['flushed']==1){echo 'red';}else{echo 'default';} ?> flush" id="flushed">Flush <i class="icon-chevron-down"></i> <span class="badge badge-success"><?php echo $item['flushes']; ?></span></a>                           
-                  			<a href="javascript:void(0)" onclick="javascript:onclicknext(<?php echo $item['huggaId'].','.$data['userId']; ?>);" class="btn blue pull-right" >Next <i class=" icon-chevron-right"></i></a>
+                  			<a href="javascript:void(0)" onclick="javascript:onclicknext(<?php echo $item['huggaId'].','.$data['userId']; ?>);_gaq.push(['_trackEvent', 'Next', 'Clicked']);" class="btn blue pull-right" >Next <i class=" icon-chevron-right"></i></a>
                   		    <input type="hidden" id="oldHuggaId" value="<?php echo $item['huggaId']; ?>" />
                   			</div>		
                   		</div>	
@@ -1114,7 +1127,7 @@ HTML;
          });
       });
    </script>
-   <script>
+   <!--<script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -1123,7 +1136,7 @@ HTML;
   ga('create', 'UA-48595506-1', 'hugde.com');
   ga('send', 'pageview');
 
-	</script>
+	</script>-->
 	<script type="text/javascript">
 		(function() {
 		var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
