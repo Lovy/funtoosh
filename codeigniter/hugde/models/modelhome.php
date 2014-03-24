@@ -179,7 +179,7 @@ class modelhome extends CI_Model{
 
 		if($huggaId=='0' && $myhugga=='HIDE' && $category=='JustOut'){ //show all huggas
 			
-			$sql1 = "select * from hugga order by uploadTimeStamp desc LIMIT ?,?";
+			$sql1 = "select * from hugga order by huggaId desc LIMIT ?,?";
 			$huggasPerPage = intval($huggasPerPage);
 			$query = $this->db->query($sql1,array(($huggasPerPage*($pageNo-1)),($huggasPerPage)));
 			//$this->db->order_by('timestamp','desc');
