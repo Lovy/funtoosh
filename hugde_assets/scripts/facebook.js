@@ -55,6 +55,7 @@
 	    // request, and the time the access token 
 	    // and signed request each expire
 	    getData();
+	    console.log("autologin");
 	  } else if (response.status === 'not_authorized') {
 	    // the user is logged in to Facebook, 
 	    // but has not authenticated your app

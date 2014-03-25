@@ -212,15 +212,16 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
             <div class="col-md-12 blog-page">  	
                <div class="row">
                	<div class="col-md-2">
+               		<!--
                		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-					<!-- Hugde -->
+					
 					<ins class="adsbygoogle"
 					     style="display:inline-block;width:160px;height:600px"
 					     data-ad-client="ca-pub-6424436693347509"
 					     data-ad-slot="4852173072"></ins>
 					<script>
 					(adsbygoogle = window.adsbygoogle || []).push({});
-					</script>
+					</script>-->
                	</div>
                   <div class="col-md-5 article-block">
                   	<?php
