@@ -298,7 +298,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                   
                   
                   <!--end col-md-9-->
-                  <div class="fb-like-box" data-href="http://www.facebook.com/hugdedotcom" data-colorscheme="dark" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false"></div>		
+                  <!--<div class="fb-like-box" data-href="http://www.facebook.com/hugdedotcom" data-colorscheme="dark" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false"></div>-->		
                   
                   <div class="col-md-3 blog-sidebar" style="background-color: #ffd703">
                   	<div class="row">
@@ -1100,11 +1100,13 @@ HTML;
    <script src="<?php echo assets_url(); ?>scripts/login-soft.js" type="text/javascript"></script> 
    <script src="<?php echo assets_url(); ?>scripts/lickflush.js" type="text/javascript"></script>   
    <script src="<?php echo assets_url(); ?>scripts/autoload.js" type="text/javascript"></script>
+   <script src="<?php echo assets_url(); ?>scripts/index.js" type="text/javascript"></script>
     <!------------Facebook JS--------------->
     <script src="<?php echo assets_url(); ?>scripts/facebook.js" type="text/javascript"></script>        
    <script>
       jQuery(document).ready(function() {    
          App.init();
+         Index.initChat();
          FormFileUpload.init();
          Login.init();
          
