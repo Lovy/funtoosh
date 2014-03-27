@@ -460,29 +460,29 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                         <ul class="media-list">  
                            <li class="media">
                               <a class="pull-left" href="#">
-                              <img class="media-object" src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn2/t5.0-1/1116725_1829322020_769415801_q.jpg" alt="64x64" data-src="holder.js/64x64" style="width: 64px; height: 64px;">
+                              <img class="media-object" src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn2/t5.0-1/1116725_1829322020_769415801_q.jpg" alt="40x40" data-src="holder.js/40x40" style="width: 40px; height: 40px;">
                               </a>
                               <div class="media-body">
-                                 <h4 class="media-heading">Media heading</h4>
-                                 Cras sit amet nibh libero, in gravida nulla. Nulla vel metus rra turpis.
+                                 <!--<h4 class="media-heading">Media heading</h4>-->
+                                 Lovy Gupta licked  'Shit just got real'
                               </div>
                            </li>
                            <li class="media">
                               <a class="pull-left" href="#">
-                              <img class="media-object" src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn2/t5.0-1/1116725_1829322020_769415801_q.jpg" alt="64x64" data-src="holder.js/64x64" style="width: 64px; height: 64px;">
+                              <img class="media-object" src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn2/t5.0-1/1116725_1829322020_769415801_q.jpg" alt="40x40" data-src="holder.js/40x40" style="width: 40px; height: 40px;">
                               </a>
                               <div class="media-body">
-                                 <h4 class="media-heading">Media heading</h4>
-                                 Cras sit amet nibh libero, in gravida nulla. Nulla vel metus rra turpis.
+                                 <!--<h4 class="media-heading">Media heading</h4>-->
+                                 Lovy Gupta suggested title for a Hugga
                               </div>
                            </li>
                            <li class="media">
                               <a class="pull-left" href="#">
-                              <img class="media-object" src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn2/t5.0-1/1116725_1829322020_769415801_q.jpg" alt="64x64" data-src="holder.js/64x64" style="width: 64px; height: 64px;">
+                              <img class="media-object" src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn2/t5.0-1/1116725_1829322020_769415801_q.jpg" alt="40x40" data-src="holder.js/40x40" style="width: 40px; height: 40px;">
                               </a>
                               <div class="media-body">
-                                 <h4 class="media-heading">Media heading</h4>
-                                 Cras sit amet nibh libero, in gravida nulla. Nulla vel metus rra turpis.
+                                 <!--<h4 class="media-heading">Media heading</h4>-->
+                                 Lovy Gupta suggested title for a Hugga
                               </div>
                            </li>
                         </ul>
