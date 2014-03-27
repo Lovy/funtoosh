@@ -237,6 +237,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                   			
                   			<a href="javascript:void(0);" onclick="lick(<?php echo $data['userId']; ?>,<?php echo $item['huggaId']; ?>,this);" <?php if($item['flush']['flushed']==1) {echo 'style="opacity: 0.3"';} ?> class="btn <?php if($item['lick']['licked']==1){echo 'green';}else{echo 'default';} ?> lick" id="licked">Lick <i class="icon-chevron-up"></i> <span class="badge badge-danger"><?php echo $item['licks']; ?></span></a>                			
                   			<a href="javascript:void(0);" onclick="flush(<?php echo $data['userId']; ?>,<?php echo $item['huggaId']; ?>,this);" <?php if($item['lick']['licked']==1) {echo 'style="opacity: 0.3"';} ?> class="btn <?php if($item['flush']['flushed']==1){echo 'red';}else{echo 'default';} ?> flush" id="flushed">Flush <i class="icon-chevron-down"></i> <span class="badge badge-success"><?php echo $item['flushes']; ?></span></a>                           
+                  			<a href="javascript:void(0);" onclick="push()" id="flushed"> Push <i class="icon-chevron-down"></i> <span class="badge badge-success"></span></a>                           
                   			
                   			</div>		
                   		</div>	
@@ -1165,6 +1166,36 @@ HTML;
   ga('create', 'UA-48595506-1', 'hugde.com');
   ga('send', 'pageview');
 
+</script>
+<script src="http://autobahn.s3.amazonaws.com/js/autobahn.min.js"></script>
+<script>
+    var conn = new ab.Session(
+        'ws://hugde.com:8080' // The host (our Ratchet WebSocket server) to connect to
+      , function() {            // Once the connection has been established
+            conn.subscribe('kittensCategory', function(topic, data) {
+                // This is where you would add the new article to the DOM (beyond the scope of this tutorial)
+                console.log('New article published to category "' + topic + '" : ' + data.title);
+            });
+        }
+      , function() {            // When the connection is closed
+            console.warn('WebSocket connection closed');
+        }
+      , {                       // Additional parameters, we're ignoring the WAMP sub-protocol for older browsers
+            'skipSubprotocolCheck': true
+        }
+    );
+</script>
+<script>
+	function push(){
+		$.ajax({
+	    	url: "http://hugde.com/test",
+	    	async: true,
+	    	dataType: 'json',
+	    	success: function(response) {
+	    		
+	    	}
+   		});	
+	}
 </script>
    <!-- END JAVASCRIPTS -->
 </body>
