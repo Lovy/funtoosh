@@ -300,7 +300,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                   <!--end col-md-9-->
                   <!--<div class="fb-like-box" data-href="http://www.facebook.com/hugdedotcom" data-colorscheme="dark" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false"></div>-->		
                   
-                  <div class="col-md-3 blog-sidebar" style="background-color: #ffd703">
+                  <!--<div class="col-md-3 blog-sidebar" style="background-color: #ffd703">
                   	<div class="row">
                   		<ul class="list-group" style="text-align: center;font-size: 23px">
                        
@@ -318,7 +318,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                            <ul class="list-inline">
                               <li><i class="icon-chevron-up"></i> <a href="<?php echo base_url().'hugga/'.$item['huggaId']; ?>"><?php echo $item['sidebar'][0]['licks']; ?></a></li>
                               <li><i class="icon-chevron-down"></i> <a href="<?php echo base_url().'hugga/'.$item['huggaId']; ?>"><?php echo $item['sidebar'][0]['flushes']; ?></a></li>
-                              <!--<li><i class="icon-comments"></i> <a href="<?php echo base_url().'hugga/'.$item['huggaId']; ?>">38 Comments</a></li>-->
+                              <!--<li><i class="icon-comments"></i> <a href="<?php echo base_url().'hugga/'.$item['huggaId']; ?>">38 Comments</a></li>
                            </ul>
                            
                         </div>
@@ -328,7 +328,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                       <?php
 	                  }
 					?> 
-                  </div>
+                  </div>-->
                   
                   <div class="col-md-3 col-sm-6">
 	               <!-- BEGIN PORTLET-->
