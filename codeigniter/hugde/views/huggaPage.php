@@ -311,7 +311,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                   			-->	
                   			<a href="javascript:void(0);" onclick="lick({{userId}},{{huggaId}},this);" class="btn {{licktype}} lick" id="licked">Lick <i class="icon-chevron-up"></i> <span class="badge badge-danger">{{licks}}</span></a>                			
                   			<a href="javascript:void(0);" onclick="flush({{userId}},{{huggaId}},this);" class="btn {{flushtype}} flush" id="flushed">Flush <i class="icon-chevron-down"></i> <span class="badge badge-success">{{flushes}}</span></a>                           
-                  			<a href="javascript:void(0)" onclick="javascript:onclicknext({{huggaId}},{{userId}});" class="btn blue pull-right" >Next <i class=" icon-chevron-right"></i></a>
+                  			<a href="javascript:void(0)" onclick="javascript:onclicknext({{huggaId}},{{userId}});_gaq.push(['_trackEvent', 'Next', 'Clicked']);" class="btn blue pull-right" >Next <i class=" icon-chevron-right"></i></a>
                   		    <input id="flagHuggaId" type="hidden" value="{{huggaId}}" />
                   			</div>		
                   		</div>	
