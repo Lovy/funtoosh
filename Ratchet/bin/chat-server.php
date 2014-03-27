@@ -3,7 +3,7 @@
 
     $loop   = React\EventLoop\Factory::create();
     $pusher = new MyApp\Pusher;
-
+	use Ratchet\Http\HttpServer;
     // Listen for the web server to make a ZeroMQ push after an ajax request
     $context = new React\ZMQ\Context($loop);
     $pull = $context->getSocket(ZMQ::SOCKET_PULL);
