@@ -213,47 +213,51 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
       <div class="page-content">           
          <!-- BEGIN PAGE CONTENT-->
          <div class="row">
-            <div class="col-md-12">      
-                        <!-- BEGIN FILTER -->           
-                        
-                           <!--<ul class="mix-filter">
-                              <li class="filter" data-filter="Desi Firangi Seasonal Labs">All</li>
-                              <li class="filter" data-filter="Desi">Desi</li>
-                              <li class="filter" data-filter="Firangi">Firangi</li>
-                               <?php
-                                 if(!empty($data['IsAdmin'])){
-                                 	echo' <li class="filter" data-filter="Seasonal">Seasonal</li>
-                              				<li class="filter" data-filter="Labs">Labs</li>';
-                                 } 
-                               ?>  
-                             
-                           </ul>-->
-                           <div class="row mix-grid">
-                           	<?php
-							foreach($huggas as $item){
-							?>
-                              <div class="col-md-3 col-sm-4 mix <?php echo $item['category']; ?>">
-                                 <div class="mix-inner">
-                                    <img class="img-responsive" src="<?php echo $item['images'][0]['originalImageUrl']; ?>" alt="" style="width: 300px;height: 287px">
-                                    <div class="mix-details">
-                                       <h4><?php if($item['title']!=''){echo $item['title'];}else{echo'No Title Set';} ?></h4>
-                                       <h5>Views: <?php echo $item['views']; ?></h5>
-                                       <h5>Licks: <?php echo $item['licks']; ?> Flushes: <?php echo $item['flushes']; ?></h5>
-                                       <a href="<?php echo base_url().'hugga/'.$item['huggaId']; ?>" class="mix-link"><i class="icon-link"></i></a>
-                                       <a class="mix-preview fancybox-button" href="<?php echo $item['images'][0]['originalImageUrl']; ?>" title="<?php echo $item['title']; ?>" data-rel="fancybox-button"><i class="icon-search"></i></a>
-                                       <a href="<?php echo base_url().'home/delete/'.$item['huggaId']; ?>" class="mix-link"><i class=" icon-trash"></i></a>
-                  			
-                                    </div>
-                                 </div>
-                              </div>
-                            <?php
-							}
-							?>
-                              
+            <div class="col-md-12">
+            	<h3>Create Hugga</h3>
+            </div>                      
+		 </div>
+		 <div class="row">
+		 	<div class="col-md-1"></div>
+		 	<div class="col-md-3">
+		 		<form role="form">
+                        <div class="form-body">
+                           <div class="form-group">
+                              <label>Top Heading</label>
+                              <textarea id="tc1" class="form-control" rows="3"></textarea>
+                              <button type="button" class="btn default" id="cap1">Update</button>
+                              <button type="button" class="btn default" id="rcap2">Remove</button>
                            </div>
-                       
-                        <!-- END FILTER -->    
-		</div>
+                           <div class="form-group">
+                              <label>Bottom Heading</label>
+                              <textarea id="tc2" class="form-control" rows="3"></textarea>
+                              <button type="button" class="btn default" id="cap2">Update</button>
+                              <button type="button" class="btn default" id="rcap2">Remove</button>
+                           </div>
+                          
+                           <div class="form-group">
+                              <label>Font Size</label>
+                              <select id="fontsizesel" class="form-control">
+                                 <option value="24">24 pt</option>
+                                 <option value="32" selected>32 pt</option>
+                                 <option value="48">48 pt</option>
+                                 <option value="72">72 pt</option>
+                                 <option value="144">144 pt</option>
+                              </select>
+                           </div>
+                           
+                        </div>
+               </form>
+               <form role="form" id="createimg" action="view.php" method="post" style="margin-left: 10px">
+               		<button type="submit" class="btn blue">Create</button>
+                           
+               </form>
+               <div id="heightStage" style="display: none;"></div>
+		 	</div>
+		 	<div class="col-md-5">
+		 		<div id="memestage"></div>
+		 	</div>
+		 </div>
       </div>
       <!-- END PAGE -->    
    </div>
@@ -941,7 +945,44 @@ HTML;
   ga('create', 'UA-48595506-1', 'hugde.com');
   ga('send', 'pageview');
 
-</script>
+	</script>
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script>
+	<?php
+	
+		//include_once("memesettings.php");
+		
+		if(isset($_GET['p']))
+		{
+			$templateName = isset($_GET['p']) ? $_GET['p'] : 'null.jpg'; 
+
+			if(file_exists("custom/$templateName"))
+				$imgname = "custom/$templateName";
+			else
+				$imgname = 'templates/int.jpg';
+				
+			print "var gblImgName = \"$imgname\";";
+			
+		}
+		else
+		{		
+			$templateName = isset($_GET['t']) ? $_GET['t'] : 'null.jpg'; 
+			
+			if(file_exists("templates/$templateName"))
+				$imgname = "templates/$templateName";
+			else
+				$imgname = 'templates/int.jpg';
+				
+			//$imgname = 'templates/int.jpg';
+			print "var gblImgName = \"$imgname\";";
+		}
+		
+		print "var watermark =\"$watermark\";";
+	
+	?>
+	</script>
+	<script src="<?php echo assets_url(); ?>scripts/kinetic.min.js"></script>
+	<script src="<?php echo assets_url(); ?>scripts/meme.min.js"></script>
    <!-- END JAVASCRIPTS -->
 </body>
 <!-- END BODY -->
