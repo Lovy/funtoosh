@@ -71,10 +71,6 @@ var FormFileUpload = function () {
             App.initUniform('.fileupload-toggle-checkbox');
         },
         
-        submit: function(){
-        	
-        }
-
     };
 
 }();

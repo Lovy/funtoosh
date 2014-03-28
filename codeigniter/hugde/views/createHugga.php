@@ -248,7 +248,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                            
                         </div>
                </form>
-               <form role="form" id="createimg" action="view.php" method="post" style="margin-left: 10px">
+               <form role="form" id="createimg" action="<?php echo base_url().'home/createhuggaview'; ?>" method="post" style="margin-left: 10px">
                		<button type="submit" class="btn blue">Create</button>
                     <input type="hidden" id="imgdata" name="imgdata">       
                </form>
@@ -931,9 +931,6 @@ HTML;
          FormFileUpload.init();
          Login.init();
          FormComponents.init();
-         $("#uploadSubmit").click(function(){
-         	FormFileUpload.submit();
-         });
       });
    </script>
    <script>

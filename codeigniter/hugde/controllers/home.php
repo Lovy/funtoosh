@@ -277,6 +277,21 @@ class home extends CI_Controller{
 		}
 	}
 	
+	function createhuggaview(){
+		$imgData = $this->input->post('imgdata');
+		$filteredData=substr($_POST['imgdata'], strpos($_POST['imgdata'], ",")+1);
+
+		// Need to decode before saving since the data we received is already base64 encoded
+		$decodedData=base64_decode($filteredData);
+		$fn = substr(md5(time()), 0, 5);
+		$fp = fopen( "http://hugde.com/hugde_assets/upload/$fn.png", 'wb' );
+		fwrite( $fp, $decodedData);
+		fclose( $fp );
+		
+		$this->load->modal('photo');
+		$this->photo->uploadimage($fn);
+	}
+	
 	function next($huggaId,$userId){
 		
 		// seed with microseconds
