@@ -948,10 +948,12 @@ HTML;
 	</script>
 	<!-- Placed at the end of the document so the pages load faster -->
 	<script>
+	var watermark = "hugde.com";
+	var gblImageName="https://hugde.s3.amazonaws.com/main-qimg-ffc83a3bee07d1bc0177968f6e483966.jpg";
 	<?php
 	
 		//include_once("memesettings.php");
-		
+		/*
 		if(isset($_GET['p']))
 		{
 			$templateName = isset($_GET['p']) ? $_GET['p'] : 'null.jpg'; 
@@ -978,7 +980,7 @@ HTML;
 		}
 		
 		print "var watermark =\"$watermark\";";
-	
+	*/
 	?>
 	</script>
 	<script src="<?php echo assets_url(); ?>scripts/kinetic.min.js"></script>
