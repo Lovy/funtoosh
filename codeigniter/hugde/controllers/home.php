@@ -245,6 +245,38 @@ class home extends CI_Controller{
 		}
 	}
 	
+	function createhugga(){
+		
+		$LoginFlag = $this->session->userdata('IsLoggedIn');
+		if(!empty($LoginFlag)){
+			$userId = $this->session->userdata('userId');
+			$data = $this->session->all_userdata();
+			$this->load->model('modelhome');
+			//loadData($huggaId=NULL,$userId=NULL,$myhugga=NULL,$huggasPerPage=NULL,$pageNo=NULL)
+			$response['huggas'] = $this->modelhome->loadData('0',$data['userId'],'SHOW',100,1,'ALL');
+			$response['sidebar'] = $this->modelhome->loadSideBar();
+			$response['data']=$data;
+			//Detect mobile and load no-sidebar version
+			$mobile = $this->mobile_detect->isMobile();
+			if(is_null($response['huggas'])){
+				$this->load->view('createHugga',$response);
+			}else{
+				if($mobile){
+				$this->load->view('createHugga',$response);
+				}
+				else{
+					//var_dump($response);
+					//$this->load->view('hugga_home_myhuggas',$response);
+					$this->load->view('createHugga',$response);
+				}
+			}
+			
+		}
+		else{
+			echo "Not logged in";
+		}
+	}
+	
 	function next($huggaId,$userId){
 		
 		// seed with microseconds

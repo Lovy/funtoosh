@@ -213,13 +213,10 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
       <div class="page-content">           
          <!-- BEGIN PAGE CONTENT-->
          <div class="row">
-            <div class="col-md-12">
-               <div class="tabbable tabbable-custom boxless">
-                  <div class="tab-content">
-                     <div class="tab-pane active" id="tab_1">
+            <div class="col-md-12">      
                         <!-- BEGIN FILTER -->           
-                        <div class="margin-top-10">
-                           <ul class="mix-filter">
+                        
+                           <!--<ul class="mix-filter">
                               <li class="filter" data-filter="Desi Firangi Seasonal Labs">All</li>
                               <li class="filter" data-filter="Desi">Desi</li>
                               <li class="filter" data-filter="Firangi">Firangi</li>
@@ -230,7 +227,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                                  } 
                                ?>  
                              
-                           </ul>
+                           </ul>-->
                            <div class="row mix-grid">
                            	<?php
 							foreach($huggas as $item){
@@ -254,12 +251,8 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 							?>
                               
                            </div>
-                        </div>
+                       
                         <!-- END FILTER -->    
-                     </div>
-				</div>
-               </div>
-			</div>
 		</div>
       </div>
       <!-- END PAGE -->    
