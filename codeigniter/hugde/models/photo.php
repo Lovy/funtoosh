@@ -59,7 +59,7 @@ class photo extends CI_Model{
 			
 			
 			$destination_root = '/var/www/html/hugde/hugde_assets/upload/';
-			$destination_final = $destination_root.$imgName;			
+			$destination_final = $destination_root.$imgName.'png';			
 			//move_uploaded_file($_FILES["Filedata"]["tmp_name"],$destination_final);
 			
 			//Resize the image

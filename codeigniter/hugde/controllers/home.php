@@ -284,7 +284,7 @@ class home extends CI_Controller{
 		// Need to decode before saving since the data we received is already base64 encoded
 		$decodedData=base64_decode($filteredData);
 		$fn = substr(md5(time()), 0, 5);
-		$fp = fopen( "http://hugde.com/hugde_assets/upload/$fn.png", 'wb' );
+		$fp = fopen( "/var/www/html/hugde/hugde_assets/upload/$fn.png", 'wb' );
 		fwrite( $fp, $decodedData);
 		fclose( $fp );
 		
