@@ -984,7 +984,7 @@ HTML;
 	?>
 	</script>
 	<script src="<?php echo assets_url(); ?>scripts/kinetic.min.js"></script>
-	<script src="<?php echo assets_url(); ?>scripts/meme.min.js"></script>
+	<script src="<?php echo assets_url(); ?>scripts/meme.js"></script>
    <!-- END JAVASCRIPTS -->
 </body>
 <!-- END BODY -->
