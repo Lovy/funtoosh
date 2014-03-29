@@ -1,5 +1,6 @@
 <?php
-
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 class photo extends CI_Model{
 	
 	function __construct(){
@@ -69,6 +70,7 @@ class photo extends CI_Model{
 			if($s3->putObjectFile($destination_final, $bucket , $imgName, S3::ACL_PUBLIC_READ) )
 			{
 				$msg = "S3 Upload Successful.";	
+				echo $msg;
 				$s3file='http://'.$bucket.'.s3.amazonaws.com/'.$imgName;
 				
 				/*
