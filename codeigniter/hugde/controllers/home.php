@@ -288,7 +288,7 @@ class home extends CI_Controller{
 		fwrite( $fp, $decodedData);
 		fclose( $fp );
 		
-		$this->load->modal('photo');
+		$this->load->model('photo');
 		$this->photo->uploadimage($fn);
 	}
 	
