@@ -264,6 +264,12 @@
                           		 <a href="#" class="btn btn-xs red" >Flag <i class=" icon-flag"></i></a>
                           	</div>-->
                         </div>
+                        <div class="space20"></div>
+                        <div class="row" style="margin-top: 5px">
+                        	<div class="col-md-12">
+                        		<div class="fb-like" data-href="<?php echo base_url().'hugga/'.$item['huggaId']; ?>" data-layout="standard" data-action="like" data-show-faces="false" data-share="false"></div>
+                        	</div>
+                        </div>
                      </div>
                      <!--end news-tag-data-->
                     
