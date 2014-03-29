@@ -1144,6 +1144,8 @@ HTML;
 		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 		})();
 	</script>
+	<!-- Please call pinit.js only once per page -->
+	<script type="text/javascript" async  data-pin-hover="true" src="//assets.pinterest.com/js/pinit.js"></script>
    <!-- END JAVASCRIPTS -->
 </body>
 <!-- END BODY -->
