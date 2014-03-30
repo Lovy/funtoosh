@@ -106,7 +106,10 @@
             <?php
                         	if(empty($data['IsLoggedIn'])){
             ?>
-                        		
+                        <li class="dropdown" >
+                        		 <button data-toggle="modal" href="#basic" type="button" class="btn yellow">Create Memes</button>
+            	<!--<a data-toggle="modal" href="#basic" >Upload <i class="icon-upload"></i></a>-->
+            </li>					
                         		<li class="dropdown" >
                         		 <button data-toggle="modal" href="#basic" type="button" class="btn green">Upload</button>
             	<!--<a data-toggle="modal" href="#basic" >Upload <i class="icon-upload"></i></a>-->
@@ -129,6 +132,10 @@
             <?php
                	if(!empty($data['IsLoggedIn'])){
             ?>
+            <li class="dropdown" >
+                        		 <button onclick="window.location.replace('http://hugde.com/memes');" type="button" class="btn yellow">Create Memes</button>
+            	<!--<a data-toggle="modal" href="#basic" >Upload <i class="icon-upload"></i></a>-->
+            </li>
                         		<li class="dropdown" >
                         			<button data-toggle="modal" href="#full" type="button" class="btn green">Upload</button>
             	<!--<a data-toggle="modal" href="#full" >Upload <i class="icon-upload"></i></a>-->
