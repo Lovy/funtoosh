@@ -39,10 +39,8 @@ var FormFileUpload = function () {
                 singleFileUploads: false,
                 //maxNumberOfFiles: 1,
                 limitMultiFileUploads:1,
-                acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i,
-                done: function(e,data){
-                	console.log(data);
-                }
+                acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i
+                
             }).on('fileuploadsubmit', function (e, data) {
 			    data.formData = $('#fileupload').serializeArray();
 			});
