@@ -103,7 +103,7 @@ class memes extends CI_Controller{
                                     <img class="img-responsive" src="'.$item['images'][0]['originalImageUrl'].'" alt="" >
                                     <div class="mix-details">
                                        <h4>'.$title.'</h4>
-                                       <a href="'.base_url().'memes/createhugga?t='.$item['images'][0]['originalImageUrl'].'&memeid='.$item['memeId'].'" class="mix-link"><i class="icon-link"></i></a>
+                                       <a href="'.base_url().'memes/createhugga?t='.$item['images'][0]['originalImageUrl'].'&memeid='.$item['memeId'].'" Create Meme</a>
                                        <a class="mix-preview fancybox-button" href="'.$item['images'][0]['originalImageUrl'].'" title="'.$title.'" data-rel="fancybox-button"><i class="icon-search"></i></a>
                     
                                     </div>

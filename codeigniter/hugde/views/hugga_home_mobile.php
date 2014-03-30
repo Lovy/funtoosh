@@ -638,7 +638,7 @@
 		         </div>
 		         <div class="form-group">
 		            <label>
-		            <input type="checkbox" name="tnc"/> I agree to the <a href="<?php echo base_url().'/tnc'; ?>">Terms of Service</a> and <a href="<?php echo base_url().'/privacy'; ?>">Privacy Policy</a>
+		            <input type="checkbox" name="tnc"/> I agree to the <a href="<?php echo base_url().'tnc'; ?>" target="_blank">Terms of Service</a> and <a href="<?php echo base_url().'privacy'; ?>" target="_blank">Privacy Policy</a>
 		            </label>  
 		            <div id="register_tnc_error"></div>
 		         </div>

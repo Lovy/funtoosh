@@ -13,6 +13,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 <head>
    <meta charset="utf-8" />
    <title>Hugde | Making sh*t awesome</title>
+   <meta name="description" content="Yami Gautam memes and jokes.">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
    <meta content="Enjoy unlimited funny pictures all over the globe and get entertained. Don't be too lazy to laugh." name="description" />
@@ -694,7 +695,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 		         </div>
 		         <div class="form-group">
 		            <label>
-		            <input type="checkbox" name="tnc"/> I agree to the <a href="<?php echo base_url().'/tnc'; ?>">Terms of Service</a> and <a href="<?php echo base_url().'/privacy'; ?>">Privacy Policy</a>
+		            <input type="checkbox" name="tnc"/> I agree to the <a href="<?php echo base_url().'tnc'; ?>" target="_blank">Terms of Service</a> and <a href="<?php echo base_url().'privacy'; ?>" target="_blank">Privacy Policy</a>
 		            </label>  
 		            <div id="register_tnc_error"></div>
 		         </div>
