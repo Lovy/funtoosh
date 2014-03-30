@@ -46,9 +46,10 @@ var FormFileUpload = function () {
             }).on('fileuploaddone', function (e, data) {
             	var filesresult = data.result;
             	var nexturl = filesresult['url'];
-            	//console.log(data.result);
+            	console.log(nexturl);
+            	console.log(filesresult);
 			    var nexturl='http://hugde.com/memes/createhugga/'+nexturl;
-			    window.location.href.replace(nexturl);
+			    window.location.replace(nexturl);
 			});
 
                 // Upload server status check for browsers with CORS support:
