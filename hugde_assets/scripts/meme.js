@@ -161,7 +161,7 @@ $(function () {
         }
     });*/
     $("#cands").click(function () {
-        gblFontSize = 8;
+        gblFontSize = 12;
         gblFontFamily = "Arial";
         gblStrokeWidth = 0;
         addText(watermark, bgImage.width - getTextWidth(watermark), bgImage.height - 10 - getSimpleTextHeight() + 5);
