@@ -288,8 +288,9 @@ class home extends CI_Controller{
 		fwrite( $fp, $decodedData);
 		fclose( $fp );
 		
+		$fp2= fopen( "/var/www/html/hugde_assets/upload/$fn.png", 'rb' );
 		$this->load->model('photo');
-		$this->photo->uploadimage($fn);
+		$this->photo->uploadimage($fp2);
 	}
 	
 	function next($huggaId,$userId){
