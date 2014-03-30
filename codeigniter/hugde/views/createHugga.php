@@ -249,7 +249,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                         </div>
                </form>
                <form role="form" id="createimg" action="<?php echo base_url().'home/createhuggaview'; ?>" method="post" style="margin-left: 10px">
-               		<button type="submit" class="btn blue">Create</button>
+               		<button id="cands" type="button" class="btn blue">Create</button>
                     <input type="hidden" id="imgdata" name="imgdata">       
                </form>
                <div id="heightStage" style="display: none;"></div>
