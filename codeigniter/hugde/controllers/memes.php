@@ -35,7 +35,7 @@ class memes extends CI_Controller{
 				}else{
 					"No memes";					
 				}
-				
+				$this->load->view('memegrid',$response);
 			//}
 			
 		}
