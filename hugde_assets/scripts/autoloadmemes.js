@@ -15,7 +15,7 @@ $(document).ready(function(){
 	//console.log(totalMemes);
 	var totalPages = Math.round(parseInt(totalMemes)/parseInt(memesPerPage));
 	//console.log(totalPages);
-	var category = $("#pageType").val();
+	
 	function getDocHeight() {
     var D = document;
     return Math.max(
@@ -40,7 +40,7 @@ $(document).ready(function(){
                 $('.page-content').append('<div id="ajaxLoading" style="text-align:center"><img src="http://hugde.com/hugde_assets/img/ajax-loader.gif" /></div>'); //show loading image
                 
                 //load data from the server using a HTTP POST request
-                $.post('http://hugde.com/memes/autoload/'+category,{'HPP': memesPerPage,'PN':pagesLoaded+1}, function(data){
+                $.post('http://hugde.com/memes/autoload',{'HPP': memesPerPage,'PN':pagesLoaded+1}, function(data){
                                     
                     $(".mix-grid").append(data); //append received data into the element
 					try{

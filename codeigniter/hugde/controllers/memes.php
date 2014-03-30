@@ -63,7 +63,7 @@ class memes extends CI_Controller{
 		}
 	}
 
-	function autoload($category){
+	function autoload(){
 		$huggasPerPage = $this->input->post('HPP');
 		$pageNo = $this->input->post('PN');
 		$LoginFlag = $this->session->userdata('IsLoggedIn');
