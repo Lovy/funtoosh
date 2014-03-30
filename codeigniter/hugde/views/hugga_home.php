@@ -254,7 +254,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                            	  	<div class="fb-like" data-href="<?php echo base_url().'hugga/'.$item['huggaId']; ?>" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true" style="width: 150px !important"></div>
                            		
                           	</div>-->
-                          	<div class="col-md-12">
+                          	<div class="col-md-3">
                            	
                            		<!--<a href="https://twitter.com/share?count=horizontal" class="twitter-share-button" data-lang="en">Tweet</a>
                            		<!--<div class="pull-right" style="margin-top:-25px"><i class="icon-calendar"></i> <a href="#">April 16, 2013</a></div>-->
@@ -271,7 +271,11 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 								    po.src = 'https://apis.google.com/js/plusone.js';
 								    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 								  })();
-								</script>	
+								</script>
+							<div class="col-md-9">
+								<div class="fb-like" data-href="<?php echo base_url().'hugga/'.$item['huggaId']; ?>" data-layout="standard" data-action="like" data-show-faces="false" data-share="false"></div>
+                        	
+							</div>		
                           	<!--
                           	<div class="col-md-3">
                           		Posted by: <?php echo $item['postedBy']; ?>
@@ -284,11 +288,11 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                           	</div>-->
                         </div>
                         <div class="space20"></div>
-                        <div class="row" style="margin-top: 5px">
+                        <!--<div class="row" style="margin-top: 5px">
                         	<div class="col-md-12">
                         		<div class="fb-like" data-href="<?php echo base_url().'hugga/'.$item['huggaId']; ?>" data-layout="standard" data-action="like" data-show-faces="false" data-share="false"></div>
                         	</div>
-                        </div>
+                        </div>-->
                      </div>
                      <!--end news-tag-data-->
                     
