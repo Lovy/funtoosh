@@ -18,7 +18,7 @@ class memes extends CI_Controller{
 			$data = $this->session->all_userdata();
 			$this->load->model('modelmeme');
 			//loaddata(HPP,PageNo)
-			$response['memes'] = $this->modelmeme->loadData(4,1);   //(huggasPerPage,pageNo)
+			$response['memes'] = $this->modelmeme->loadData($data['userId'],4,1);   //(huggasPerPage,pageNo)
 			//$response['sidebar'] = $this->modelhome->loadSideBar();
 			$response['data']=$data;
 			$response['category']='memes';
@@ -71,7 +71,7 @@ class memes extends CI_Controller{
 			$data = $this->session->all_userdata();
 			//var_dump($data);
 			$this->load->model('modelmeme');
-			$response['memes'] = $this->modelmeme->loadData($huggasPerPage,$pageNo);   //(huggasPerPage,pageNo)
+			$response['memes'] = $this->modelmeme->loadData($data['userId'],$huggasPerPage,$pageNo);   //(huggasPerPage,pageNo)
 			$response['data']=$data;
 			//var_dump($response['data']);
 			//return HTML code
@@ -112,8 +112,8 @@ class memes extends CI_Controller{
 		$x='';
 		foreach($data['memes'] as $item){
 			if($item['title']!=''){$title=$item['title'];}else{$title='No Title Set';}
-			
-			$x.='<div class="col-md-3 col-sm-4 mix '.$item['category'].'">
+			if($item['userowned']['owned']==1) {$category="myself";}else{$category= $item['category'];}
+			$x.='<div class="col-md-3 col-sm-4 mix '.$category.'">
                                  <div class="mix-inner">
                                     <img class="img-responsive" src="'.$item['images'][0]['originalImageUrl'].'" alt="" style="width: 300px;height: 287px">
                                     <div class="mix-details">

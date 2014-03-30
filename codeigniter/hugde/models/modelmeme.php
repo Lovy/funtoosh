@@ -18,7 +18,7 @@ class modelmeme extends CI_Model{
 		
 	}
 	
-	function loadData($huggasPerPage,$pageNo){
+	function loadData($userId,$huggasPerPage,$pageNo){
 					
 			$sql1 = "select * from memecreate order by timestamp desc LIMIT ?,?";
 			$huggasPerPage = intval($huggasPerPage);
@@ -38,6 +38,14 @@ class modelmeme extends CI_Model{
 					}
 					$row['images']=$images;
 					
+					//mark flag for user owned memes
+					$userowned=array();
+					if($userId==$row['userId']){
+						$userowned['owned']=1;
+					}else{
+						$userowned['owned']=0;
+					}
+					$row['userowned']=$userowned;
 					//check lick flush status for this hugga
 					/*
 					$lick = array();

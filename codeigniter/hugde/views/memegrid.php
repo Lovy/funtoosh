@@ -220,9 +220,9 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                         <!-- BEGIN FILTER -->           
                         <div class="margin-top-10">
                            <ul class="mix-filter">
-                              <li class="filter" data-filter="hugdeoriginals users myself">All</li>
+                              <li class="filter" data-filter="hugdeoriginals myself">All</li>
                               <li class="filter" data-filter="hugdeoriginals">Hugde Originals</li>
-                              <li class="filter" data-filter="users">Other Users</li>
+                              <!--<li class="filter" data-filter="users">Other Users</li>-->
                                <li class="filter" data-filter="myself">Myself</li>
                                <!--
                                <?php
@@ -237,7 +237,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                            	<?php
 							foreach($memes as $item){
 							?>
-                              <div class="col-md-3 col-sm-4 mix <?php echo $item['category']; ?>">
+                              <div class="col-md-3 col-sm-4 mix <?php if($item['userowned']['owned']==1) {echo "myself";}else{echo $item['category'];} ?>">
                                  <div class="mix-inner">
                                     <img class="img-responsive" src="<?php echo $item['images'][0]['originalImageUrl']; ?>" alt="" style="width: 300px;height: 287px">
                                     <div class="mix-details">
@@ -680,27 +680,19 @@ HTML;
                         <span class="help-block">Limit: 180 characters</span>
                     </div>
                		<br>
-               		 <div class="form-group">
-                              <label>Choose category</label>
-                              <select name="category" class="form-control input-medium">
-                                 <option>Desi</option>
-                                 <option>Firangi</option>
-                                 <?php
-                                 if(!empty($data['IsAdmin'])){
-                                 	echo'<option>Seasonal</option>
-                                 		<option>Labs</option>
-                                 		<option>Featured</option>';
-                                 } 
-                                 ?> 
-                              </select>
-                    </div>
-                    <div class="form-group">
+               		<?php
+						if(!empty($data['IsAdmin'])){
+                           echo'<input type="hidden" name="category" value="hugdeoriginals"';
+                        } 
+                    ?> 
+               		 
+                    <!--<div class="form-group">
                               <label>Posting As</label>
                               <select name="anon" class="form-control input-medium">
                                  <option>Anonymous</option>
                                  <option>Use my name</option>
                               </select>
-                    </div>
+                    </div>-->
                		<!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
                   	<div class="row fileupload-buttonbar">
                     	<div class="col-lg-7">
@@ -917,7 +909,7 @@ HTML;
    <script src="<?php echo assets_url(); ?>plugins/jquery-file-upload/js/cors/jquery.xdr-transport.js"></script>
    <![endif]-->
    <script src="<?php echo assets_url(); ?>scripts/app.js"></script>
-   <script src="<?php echo assets_url(); ?>scripts/form-fileupload.js"></script>
+   <script src="<?php echo assets_url(); ?>scripts/form-fileupload-meme.js"></script>
    <script src="<?php echo assets_url(); ?>scripts/login-soft.js" type="text/javascript"></script> 
    <script src="<?php echo assets_url(); ?>scripts/lickflush.js" type="text/javascript"></script>   
    <script src="<?php echo assets_url(); ?>scripts/form-components.js" type="text/javascript"></script>
