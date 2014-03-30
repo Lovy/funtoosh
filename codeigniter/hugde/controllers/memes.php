@@ -150,19 +150,7 @@ class memes extends CI_Controller{
 			$response['memeid']=$memeid;
 			//Detect mobile and load no-sidebar version
 			$mobile = $this->mobile_detect->isMobile();
-			if(is_null($response['huggas'])){
-				$this->load->view('createHugga',$response);
-			}else{
-				if($mobile){
-				$this->load->view('createHugga',$response);
-				}
-				else{
-					//var_dump($response);
-					//$this->load->view('hugga_home_myhuggas',$response);
-					$this->load->view('createHugga',$response);
-				}
-			}
-			
+			$this->load->view('createHugga',$response);
 		}
 		else{
 			echo "Not logged in";
