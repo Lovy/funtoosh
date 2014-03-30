@@ -239,7 +239,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 							?>
                               <div class="col-md-3 col-sm-4 mix <?php if($item['userowned']['owned']==1) {echo "myself";}else{echo $item['category'];} ?>">
                                  <div class="mix-inner">
-                                    <img class="img-responsive" src="<?php echo $item['images'][0]['originalImageUrl']; ?>" alt="">
+                                    <img class="img-responsive" src="<?php echo $item['images'][0]['originalImageUrl']; ?>" alt="" style="width: 300px;height: 287px">
                                     <div class="mix-details">
                                        <h4><?php if($item['memeTitle']!=''){echo $item['memeTitle'];}else{echo'No Title Set';} ?></h4>
                                        <a href="<?php echo base_url().'memes/createhugga?t='.$item['images'][0]['originalImageUrl'].'&memeid='.$item['memeId']; ?>" > Creat Meme</a>
@@ -911,7 +911,7 @@ HTML;
    <script src="<?php echo assets_url(); ?>scripts/login-soft.js" type="text/javascript"></script> 
    <script src="<?php echo assets_url(); ?>scripts/lickflush.js" type="text/javascript"></script>   
    <script src="<?php echo assets_url(); ?>scripts/form-components.js" type="text/javascript"></script>
-      <script src="<?php echo assets_url(); ?>scripts/autoloadmemes.js" type="text/javascript"></script>   
+      <!--<script src="<?php echo assets_url(); ?>scripts/autoloadmemes.js" type="text/javascript"></script>-->   
    <!--<script src="<?php echo assets_url(); ?>scripts/autoloadMyHugge.js" type="text/javascript"></script>-->   
    <script type="text/javascript" src="<?php echo assets_url(); ?>plugins/jquery-mixitup/jquery.mixitup.min.js"></script>
    <script type="text/javascript" src="<?php echo assets_url(); ?>plugins/fancybox/source/jquery.fancybox.pack.js"></script>  
