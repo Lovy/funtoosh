@@ -284,12 +284,12 @@ class home extends CI_Controller{
 		// Need to decode before saving since the data we received is already base64 encoded
 		$decodedData=base64_decode($filteredData);
 		$fn = substr(md5(time()), 0, 5);
-		$fp = fopen( "/var/www/html/hugde_assets/upload/$fn.png", 'wb' );
+		$fp = fopen( "/hugde_assets/upload/$fn.png", 'wb' );
 		fwrite( $fp, $decodedData);
 		fclose( $fp );
 		
 		//$fp2= fopen( "/var/www/html/hugde_assets/upload/$fn.png", 'r+' );
-		$fp2="/var/www/html/hugde_assets/upload/".$fn.'.png';
+		$fp2="/hugde_assets/upload/".$fn.'.png';
 		echo filesize($fp2);
 		$this->load->model('photo');
 		$this->photo->uploadimage($fp2,$fn);
