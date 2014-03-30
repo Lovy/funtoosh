@@ -5,6 +5,7 @@ class photo extends CI_Model{
 	function __construct(){
 		parent::__construct();
 		$this->load->library('S3');
+		$this->load->library('session');
 	}
 	
 	public function resize($w=NULL,$h=NULL,$src=NULL){
@@ -72,18 +73,45 @@ class photo extends CI_Model{
 				echo $msg;
 				$s3file='http://'.$bucket.'.s3.amazonaws.com/'.$imgName;
 				
-				/*
-				if(is_null($id)){
-					$data = array("Url"=>$s3file,"Size"=>$_FILES["Filedata"]["size"],"SpaceId"=>0);
-					$this->db->insert('spacephotos',$data);
-				}
-				else{
-					$data = array("Url"=>$s3file,"Size"=>$_FILES["Filedata"]["size"],"SpaceId"=>$id);
-					$this->db->insert('spacephotos',$data);
-				}
-				 * 
-				 */
-				 
+				$sql = 'INSERT INTO images (originalImageUrl,size,type,name)'.' VALUES (?,?,?,?)';
+	            $query = $this->db->prepare($sql);
+	            $query->bind_param(
+	                'siss',
+	                $s3file,
+	                filesize($inputFile),
+	                'png',
+	                $imgName
+	            );
+	            $query->execute();
+	            $imageId = $this->db->insert_id;
+				$currentTime = date('Y-m-d H:m:s',time());
+				$currentTime2 = time();
+				$factor=1390820000;
+				$v= 1;
+				$homeIndex = floatval($v*($currentTime2-$factor));
+				//$licks = intval('1');
+				// Insert into hugga table
+				$userId = $this->session->userdata('userId');
+				$name=$this->session->userdata('name');
+				$sql = 'INSERT INTO hugga (userId,homeIndex,imageId,postedBy,category,uploadTimeStamp)'.' VALUES (?,?,?,?,?,?)';
+	            $query = $this->db->prepare($sql);
+	            $query->bind_param(
+	                'iiisss',
+	                $userId,
+	                $homeIndex,
+	                $imageId,
+	                $name,
+	                'generatedmeme',
+	                $currentTime
+	            );
+	            $query->execute();
+	            $huggaId = $this->db->insert_id;
+				
+				//Insert into userlick table
+				$sql2="insert into userlick (userId,huggaId) values (?,?)";
+				$query2=$this->db->prepare($sql2);
+				$query2->bind_param('ii',$userId,$huggaId);
+				$query2->execute();  
 				unlink($destination_final);
 			}
 			else {

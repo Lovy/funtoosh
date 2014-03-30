@@ -18,8 +18,8 @@ $options = array(
     'db_table' => 'images'
 );
 
-error_reporting(E_ALL | E_STRICT);
-ini_set('display_errors', 1);
+//error_reporting(E_ALL | E_STRICT);
+//ini_set('display_errors', 1);
 require('UploadHandlerS3.php');
 //$upload_handler = new UploadHandler();
 
