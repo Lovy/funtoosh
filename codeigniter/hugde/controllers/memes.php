@@ -100,7 +100,7 @@ class memes extends CI_Controller{
 			if($item['userowned']['owned']==1) {$category="myself";}else{$category= $item['category'];}
 			$x.='<div class="col-md-3 col-sm-4 mix '.$category.' mix_all" style="display:block; opacity:1">
                                  <div class="mix-inner">
-                                    <img class="img-responsive" src="'.$item['images'][0]['originalImageUrl'].'" alt="" style="width: 300px;height: 287px">
+                                    <img class="img-responsive" src="'.$item['images'][0]['originalImageUrl'].'" alt="" >
                                     <div class="mix-details">
                                        <h4>'.$title.'</h4>
                                        <a href="'.base_url().'memes/createhugga?t='.$item['images'][0]['originalImageUrl'].'&memeid='.$item['memeId'].'" class="mix-link"><i class="icon-link"></i></a>

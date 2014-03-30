@@ -239,7 +239,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 							?>
                               <div class="col-md-3 col-sm-4 mix <?php if($item['userowned']['owned']==1) {echo "myself";}else{echo $item['category'];} ?>">
                                  <div class="mix-inner">
-                                    <img class="img-responsive" src="<?php echo $item['images'][0]['originalImageUrl']; ?>" alt="" style="width: 300px;height: 287px">
+                                    <img class="img-responsive" src="<?php echo $item['images'][0]['originalImageUrl']; ?>" alt="">
                                     <div class="mix-details">
                                        <h4><?php if($item['memeTitle']!=''){echo $item['memeTitle'];}else{echo'No Title Set';} ?></h4>
                                        <a href="<?php echo base_url().'memes/createhugga?t='.$item['images'][0]['originalImageUrl'].'&memeid='.$item['memeId']; ?>" class="mix-link"><i class="icon-link"></i></a>
