@@ -105,7 +105,9 @@ $(function () {
         stageH = bgImage.height;
         initStage()
     };
+    bgImage.crossOrigin='anonymous';
     bgImage.src = gblImgName;
+    
     $("#tc1").keyup(function () {
         t1.remove();
         t1 = addText($("#tc1").val(), 0, 30)
