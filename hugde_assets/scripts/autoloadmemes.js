@@ -7,7 +7,7 @@ $(document).ready(function(){
 		async:false,
 		dataType:"json",
 		success:function(data){
-			totalHuggas = data[0].count;
+			totalMemes = data[0].count;
 		}
 		
 	});
