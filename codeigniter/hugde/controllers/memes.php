@@ -17,7 +17,7 @@ class memes extends CI_Controller{
 			$data = $this->session->all_userdata();
 			$this->load->model('modelmeme');
 			//loaddata(HPP,PageNo)
-			$response['memes'] = $this->modelhome->loadData(4,1);   //(huggasPerPage,pageNo)
+			$response['memes'] = $this->modelmeme->loadData(4,1);   //(huggasPerPage,pageNo)
 			//$response['sidebar'] = $this->modelhome->loadSideBar();
 			$response['data']=$data;
 			$response['category']='memes';
