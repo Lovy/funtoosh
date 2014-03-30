@@ -111,15 +111,13 @@ class memes extends CI_Controller{
 	function jsonToHtml($data){
 		$x='';
 		foreach($data['memes'] as $item){
-			if($item['title']!=''){$title=$item['title'];}else{$title='No Title Set';}
+			if($item['memeTitle']!=''){$title=$item['memeTitle'];}else{$title='No Title Set';}
 			if($item['userowned']['owned']==1) {$category="myself";}else{$category= $item['category'];}
 			$x.='<div class="col-md-3 col-sm-4 mix '.$category.'">
                                  <div class="mix-inner">
                                     <img class="img-responsive" src="'.$item['images'][0]['originalImageUrl'].'" alt="" style="width: 300px;height: 287px">
                                     <div class="mix-details">
                                        <h4>'.$title.'</h4>
-                                       <h5>Views: '.$item['views'].'</h5>
-                                       <h5>Licks: '.$item['licks'].' Flushes: '.$item['flushes'].'</h5>
                                        <a href="'.base_url().'hugga/'.$item['huggaId'].'" class="mix-link"><i class="icon-link"></i></a>
                                        <a class="mix-preview fancybox-button" href="'.$item['images'][0]['originalImageUrl'].'" title="'.$title.'" data-rel="fancybox-button"><i class="icon-search"></i></a>
                     
