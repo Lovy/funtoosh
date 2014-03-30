@@ -77,15 +77,7 @@ class photo extends CI_Model{
 				$s3file='http://'.$bucket.'.s3.amazonaws.com/'.$imgName;
 				
 				$sql = 'INSERT INTO images (originalImageUrl,size,type,name)'.' VALUES (?,?,?,?)';
-	            $query = $this->db->prepare($sql);
-	            $query->bind_param(
-	                'siss',
-	                $s3file,
-	                filesize($inputFile),
-	                'png',
-	                $imgName
-	            );
-	            $query->execute();
+	            $query = $this->db->query($sql,array($s3file,filesize($inputFile),'png',$imgName));
 	            $imageId = $this->db->insert_id;
 				$currentTime = date('Y-m-d H:m:s',time());
 				$currentTime2 = time();
