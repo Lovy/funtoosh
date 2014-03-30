@@ -25,7 +25,7 @@ class memes extends CI_Controller{
 			$this->load->view('memegrid',$response);
 		}
 		else{
-			echo "not logged in";
+			redirect('http://hugde.com');
 			/*
 			$this->load->model('modelhome');
 			$response['huggas'] = $this->modelhome->loadData('0',NULL,'HIDE',4,1,'ALL');
@@ -138,7 +138,7 @@ class memes extends CI_Controller{
 			$this->load->view('createHugga',$response);
 		}
 		else{
-			echo "Not logged in";
+			redirect('http://hugde.com');
 		}
 	}
 	
