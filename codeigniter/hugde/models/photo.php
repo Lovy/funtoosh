@@ -29,7 +29,7 @@ class photo extends CI_Model{
 		log_message('error','Outside if');
 	}
 	
-	public function uploadimage($imgName){
+	public function uploadimage($inputFile,$imgName){
 		
 		//$allowed = array('png', 'jpg', 'gif');
 		//if(isset($_FILES['Filedata']) && $_FILES['Filedata']['error'] == 0){
@@ -67,7 +67,7 @@ class photo extends CI_Model{
 			//$this->resize('570','425',$destination_final);
 			
 			
-			if($s3->putObjectFile($destination_final, $bucket , $imgName, S3::ACL_PUBLIC_READ) )
+			if($s3->putObjectFile($inputFile, $bucket , $imgName, S3::ACL_PUBLIC_READ) )
 			{
 				$msg = "S3 Upload Successful.";	
 				echo $msg;
