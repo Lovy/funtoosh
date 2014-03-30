@@ -42,11 +42,10 @@ var FormFileUpload = function () {
                 acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i,
                 submit:function(e,data){
                 	data.formData = $('#fileupload').serializeArray();
-                },
-                stop:function (e) {
-				    console.log('Uploads finished');
-				}
-            });
+                }
+            }).on('fileuploaddone', function (e, data) {
+			    console.log("done");
+			});
 
                 // Upload server status check for browsers with CORS support:
             if ($.support.cors) {
