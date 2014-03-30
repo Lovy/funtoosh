@@ -14,7 +14,14 @@ class tnc extends CI_Controller{
 		$this->output->set_header("Cache-Control: no-store, no-cache, must-revalidate, no-transform, max-age=0, post-check=0, pre-check=0");
 		$this->output->set_header("Pragma: no-cache");
 		$LoginFlag = $this->session->userdata('IsLoggedIn');
-		$this->load->view('tnc');
+		if(!empty($LoginFlag)){
+			$data = $this->session->all_userdata();
+			$response['data']=$data;
+			$this->load->view('tnc',$response);
+		}else{
+			$response['data']=array("userId"=>"0");
+			$this->load->view('tnc',$response);
+		}
 	}
 }
 
