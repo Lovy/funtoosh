@@ -163,7 +163,7 @@ $(function () {
         gblFontFamily = "Arial";
         gblStrokeWidth = 0;
         addText(watermark, bgImage.width - getTextWidth(watermark), bgImage.height - 10 - getSimpleTextHeight() + 5);
-        stage.toDataURL({
+        stage.toDataURL("image/png",{
             callback: function (a) {
                 $("#imgdata").val(a);
                 $("#createimg").submit()
