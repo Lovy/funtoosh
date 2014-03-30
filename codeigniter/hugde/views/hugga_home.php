@@ -142,7 +142,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                	if(!empty($data['IsLoggedIn'])){
             ?>
             	<li class="dropdown" >
-                        		 <button data-toggle="modal" href="http://hugde.com/memes" type="button" class="btn yellow">Create Memes</button>
+                        		 <button onclick="window.location.replace('http://hugde.com/memes');" type="button" class="btn yellow">Create Memes</button>
             	<!--<a data-toggle="modal" href="#basic" >Upload <i class="icon-upload"></i></a>-->
             </li>	
                         		<li class="dropdown" >
