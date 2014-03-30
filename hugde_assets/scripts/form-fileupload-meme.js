@@ -39,11 +39,15 @@ var FormFileUpload = function () {
                 singleFileUploads: false,
                 //maxNumberOfFiles: 1,
                 limitMultiFileUploads:1,
-                acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i
+                acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i,
+                submit:function(e,data){
+                	data.formData = $('#fileupload').serializeArray();
+                },
+                done:function(e,data){
+                	console.log(data);
+                }
                 
-            }).on('fileuploadsubmit', function (e, data) {
-			    data.formData = $('#fileupload').serializeArray();
-			});
+            });
 
                 // Upload server status check for browsers with CORS support:
             if ($.support.cors) {

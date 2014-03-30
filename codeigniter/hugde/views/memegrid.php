@@ -241,7 +241,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                                  <div class="mix-inner">
                                     <img class="img-responsive" src="<?php echo $item['images'][0]['originalImageUrl']; ?>" alt="" style="width: 300px;height: 287px">
                                     <div class="mix-details">
-                                       <h4><?php if($item['title']!=''){echo $item['title'];}else{echo'No Title Set';} ?></h4>
+                                       <h4><?php if($item['memeTitle']!=''){echo $item['memeTitle'];}else{echo'No Title Set';} ?></h4>
                                        <h5>Views: <?php echo $item['views']; ?></h5>
                                        <h5>Licks: <?php echo $item['licks']; ?> Flushes: <?php echo $item['flushes']; ?></h5>
                                        <a href="<?php echo base_url().'hugga/'.$item['huggaId']; ?>" class="mix-link"><i class="icon-link"></i></a>
