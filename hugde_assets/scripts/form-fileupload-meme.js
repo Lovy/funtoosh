@@ -42,6 +42,9 @@ var FormFileUpload = function () {
                 acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i,
                 submit:function(e,data){
                 	data.formData = $('#fileupload').serializeArray();
+                },
+                done:function(e,data){
+                	//console.log(data.result);
                 }
                 
             });
