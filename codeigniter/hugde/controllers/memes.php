@@ -136,8 +136,8 @@ class memes extends CI_Controller{
 		echo json_encode($result);
 	}
 		
-	function createhugga($imageUrl){
-		
+	function createhugga(){
+		$imageUrl= $this->input->get('t');
 		$LoginFlag = $this->session->userdata('IsLoggedIn');
 		if(!empty($LoginFlag)){
 			$userId = $this->session->userdata('userId');
