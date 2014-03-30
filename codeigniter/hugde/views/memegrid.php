@@ -242,7 +242,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                                     <img class="img-responsive" src="<?php echo $item['images'][0]['originalImageUrl']; ?>" alt="">
                                     <div class="mix-details">
                                        <h4><?php if($item['memeTitle']!=''){echo $item['memeTitle'];}else{echo'No Title Set';} ?></h4>
-                                       <a href="<?php echo base_url().'memes/createhugga?t='.$item['images'][0]['originalImageUrl'].'&memeid='.$item['memeId']; ?>" Creat Meme</a>
+                                       <a href="<?php echo base_url().'memes/createhugga?t='.$item['images'][0]['originalImageUrl'].'&memeid='.$item['memeId']; ?>" > Creat Meme</a>
                                        <a class="mix-preview fancybox-button" href="<?php echo $item['images'][0]['originalImageUrl']; ?>" title="<?php echo $item['memeTitle']; ?>" data-rel="fancybox-button"><i class="icon-search"></i></a>
                                        <!--<a href="<?php echo base_url().'home/delete/'.$item['huggaId']; ?>" class="mix-link"><i class=" icon-trash"></i></a>-->
                                     </div>
