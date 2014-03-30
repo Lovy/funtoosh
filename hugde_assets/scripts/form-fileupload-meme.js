@@ -43,10 +43,9 @@ var FormFileUpload = function () {
                 submit:function(e,data){
                 	data.formData = $('#fileupload').serializeArray();
                 },
-                done:function(e,data){
-                	//console.log(data.result);
-                }
-                
+                stop:function (e) {
+				    console.log('Uploads finished');
+				}
             });
 
                 // Upload server status check for browsers with CORS support:
