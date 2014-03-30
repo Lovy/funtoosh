@@ -89,7 +89,7 @@ class photo extends CI_Model{
 				$userId = $this->session->userdata('userId');
 				$name=$this->session->userdata('name');
 				$sql = 'INSERT INTO hugga (userId,memeId,homeIndex,imageId,postedBy,category,uploadTimeStamp)'.' VALUES (?,?,?,?,?,?,?)';
-	            $query = $this->db->query($sql,array($userId,$memeid,$homeIndex,$imageId,$name,'generatedmeme',$currentTime));
+	            $query = $this->db->query($sql,array($userId,$memeid,$homeIndex,$imageId,$name,'Seasonal',$currentTime));
 	            $huggaId = $this->db->insert_id();
 				
 				//Insert into userlick table
