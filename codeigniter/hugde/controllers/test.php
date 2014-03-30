@@ -10,6 +10,8 @@ class test extends CI_Controller{
 	}
 	
 	function index(){
+		$data = $this->session->all_userdata();
+		var_dump($data);
 		$this->output->set_header("Cache-Control: no-store, no-cache, must-revalidate, no-transform, max-age=0, post-check=0, pre-check=0");
 		$this->output->set_header("Pragma: no-cache");
 		$LoginFlag = $this->session->userdata('IsLoggedIn');
@@ -26,10 +28,10 @@ class test extends CI_Controller{
 			//Detect mobile and load no-sidebar version
 			$mobile = $this->mobile_detect->isMobile();
 			if($mobile){
-				$this->load->view('hugga_home_mobile',$response);
+				//$this->load->view('hugga_home_mobile',$response);
 			}
 			else{
-				$this->load->view('testview',$response);
+				//$this->load->view('testview',$response);
 			}
 			
 		}
@@ -45,10 +47,10 @@ class test extends CI_Controller{
 			//Detect mobile and load no-sidebar version
 			$mobile = $this->mobile_detect->isMobile();
 			if($mobile){
-				$this->load->view('hugga_home_mobile',$response);
+				//$this->load->view('hugga_home_mobile',$response);
 			}
 			else{
-				$this->load->view('testview',$response);
+				//$this->load->view('testview',$response);
 			}
 			
 		}
