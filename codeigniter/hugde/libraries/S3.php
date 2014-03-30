@@ -304,7 +304,7 @@ class S3 {
 			foreach ($metaHeaders as $h => $v) $rest->setAmzHeader('x-amz-meta-'.$h, $v);
 			$rest->getResponse();
 		} else
-			echo $rest->size.''.$rest->data.''.$rest->fp;
+			echo "size==".$rest->size.' data='.$rest->data.' fp'.$rest->fp;
 			$rest->response->error = array('code' => 0, 'message' => 'Missing input parameters');
 
 		if ($rest->response->error === false && $rest->response->code !== 200)
