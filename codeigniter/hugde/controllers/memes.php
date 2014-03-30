@@ -22,22 +22,7 @@ class memes extends CI_Controller{
 			//$response['sidebar'] = $this->modelhome->loadSideBar();
 			$response['data']=$data;
 			$response['category']='memes';
-			//echo json_encode($response);
-			
-			//Detect mobile and load no-sidebar version
-			//$mobile = $this->mobile_detect->isMobile();
-			//if($mobile){
-				//$this->load->view('hugga_home_mobile',$response);
-			//}
-			//else{
-				if(!empty($response['memes'])){
-					$this->load->view('memegrid',$response);
-				}else{
-					"No memes";					
-				}
-				//$this->load->view('memegrid',$response);
-			//}
-			
+			$this->load->view('memegrid',$response);
 		}
 		else{
 			echo "not logged in";
