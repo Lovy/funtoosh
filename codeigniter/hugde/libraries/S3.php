@@ -261,7 +261,7 @@ class S3 {
 	* @return boolean
 	*/
 	public static function putObject($input, $bucket, $uri, $acl = self::ACL_PRIVATE, $metaHeaders = array(), $contentType = null) {
-			var_dump($input);
+			//var_dump($input);
 		if ($input == false) return false;
 		$rest = new S3Request('PUT', $bucket, $uri);
 
@@ -329,7 +329,7 @@ class S3 {
 	* @param string $contentType Content type
 	* @return boolean
 	*/
-	public static function putObjectFile($file, $bucket, $uri, $acl = self::ACL_PRIVATE, $metaHeaders = array(), $contentType = null) {
+	public static function putObjectFile($file, $bucket, $uri, $acl = self::ACL_PRIVATE, $metaHeaders = array(), $contentType = 'image/png') {
 		return self::putObject(S3::inputFile($file), $bucket, $uri, $acl, $metaHeaders, $contentType);
 	}
 
