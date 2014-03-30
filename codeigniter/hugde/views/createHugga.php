@@ -946,7 +946,7 @@ HTML;
 	<!-- Placed at the end of the document so the pages load faster -->
 	<script>
 	var watermark = "hugde.com";
-	var gblImgName="https://hugde.s3.amazonaws.com/main-qimg-ffc83a3bee07d1bc0177968f6e483966.jpg";
+	var gblImgName="/var/www/html/hugde_assets/img/pages/2.jpg";
 	<?php
 	
 		//include_once("memesettings.php");

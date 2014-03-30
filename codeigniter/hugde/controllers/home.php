@@ -290,6 +290,7 @@ class home extends CI_Controller{
 		
 		//$fp2= fopen( "/var/www/html/hugde_assets/upload/$fn.png", 'r+' );
 		$fp2="/var/www/html/hugde_assets/upload/".$fn.'.png';
+		echo filesize($fp2);
 		$this->load->model('photo');
 		$this->photo->uploadimage($fp2,$fn);
 	}
