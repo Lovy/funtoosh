@@ -305,15 +305,15 @@ class S3 {
 			foreach ($metaHeaders as $h => $v) $rest->setAmzHeader('x-amz-meta-'.$h, $v);
 			$rest->getResponse();
 		} else
-			echo "size ".$rest->size.' data '.$rest->data.' fp '.$rest->fp;
-			$rest->response->error = array('code' => 0, 'message' => 'Missing input parameters');
+			//echo "size ".$rest->size.' data '.$rest->data.' fp '.$rest->fp;
+		/*	$rest->response->error = array('code' => 0, 'message' => 'Missing input parameters');
 
 		if ($rest->response->error === false && $rest->response->code !== 200)
 			$rest->response->error = array('code' => $rest->response->code, 'message' => 'Unexpected HTTP status');
 		if ($rest->response->error !== false) {
 			trigger_error(sprintf("S3::putObject(): [%s] %s", $rest->response->error['code'], $rest->response->error['message']), E_USER_WARNING);
 			return false;
-		}
+		}*/
 		return true;
 	}
 
