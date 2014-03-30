@@ -45,7 +45,7 @@ var FormFileUpload = function () {
                 }
             }).on('fileuploaddone', function (e, data) {
             	var filesresult = data.result;
-            	var nexturl = filesresult['url'];
+            	var nexturl = filesresult[0].url;
             	console.log(nexturl);
             	console.log(filesresult);
 			    //var nexturl='http://hugde.com/memes/createhugga/'+nexturl;
