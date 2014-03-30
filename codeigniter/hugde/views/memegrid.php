@@ -682,7 +682,7 @@ HTML;
                		<br>
                		<?php
 						if(!empty($data['IsAdmin'])){
-                           echo'<input type="hidden" name="category" value="hugdeoriginals"';
+                           echo'<input type="hidden" name="category" value="hugdeoriginals">';
                         } 
                     ?> 
                		 
