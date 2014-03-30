@@ -316,7 +316,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                   			</div>		
                   		</div>	
                   	</div>
-                  	 <a href="http://d2nds2wyuzde9r.cloudfront.net/hugga/{{huggaId}}"><h3><b>{{title}}</b></h3></a>
+                  	 <a href="http://hugde.com/hugga/{{huggaId}}"><h3 style="font-weight: 600 !important">{{title}}</h3></a>
                      <div class="blog-tag-data">
                      	<a href="http://hugde.com/hugga/{{huggaId}}"><img src="{{originalImageUrl}}" class="img-responsive" alt="" style="width:100%"></a>
                         <div class="row">
