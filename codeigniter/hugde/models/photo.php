@@ -1,9 +1,12 @@
 <?php
-
+ini_set('display_errors',1);
+error_reporting(-1);
+date_default_timezone_set('Asia/Kolkata');
 class photo extends CI_Model{
 	
 	function __construct(){
 		parent::__construct();
+		$this->db->query("SET time_zone='+5:30'");
 		$this->load->library('S3');
 		$this->load->library('session');
 	}
