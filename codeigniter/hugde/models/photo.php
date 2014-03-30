@@ -32,7 +32,7 @@ class photo extends CI_Model{
 		log_message('error','Outside if');
 	}
 	
-	public function uploadimage($inputFile,$imgName){
+	public function uploadimage($inputFile,$imgName,$memeid){
 		
 		//$allowed = array('png', 'jpg', 'gif');
 		//if(isset($_FILES['Filedata']) && $_FILES['Filedata']['error'] == 0){
@@ -88,8 +88,8 @@ class photo extends CI_Model{
 				// Insert into hugga table
 				$userId = $this->session->userdata('userId');
 				$name=$this->session->userdata('name');
-				$sql = 'INSERT INTO hugga (userId,homeIndex,imageId,postedBy,category,uploadTimeStamp)'.' VALUES (?,?,?,?,?,?)';
-	            $query = $this->db->query($sql,array($userId,$homeIndex,$imageId,$name,'generatedmeme',$currentTime));
+				$sql = 'INSERT INTO hugga (userId,memeId,homeIndex,imageId,postedBy,category,uploadTimeStamp)'.' VALUES (?,?,?,?,?,?,?)';
+	            $query = $this->db->query($sql,array($userId,$memeid,$homeIndex,$imageId,$name,'generatedmeme',$currentTime));
 	            $huggaId = $this->db->insert_id();
 				
 				//Insert into userlick table

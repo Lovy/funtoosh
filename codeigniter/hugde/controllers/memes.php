@@ -130,7 +130,7 @@ class memes extends CI_Controller{
 	return $x;
 	}
 	
-	function totalHuggas(){
+	function totalmemes(){
 		$this->load->model('modelmeme');
 		$result = $this->modelmeme->totalMemes();
 		echo json_encode($result);
@@ -138,6 +138,7 @@ class memes extends CI_Controller{
 		
 	function createhugga(){
 		$imageUrl= $this->input->get('t');
+		$memeid=$this->input->get('memeid');
 		$LoginFlag = $this->session->userdata('IsLoggedIn');
 		if(!empty($LoginFlag)){
 			$userId = $this->session->userdata('userId');
@@ -171,6 +172,7 @@ class memes extends CI_Controller{
 	
 	function createhuggaview(){
 		$imgData = $this->input->post('imgdata');
+		$memeid = $this->input->post('memeid');
 		$filteredData=substr($_POST['imgdata'], strpos($_POST['imgdata'], ",")+1);
 
 		// Need to decode before saving since the data we received is already base64 encoded
@@ -184,7 +186,7 @@ class memes extends CI_Controller{
 		$fp2="/var/www/html/hugde_assets/upload/".$fn.'.png';
 		//echo filesize($fp2);
 		$this->load->model('photo');
-		$this->photo->uploadimage($fp2,$fn);
+		$this->photo->uploadimage($fp2,$fn,$memeid);
 	}
 	
 	function next($huggaId,$userId){

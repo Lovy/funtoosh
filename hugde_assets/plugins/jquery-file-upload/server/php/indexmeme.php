@@ -83,7 +83,7 @@ class CustomUploadHandler extends UploadHandlerS3 {
                 $file->category
             );
             $query->execute(); 
-			
+			$file->memeid=$this->db->insert_id;
         }
         return $file;
     }
