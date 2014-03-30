@@ -78,7 +78,7 @@ class photo extends CI_Model{
 				
 				$sql = 'INSERT INTO images (originalImageUrl,size,type,name)'.' VALUES (?,?,?,?)';
 	            $query = $this->db->query($sql,array($s3file,filesize($inputFile),'png',$imgName));
-	            $imageId = $this->db->insert_id;
+	            $imageId = $this->db->insert_id();
 				$currentTime = date('Y-m-d H:m:s',time());
 				$currentTime2 = time();
 				$factor=1390820000;
@@ -90,7 +90,7 @@ class photo extends CI_Model{
 				$name=$this->session->userdata('name');
 				$sql = 'INSERT INTO hugga (userId,homeIndex,imageId,postedBy,category,uploadTimeStamp)'.' VALUES (?,?,?,?,?,?)';
 	            $query = $this->db->query($sql,array($userId,$homeIndex,$imageId,$name,'generatedmeme',$currentTime));
-	            $huggaId = $this->db->insert_id;
+	            $huggaId = $this->db->insert_id();
 				
 				//Insert into userlick table
 				$sql2="insert into userlick (userId,huggaId) values (?,?)";
