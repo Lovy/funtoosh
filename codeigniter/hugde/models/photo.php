@@ -96,6 +96,8 @@ class photo extends CI_Model{
 				$sql2="insert into userlick (userId,huggaId) values (?,?)";
 				$query2=$this->db->query($sql2,array($userId,$huggaId));
 				unlink($destination_final);
+				
+				redirect('http://hugde.com');
 			}
 			else {
 			$msg = "S3 Upload Fail.";
