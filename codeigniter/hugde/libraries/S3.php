@@ -261,6 +261,7 @@ class S3 {
 	* @return boolean
 	*/
 	public static function putObject($input, $bucket, $uri, $acl = self::ACL_PRIVATE, $metaHeaders = array(), $contentType = null) {
+			var_dump($input);
 		if ($input == false) return false;
 		$rest = new S3Request('PUT', $bucket, $uri);
 
