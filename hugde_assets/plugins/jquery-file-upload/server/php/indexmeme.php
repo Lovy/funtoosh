@@ -73,10 +73,10 @@ class CustomUploadHandler extends UploadHandlerS3 {
 			$homeIndex = floatval($v*($currentTime2-$factor));
 			//$licks = intval('1');
 			// Insert into hugga table
-			$sql = 'INSERT INTO memecreate (memeTitle,userId,imageId,category,timestamp)'.' VALUES (?,?,?,?,?)';
+			$sql = 'INSERT INTO memecreate (memeTitle,userId,imageId,category)'.' VALUES (?,?,?,?)';
             $query = $this->db->prepare($sql);
             $query->bind_param(
-                'siiss',
+                'siis',
                 $file->title,
                 $file->userId,
                 $file->id,
