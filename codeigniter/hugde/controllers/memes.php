@@ -136,7 +136,7 @@ class memes extends CI_Controller{
 		echo json_encode($result);
 	}
 		
-	function createhugga(){
+	function createhugga($imageUrl){
 		
 		$LoginFlag = $this->session->userdata('IsLoggedIn');
 		if(!empty($LoginFlag)){
@@ -147,6 +147,7 @@ class memes extends CI_Controller{
 			$response['huggas'] = $this->modelhome->loadData('0',$data['userId'],'SHOW',100,1,'ALL');
 			$response['sidebar'] = $this->modelhome->loadSideBar();
 			$response['data']=$data;
+			$response['imageUrl']=$imageUrl;
 			//Detect mobile and load no-sidebar version
 			$mobile = $this->mobile_detect->isMobile();
 			if(is_null($response['huggas'])){
