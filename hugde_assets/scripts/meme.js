@@ -161,16 +161,21 @@ $(function () {
         }
     });*/
     $("#cands").click(function () {
-        gblFontSize = 12;
-        gblFontFamily = "Arial";
-        gblStrokeWidth = 0;
-        addText(watermark, bgImage.width - getTextWidth(watermark), bgImage.height - 10 - getSimpleTextHeight() + 5);
-        stage.toDataURL({
-            callback: function (a) {
-                $("#imgdata").val(a);
-                $("#createimg").submit()
-            }
-        })
+    	if(loginStatus=='0'){
+			$('#basic').modal('show');  //show login dialog box in case on logged out
+		}else{
+			gblFontSize = 12;
+	        gblFontFamily = "Arial";
+	        gblStrokeWidth = 0;
+	        addText(watermark, bgImage.width - getTextWidth(watermark), bgImage.height - 10 - getSimpleTextHeight() + 5);
+	        stage.toDataURL({
+	            callback: function (a) {
+	                $("#imgdata").val(a);
+	                $("#createimg").submit()
+	            }
+	        })
+		}
+        
     })
 });
 
