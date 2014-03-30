@@ -147,6 +147,7 @@ class memes extends CI_Controller{
 			$response['sidebar'] = $this->modelhome->loadSideBar();
 			$response['data']=$data;
 			$response['imageUrl']=$imageUrl;
+			$respone['memeid']=$memeid;
 			//Detect mobile and load no-sidebar version
 			$mobile = $this->mobile_detect->isMobile();
 			if(is_null($response['huggas'])){
