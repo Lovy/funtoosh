@@ -113,7 +113,7 @@ class memes extends CI_Controller{
 		foreach($data['memes'] as $item){
 			if($item['memeTitle']!=''){$title=$item['memeTitle'];}else{$title='No Title Set';}
 			if($item['userowned']['owned']==1) {$category="myself";}else{$category= $item['category'];}
-			$x.='<div class="col-md-3 col-sm-4 mix '.$category.'">
+			$x.='<div class="col-md-3 col-sm-4 mix '.$category.' mix_all">
                                  <div class="mix-inner">
                                     <img class="img-responsive" src="'.$item['images'][0]['originalImageUrl'].'" alt="" style="width: 300px;height: 287px">
                                     <div class="mix-details">
