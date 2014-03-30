@@ -1,7 +1,7 @@
 <?php
 ini_set('display_errors',1);
 error_reporting(-1);
-class memes extends CI_Controller{
+class tnc extends CI_Controller{
 	
 	function __construct(){
 		parent::__construct();
