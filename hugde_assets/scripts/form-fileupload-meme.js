@@ -48,8 +48,8 @@ var FormFileUpload = function () {
             	var nexturl = filesresult['url'];
             	console.log(nexturl);
             	console.log(filesresult);
-			    var nexturl='http://hugde.com/memes/createhugga/'+nexturl;
-			    window.location.replace(nexturl);
+			    //var nexturl='http://hugde.com/memes/createhugga/'+nexturl;
+			    //window.location.replace(nexturl);
 			});
 
                 // Upload server status check for browsers with CORS support:
