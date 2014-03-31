@@ -220,7 +220,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
       <div class="page-content">           
          <!-- BEGIN PAGE CONTENT-->
          <div class="row">
-         	<h3>Privacy</h3>
+         	<h1>Privacy</h1>
             <div class="col-md-12">
             	<h2>Introduction</h2>
              	<p>Your privacy is critically important to us. HUGDE, Inc. (“hugde”) takes pride in protecting private nature of your personal information very seriously and vows to protect it. This privacy policy, which we adapted from a policy initially provided by Automattic (WordPress.com), describes how we treat the information we collect when you visit and use our websites. Please read this notice very carefully.</p>
@@ -902,8 +902,7 @@ HTML;
    <script src="<?php echo assets_url(); ?>scripts/form-fileupload-meme.js"></script>
    <script src="<?php echo assets_url(); ?>scripts/login-soft.js" type="text/javascript"></script> 
    <script src="<?php echo assets_url(); ?>scripts/lickflush.js" type="text/javascript"></script>   
-   <script src="<?php echo assets_url(); ?>scripts/form-components.js" type="text/javascript"></script>
-      <script src="<?php echo assets_url(); ?>scripts/autoloadmemes.js" type="text/javascript"></script>   
+   <script src="<?php echo assets_url(); ?>scripts/form-components.js" type="text/javascript"></script>  
    <!--<script src="<?php echo assets_url(); ?>scripts/autoloadMyHugge.js" type="text/javascript"></script>-->   
    <script type="text/javascript" src="<?php echo assets_url(); ?>plugins/jquery-mixitup/jquery.mixitup.min.js"></script>
    <script type="text/javascript" src="<?php echo assets_url(); ?>plugins/fancybox/source/jquery.fancybox.pack.js"></script>  
