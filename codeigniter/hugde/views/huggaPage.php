@@ -336,7 +336,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                            		<!--<div class="pull-right" style="margin-top:-25px"><i class="icon-calendar"></i> <a href="#">April 16, 2013</a></div>-->
                            
                            	</div>
-                           	<div class="col-md-4">
+                           	<div class="col-md-6">
                            		
                            	  	<div class="fb-like" data-href="http://d2nds2wyuzde9r.cloudfront.net/hugga/{{huggaId}}" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true" style="width: 150px !important"></div>
                            		
@@ -356,7 +356,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                           	<!--<div class="col-md-3" style="font-size: 18px">
                           		Views {{views}}
                           	</div>-->
-                          	<div class="col-md-2">
+                          	<div class="col-md-4">
                           		 <a href="javascript:void(0)" onclick="flagModal();" class="btn btn-xs red" >Flag <i class=" icon-flag"></i></a>
                           		<a href="javascript:void(0)" onclick="javascript:onclicknext({{huggaId}},{{userId}});_gaq.push(['_trackEvent', 'Next', 'Clicked']);" class="btn blue pull-right" >Next <i class=" icon-chevron-right"></i></a>
                   		    
