@@ -18,7 +18,7 @@ class modelhome extends CI_Model{
 		
 	}
 	function loadData($huggaId,$userId,$myhugga,$huggasPerPage,$pageNo,$category){
-		if($huggaId=='0' && $myhugga=='HIDE' && $category=='ALL'){ //show all huggas
+		if($huggaId=='0' && $myhugga=='HIDE' && $category=='ALL'){ //show all huggas HOME PAGE
 			
 			$sql1 = "select * from hugga order by homeIndex desc LIMIT ?,?";
 			$huggasPerPage = intval($huggasPerPage);
@@ -57,7 +57,7 @@ class modelhome extends CI_Model{
 				return $hugga;
 			}
 		}
-		if($huggaId=='0' && $myhugga=='SHOW'){
+		if($huggaId=='0' && $myhugga=='SHOW'){ //MY HUGGA PAGE
 			
 			$sql1 = "select * from hugga where userId =? order by timestamp desc LIMIT ?,?";
 			$huggasPerPage = intval($huggasPerPage);
@@ -97,7 +97,7 @@ class modelhome extends CI_Model{
 			}
 		}
 
-		if($huggaId!='0' && $myhugga=='HIDE'){
+		if($huggaId!='0' && $myhugga=='HIDE'){ //HUGGA PAGE
 			
 			$sql1 = "select * from hugga where huggaId =?";
 			$huggasPerPage = intval($huggasPerPage);
@@ -137,9 +137,9 @@ class modelhome extends CI_Model{
 			}
 		}
 
-		if($huggaId=='0' && $myhugga=='HIDE' && $category!='ALL'){ //show all huggas
+		if($huggaId=='0' && $myhugga=='HIDE' && $category!='ALL'){ //DESI FIRANGI AND SEASONAL
 			
-			$sql1 = "select * from hugga where category=? order by homeIndex desc LIMIT ?,?";
+			$sql1 = "select * from hugga where category=? order by huggaId desc LIMIT ?,?";
 			$huggasPerPage = intval($huggasPerPage);
 			$query = $this->db->query($sql1,array($category,($huggasPerPage*($pageNo-1)),($huggasPerPage)));
 			//$this->db->order_by('timestamp','desc');
@@ -177,7 +177,7 @@ class modelhome extends CI_Model{
 			}
 		}
 
-		if($huggaId=='0' && $myhugga=='HIDE' && $category=='JustOut'){ //show all huggas
+		if($huggaId=='0' && $myhugga=='HIDE' && $category=='JustOut'){ //JUST OUT
 			
 			$sql1 = "select * from hugga order by huggaId desc LIMIT ?,?";
 			$huggasPerPage = intval($huggasPerPage);

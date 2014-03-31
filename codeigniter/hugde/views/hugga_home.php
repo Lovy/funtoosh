@@ -242,9 +242,9 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                   			</div>		
                   		</div>	
                   	</div>
-                  	 <a href="<?php echo base_url().'hugga/'.$item['huggaId']; ?>"><h3 style="font-weight: 600 !important"><?php echo $item['title']; ?></h3></a>
+                  	 <a href="<?php echo base_url().'hugga/'.$item['huggaId']; ?>" target="_blank" ><h3 style="font-weight: 600 !important"><?php echo $item['title']; ?></h3></a>
                      <div class="blog-tag-data">
-                     	<a href="<?php echo base_url().'hugga/'.$item['huggaId']; ?>"><img src="http://d2nds2wyuzde9r.cloudfront.net/hugde_assets/img/longLoader.gif" onload="this.src='<?php echo $item['images'][0]['originalImageUrl']; ?>'" class="img-responsive" alt="" style="width:100%"></a>
+                     	<a href="<?php echo base_url().'hugga/'.$item['huggaId']; ?>" target="_blank"><img src="http://d2nds2wyuzde9r.cloudfront.net/hugde_assets/img/longLoader.gif" onload="this.src='<?php echo $item['images'][0]['originalImageUrl']; ?>'" class="img-responsive" alt="" style="width:100%"></a>
                         <div class="row">
                            <!--<div class="col-md-2">
                            	
@@ -322,8 +322,8 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 					?>
                   	<div class="row">     		
                         <div class="col-md-12 blog-img blog-tag-data">
-                        	<a href="<?php echo base_url().'hugga/'.$item['huggaId']; ?>"><h4 style="font-family: 'Autour One', cursive;"><?php echo $item['sidebar'][0]['title']; ?></h4></a>
-                           <a href="<?php echo base_url().'hugga/'.$item['huggaId']; ?>"><img src="<?php echo $item['images'][0]['thumbnailImageUrl']; ?>" alt="" class="img-responsive" ></a>
+                        	<a href="<?php echo base_url().'hugga/'.$item['huggaId']; ?>" target="_blank"><h4 style="font-family: 'Autour One', cursive;"><?php echo $item['sidebar'][0]['title']; ?></h4></a>
+                           <a href="<?php echo base_url().'hugga/'.$item['huggaId']; ?>" target="_blank"><img src="<?php echo $item['images'][0]['thumbnailImageUrl']; ?>" alt="" class="img-responsive" ></a>
                            <ul class="list-inline">
                               <li><i class="icon-chevron-up"></i> <a href="<?php echo base_url().'hugga/'.$item['huggaId']; ?>"><?php echo $item['sidebar'][0]['licks']; ?></a></li>
                               <li><i class="icon-chevron-down"></i> <a href="<?php echo base_url().'hugga/'.$item['huggaId']; ?>"><?php echo $item['sidebar'][0]['flushes']; ?></a></li>
@@ -1004,16 +1004,19 @@ HTML;
  <!--------------------------------------------------------------------------------------Twitter--------------------------------------------------------------------------------------------->
  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
  <!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+<script type="text/javascript">
 
-  ga('create', 'UA-48595506-1', 'hugde.com');
-  ga('send', 'pageview');
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-48595506-1']);
+  _gaq.push(['_trackPageview']);
 
-</script>
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script> 
 <!-- Please call pinit.js only once per page -->
 <script type="text/javascript" async  data-pin-hover="true" src="//assets.pinterest.com/js/pinit.js"></script>
    <!-- END JAVASCRIPTS -->

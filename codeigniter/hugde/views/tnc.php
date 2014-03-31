@@ -220,7 +220,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
       <div class="page-content">           
          <!-- BEGIN PAGE CONTENT-->
          <div class="row">
-         	<h1>Terms of service</h1>
+         	
             <div class="col-md-12">
               <h2>Accepting the Terms of Service</h2>
 <p>The holy purpose of this website, hugde.com (the “Site”), owned and operated by HUGDE, Inc., is to provide web publishing services in innovative way to the planet earth. Kindly go through terms of service (“Agreement”) carefully before using the Site or any services provided on the Site (collectively, “Services”). By using or retrieving the Services, you agree to become certain by all the terms and conditions of this Agreement. If you do not agree to all the terms and conditions of this Agreement, do not use the Services. The Services are accessed by you (“Subscriber” or “You”) under the following terms and conditions:</p>
