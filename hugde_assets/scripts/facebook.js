@@ -22,8 +22,9 @@
       getData();
     } 
   });*/
- /*
- FB.getLoginStatus(function(response) {
+ 
+ if(loginStatus==0){ //checklogin called in lickflush.js
+ 	FB.getLoginStatus(function(response) {
 	  if (response.status === 'connected') {
 	    // the user is logged in and has authenticated your
 	    // app, and response.authResponse supplies
@@ -39,10 +40,8 @@
 	    // the user isn't logged in to Facebook.
 	  }
 	 });
-	 
-	 */
-	 
-	 
+ }
+  
   };
 
   // Load the SDK asynchronously
