@@ -141,7 +141,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                         	if(empty($data['IsLoggedIn'])){
             ?>
                         		<li class="dropdown" >
-                        		 <button data-toggle="modal" href="#basic" type="button" class="btn yellow">Create Memes</button>
+                        		 <button data-toggle="modal" href="#basic" type="button" class="btn yellow" onclick="gaq.push(['_trackEvent', 'Create Meme', 'Clicked']);">Create Memes</button>
             	<!--<a data-toggle="modal" href="#basic" >Upload <i class="icon-upload"></i></a>-->
             </li>	
                         		<li class="dropdown" >
@@ -166,7 +166,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                	if(!empty($data['IsLoggedIn'])){
             ?>
             <li class="dropdown" >
-                        		 <button onclick="window.location.replace('http://hugde.com/memes');" type="button" class="btn yellow">Create Memes</button>
+                        		 <button onclick="window.location.replace('http://hugde.com/memes');gaq.push(['_trackEvent', 'Create Meme', 'Clicked']);" type="button" class="btn yellow">Create Memes</button>
             	<!--<a data-toggle="modal" href="#basic" >Upload <i class="icon-upload"></i></a>-->
             </li>
                         		<li class="dropdown" >
@@ -495,7 +495,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                            <div class="modal-content">
                               <div class="modal-header">
                                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                                 <h4 class="modal-title">Login</h4>
+                                 <h4 class="modal-title">Login and enjoy the community of huggers</h4>
                               </div>
                               <div class="modal-body">
                           		<form role="form" class="login-form" action="<?php echo base_url().'login/login_user'; ?>" method="post">
@@ -542,12 +542,12 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
         	<div class="modal-content">
             	<div class="modal-header">
                 	<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                    <h4 class="modal-title">Hugde</h4>
+                    <h4 class="modal-title"></h4>
                 </div>
             <div class="modal-body">
              <!-- BEGIN REGISTRATION FORM -->
       			<form id="signupForm" class="register-form" action="<?php echo base_url().'signup'; ?>" method="post">
-         		<h3 >Sign Up</h3>
+         		<h3 >Sign Up and be a hugger !!</h3>
          		<p>Enter your personal details below:</p>
 		         <div class="form-group">
 		            <label class="control-label visible-ie8 visible-ie9">Full Name</label>

@@ -305,7 +305,7 @@
                            <div class="modal-content">
                               <div class="modal-header">
                                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                                 <h4 class="modal-title">Login</h4>
+                                 <h4 class="modal-title">Login and enjoy the community of huggers</h4>
                               </div>
                               <div class="modal-body">
                           		<form role="form" class="login-form" action="<?php echo base_url().'login/login_user'; ?>" method="post">
@@ -352,12 +352,12 @@
         	<div class="modal-content">
             	<div class="modal-header">
                 	<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                    <h4 class="modal-title">Hugde</h4>
+                    <h4 class="modal-title"></h4>
                 </div>
             <div class="modal-body">
              <!-- BEGIN REGISTRATION FORM -->
       			<form id="signupForm" class="register-form" action="<?php echo base_url().'signup'; ?>" method="post">
-         		<h3 >Sign Up</h3>
+         		<h3 >Sign Up and be a hugger !!</h3>
          		<p>Enter your personal details below:</p>
 		         <div class="form-group">
 		            <label class="control-label visible-ie8 visible-ie9">Full Name</label>
