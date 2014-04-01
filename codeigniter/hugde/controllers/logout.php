@@ -14,7 +14,7 @@ class logout extends CI_Controller{
 	}
 	
 	function index(){
-		$this->facebook->destroySession();
+		//$this->facebook->destroySession();
 		$this->session->sess_destroy();
 		$url = base_url().'home';
         redirect($url);
