@@ -262,7 +262,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                   	 <a href="<?php echo base_url().'hugga/'.$item['huggaId']; ?>"><h3 style="font-weight: 600 !important"><?php echo $item['title']; ?></h3></a>
                      <div class="blog-tag-data">
                      	<a href="<?php echo base_url().'hugga/'.$item['huggaId']; ?>"><img src="<?php echo $item['images'][0]['originalImageUrl']; ?>" class="img-responsive" alt="" style="width:100%"></a>
-                        <div class="row">
+                        <div class="row" style="background-color: #F0F0F0;padding-top: 15px;padding-bottom: 15px;">
                            <div class="col-md-2">
                            	
                            		<a href="https://twitter.com/share?url=http%3A%2F%2Fhugde.com%2Fhugga%2F<?php echo $item['huggaId'];?>&count=horizontal" class="twitter-share-button" data-lang="en">Tweet</a>
@@ -281,9 +281,9 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                           	<!--<div class="col-md-3" style="font-size: 18px">
                           		Views <?php echo $item['views']; ?>
                           	</div>-->
-                          	<div class="col-md-4" <?php if($item['flag']['flagged']==1){echo 'style="display: none"';} ?>>
-                          		 <a href="javascript:void(0)" onclick="flagModal();" class="btn btn-xs red" >Flag <i class=" icon-flag"></i></a>
-                          	<a href="javascript:void(0)" onclick="javascript:onclicknext(<?php echo $item['huggaId'].','.$data['userId']; ?>);_gaq.push(['_trackEvent', 'Next', 'Clicked']);" class="btn blue pull-right" >See More <i class=" icon-chevron-right"></i></a>
+                          	<div class="col-md-2 pull-right" <?php if($item['flag']['flagged']==1){echo 'style="display: none"';} ?>>
+                          		 <a href="javascript:void(0)" onclick="flagModal();" class="pull-left" >Flag <i class=" icon-flag"></i></a>
+                          	<a href="javascript:void(0)" onclick="javascript:onclicknext(<?php echo $item['huggaId'].','.$data['userId']; ?>);_gaq.push(['_trackEvent', 'Next', 'Clicked']);" class="btn btn-xs blue pull-right" ><i class=" icon-chevron-right"></i></a>
                   		    
                           	</div>
                         </div>
