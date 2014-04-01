@@ -396,7 +396,11 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                         
                      </div>
                      <div class="space20"></div>
-                     <div class="row">
+                     
+                      <?php
+	                  }
+					?> 
+					<div class="row">
                   		<div class="col-md-12">
                   			<div class="fb-like-box" data-href="https://www.facebook.com/hugdedotcom" data-colorscheme="dark" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false"></div>		
                   
@@ -404,9 +408,6 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                   	</div>
                   	<hr>
                   	<div class="space20"></div>
-                      <?php
-	                  }
-					?> 
 					
                      
                   </div>
