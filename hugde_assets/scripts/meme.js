@@ -100,12 +100,13 @@ function initStage() {
 }
 $(function () {
     bgImage = new Image;
+    bgImage.crossOrigin='anonymous';
     bgImage.onload = function () {
         stageW = bgImage.width;
         stageH = bgImage.height;
         initStage()
     };
-    bgImage.crossOrigin='anonymous';
+    
     bgImage.src = gblImgName;
     
     $("#tc1").keyup(function () {
