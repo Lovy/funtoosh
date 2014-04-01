@@ -242,7 +242,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                	<div class="col-md-2">
                		
                	</div>
-                  <div id="huggaContent" class="col-md-6 article-block" style="background-image: url('http://hugde.com/hugde_assets/img/longLoader.gif');">
+                  <div id="huggaContent" class="col-md-6 article-block" style="background-image: url('http://hugde.com/hugde_assets/img/longLoader.gif');background-repeat: no-repeat">
                   	<?php
 					foreach($huggas as $item){
 					?>
