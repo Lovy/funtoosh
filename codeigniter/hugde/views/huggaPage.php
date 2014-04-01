@@ -322,7 +322,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                   	 <a href="http://hugde.com/hugga/{{huggaId}}"><h3 style="font-weight: 600 !important">{{title}}</h3></a>
                      <div class="blog-tag-data">
                      	<a href="http://hugde.com/hugga/{{huggaId}}"><img src="{{originalImageUrl}}" class="img-responsive" alt="" style="width:100%"></a>
-                        <div class="row">
+                        <div class="row" style="background-color: #F0F0F0;padding-top: 15px;padding-bottom: 15px;">
                            <div class="col-md-2">
                            	
                            		<a href="https://twitter.com/share?url=http%3A%2F%2Fhugde.com%2Fhugga%2F{{huggaId}}&count=horizontal" class="twitter-share-button" data-lang="en">Tweet</a>
@@ -349,9 +349,9 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                           	<!--<div class="col-md-3" style="font-size: 18px">
                           		Views {{views}}
                           	</div>-->
-                          	<div class="col-md-4">
-                          		 <a href="javascript:void(0)" onclick="flagModal();" class="btn btn-xs red" >Flag <i class=" icon-flag"></i></a>
-                          		<a href="javascript:void(0)" onclick="javascript:onclicknext({{huggaId}},{{userId}});_gaq.push(['_trackEvent', 'Next', 'Clicked']);" class="btn blue pull-right" >See More <i class=" icon-chevron-right"></i></a>
+                          	<div class="col-md-2 pull-right">
+                          		 <a href="javascript:void(0)" onclick="flagModal();" class="pull-left" >Flag <i class=" icon-flag"></i></a>
+                          		<a href="javascript:void(0)" onclick="javascript:onclicknext({{huggaId}},{{userId}});_gaq.push(['_trackEvent', 'Next', 'Clicked']);" class="btn btn-xs blue pull-right" ><i class=" icon-chevron-right"></i></a>
                   		    
                           	</div>
                         </div>
