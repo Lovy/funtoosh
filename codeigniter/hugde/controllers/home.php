@@ -176,16 +176,7 @@ class home extends CI_Controller{
                            		<!--<div class="pull-right" style="margin-top:-25px"><i class="icon-calendar"></i> <a href="#">April 16, 2013</a></div>-->
                            	<a href="#" onclick="window.open(\'https://twitter.com/share?url=http%3A%2F%2Fhugde.com%2Fhugga%2F'.$item['huggaId'].'\',\'width=626,height=436\');return false;" data-original-title="twitter" class="social-icon social-icon-color twitter"></a>
                            	<a href="#" onclick="window.open(\'https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fhugde.com%2Fhugga%2F'.$item['huggaId'].'\',\'facebook-share-dialog\',\'width=626,height=436\');return false;" class="social-icon social-icon-color facebook"</a>
-                           	<a href="https://plus.google.com/share?url=http%3A%2F%2Fhugde.com%2Fhugga%2F'.$item['huggaId'].'" data-original-title="Goole Plus"  onclick="javascript:window.open(this.href,\'\',\'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600\');return false;" class="social-icon social-icon-color googleplus"</a>
                            	
-                           	</div>
-                           	<script type="text/javascript">
-								  (function() {
-								    var po = document.createElement(\'script\'); po.type = \'text/javascript\'; po.async = true;
-								    po.src = \'https://apis.google.com/js/plusone.js\';
-								    var s = document.getElementsByTagName(\'script\')[0]; s.parentNode.insertBefore(po, s);
-								  })();
-								</script>
                           	<!--<div class="col-md-3">
                           		Posted by: '. $item['postedBy'].'
                           	</div>
