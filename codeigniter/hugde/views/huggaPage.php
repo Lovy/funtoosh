@@ -284,7 +284,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                           	</div>-->
                           	<div class="col-md-4" <?php if($item['flag']['flagged']==1){echo 'style="display: none"';} ?>>
                           		 <a href="javascript:void(0)" onclick="flagModal();" class="btn btn-xs red" >Flag <i class=" icon-flag"></i></a>
-                          	<a href="javascript:void(0)" onclick="javascript:onclicknext(<?php echo $item['huggaId'].','.$data['userId']; ?>);_gaq.push(['_trackEvent', 'Next', 'Clicked']);" class="btn blue pull-right" >Next <i class=" icon-chevron-right"></i></a>
+                          	<a href="javascript:void(0)" onclick="javascript:onclicknext(<?php echo $item['huggaId'].','.$data['userId']; ?>);_gaq.push(['_trackEvent', 'Next', 'Clicked']);" class="btn blue pull-right" >See More <i class=" icon-chevron-right"></i></a>
                   		    
                           	</div>
                         </div>
@@ -352,7 +352,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                           	</div>-->
                           	<div class="col-md-4">
                           		 <a href="javascript:void(0)" onclick="flagModal();" class="btn btn-xs red" >Flag <i class=" icon-flag"></i></a>
-                          		<a href="javascript:void(0)" onclick="javascript:onclicknext({{huggaId}},{{userId}});_gaq.push(['_trackEvent', 'Next', 'Clicked']);" class="btn blue pull-right" >Next <i class=" icon-chevron-right"></i></a>
+                          		<a href="javascript:void(0)" onclick="javascript:onclicknext({{huggaId}},{{userId}});_gaq.push(['_trackEvent', 'Next', 'Clicked']);" class="btn blue pull-right" >See More <i class=" icon-chevron-right"></i></a>
                   		    
                           	</div>
                         </div>
