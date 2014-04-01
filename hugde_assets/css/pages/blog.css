@@ -26,6 +26,9 @@ Blog Page
 
 .blog-page .article-block {
   padding-bottom: 20px;
+  /*Added on 1 April,2014*/
+ background-color: #fff;
+ padding-top: 10px;
 }
 
 .blog-page .news-img img {

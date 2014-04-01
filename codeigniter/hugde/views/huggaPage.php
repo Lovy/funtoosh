@@ -15,8 +15,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
    <?php
    foreach($huggas as $item){
    ?>
-   <!--<title><?php if($item['title']!=''){echo 'Hugde | '.$item['title'];}else{ echo 'Hugde: Making sh*t awesome';}; ?></title>-->
-   	<title>Yami Gautam Memes</title> 
+   <title><?php if($item['title']!=''){echo 'Hugde | '.$item['title'];}else{ echo 'Hugde: Making sh*t awesome';}; ?></title>
    <meta property="og:title" content="<?php if($item['title']!=''){echo $item['title'];}else{echo '';} ?>" /> 
    <meta property="og:image" content="<?php echo $item['images'][0]['originalImageUrl']; ?>" />
    <meta property="og:description" content="Hugde: For moments when a facepalm is not enough" />
