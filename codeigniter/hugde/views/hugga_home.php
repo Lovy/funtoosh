@@ -12,7 +12,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 <!-- BEGIN HEAD -->
 <head>
    <meta charset="utf-8" />
-   <title>Hugde | Making sh*t awesome Yami Gautam Memes</title>
+   <title>Hugde | Making sh*t awesome</title>
    <meta name="description" content="Yami Gautam memes and jokes.">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
@@ -307,9 +307,8 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                   
                   
                   <!--end col-md-9-->
-                  <div class="fb-like-box" data-href="http://www.facebook.com/hugdedotcom" data-colorscheme="dark" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false"></div>		
                   
-                  <div class="col-md-3 blog-sidebar" style="background-color: #ffd703">
+                  <div class="col-md-3 blog-sidebar" style="background-color: #faf6ea">
                   	<div class="row">
                   		<ul class="list-group" style="text-align: center;font-size: 23px">
                        
@@ -338,6 +337,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 	                  }
 					?> 
                   </div>
+                  <div class="fb-like-box" data-href="http://www.facebook.com/hugdedotcom" data-colorscheme="dark" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false"></div>		
                   
                   <!--end col-md-3-->
                </div>
