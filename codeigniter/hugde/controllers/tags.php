@@ -26,16 +26,16 @@ class tags extends CI_Controller{
 			$response['sidebar'] = $this->modelhome->loadSideBar();
 			$response['data']=$data;
 			$response['category']=$tagName;
-			//echo json_encode($response);
+			echo json_encode($response);
 			
 			//Detect mobile and load no-sidebar version
 			$mobile = $this->mobile_detect->isMobile();
 			if(!empty($response['huggas'])){
 				if($mobile){
-				$this->load->view('hugga_home_mobile',$response);
+				//$this->load->view('hugga_home_mobile',$response);
 				}
 				else{
-					$this->load->view('hugga_home_test',$response);
+					//$this->load->view('hugga_home_test',$response);
 				}
 			}else{
 				echo "Not Found";
