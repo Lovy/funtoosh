@@ -57,13 +57,15 @@ var FormComponents = function () {
         if (!jQuery().tagsInput) {
             return;
         }
-        $('#tags_1').tagsInput({
+        $('.tags_1').tagsInput({
             width: 'auto',
             'onAddTag': function (x) {
-               console.log("tag added"+x);
+               console.log("tag added");
+               huggaId=$(this).siblings(".huggaId").val();
+               console.log(huggaId);
             },
             'onRemoveTag':function(x){
-            	console.log("tag reomved"+x);	
+            	console.log("tag reomved");	
             }
         });
         $('#tags_2').tagsInput({

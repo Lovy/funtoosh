@@ -279,7 +279,8 @@
                      <div class="row 123">
                      	<div class="form-group">
                            <div class="col-md-12">
-                              <input id="tags_1" type="text" class="form-control tags medium" value="tag1,tag2" />
+                              <input class="tags_1" type="text" class="form-control tags medium" value="tag1,tag2" />
+                           	  <input class="huggaId" type="hidden" value="<?php echo $item['huggaId']; ?>" />		
                            </div>
                         </div>
                      </div>
