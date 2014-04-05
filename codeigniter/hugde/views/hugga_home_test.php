@@ -272,11 +272,12 @@
                      </div>
                      <div class="row">
                      	<div class="col-md-3 pull-right">
-                     		<p id="addTags">Add Tags</p>
+                     		<p class="addTags">Add Tags</p>
+                     		<input class="huggaId" type="hidden" value="<?php echo $item['huggaId']; ?>" />
                      	</div>
                      </div>
                      
-                     <div class="row 123">
+                     <div class="row <?php echo $item['huggaId']; ?>">
                      	<div class="form-group">
                            <div class="col-md-12">
                               <input class="tags_1" type="text" class="form-control tags medium" value="<?php echo $item['tags']['tagvalues']; ?>" />
@@ -1049,8 +1050,9 @@ HTML;
       });
    </script>
    <script>
-   $("#addTags").click(function(){
-   	$(".123").slideToggle();
+   $(".addTags").click(function(){
+   		huggaId=$(this).siblings(".huggaId").val();  		
+   		$('".'+huggaId+'")'.slideToggle();
    });
    </script>
  <!--------------------------------------------------------------------------------------Twitter--------------------------------------------------------------------------------------------->
