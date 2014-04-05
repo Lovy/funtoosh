@@ -260,9 +260,9 @@
                               <li>
                                  <i class="icon-tags"></i>
                                  <?php
-                                 foreach($tags as $item){
+                                 foreach($tags as $itemtag){
                                  ?>              
-                                 <a href="http://hugde.com/tags/inputtag/<?php echo $item; ?>"><?php echo $item; ?></a>
+                                 <a href="http://hugde.com/tags/inputtag/<?php echo $itemtag; ?>"><?php echo $itemtag; ?></a>
                                  <?php
                                  }  
                                  ?> 
