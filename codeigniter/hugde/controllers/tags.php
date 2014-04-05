@@ -38,7 +38,7 @@ class tags extends CI_Controller{
 					$this->load->view('hugga_home_test',$response);
 				}
 			}else{
-				echo "Not Found";
+				$this->load->view('error');
 			}		
 		}
 		else{
@@ -53,11 +53,15 @@ class tags extends CI_Controller{
 			
 			//Detect mobile and load no-sidebar version
 			$mobile = $this->mobile_detect->isMobile();
-			if($mobile){
-				$this->load->view('hugga_home_mobile',$response);
-			}
-			else{
-				$this->load->view('hugga_home_test',$response);
+			if(!empty($response['huggas'])){
+				if($mobile){
+					$this->load->view('hugga_home_mobile',$response);
+				}
+				else{
+					$this->load->view('hugga_home_test',$response);
+				}
+			}else{
+				$this->load->view('error');
 			}
 			
 		}	
