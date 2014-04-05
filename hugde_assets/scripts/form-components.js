@@ -59,8 +59,8 @@ var FormComponents = function () {
         }
         $('#tags_1').tagsInput({
             width: 'auto',
-            'onAddTag': function () {
-                //alert(1);
+            'onAddTag': function (x) {
+                if ($('#tags_1').tagExist(x)) { alert("exists");}
             },
         });
         $('#tags_2').tagsInput({
@@ -714,9 +714,10 @@ var FormComponents = function () {
         	//handleDateRangePickers();
         	//handleSpinners();
             handleBootstrapMaxlength();
+            handleTagsInput();
             /*
             handleWysihtml5();
-            handleTagsInput();
+            
             
             handleTimePickers();
             handleDatetimePicker();
