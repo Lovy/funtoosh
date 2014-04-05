@@ -75,7 +75,7 @@ var Login = function () {
 								$("#loginError").css('display','block');
 							}
 							else{
-								window.location.replace("http://hugde.com/home");
+								window.location.replace("http://hugde.com");
 							}
 							//console.log(a);
 						}
@@ -110,7 +110,7 @@ var Login = function () {
 								$("#loginError").css('display','block');
 							}
 							else{
-								window.location.replace("http://hugde.com/home");
+								window.location.replace("http://hugde.com");
 							}
 							//console.log(a);
 						}
