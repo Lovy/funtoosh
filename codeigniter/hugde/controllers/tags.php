@@ -30,9 +30,9 @@ class tags extends CI_Controller{
 				$this->modeltag->insertTagMap($tagId,$huggaId);
 			}
 		}else{
-			$tagId = $this->modeltag->getTagId($tagName);
+			//$tagId = $this->modeltag->getTagId($tagName);
 			//add tag first
-			$this->modeltag->addTag($tagName,$userId);
+			$tagId=$this->modeltag->addTag($tagName,$userId);
 			//add tag Mapping
 			$this->modeltag->insertTagMap($tagId,$huggaId);
 		}
