@@ -18,9 +18,9 @@ class tags extends CI_Controller{
 		//clean tag
 		$tagName = $this->modeltag->toLower($tagName);
 		//$tagName = $this->modeltag->cleanTag($tagName);
-		$tagId = $this->modeltag->getTagId($tagName);
 		
 		if($this->modeltag->tagExist($tagName)==1){
+			$tagId = $this->modeltag->getTagId($tagName);
 			//check if tag Mapping also exists or not
 			if($this->modeltag->tagMappingExist($tagId,$huggaId)==1){
 				//Do nothing
@@ -30,6 +30,7 @@ class tags extends CI_Controller{
 				$this->modeltag->insertTagMap($tagId,$huggaId);
 			}
 		}else{
+			$tagId = $this->modeltag->getTagId($tagName);
 			//add tag first
 			$this->modeltag->addTag($tagName,$userId);
 			//add tag Mapping

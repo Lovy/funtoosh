@@ -51,7 +51,7 @@ class modeltag extends CI_Model{
 	
 	//add dashes replacing whitspace in the tagname
 	function cleanTag($tagName){
-		return trim(str_replace(" ", "-", $tagName));
+		return trim(str_replace(" ", "", $tagName));
 	}
 	
 	//insert tag mapping and return the mapped id
