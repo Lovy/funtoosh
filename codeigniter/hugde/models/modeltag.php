@@ -59,7 +59,7 @@ class modeltag extends CI_Model{
 		$sql="insert into hugga_tags (huggaId,tagId) values (?,?)";
 		$query = $this->db->query($sql,array($huggaId,$tagId));
 		if($query){
-			return $query->insert_id();
+			return $this->db->insert_id();
 		}else{
 			return 0;
 		}
@@ -82,7 +82,7 @@ class modeltag extends CI_Model{
 		$sql = "insert into tags (tagName,userId) values (?,?)";
 		$query = $this->db->query($sql,array($tagName,$userId));
 		if($query){
-			return $query->insert_id();
+			return $this->db->insert_id();
 		}else{
 			return 0;
 		}
