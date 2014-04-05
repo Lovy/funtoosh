@@ -62,7 +62,26 @@ var FormComponents = function () {
             'onAddTag': function (x) {
                console.log("tag added");
                huggaId=$(this).siblings(".huggaId").val();
-               console.log(huggaId);
+               userId = $("#userId").val();
+               //ajax
+               $.ajax({
+				
+				//url to send the data to
+				url: "http://hugde.com/tags/addTag/"+x+"/"+userId+"/"+huggaId,
+				type: 'post',
+				dataType: 'json',
+				beforeSend:function(){
+				//Show Autosaving div
+					//$("#spinner").css('display','block');
+					console.log("sending");
+				},
+				complete:function(){
+							
+				},
+				success:function(data){
+					console.log("Sent");
+				}
+				});
             },
             'onRemoveTag':function(x){
             	console.log("tag reomved");	
