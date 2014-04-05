@@ -40,7 +40,7 @@ class tags extends CI_Controller{
 		$LoginFlag = $this->session->userdata('IsLoggedIn');
 		if(!empty($LoginFlag)){
 			$tagId = $this->modeltag->getTagId($tagName);
-			if($this->modeltag->huggaPerTag($tagName)>0){
+			if($this->modeltag->huggaPerTag($tagName)>1){
 				//delete only tag mapping
 				$this->modeltag->deleteTagMap($tagId,$huggaId);
 			}else{
