@@ -25,7 +25,7 @@ class tags extends CI_Controller{
 			$response['huggas'] = $this->modeltag->loadData($data['userId'],4,1,$tagName);   //(userid,huggasPerPage,pageNo)
 			$response['sidebar'] = $this->modelhome->loadSideBar();
 			$response['data']=$data;
-			$response['tagName']=$tagName;
+			$response['category']=$tagName;
 			//echo json_encode($response);
 			
 			//Detect mobile and load no-sidebar version
@@ -44,7 +44,7 @@ class tags extends CI_Controller{
 			$response['huggas'] = $this->modeltag->loadData(NULL,4,1,$tagName);
 			$response['sidebar'] = $this->modelhome->loadSideBar();
 			$response['data']=array("userId"=>"0");
-			$response['tagName']=$tagName;
+			$response['category']=$tagName;
 			//echo json_encode($response['sidebar']);
 			//var_dump($response);
 			
