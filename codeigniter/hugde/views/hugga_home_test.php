@@ -277,7 +277,7 @@
                      	</div>
                      </div>
            			 <p class="tagFailed" style="display:none">Tagging Failed. Please retry</p>
-                     <div class="row <?php echo $item['huggaId']; ?>">
+                     <div class="row <?php echo $item['huggaId']; ?>" style="display: none">
                      	<div class="form-group">
                            <div class="col-md-12">
                               <input class="tags_1" type="text" class="form-control tags medium" value="<?php echo $item['tags']['tagvalues']; ?>" />
