@@ -85,6 +85,8 @@ var FormComponents = function () {
             },
             'onRemoveTag':function(x){
             	console.log("tag reomved");
+            	huggaId=$(this).siblings(".huggaId").val();
+                userId = $("#userId").val();
             	$.ajax({
 				
 				//url to send the data to
