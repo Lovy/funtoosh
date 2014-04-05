@@ -110,6 +110,20 @@ class modeltag extends CI_Model{
 		}	
 	}
 	
+	function getTags($huggaId){
+		$sql ="select tagName from tags where tagId IN (select tagId from hugga_tags where huggaId=?)";
+		$query = $this->db->query($sql,array($huggaId));
+		if($query->num_rows()>0){
+			$result='';
+			foreach ($query->result_array() as $row) {
+				
+				$result.=$row['tagName'];
+				$result.=' ';
+			}
+			return $result;
+		}
+	}
+	
 }
 
 ?>

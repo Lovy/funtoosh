@@ -84,7 +84,25 @@ var FormComponents = function () {
 				});
             },
             'onRemoveTag':function(x){
-            	console.log("tag reomved");	
+            	console.log("tag reomved");
+            	$.ajax({
+				
+				//url to send the data to
+				url: "http://hugde.com/tags/deleteTag/"+huggaId+"/"+x+"/"+userId,
+				type: 'post',
+				dataType: 'json',
+				beforeSend:function(){
+				//Show Autosaving div
+					//$("#spinner").css('display','block');
+					console.log("deleting");
+				},
+				complete:function(){
+							
+				},
+				success:function(data){
+					console.log("deleted");
+				}
+				});	
             }
         });
         $('#tags_2').tagsInput({

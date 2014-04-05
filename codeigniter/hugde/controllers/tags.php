@@ -50,6 +50,10 @@ class tags extends CI_Controller{
 			}
 		}
 	}
+	
+	function getTags($huggaId){
+		return $this->modeltag->getTags($huggaId);
+	}
 }
 
 ?>
