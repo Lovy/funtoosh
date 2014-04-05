@@ -9,6 +9,48 @@ class modeltag extends CI_Model{
 		$this->db->query("SET time_zone='+5:30'");
 	}
 	
+	function loadData($userId,$huggasPerPage,$pageNo){
+			$this->load->model('modeltag');
+			$tagId = $this->modeltag->getTagId($tagName);
+			$sql1 = "select * from hugga where huggaId IN (select huggaId from hugga_tags where tagId=?) order by huggaId desc LIMIT ?,?";
+			$huggasPerPage = intval($huggasPerPage);
+			$query = $this->db->query($sql1,array($tagId,($huggasPerPage*($pageNo-1)),($huggasPerPage)));
+			//$this->db->order_by('timestamp','desc');
+			if($query->num_rows()>0){
+				//create an array to store huggas
+				$hugga = array();
+				//Loop through each row returned from the query
+    			foreach ($query->result_array() as $row) {
+    				//Retrieve images for each space
+    				$sql ="select * from images where imageId =?";
+    				$query2 =$this->db->query($sql,array($row['imageId']));
+					$images= array();
+					foreach ($query2->result_array() as $row2) {
+						$images[]=$row2;
+					}
+					$row['images']=$images;
+					
+					//check lick flush status for this hugga
+					$lick = array();
+					$flush = array();
+					$flag=array();
+					$this->load->model('modellickflush');
+					$this->load->model('modeltag');
+					$lickResponse = $this->modellickflush->getLickStatus($row['huggaId'],$userId);
+					$flushResponse = $this->modellickflush->getFlushStatus($row['huggaId'],$userId);
+					$flagResponse = $this->modellickflush->getFlagStatus($row['huggaId'],$userId);
+					$lick['licked']=$lickResponse;
+					$flush['flushed']=$flushResponse;
+					$flag['flagged']=$flagResponse;
+					$row['lick']=$lick;
+					$row['flush']=$flush;
+					$row['flag']=$flag;
+					$hugga[]=$row;
+				}
+				return $hugga;
+			}
+	}
+	
 	//Database tables:
 	// 1)tags : tagId,tagName,userId,timestamp
 	// 2)hugga_tags : Id,huggaId,tagId,timestamp
