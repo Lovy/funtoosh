@@ -17,7 +17,7 @@ class tags extends CI_Controller{
 		$this->load->model('modeltag');
 		//clean tag
 		$tagName = $this->modeltag->toLower($tagName);
-		$tagName = $this->modeltag->cleanTag($tagName);
+		//$tagName = $this->modeltag->cleanTag($tagName);
 		
 		if($this->modeltag->tagExist($tagName)==1){
 			$tagId = $this->modeltag->getTagId($tagName);

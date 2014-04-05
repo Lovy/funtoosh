@@ -61,6 +61,7 @@ var FormComponents = function () {
             width: 'auto',
             'onAddTag': function (x) {
                console.log("tag added");
+               x=x.replace(/\s+/g,"");
                huggaId=$(this).siblings(".huggaId").val();
                userId = $("#userId").val();
                //ajax
