@@ -238,6 +238,52 @@
                   		</div>	
                   	</div>
                   	 <a href="<?php echo base_url().'hugga/'.$item['huggaId']; ?>" target="_blank" ><h3 style="font-weight: 600 !important"><?php echo $item['title']; ?></h3></a>
+                     
+                     <style>
+                     	ul.blog-tags a{
+                     		background: #eee;
+							padding: 1px 4px;
+							margin: 0 4px 4px 0;
+							display: inline-block;
+							text-decoration:none;
+                     	}
+                     	ul.blog-tage a:hover{
+                     		background: #eff;
+                     	}
+                     </style>
+                     <div class="row">
+                     	<div class="col-md-12">
+                           <ul class="list-inline blog-tags">
+                              <li>
+                                 <i class="icon-tags"></i> 
+                                 <a href="#">Technology</a> 
+                                 <a href="#">Education</a>
+                                 <a href="#">Internet</a>
+                                 <a href="#">Namo</a>
+                                 <a href="#">AAP</a>
+                                 <a href="#">BJP</a>
+                                 <a href="#">Internet</a>
+                                 <a href="#">Namo</a>
+                                 <a href="#">AAP</a>
+                                 <a href="#">BJP</a>
+                              </li>
+                           </ul>
+                     	</div>
+                     </div>
+                     <div class="row">
+                     	<div class="col-md-3 pull-right">
+                     		<p id="addTags">Add Tags</p>
+                     	</div>
+                     </div>
+                     
+                     <div class="row 123">
+                     	<div class="form-group">
+                           <div class="col-md-12">
+                              <input id="tags_1" type="text" class="form-control tags medium" value="tag1,tag2" />
+                           </div>
+                        </div>
+                     </div>
+                     
                      <div class="blog-tag-data">
                      	<a href="<?php echo base_url().'hugga/'.$item['huggaId']; ?>" target="_blank"><img src="http://d2nds2wyuzde9r.cloudfront.net/hugde_assets/img/longLoader.gif" onload="this.src='<?php echo $item['images'][0]['originalImageUrl']; ?>'" class="img-responsive" alt="" style="width:100%"></a>
                         <div class="row">

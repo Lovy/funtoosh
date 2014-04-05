@@ -713,7 +713,7 @@ var FormComponents = function () {
         	//handleDatePickers();
         	//handleDateRangePickers();
         	//handleSpinners();
-            handleBootstrapMaxlength();
+            //handleBootstrapMaxlength();
             handleTagsInput();
             /*
             handleWysihtml5();
