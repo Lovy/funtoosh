@@ -258,7 +258,11 @@
                      	<div class="col-md-12">
                            <ul class="list-inline blog-tags">
                               <li>
-                              	 <i class="addTags icon-edit"></i>
+                              	 <?php
+                                 if(!empty($data['IsAdmin'])){
+                                 	echo'<i class="addTags icon-edit"></i>';
+                                 } 
+                                 ?> 
                               	 <input class="huggaId" type="hidden" value="<?php echo $item['huggaId']; ?>" />
                                  <i class="icon-tags"></i>
                                  <?php
