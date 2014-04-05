@@ -72,14 +72,19 @@ var FormComponents = function () {
 				type: 'post',
 				dataType: 'json',
 				beforeSend:function(){
-				//Show Autosaving div
-					//$("#spinner").css('display','block');
+					$(this).parents(".row").siblings(".tagFailed").css('display','none');
 					console.log("sending");
+				},
+				statusCode: {
+				   500: function() {
+				      $(this).parents(".row").siblings(".tagFailed").css('display','block');
+				   }
 				},
 				complete:function(){
 							
 				},
 				success:function(data){
+					$(this).parents(".row").siblings(".tagFailed").css('display','none');
 					console.log("Sent");
 				}
 				});
@@ -95,14 +100,19 @@ var FormComponents = function () {
 				type: 'post',
 				dataType: 'json',
 				beforeSend:function(){
-				//Show Autosaving div
-					//$("#spinner").css('display','block');
+					$(this).parents(".row").siblings(".tagFailed").css('display','none');
 					console.log("deleting");
+				},
+				statusCode: {
+				   500: function() {
+				      $(this).parents(".row").siblings(".tagFailed").css('display','block');
+				   }
 				},
 				complete:function(){
 							
 				},
 				success:function(data){
+					$(this).parents(".row").siblings(".tagFailed").css('display','none');
 					console.log("deleted");
 				}
 				});	

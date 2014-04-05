@@ -258,6 +258,8 @@
                      	<div class="col-md-12">
                            <ul class="list-inline blog-tags">
                               <li>
+                              	 <i class="addTags icon-edit"></i>
+                              	 <input class="huggaId" type="hidden" value="<?php echo $item['huggaId']; ?>" />
                                  <i class="icon-tags"></i>
                                  <?php
                                  foreach($tags as $itemtag){
@@ -270,13 +272,7 @@
                            </ul>
                      	</div>
                      </div>
-                     <div class="row">
-                     	<div class="col-md-3 pull-right">
-                     		<p class="addTags">Add Tags</p>
-                     		<input class="huggaId" type="hidden" value="<?php echo $item['huggaId']; ?>" />
-                     	</div>
-                     </div>
-                     
+           			 <p class="tagFailed" style="display:none">Tagging Failed. Please retry</p>
                      <div class="row <?php echo $item['huggaId']; ?>">
                      	<div class="form-group">
                            <div class="col-md-12">
