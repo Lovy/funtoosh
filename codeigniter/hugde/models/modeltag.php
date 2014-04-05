@@ -39,12 +39,15 @@ class modeltag extends CI_Model{
 					$lickResponse = $this->modellickflush->getLickStatus($row['huggaId'],$userId);
 					$flushResponse = $this->modellickflush->getFlushStatus($row['huggaId'],$userId);
 					$flagResponse = $this->modellickflush->getFlagStatus($row['huggaId'],$userId);
+					$tagResponse = $this->modeltag->getTags($row['huggaId']);
 					$lick['licked']=$lickResponse;
 					$flush['flushed']=$flushResponse;
 					$flag['flagged']=$flagResponse;
+					$tags['tagvalues']=$tagResponse;
 					$row['lick']=$lick;
 					$row['flush']=$flush;
 					$row['flag']=$flag;
+					$row['tags']=$tags;
 					$hugga[]=$row;
 				}
 				return $hugga;
