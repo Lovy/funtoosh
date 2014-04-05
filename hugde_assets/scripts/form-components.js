@@ -72,19 +72,20 @@ var FormComponents = function () {
 				type: 'post',
 				dataType: 'json',
 				beforeSend:function(){
-					$(this).parents(".row").siblings(".tagFailed").css('display','none');
+					$(".tagFailed").css('display','none');
 					console.log("sending");
 				},
 				statusCode: {
 				   500: function() {
-				      $(this).parents(".row").siblings(".tagFailed").css('display','block');
+				   	  console.log("error");
+				      $(".tagFailed").css('display','block');
 				   }
 				},
 				complete:function(){
 							
 				},
 				success:function(data){
-					$(this).parents(".row").siblings(".tagFailed").css('display','none');
+					$(".tagFailed").css('display','none');
 					console.log("Sent");
 				}
 				});
@@ -100,19 +101,19 @@ var FormComponents = function () {
 				type: 'post',
 				dataType: 'json',
 				beforeSend:function(){
-					$(this).parents(".row").siblings(".tagFailed").css('display','none');
+					$(".tagFailed").css('display','none');
 					console.log("deleting");
 				},
 				statusCode: {
 				   500: function() {
-				      $(this).parents(".row").siblings(".tagFailed").css('display','block');
+				      $(".tagFailed").css('display','block');
 				   }
 				},
 				complete:function(){
 							
 				},
 				success:function(data){
-					$(this).parents(".row").siblings(".tagFailed").css('display','none');
+					$(".tagFailed").css('display','none');
 					console.log("deleted");
 				}
 				});	
