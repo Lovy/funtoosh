@@ -46,7 +46,7 @@ class modeltag extends CI_Model{
 
 	//convert the tag name to all lower case
 	function toLower($tagName){
-		return strtolower($tagName);
+		return trim(strtolower($tagName));
 	}
 	
 	//add dashes replacing whitspace in the tagname
