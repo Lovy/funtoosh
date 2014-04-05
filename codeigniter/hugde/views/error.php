@@ -5,17 +5,10 @@
 <!-- BEGIN HEAD -->
 <head>
    <meta charset="utf-8" />
-   <?php
-   foreach($huggas as $item){
-   ?>
-   <title><?php if($item['title']!=''){echo 'Hugde | '.$item['title'];}else{ echo 'Hugde: Making sh*t awesome';}; ?></title>
-   <meta property="og:title" content="<?php if($item['title']!=''){echo $item['title'];}else{echo '';} ?>" /> 
-   <meta property="og:image" content="<?php echo $item['images'][0]['originalImageUrl']; ?>" />
-   <meta property="og:description" content="Hugde: For moments when a facepalm is not enough" />
    
-   <?php
-   }
-   ?> 
+   <title><?php echo 'Hugde: Making sh*t awesome';?></title>
+   <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+   <meta property="og:description" content="Hugde: For moments when a facepalm is not enough" /> 
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
    <meta content="Enjoy unlimited funny pictures all over the globe and get entertained. Don't be too lazy to laugh." name="description" />
@@ -35,6 +28,7 @@
    <link rel="stylesheet" type="text/css" href="<?php echo assets_url(); ?>plugins/bootstrap-datepicker/css/datepicker.css" />
    <link href="<?php echo assets_url(); ?>css/pages/blog.css" rel="stylesheet" type="text/css"/>
    <link href="<?php echo assets_url(); ?>css/themes/default.css" rel="stylesheet" type="text/css" id="style_color"/>
+   <link href="<?php echo assets_url(); ?>css/pages/error.css" rel="stylesheet" type="text/css"/>
    <link href="<?php echo assets_url(); ?>css/custom.css" rel="stylesheet" type="text/css"/>
    <link href="<?php echo assets_url(); ?>plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet" />
    <link href="<?php echo assets_url(); ?>plugins/jquery-file-upload/css/jquery.fileupload-ui.css" rel="stylesheet" />

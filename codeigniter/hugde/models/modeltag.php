@@ -75,7 +75,7 @@ class modeltag extends CI_Model{
 	function getTagId($tagName){
 		$sql="select tagId from tags where tagName=?";
 		$query = $this->db->query($sql,array($tagName));
-		if($query){
+		if($query->num_rows()>0){
 			$result = $query->result_array();
 			return $result[0]['tagId'];
 		}
