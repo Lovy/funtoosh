@@ -118,7 +118,7 @@ class modeltag extends CI_Model{
 			foreach ($query->result_array() as $row) {
 				
 				$result.=$row['tagName'];
-				$result.=' ';
+				$result.=',';
 			}
 			return $result;
 		}
