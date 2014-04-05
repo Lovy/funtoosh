@@ -38,7 +38,7 @@ class tags extends CI_Controller{
 					$this->load->view('hugga_home_test',$response);
 				}
 			}else{
-				$this->load->view('error');
+				$this->load->view('error',$response);
 			}		
 		}
 		else{
@@ -61,7 +61,7 @@ class tags extends CI_Controller{
 					$this->load->view('hugga_home_test',$response);
 				}
 			}else{
-				$this->load->view('error');
+				$this->load->view('error',$response);
 			}
 			
 		}	
