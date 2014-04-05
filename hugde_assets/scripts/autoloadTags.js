@@ -15,7 +15,7 @@ $(document).ready(function(){
 	//console.log(totalHuggas);
 	var totalPages = Math.round(parseInt(totalHuggas)/parseInt(huggasPerPage));
 	//console.log(totalPages);
-	var category = $("#pageType").val();
+	var tag = $("#pageTag").val();
 	function getDocHeight() {
     var D = document;
     return Math.max(
@@ -40,7 +40,7 @@ $(document).ready(function(){
                 $('.article-block').append('<div id="ajaxLoading" style="text-align:center"><img src="http://hugde.com/hugde_assets/img/ajax-loader.gif" /></div>'); //show loading image
                 
                 //load data from the server using a HTTP POST request
-                $.post('http://hugde.com/tags/autoload/',{'HPP': huggasPerPage,'PN':pagesLoaded+1}, function(data){
+                $.post('http://hugde.com/tags/autoload/'+tag,{'HPP': huggasPerPage,'PN':pagesLoaded+1}, function(data){
                                     
                     $(".article-block").append(data); //append received data into the element
 					try{

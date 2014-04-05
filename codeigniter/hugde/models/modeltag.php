@@ -9,7 +9,7 @@ class modeltag extends CI_Model{
 		$this->db->query("SET time_zone='+5:30'");
 	}
 	
-	function loadData($userId,$huggasPerPage,$pageNo){
+	function loadData($userId,$huggasPerPage,$pageNo,$tagName){
 			$this->load->model('modeltag');
 			$tagId = $this->modeltag->getTagId($tagName);
 			$sql1 = "select * from hugga where huggaId IN (select huggaId from hugga_tags where tagId=?) order by huggaId desc LIMIT ?,?";

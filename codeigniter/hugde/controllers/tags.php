@@ -22,10 +22,10 @@ class tags extends CI_Controller{
 			//var_dump($data);
 			$this->load->model('modelhome');
 			$this->load->model('modeltag');
-			$response['huggas'] = $this->modeltag->loadData($data['userId'],4,1);   //(userid,huggasPerPage,pageNo)
+			$response['huggas'] = $this->modeltag->loadData($data['userId'],4,1,$tagName);   //(userid,huggasPerPage,pageNo)
 			$response['sidebar'] = $this->modelhome->loadSideBar();
 			$response['data']=$data;
-			$response['category']='ALL';
+			$response['tagName']=$tagName;
 			//echo json_encode($response);
 			
 			//Detect mobile and load no-sidebar version
@@ -41,10 +41,10 @@ class tags extends CI_Controller{
 		else{
 			$this->load->model('modelhome');
 			$this->load->model('modeltag');
-			$response['huggas'] = $this->modeltag->loadData(NULL,4,1);
+			$response['huggas'] = $this->modeltag->loadData(NULL,4,1,$tagName);
 			$response['sidebar'] = $this->modelhome->loadSideBar();
 			$response['data']=array("userId"=>"0");
-			$response['category']='ALL';
+			$response['tagName']=$tagName;
 			//echo json_encode($response['sidebar']);
 			//var_dump($response);
 			
@@ -60,7 +60,7 @@ class tags extends CI_Controller{
 		}	
 	}
 
-	function autoload(){
+	function autoload($tagName){
 		$huggasPerPage = $this->input->post('HPP');
 		$pageNo = $this->input->post('PN');
 		$LoginFlag = $this->session->userdata('IsLoggedIn');
@@ -69,7 +69,7 @@ class tags extends CI_Controller{
 			//var_dump($data);
 			$this->load->model('modelhome');
 			$this->load->model('modeltag');
-			$response['huggas'] = $this->modeltag->loadData($data['userId'],$huggasPerPage,$pageNo);   //(huggasPerPage,pageNo)
+			$response['huggas'] = $this->modeltag->loadData($data['userId'],$huggasPerPage,$pageNo,$tagName);   //(huggasPerPage,pageNo)
 			$response['data']=$data;
 			//var_dump($response['data']);
 			//return HTML code
@@ -84,7 +84,7 @@ class tags extends CI_Controller{
 			$this->load->model('modelhome');
 			$this->load->model('modeltag');
 			$response['data']=array("userId"=>"0");
-			$response['huggas'] = $this->modeltag->loadData(NULL,$huggasPerPage,$pageNo);
+			$response['huggas'] = $this->modeltag->loadData(NULL,$huggasPerPage,$pageNo,$tagName);
 			
 			//return HTML code
 			if(!empty($response['huggas'])){

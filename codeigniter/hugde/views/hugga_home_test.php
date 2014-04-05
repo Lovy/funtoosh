@@ -782,7 +782,8 @@ HTML;
 							}
 							
                ?>          
-               			<input id="pageType" type="hidden" value="<?php echo $category; ?>">                          
+               			<input id="pageTag" type="hidden" value="<?php echo $tagName; ?>">
+               			                          
                         <span class="help-block">Limit: 180 characters</span>
                     </div>
                     <div class="form-group">
