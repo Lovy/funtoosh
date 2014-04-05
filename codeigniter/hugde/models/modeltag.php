@@ -34,10 +34,10 @@ class modeltag extends CI_Model{
 		return $result[0]['tagId'];
 	}
 	
-	function tagMappingExist($tagName,$huggaId){	
-		$sql = "select * from hugga_tags where huggaId=? and tagId IN (select tagId from tags where tagName=?)";
-		$query = $this->db->query($sql,array($huggaId,$tagName));
-		if($query){
+	function tagMappingExist($tagId,$huggaId){	
+		$sql = "select * from hugga_tags where huggaId=? and tagId=?";
+		$query = $this->db->query($sql,array($huggaId,$tagId));
+		if($query->num_rows()>0){
 			return 1;
 		}else{
 			return 0;

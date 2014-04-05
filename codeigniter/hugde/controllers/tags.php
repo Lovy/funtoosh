@@ -15,19 +15,19 @@ class tags extends CI_Controller{
 
 	function addTag($tagName,$userId,$huggaId){
 		$this->load->model('modeltag');
+		$tagId = $this->modeltag->getTagId($tagName);
 		if($this->modeltag->tagExist($tagName)==1){
 			//check if tag Mapping also exists or not
-			if($this->modeltag->tagMappingExist($tagName,$huggaId)==1){
+			if($this->modeltag->tagMappingExist($tagId,$huggaId)==1){
 				//Do nothing
 				return 0;
 			}else{
-				$tagId = $this->modeltag->getTagId($tagName);
+				
 				$this->modeltag->insertTagMap($tagId,$huggaId);
 			}
 		}else{
 			//add tag first
 			$this->modeltag->addTag($tagName,$userId);
-			$tagId = $this->modeltag->getTagId($tagName);
 			//add tag Mapping
 			$this->modeltag->insertTagMap($tagId,$huggaId);
 		}
