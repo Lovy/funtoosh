@@ -15,7 +15,11 @@ class tags extends CI_Controller{
 
 	function addTag($tagName,$userId,$huggaId){
 		$this->load->model('modeltag');
+		//clean tag
+		$tagName = $this->modeltag->toLower($tagName);
+		$tagName = $this->modeltag->cleanTag($tagName);
 		$tagId = $this->modeltag->getTagId($tagName);
+		
 		if($this->modeltag->tagExist($tagName)==1){
 			//check if tag Mapping also exists or not
 			if($this->modeltag->tagMappingExist($tagId,$huggaId)==1){
@@ -39,6 +43,9 @@ class tags extends CI_Controller{
 		// otherwise just delete the tag mapping for this huggaid
 		$LoginFlag = $this->session->userdata('IsLoggedIn');
 		if(!empty($LoginFlag)){
+			//clean tag
+			$tagName = $this->modeltag->toLower($tagName);
+			$tagName = $this->modeltag->cleanTag($tagName);
 			$tagId = $this->modeltag->getTagId($tagName);
 			if($this->modeltag->huggaPerTag($tagName)>1){
 				//delete only tag mapping
