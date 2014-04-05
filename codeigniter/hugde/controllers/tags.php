@@ -34,6 +34,7 @@ class tags extends CI_Controller{
 	}
 
 	function deleteTag($huggaId,$tagName,$userId){
+		$this->load->model('modeltag');
 		//if tag exists with this particular hugga only then delete tag from mapping as well as tag table
 		// otherwise just delete the tag mapping for this huggaid
 		$LoginFlag = $this->session->userdata('IsLoggedIn');
@@ -52,6 +53,7 @@ class tags extends CI_Controller{
 	}
 	
 	function getTags($huggaId){
+		$this->load->model('modeltag');
 		return $this->modeltag->getTags($huggaId);
 	}
 }
