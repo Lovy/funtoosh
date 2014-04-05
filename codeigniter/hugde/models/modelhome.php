@@ -43,6 +43,7 @@ class modelhome extends CI_Model{
 					$flush = array();
 					$flag=array();
 					$this->load->model('modellickflush');
+					$this->load->model('modeltag');
 					$lickResponse = $this->modellickflush->getLickStatus($row['huggaId'],$userId);
 					$flushResponse = $this->modellickflush->getFlushStatus($row['huggaId'],$userId);
 					$flagResponse = $this->modellickflush->getFlagStatus($row['huggaId'],$userId);
