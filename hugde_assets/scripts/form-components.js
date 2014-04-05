@@ -60,8 +60,11 @@ var FormComponents = function () {
         $('#tags_1').tagsInput({
             width: 'auto',
             'onAddTag': function (x) {
-                if ($('#tags_1').tagExist(x)) { alert("exists");}
+               console.log("tag added"+x);
             },
+            'onRemoveTag':function(x){
+            	console.log("tag reomved"+x);	
+            }
         });
         $('#tags_2').tagsInput({
             width: 300
