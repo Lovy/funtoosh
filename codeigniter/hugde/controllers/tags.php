@@ -21,6 +21,7 @@ class tags extends CI_Controller{
 			$data = $this->session->all_userdata();
 			//var_dump($data);
 			$this->load->model('modelhome');
+			$this->load->model('modeltag');
 			$response['huggas'] = $this->modeltag->loadData($data['userId'],4,1);   //(userid,huggasPerPage,pageNo)
 			$response['sidebar'] = $this->modelhome->loadSideBar();
 			$response['data']=$data;
@@ -39,6 +40,7 @@ class tags extends CI_Controller{
 		}
 		else{
 			$this->load->model('modelhome');
+			$this->load->model('modeltag');
 			$response['huggas'] = $this->modeltag->loadData(NULL,4,1);
 			$response['sidebar'] = $this->modelhome->loadSideBar();
 			$response['data']=array("userId"=>"0");
@@ -66,6 +68,7 @@ class tags extends CI_Controller{
 			$data = $this->session->all_userdata();
 			//var_dump($data);
 			$this->load->model('modelhome');
+			$this->load->model('modeltag');
 			$response['huggas'] = $this->modeltag->loadData($data['userId'],$huggasPerPage,$pageNo);   //(huggasPerPage,pageNo)
 			$response['data']=$data;
 			//var_dump($response['data']);
@@ -79,6 +82,7 @@ class tags extends CI_Controller{
 		}
 		else{
 			$this->load->model('modelhome');
+			$this->load->model('modeltag');
 			$response['data']=array("userId"=>"0");
 			$response['huggas'] = $this->modeltag->loadData(NULL,$huggasPerPage,$pageNo);
 			
