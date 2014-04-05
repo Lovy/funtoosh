@@ -30,13 +30,16 @@ class tags extends CI_Controller{
 			
 			//Detect mobile and load no-sidebar version
 			$mobile = $this->mobile_detect->isMobile();
-			if($mobile){
+			if(!empty($response['huggas'])){
+				if($mobile){
 				$this->load->view('hugga_home_mobile',$response);
-			}
-			else{
-				$this->load->view('hugga_home_test',$response);
-			}
-			
+				}
+				else{
+					$this->load->view('hugga_home_test',$response);
+				}
+			}else{
+				echo "Not Found";
+			}		
 		}
 		else{
 			$this->load->model('modelhome');

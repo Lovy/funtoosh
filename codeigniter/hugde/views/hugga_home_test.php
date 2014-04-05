@@ -251,21 +251,21 @@
                      		background: #eff;
                      	}
                      </style>
+                     <?php
+                     $tags = explode(",", $item['tags']['tagvalues']);
+                     ?>
                      <div class="row">
                      	<div class="col-md-12">
                            <ul class="list-inline blog-tags">
                               <li>
-                                 <i class="icon-tags"></i> 
-                                 <a href="#">Technology</a> 
-                                 <a href="#">Education</a>
-                                 <a href="#">Internet</a>
-                                 <a href="#">Namo</a>
-                                 <a href="#">AAP</a>
-                                 <a href="#">BJP</a>
-                                 <a href="#">Internet</a>
-                                 <a href="#">Namo</a>
-                                 <a href="#">AAP</a>
-                                 <a href="#">BJP</a>
+                                 <i class="icon-tags"></i>
+                                 <?php
+                                 foreach($tags as $item){
+                                 ?>              
+                                 <a href="http://hugde.com/tags/inputtag/<?php echo $item; ?>"><?php echo $item; ?></a>
+                                 <?php
+                                 }  
+                                 ?> 
                               </li>
                            </ul>
                      	</div>
@@ -377,9 +377,9 @@
                      <div class="space20"></div>
                       <?php
 	                  }
-					?> 
+					  ?> 
+					  <div class="fb-like-box" data-href="http://www.facebook.com/hugdedotcom" data-colorscheme="dark" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false"></div>		
                   </div>
-                  <div class="fb-like-box" data-href="http://www.facebook.com/hugdedotcom" data-colorscheme="dark" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false"></div>		
                   
                   <!--end col-md-3-->
                </div>
