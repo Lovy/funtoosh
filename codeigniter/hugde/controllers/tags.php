@@ -112,7 +112,7 @@ class tags extends CI_Controller{
 			//check if tag Mapping also exists or not
 			if($this->modeltag->tagMappingExist($tagId,$huggaId)==1){
 				//Do nothing
-				return json_encode(array("response"=>0));
+				return json_encode(array("response"=>"0"));
 			}else{
 				
 				$this->modeltag->insertTagMap($tagId,$huggaId);
