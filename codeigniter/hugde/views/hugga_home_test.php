@@ -364,7 +364,6 @@
                   	<ul class="list-inline sidebar-tags">
                   		<?php 
                   		foreach ($tags as $item){
-                  			echo $item;
                   		?>
                   			<li><a href="http://hugde.com/tags/inputtag/<?php echo $item; ?>"><i class="icon-tags"></i><?php echo $item; ?></a></li>
                   		<?php	
