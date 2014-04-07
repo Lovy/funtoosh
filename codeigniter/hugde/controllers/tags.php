@@ -24,6 +24,7 @@ class tags extends CI_Controller{
 			$this->load->model('modeltag');
 			$response['huggas'] = $this->modeltag->loadData($data['userId'],4,1,$tagName);   //(userid,huggasPerPage,pageNo)
 			$response['sidebar'] = $this->modelhome->loadSideBar();
+			$response['tags'] = $this->modeltag->loadTopTags();
 			$response['data']=$data;
 			$response['category']=$tagName;
 			//echo json_encode($response);
@@ -46,6 +47,7 @@ class tags extends CI_Controller{
 			$this->load->model('modeltag');
 			$response['huggas'] = $this->modeltag->loadData(NULL,4,1,$tagName);
 			$response['sidebar'] = $this->modelhome->loadSideBar();
+			$response['tags'] = $this->modeltag->loadTopTags();
 			$response['data']=array("userId"=>"0");
 			$response['category']=$tagName;
 			//echo json_encode($response['sidebar']);

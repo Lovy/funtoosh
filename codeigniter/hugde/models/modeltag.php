@@ -54,6 +54,30 @@ class modeltag extends CI_Model{
 			}
 	}
 	
+	function loadTopTags(){
+		$sql = "SELECT count(huggaId) as a, tagId from hugga_tags group by tagId order by a desc LIMIT 0,15";
+		$query = $this->db->query($sql);
+		if($query->num_rows()>0){
+			//create an array to store huggas
+				$topTags = array();
+				//Loop through each row returned from the query
+				foreach ($query->result_array() as $row) {
+    				//Retrieve images for each space
+    				$sql2 ="select tagName from tags where tagId=?";
+    				$query2 =$this->db->query($sql2,array($row['tagId']));
+					$tagNames= array();
+					foreach ($query2->result_array() as $row2) {
+						$tagNames[]=$row2;
+					}
+					$row['tags']=$tagNames;
+					$topTags[]=$row;
+				
+				}
+				return $topTags;
+		}
+	}
+	
+	
 	//Database tables:
 	// 1)tags : tagId,tagName,userId,timestamp
 	// 2)hugga_tags : Id,huggaId,tagId,timestamp

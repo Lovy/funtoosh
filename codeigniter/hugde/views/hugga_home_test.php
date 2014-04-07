@@ -362,20 +362,13 @@
                      </ul>
                   	</div>
                   	<ul class="list-inline sidebar-tags">
-                        <li><a href="#"><i class="icon-tags"></i> Business</a></li>
-                        <li><a href="#"><i class="icon-tags"></i> Music</a></li>
-                        <li><a href="#"><i class="icon-tags"></i> Internet</a></li>
-                        <li><a href="#"><i class="icon-tags"></i> Money</a></li>
-                        <li><a href="#"><i class="icon-tags"></i> Google</a></li>
-                        <li><a href="#"><i class="icon-tags"></i> TV Shows</a></li>
-                        <li><a href="#"><i class="icon-tags"></i> Education</a></li>
-                        <li><a href="#"><i class="icon-tags"></i> People</a></li>
-                        <li><a href="#"><i class="icon-tags"></i> People</a></li>
-                        <li><a href="#"><i class="icon-tags"></i> Math</a></li>
-                        <li><a href="#"><i class="icon-tags"></i> Photos</a></li>
-                        <li><a href="#"><i class="icon-tags"></i> Electronics</a></li>
-                        <li><a href="#"><i class="icon-tags"></i> Apple</a></li>
-                        <li><a href="#"><i class="icon-tags"></i> Canada</a></li>
+                  		<?php 
+                  		foreach ($tags as $item){
+                  		?>
+                  			<li><a href="http://hugde.com/tags/inputtag/<?php echo $item['tagName']; ?>"><i class="icon-tags"></i><?php echo $item['tagName']; ?></a></li>
+                  		<?php	
+                  		}
+						?>
                      </ul>
                   	<div class="row">
                   		<ul class="list-group" style="text-align: center;font-size: 23px">
