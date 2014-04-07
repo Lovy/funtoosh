@@ -41,7 +41,7 @@ class justouttest extends CI_Controller{
 			$response['tags'] = $this->modeltag->loadTopTags();
 			$response['data']=array("userId"=>"0");
 			$response['category']='JustOut';
-			//echo json_encode($response);
+			echo json_encode($response);
 			//var_dump($response);
 			
 			//Detect mobile and load no-sidebar version
@@ -50,7 +50,7 @@ class justouttest extends CI_Controller{
 				$this->load->view('hugga_home_test',$response);
 			}
 			else{
-				$this->load->view('hugga_home_test',$response);
+				//$this->load->view('hugga_home_test',$response);
 			}
 			
 		}
