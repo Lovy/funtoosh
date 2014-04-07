@@ -114,7 +114,6 @@ class tags extends CI_Controller{
 				//Do nothing
 				echo json_encode(array("response"=>"0"));
 			}else{
-				
 				$this->modeltag->insertTagMap($tagId,$huggaId);
 			}
 		}else{
