@@ -72,6 +72,7 @@ var FormComponents = function () {
 				type: 'post',
 				dataType: 'json',
 				beforeSend:function(){
+					$(".tagMappingError").css('display','none');
 					$(".tagFailed").css('display','none');
 					console.log("sending");
 				},
@@ -85,8 +86,13 @@ var FormComponents = function () {
 							
 				},
 				success:function(data){
-					$(".tagFailed").css('display','none');
-					console.log("Sent");
+					if(data['response']==0){
+						$(".tagMappingError").css('display','block');
+					}else{
+						$(".tagMappingError").css('display','none');
+						$(".tagFailed").css('display','none');
+						console.log("Sent");
+					}
 				}
 				});
             },

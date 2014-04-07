@@ -277,10 +277,12 @@
                      	</div>
                      </div>
            			 <p class="tagFailed" style="display:none">Tagging Failed. Please retry</p>
+           			 <p class="tagMappingError" style="display:none">Tag already exists. Please retry</p>
+                     
                      <div class="row <?php echo $item['huggaId']; ?>" style="display: none">
                      	<div class="form-group">
                            <div class="col-md-12">
-                              <input class="tags_1" type="text" class="form-control tags medium" value="<?php echo $item['tags']['tagvalues']; ?>" />
+                              <input class="tags_1" type="text" class="form-control tags medium" value="" />
                            	  <input class="huggaId" type="hidden" value="<?php echo $item['huggaId']; ?>" />		
                            </div>
                         </div>
