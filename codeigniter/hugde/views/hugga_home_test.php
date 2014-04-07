@@ -365,7 +365,7 @@
                   		<?php 
                   		foreach ($tags as $item){
                   		?>
-                  			<li><a href="http://hugde.com/tags/inputtag/<?php echo $item['tagName']; ?>"><i class="icon-tags"></i><?php echo $item['tagName']; ?></a></li>
+                  			<li><a href="http://hugde.com/tags/inputtag/<?php echo $item['tags'][0]['tagName']; ?>"><i class="icon-tags"></i><?php echo $item['tags'][0]['tagName']; ?></a></li>
                   		<?php	
                   		}
 						?>
