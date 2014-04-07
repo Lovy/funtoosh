@@ -87,7 +87,7 @@ var FormComponents = function () {
 				},
 				success:function(data){
 					//console.log(data);
-					if(!data){
+					if(typeof data !== 'undefined'){
 						if(data['response']==0){
 						$(".tagMappingError").css('display','block');
 						}
