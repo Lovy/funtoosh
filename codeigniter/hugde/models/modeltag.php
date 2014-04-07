@@ -66,7 +66,7 @@ class modeltag extends CI_Model{
     				$sql2 ="select tagName from tags where tagId=?";
     				$query2 =$this->db->query($sql2,array($row['tagId']));
 					$row2=$query2->result_array();
-					$topTags[]=$row2['tagName'];
+					$topTags[]=$row2[0]['tagName'];
 				
 				}
 				return $topTags;
