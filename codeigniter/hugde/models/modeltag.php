@@ -63,12 +63,14 @@ class modeltag extends CI_Model{
 				//Loop through each row returned from the query
 				foreach ($query->result_array() as $row) {
     				//Retrieve images for each space
+    				$tagnames=array();
     				$sql2 ="select tagName from tags where tagId=?";
     				$query2 =$this->db->query($sql2,array($row['tagId']));
 					$row2=$query2->result_array();
-					$topTags[]=$row2;
+					$tagnames[]=$row2;
 				
 				}
+				$topTags['tagvalues']=$tagnames;
 				return $topTags;
 		}
 	}
