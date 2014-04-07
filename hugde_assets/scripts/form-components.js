@@ -86,10 +86,13 @@ var FormComponents = function () {
 							
 				},
 				success:function(data){
-					console.log(data);
-					if(data['response']==0){
+					//console.log(data);
+					if(data!=NULL){
+						if(data['response']==0){
 						$(".tagMappingError").css('display','block');
-					}else{
+						}
+					}
+					else{
 						$(".tagMappingError").css('display','none');
 						$(".tagFailed").css('display','none');
 						console.log("Sent");
