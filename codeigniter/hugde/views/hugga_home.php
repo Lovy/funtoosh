@@ -37,6 +37,18 @@
    <link rel="shortcut icon" href="<?php echo assets_url(); ?>img/favicon.ico" />
    <link href='http://fonts.googleapis.com/css?family=Peralta' rel='stylesheet' type='text/css'>
    <link href='http://fonts.googleapis.com/css?family=Autour+One' rel='stylesheet' type='text/css'>
+   <style>
+       ul.blog-tags a{
+       	background: #eee;
+		padding: 1px 4px;
+		margin: 0 4px 4px 0;
+		display: inline-block;
+		text-decoration:none;
+       }
+       ul.blog-tage a:hover{
+       	background: #eff;
+       }
+   </style>
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
