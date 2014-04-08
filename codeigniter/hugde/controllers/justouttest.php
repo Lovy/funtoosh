@@ -38,10 +38,10 @@ class justouttest extends CI_Controller{
 			$this->load->model('modelhome');
 			$response['huggas'] = $this->modelhome->loadData('0',NULL,'HIDE',4,1,'JustOut');
 			$response['sidebar'] = $this->modelhome->loadSideBar();
-			$response['tags'] = $this->modeltag->loadTopTags();
+			$response['tagsbar'] = $this->modeltag->loadTopTags();
 			$response['data']=array("userId"=>"0");
 			$response['category']='JustOut';
-			echo json_encode($response['tags']);
+			//echo json_encode($response['tags']);
 			//var_dump($response);
 			
 			//Detect mobile and load no-sidebar version
@@ -50,7 +50,7 @@ class justouttest extends CI_Controller{
 				$this->load->view('hugga_home_test',$response);
 			}
 			else{
-				//$this->load->view('hugga_home_test',$response);
+				$this->load->view('hugga_home_test',$response);
 			}
 			
 		}
