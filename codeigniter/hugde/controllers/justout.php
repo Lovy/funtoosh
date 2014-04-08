@@ -17,8 +17,10 @@ class justout extends CI_Controller{
 			$data = $this->session->all_userdata();
 			//var_dump($data);
 			$this->load->model('modelhome');
+			$this->load->model('modeltag');
 			$response['huggas'] = $this->modelhome->loadData('0',$data['userId'],'HIDE',4,1,'JustOut');   //(huggasPerPage,pageNo)
 			$response['sidebar'] = $this->modelhome->loadSideBar();
+			$response['tagsbar'] = $this->modeltag->loadTopTags();
 			$response['data']=$data;
 			$response['category']='JustOut';
 			//echo json_encode($response);
@@ -35,8 +37,10 @@ class justout extends CI_Controller{
 		}
 		else{
 			$this->load->model('modelhome');
+			$this->load->model('modeltag');
 			$response['huggas'] = $this->modelhome->loadData('0',NULL,'HIDE',4,1,'JustOut');
 			$response['sidebar'] = $this->modelhome->loadSideBar();
+			$response['tagsbar'] = $this->modeltag->loadTopTags();
 			$response['data']=array("userId"=>"0");
 			$response['category']='JustOut';
 			//echo json_encode($response);

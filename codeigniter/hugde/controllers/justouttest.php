@@ -19,7 +19,7 @@ class justouttest extends CI_Controller{
 			$this->load->model('modelhome');
 			$response['huggas'] = $this->modelhome->loadData('0',$data['userId'],'HIDE',4,1,'JustOut');   //(huggasPerPage,pageNo)
 			$response['sidebar'] = $this->modelhome->loadSideBar();
-			$response['tags'] = $this->modeltag->loadTopTags();
+			$response['tagsbar'] = $this->modeltag->loadTopTags();
 			$response['data']=$data;
 			$response['category']='JustOut';
 			//echo json_encode($response);

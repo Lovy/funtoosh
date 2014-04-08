@@ -31,6 +31,8 @@
    <link href="<?php echo assets_url(); ?>plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet" />
    <link href="<?php echo assets_url(); ?>plugins/jquery-file-upload/css/jquery.fileupload-ui.css" rel="stylesheet" />
    <link href="<?php echo assets_url(); ?>css/pages/login-soft.css" rel="stylesheet" type="text/css"/>
+   <link rel="stylesheet" type="text/css" href="<?php echo assets_url(); ?>plugins/jquery-tags-input/jquery.tagsinput.css" />
+   
    <!-- END THEME STYLES -->
    <link rel="shortcut icon" href="<?php echo assets_url(); ?>img/favicon.ico" />
    <link href='http://fonts.googleapis.com/css?family=Peralta' rel='stylesheet' type='text/css'>
@@ -236,6 +238,55 @@
                   		</div>	
                   	</div>
                   	 <a href="<?php echo base_url().'hugga/'.$item['huggaId']; ?>" target="_blank" ><h3 style="font-weight: 600 !important"><?php echo $item['title']; ?></h3></a>
+                     <style>
+                     	ul.blog-tags a{
+                     		background: #eee;
+							padding: 1px 4px;
+							margin: 0 4px 4px 0;
+							display: inline-block;
+							text-decoration:none;
+                     	}
+                     	ul.blog-tage a:hover{
+                     		background: #eff;
+                     	}
+                     </style>
+                     <?php
+                     $tags = explode(",", $item['tags']['tagvalues']);
+                     ?>
+                     <div class="row">
+                     	<div class="col-md-12">
+                           <ul class="list-inline blog-tags">
+                              <li>
+                              	 <?php
+                                 if(!empty($data['IsAdmin'])){
+                                 	echo'<i class="addTags icon-edit"></i>';
+                                 } 
+                                 ?> 
+                              	 <input class="huggaId" type="hidden" value="<?php echo $item['huggaId']; ?>" />
+                                 <i class="icon-tags"></i>
+                                 <?php
+                                 foreach($tags as $itemtag){
+                                 ?>              
+                                 <a href="http://hugde.com/tags/inputtag/<?php echo $itemtag; ?>"><?php echo $itemtag; ?></a>
+                                 <?php
+                                 }  
+                                 ?> 
+                              </li>
+                           </ul>
+                     	</div>
+                     </div>
+           			 <p class="tagFailed" style="display:none">Tagging Failed. Please retry</p>
+           			 <p class="tagMappingError" style="display:none">Tag already exists. Please retry</p>
+                     
+                     <div class="row <?php echo $item['huggaId']; ?>" style="display: none">
+                     	<div class="form-group">
+                           <div class="col-md-12">
+                              <input class="tags_1" type="text" class="form-control tags medium" value="<?php echo $item['tags']['tagvalues']; ?>" />
+                           	  <input class="huggaId" type="hidden" value="<?php echo $item['huggaId']; ?>" />		
+                           </div>
+                        </div>
+                     </div>
+                     
                      <div class="blog-tag-data">
                      	<a href="<?php echo base_url().'hugga/'.$item['huggaId']; ?>" target="_blank"><img src="http://d2nds2wyuzde9r.cloudfront.net/hugde_assets/img/longLoader.gif" onload="this.src='<?php echo $item['images'][0]['originalImageUrl']; ?>'" class="img-responsive" alt="" style="width:100%"></a>
                         <div class="row">
@@ -302,6 +353,23 @@
                   <!--end col-md-9-->
                   
                   <div class="col-md-3 blog-sidebar" style="background-color: #faf6ea">
+                  	<div class="row">
+                  		<ul class="list-group" style="text-align: center;font-size: 23px">
+                       
+                        <li class="list-group-item bg-purple" style="font-family: 'Peralta', cursive;">Top Tags</li>
+                       
+                     </ul>
+                  	</div>
+                  	<ul class="list-inline sidebar-tags">
+        
+                  		<?php 
+                  		foreach ($tagsbar as $item){
+                  		?>
+                  			<li><a href="http://hugde.com/tags/inputtag/<?php echo $item; ?>"><i class="icon-tags"></i><?php echo $item; ?></a></li>
+                  		<?php	
+                  		}
+						?>
+                    </ul>
                   	<div class="row">
                   		<ul class="list-group" style="text-align: center;font-size: 23px">
                        
@@ -971,21 +1039,26 @@ HTML;
    <script src="<?php echo assets_url(); ?>plugins/jquery-file-upload/js/jquery.fileupload-validate.js" type="text/javascript"></script>
    <!-- The File Upload user interface plugin -->
    <script src="<?php echo assets_url(); ?>plugins/jquery-file-upload/js/jquery.fileupload-ui.js" type="text/javascript"></script>
+   <script src="<?php echo assets_url(); ?>plugins/jquery-tags-input/jquery.tagsinput.min.js" type="text/javascript" ></script>
+   
    <!-- The main application script -->
    <!-- The XDomainRequest Transport is included for cross-domain file deletion for IE 8 and IE 9 -->
    <!--[if (gte IE 8)&(lt IE 10)]>
    <script src="assets/plugins/jquery-file-upload/js/cors/jquery.xdr-transport.js"></script>
    <![endif]-->
    <script src="<?php echo assets_url(); ?>scripts/app.js" type="text/javascript"></script>
+   <script src="<?php echo assets_url(); ?>scripts/form-components.js"></script>
    <script src="<?php echo assets_url(); ?>scripts/form-fileupload.js" type="text/javascript"></script>
    <script src="<?php echo assets_url(); ?>scripts/login-soft.js" type="text/javascript"></script> 
    <script src="<?php echo assets_url(); ?>scripts/lickflush.js" type="text/javascript"></script>   
    <script src="<?php echo assets_url(); ?>scripts/autoload.js" type="text/javascript"></script>
+   <script src="<?php echo assets_url(); ?>scripts/autoloadTags.js" type="text/javascript"></script>
     <!------------Facebook JS--------------->
     <script src="<?php echo assets_url(); ?>scripts/facebook.js" type="text/javascript"></script>        
    <script>
       jQuery(document).ready(function() {    
          App.init();
+         FormComponents.init();
          FormFileUpload.init();
          Login.init();
          
