@@ -45,7 +45,8 @@ $(document).ready(function(){
                     $(".article-block").append(data); //append received data into the element
 					try{
 				        FB.XFBML.parse();
-				        twttr.widgets.load(); 
+				        twttr.widgets.load();
+				        FormComponents.init(); 
 				    }catch(ex){}
 				    console.log("Autoscroll called"+pagesLoaded);
 				    

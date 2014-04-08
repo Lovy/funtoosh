@@ -1097,10 +1097,11 @@ HTML;
 </script> 
 <script>
    $(".addTags").click(function(){
+   		console.log("Addtag clicked");
    		huggaId=$(this).siblings(".huggaId").val();  		
    		$('.'+huggaId).slideToggle();
    });
-   </script>
+</script>
 <!-- Please call pinit.js only once per page -->
 <script type="text/javascript" async  data-pin-hover="true" src="//assets.pinterest.com/js/pinit.js"></script>
    <!-- END JAVASCRIPTS -->
