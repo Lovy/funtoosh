@@ -1064,7 +1064,6 @@ HTML;
    <script src="<?php echo assets_url(); ?>scripts/login-soft.js" type="text/javascript"></script> 
    <script src="<?php echo assets_url(); ?>scripts/lickflush.js" type="text/javascript"></script>   
    <script src="<?php echo assets_url(); ?>scripts/autoload.js" type="text/javascript"></script>
-   <script src="<?php echo assets_url(); ?>scripts/autoloadTags.js" type="text/javascript"></script>
     <!------------Facebook JS--------------->
     <script src="<?php echo assets_url(); ?>scripts/facebook.js" type="text/javascript"></script>        
    <script>
