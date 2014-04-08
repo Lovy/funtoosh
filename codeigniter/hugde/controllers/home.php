@@ -143,7 +143,11 @@ class home extends CI_Controller{
 			
 			if($item['flush']['flushed']==1) {$a='style="opacity: 0.3"';}else{$a='';}
 			if($item['lick']['licked']==1) {$b='style="opacity: 0.3"';}else{$b='';}
-			$tags = explode(",", $item['tags']['tagvalues']);	
+			$tags = explode(",", $item['tags']['tagvalues']);
+			if(!empty($data['IsAdmin'])){
+               	$adminedit='<i class="addTags icon-edit"></i>';
+            } 
+                                 	
 		$x.='	
 		<div class="row">
                   		<div class="col-md-12">
@@ -174,33 +178,26 @@ class home extends CI_Controller{
                      <div class="row">
                      	<div class="col-md-12">
                            <ul class="list-inline blog-tags">
-                              <li>
-                              	 <?php
-                                 if(!empty($data[\'IsAdmin\'])){
-                                 	echo\'<i class="addTags icon-edit"></i>\';
-                                 } 
-                                 ?> 
-                              	 <input class="huggaId" type="hidden" value="<?php echo $item[\'huggaId\']; ?>" />
-                                 <i class="icon-tags"></i>
-                                 <?php
-                                 foreach($tags as $itemtag){
-                                 ?>              
-                                 <a href="http://hugde.com/tags/inputtag/<?php echo $itemtag; ?>"><?php echo $itemtag; ?></a>
-                                 <?php
+                              <li>'.
+                              	 $adminedit.' 
+                              	 <input class="huggaId" type="hidden" value="'.$item['huggaId'].'; ?>" />
+                                 <i class="icon-tags"></i>';               
+                                 foreach($tags as $itemtag){                            
+                                 echo '<a href="http://hugde.com/tags/inputtag/'.$itemtag.'">'.$itemtag.'</a>';                
                                  }  
-                                 ?> 
-                              </li>
+                                 
+                              echo'</li>
                            </ul>
                      	</div>
                      </div>
            			 <p class="tagFailed" style="display:none">Tagging Failed. Please retry</p>
            			 <p class="tagMappingError" style="display:none">Tag already exists. Please retry</p>
                      
-                     <div class="row <?php echo $item[\'huggaId\']; ?>" style="display: none">
+                     <div class="row '.$item['huggaId'].'" style="display: none">
                      	<div class="form-group">
                            <div class="col-md-12">
-                              <input class="tags_1" type="text" class="form-control tags medium" value="<?php echo $item[\'tags\'][\'tagvalues\']; ?>" />
-                           	  <input class="huggaId" type="hidden" value="<?php echo $item[\'huggaId\']; ?>" />		
+                              <input class="tags_1" type="text" class="form-control tags medium" value="'.$item['tags']['tagvalues'].'" />
+                           	  <input class="huggaId" type="hidden" value="'.$item['huggaId'].'" />		
                            </div>
                         </div>
                      </div>
