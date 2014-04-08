@@ -150,7 +150,8 @@ class home extends CI_Controller{
                	$adminedit='<i class="addTags icon-edit"></i>';
             }else{
             	$adminedit='';
-            } 
+            }
+			$taglinks=''; 
             foreach($tagsarray as $itemtag){                            
                 $taglinks.='<a href="http://hugde.com/tags/inputtag/'.$itemtag.'">'.$itemtag.'</a>';                
             }                     	
