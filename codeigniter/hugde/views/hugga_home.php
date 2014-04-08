@@ -1095,6 +1095,12 @@ HTML;
   })();
 
 </script> 
+<script>
+   $(".addTags").click(function(){
+   		huggaId=$(this).siblings(".huggaId").val();  		
+   		$('.'+huggaId).slideToggle();
+   });
+   </script>
 <!-- Please call pinit.js only once per page -->
 <script type="text/javascript" async  data-pin-hover="true" src="//assets.pinterest.com/js/pinit.js"></script>
    <!-- END JAVASCRIPTS -->

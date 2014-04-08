@@ -74,6 +74,7 @@ class home extends CI_Controller{
 			$data = $this->session->all_userdata();
 			//var_dump($data);
 			$this->load->model('modelhome');
+			$this->load->model('modeltag');
 			$response['huggas'] = $this->modelhome->loadData('0',$data['userId'],'HIDE',$huggasPerPage,$pageNo,$category);   //(huggasPerPage,pageNo)
 			$response['data']=$data;
 			//var_dump($response['data']);
@@ -87,6 +88,7 @@ class home extends CI_Controller{
 		}
 		else{
 			$this->load->model('modelhome');
+			$this->load->model('modeltag');
 			$response['data']=array("userId"=>"0");
 			$response['huggas'] = $this->modelhome->loadData('0',NULL,'HIDE',$huggasPerPage,$pageNo,$category);
 			
@@ -143,13 +145,13 @@ class home extends CI_Controller{
 			
 			if($item['flush']['flushed']==1) {$a='style="opacity: 0.3"';}else{$a='';}
 			if($item['lick']['licked']==1) {$b='style="opacity: 0.3"';}else{$b='';}
-			$tags = explode(",", $item['tags']['tagvalues']);
-			if(!empty($data['IsAdmin'])){
+			$tagsarray = explode(",", $item['tags']['tagvalues']);
+			if(!empty($data['data']['IsAdmin'])){
                	$adminedit='<i class="addTags icon-edit"></i>';
             }else{
             	$adminedit='';
             } 
-            foreach($tags as $itemtag){                            
+            foreach($tagsarray as $itemtag){                            
                 $taglinks='<a href="http://hugde.com/tags/inputtag/'.$itemtag.'">'.$itemtag.'</a>';                
             }                     	
 		$x.='	
