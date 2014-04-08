@@ -362,7 +362,7 @@
                      </ul>
                   	</div>
                   	<ul class="list-inline sidebar-tags">
-                  		<?php var_dump($tagsbar); ?>
+        
                   		<?php 
                   		foreach ($tagsbar as $item){
                   		?>
