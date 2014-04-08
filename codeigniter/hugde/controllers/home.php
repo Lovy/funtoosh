@@ -147,7 +147,7 @@ class home extends CI_Controller{
 			if($item['lick']['licked']==1) {$b='style="opacity: 0.3"';}else{$b='';}
 			$tagsarray = explode(",", $item['tags']['tagvalues']);
 			if(!empty($data['data']['IsAdmin'])){
-               	$adminedit='<i class="addTags icon-edit"></i>';
+               	$adminedit='<i class="addTags icon-edit" onclick="javascript:showTags();"></i>';
             }else{
             	$adminedit='';
             }

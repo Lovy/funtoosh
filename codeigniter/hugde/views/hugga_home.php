@@ -271,7 +271,7 @@
                               <li>
                               	 <?php
                                  if(!empty($data['IsAdmin'])){
-                                 	echo'<i class="addTags icon-edit"></i>';
+                                 	echo'<i class="addTags icon-edit" onclick="javascript:showTags();"></i>';
                                  } 
                                  ?> 
                               	 <input class="huggaId" type="hidden" value="<?php echo $item['huggaId']; ?>" />
@@ -1095,11 +1095,11 @@ HTML;
 
 </script> 
 <script>
-   $(".addTags").click(function(){
+   function showTags(){
    		console.log("Addtag clicked");
    		huggaId=$(this).siblings(".huggaId").val();  		
    		$('.'+huggaId).slideToggle();
-   });
+   }
 </script>
 <!-- Please call pinit.js only once per page -->
 <script type="text/javascript" async  data-pin-hover="true" src="//assets.pinterest.com/js/pinit.js"></script>
