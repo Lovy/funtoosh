@@ -163,47 +163,6 @@ class home extends CI_Controller{
                   		</div>	
                   	</div>
                   	 <a href="'.base_url().'hugga/'.$item['huggaId'].'" target="_blank"><h3 style="font-weight: 600 !important">'.$item['title'].'</h3></a>
-                     
-                      <style>
-                     	ul.blog-tags a{
-                     		background: #eee;
-							padding: 1px 4px;
-							margin: 0 4px 4px 0;
-							display: inline-block;
-							text-decoration:none;
-                     	}
-                     	ul.blog-tage a:hover{
-                     		background: #eff;
-                     	}
-                     </style>
-                     
-                     <div class="row">
-                     	<div class="col-md-12">
-                           <ul class="list-inline blog-tags">
-                              <li>'.
-                              	 $adminedit.' 
-                              	 <input class="huggaId" type="hidden" value="'.$item['huggaId'].'; ?>" />
-                                 <i class="icon-tags"></i>';               
-                                 foreach($tags as $itemtag){                            
-                                 echo '<a href="http://hugde.com/tags/inputtag/'.$itemtag.'">'.$itemtag.'</a>';                
-                                 }  
-                                 
-                              echo'</li>
-                           </ul>
-                     	</div>
-                     </div>
-           			 <p class="tagFailed" style="display:none">Tagging Failed. Please retry</p>
-           			 <p class="tagMappingError" style="display:none">Tag already exists. Please retry</p>
-                     
-                     <div class="row '.$item['huggaId'].'" style="display: none">
-                     	<div class="form-group">
-                           <div class="col-md-12">
-                              <input class="tags_1" type="text" class="form-control tags medium" value="'.$item['tags']['tagvalues'].'" />
-                           	  <input class="huggaId" type="hidden" value="'.$item['huggaId'].'" />		
-                           </div>
-                        </div>
-                     </div>
-                     
                      <div class="blog-tag-data">
                      	<a href="'.base_url().'hugga/'.$item['huggaId'].'" target="_blank"><img src="http://d2nds2wyuzde9r.cloudfront.net/hugde_assets/img/longLoader.gif" onload="this.src=\''. $item['images'][0]['originalImageUrl'].'\'" class="img-responsive" alt="" style="width:100%"></a>
                         <div class="row">
