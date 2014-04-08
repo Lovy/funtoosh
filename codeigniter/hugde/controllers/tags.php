@@ -24,7 +24,7 @@ class tags extends CI_Controller{
 			$this->load->model('modeltag');
 			$response['huggas'] = $this->modeltag->loadData($data['userId'],4,1,$tagName);   //(userid,huggasPerPage,pageNo)
 			$response['sidebar'] = $this->modelhome->loadSideBar();
-			$response['tags'] = $this->modeltag->loadTopTags();
+			$response['tagsbar'] = $this->modeltag->loadTopTags();
 			$response['data']=$data;
 			$response['category']=$tagName;
 			//echo json_encode($response);
@@ -36,7 +36,7 @@ class tags extends CI_Controller{
 				 $this->load->view('hugga_home_mobile',$response);
 				}
 				else{
-					$this->load->view('hugga_home_test',$response);
+					$this->load->view('hugga_home',$response);
 				}
 			}else{
 				$this->load->view('error',$response);
@@ -47,7 +47,7 @@ class tags extends CI_Controller{
 			$this->load->model('modeltag');
 			$response['huggas'] = $this->modeltag->loadData(NULL,4,1,$tagName);
 			$response['sidebar'] = $this->modelhome->loadSideBar();
-			$response['tags'] = $this->modeltag->loadTopTags();
+			$response['tagsbar'] = $this->modeltag->loadTopTags();
 			$response['data']=array("userId"=>"0");
 			$response['category']=$tagName;
 			//echo json_encode($response);
@@ -60,7 +60,7 @@ class tags extends CI_Controller{
 					$this->load->view('hugga_home_mobile',$response);
 				}
 				else{
-					$this->load->view('hugga_home_test',$response);
+					$this->load->view('hugga_home',$response);
 				}
 			}else{
 				$this->load->view('error',$response);
@@ -172,7 +172,8 @@ class tags extends CI_Controller{
 			else{$z='default';}
 			
 			if($item['flush']['flushed']==1) {$a='style="opacity: 0.3"';}else{$a='';}
-			if($item['lick']['licked']==1) {$b='style="opacity: 0.3"';}else{$b='';}	
+			if($item['lick']['licked']==1) {$b='style="opacity: 0.3"';}else{$b='';}
+			$tags = explode(",", $item['tags']['tagvalues']);	
 		$x.='	
 		<div class="row">
                   		<div class="col-md-12">
@@ -186,6 +187,54 @@ class tags extends CI_Controller{
                   		</div>	
                   	</div>
                   	 <a href="'.base_url().'hugga/'.$item['huggaId'].'" target="_blank"><h3 style="font-weight: 600 !important">'.$item['title'].'</h3></a>
+                     
+                     <style>
+                     	ul.blog-tags a{
+                     		background: #eee;
+							padding: 1px 4px;
+							margin: 0 4px 4px 0;
+							display: inline-block;
+							text-decoration:none;
+                     	}
+                     	ul.blog-tage a:hover{
+                     		background: #eff;
+                     	}
+                     </style>
+                     
+                     <div class="row">
+                     	<div class="col-md-12">
+                           <ul class="list-inline blog-tags">
+                              <li>
+                              	 <?php
+                                 if(!empty($data[\'IsAdmin\'])){
+                                 	echo\'<i class="addTags icon-edit"></i>\';
+                                 } 
+                                 ?> 
+                              	 <input class="huggaId" type="hidden" value="<?php echo $item[\'huggaId\']; ?>" />
+                                 <i class="icon-tags"></i>
+                                 <?php
+                                 foreach($tags as $itemtag){
+                                 ?>              
+                                 <a href="http://hugde.com/tags/inputtag/<?php echo $itemtag; ?>"><?php echo $itemtag; ?></a>
+                                 <?php
+                                 }  
+                                 ?> 
+                              </li>
+                           </ul>
+                     	</div>
+                     </div>
+           			 <p class="tagFailed" style="display:none">Tagging Failed. Please retry</p>
+           			 <p class="tagMappingError" style="display:none">Tag already exists. Please retry</p>
+                     
+                     <div class="row <?php echo $item[\'huggaId\']; ?>" style="display: none">
+                     	<div class="form-group">
+                           <div class="col-md-12">
+                              <input class="tags_1" type="text" class="form-control tags medium" value="<?php echo $item[\'tags\'][\'tagvalues\']; ?>" />
+                           	  <input class="huggaId" type="hidden" value="<?php echo $item[\'huggaId\']; ?>" />		
+                           </div>
+                        </div>
+                     </div>
+                     
                      <div class="blog-tag-data">
                      	<a href="'.base_url().'hugga/'.$item['huggaId'].'" target="_blank"><img src="http://d2nds2wyuzde9r.cloudfront.net/hugde_assets/img/longLoader.gif" onload="this.src=\''. $item['images'][0]['originalImageUrl'].'\'" class="img-responsive" alt="" style="width:100%"></a>
                         <div class="row">
