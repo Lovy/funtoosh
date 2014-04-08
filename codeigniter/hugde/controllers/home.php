@@ -152,7 +152,7 @@ class home extends CI_Controller{
             	$adminedit='';
             } 
             foreach($tagsarray as $itemtag){                            
-                $taglinks='<a href="http://hugde.com/tags/inputtag/'.$itemtag.'">'.$itemtag.'</a>';                
+                $taglinks.='<a href="http://hugde.com/tags/inputtag/'.$itemtag.'">'.$itemtag.'</a>';                
             }                     	
 		$x.='	
 		<div class="row">
@@ -172,7 +172,7 @@ class home extends CI_Controller{
                            <ul class="list-inline blog-tags">
                               <li>'.
                               	 $adminedit.' 
-                              	 <input class="huggaId" type="hidden" value="'.$item['huggaId'].'; ?>" />
+                              	 <input class="huggaId" type="hidden" value="'.$item['huggaId'].'" />
                                  <i class="icon-tags"></i>'.              
                                  $taglinks.'      
                               </li>
