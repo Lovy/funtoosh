@@ -146,6 +146,8 @@ class home extends CI_Controller{
 			$tags = explode(",", $item['tags']['tagvalues']);
 			if(!empty($data['IsAdmin'])){
                	$adminedit='<i class="addTags icon-edit"></i>';
+            }else{
+            	$adminedit='';
             } 
                                  	
 		$x.='	
