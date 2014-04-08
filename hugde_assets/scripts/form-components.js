@@ -57,6 +57,7 @@ var FormComponents = function () {
         if (!jQuery().tagsInput) {
             return;
         }
+        console.log("Taginput called");
         $('.tags_1').tagsInput({
             width: 'auto',
             'onAddTag': function (x) {

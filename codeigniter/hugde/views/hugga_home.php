@@ -271,7 +271,7 @@
                               <li>
                               	 <?php
                                  if(!empty($data['IsAdmin'])){
-                                 	echo'<i class="addTags icon-edit" onclick="javascript:showTags();"></i>';
+                                 	echo'<i class="addTags icon-edit" onclick="javascript:showTags(this);"></i>';
                                  } 
                                  ?> 
                               	 <input class="huggaId" type="hidden" value="<?php echo $item['huggaId']; ?>" />
@@ -1095,9 +1095,9 @@ HTML;
 
 </script> 
 <script>
-   function showTags(){
+   function showTags(param){
    		console.log("Addtag clicked");
-   		huggaId=$(this).siblings(".huggaId").val();  		
+   		huggaId=$(param).siblings(".huggaId").val();  		
    		$('.'+huggaId).slideToggle();
    }
 </script>
