@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # README #
 
 This README would normally document whatever steps are necessary to get your application up and running.
@@ -26,3 +27,9 @@ This README would normally document whatever steps are necessary to get your app
 
 * Repo owner or admin
 * Other community or team contact
+=======
+hugde
+=====
+
+A website for memes.
+>>>>>>> 075a9f6840e81c2cc3c0d5dd3c30f5af1a5b5aba
