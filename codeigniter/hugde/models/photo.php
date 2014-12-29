@@ -47,8 +47,8 @@ class photo extends CI_Model{
 			//if (!class_exists('S3'))require_once('S3.php');
 			
 			//AWS access info
-			if (!defined('awsAccessKey')) define('awsAccessKey', 'AKIAI5YSRH55J3SSQY7A');
-			if (!defined('awsSecretKey')) define('awsSecretKey', '1EvmIEOPuIjsdCrqHtEyuX7tXbhibgqDFSNYssJD');
+			if (!defined('awsAccessKey')) define('awsAccessKey', 'YOUR AWS ACCESS KEY');
+			if (!defined('awsSecretKey')) define('awsSecretKey', 'YOUR AWS SECRET KEY');
 						
 			//instantiate the class
 			$s3 = new S3(awsAccessKey, awsSecretKey);
@@ -122,8 +122,8 @@ class photo extends CI_Model{
 					//if (!class_exists('S3'))require_once('S3.php');
 					
 					//AWS access info
-					if (!defined('awsAccessKey')) define('awsAccessKey', 'AKIAISDNUYSJXK3ODTTA');
-					if (!defined('awsSecretKey')) define('awsSecretKey', 'zzYBYjnyaciAUEQWjZsoVSpLiOnhCqMIUDlAHyRP');
+					if (!defined('awsAccessKey')) define('awsAccessKey', 'YOUR AWS ACCESS KEY');
+					if (!defined('awsSecretKey')) define('awsSecretKey', 'YOUR AWS SECRET KEY');
 								
 					//instantiate the class
 					$s3 = new S3(awsAccessKey, awsSecretKey);
